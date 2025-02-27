@@ -1,0 +1,25 @@
+# grace keystore config file 
+# grace_enc
+grace_enc.type = PKCS12
+grace_enc.private = grace_encPRIV14258
+grace_enc.pwd = grace_encPRIV14258
+grace_enc.public = grace_encPUB21598
+CA = root
+# grace_sig
+grace_sig.type = PKCS12
+grace_sig.private = grace_sigPRIV14258
+grace_sig.pwd = grace_sigPRIV14258
+grace_sig.public = grace_sigPUB21598
+CA = root
+# grace_hmc
+grace_hmc.type = PKCS12
+grace_hmc.private = grace_hmcPRIV14258
+grace_hmc.pwd = grace_hmcPRIV14258
+grace_hmc.public = grace_hmcPUB21598
+CA = root
+# grace_tls
+grace_tls.type = PKCS12
+grace_tls.private = grace_tlsPRIV14258
+grace_tls.pwd = grace_tlsPRIV14258
+grace_tls.public = grace_tlsPUB21598
+CA = root

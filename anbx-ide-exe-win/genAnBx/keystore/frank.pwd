@@ -1,0 +1,25 @@
+# frank keystore config file 
+# frank_enc
+frank_enc.type = PKCS12
+frank_enc.private = frank_encPRIV14258
+frank_enc.pwd = frank_encPRIV14258
+frank_enc.public = frank_encPUB21598
+CA = root
+# frank_sig
+frank_sig.type = PKCS12
+frank_sig.private = frank_sigPRIV14258
+frank_sig.pwd = frank_sigPRIV14258
+frank_sig.public = frank_sigPUB21598
+CA = root
+# frank_hmc
+frank_hmc.type = PKCS12
+frank_hmc.private = frank_hmcPRIV14258
+frank_hmc.pwd = frank_hmcPRIV14258
+frank_hmc.public = frank_hmcPUB21598
+CA = root
+# frank_tls
+frank_tls.type = PKCS12
+frank_tls.private = frank_tlsPRIV14258
+frank_tls.pwd = frank_tlsPRIV14258
+frank_tls.public = frank_tlsPUB21598
+CA = root
