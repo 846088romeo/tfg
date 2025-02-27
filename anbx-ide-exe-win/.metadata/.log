@@ -116,3 +116,43 @@ type: chat_enabled,
  details: [
 
 ])])
+!SESSION 2025-02-27 09:21:03.161 -----------------------------------------------
+eclipse.buildId=4.34.0.20241128-0756
+java.version=23.0.2
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=es_ES
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY ch.qos.logback.classic 1 0 2025-02-27 09:21:32.254
+!MESSAGE Activated before the state location was initialized. Retry after the state location is initialized.
+
+!ENTRY ch.qos.logback.classic 1 0 2025-02-27 09:21:44.096
+!MESSAGE Logback config file: C:\UNI\TFG\anbx-ide-exe-win\.metadata\.plugins\org.eclipse.m2e.logback\logback.2.7.0.20241001-1350.xml
+
+!ENTRY com.genuitec.copilot4eclipse 1 0 2025-02-27 09:21:53.349
+!MESSAGE [C4E] Copilot API proxy: native mode
+
+!ENTRY org.eclipse.egit.ui 2 0 2025-02-27 09:21:54.007
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\arome'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY com.genuitec.copilot4eclipse 1 0 2025-02-27 09:21:55.628
+!MESSAGE Starting Copilot4Eclipse
+
+!ENTRY com.genuitec.copilot4eclipse.chat 1 0 2025-02-27 09:21:55.750
+!MESSAGE [Chat} EdgeDataDir: C:\UNI\TFG\anbx-ide-exe-win\.metadata\.plugins\com.genuitec.copilot4eclipse\edgedata
+
+!ENTRY com.genuitec.copilot4eclipse 2 0 2025-02-27 09:21:59.808
+!MESSAGE Timeout while checking Copilot status
+
+!ENTRY com.genuitec.copilot4eclipse 1 0 2025-02-27 09:21:59.852
+!MESSAGE [C4E] Preconditions Checks(status: ok, results: [Result(
+type: chat_enabled,
+ status: ok,
+ details: [
+
+])])
