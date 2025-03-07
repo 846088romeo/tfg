@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+<rect x="0" y="0" width="100" height="20" style="fill:white;stroke:black;stroke-width:2"/>
+<text x="50" y="15" text-anchor="middle" style="font-family: Arial, Helvetica, sans-serif">
+(x1101,1)</text>
+<line x1="50" y1="20" x2="50" y2="800" style="stroke:black;stroke-width:2" />
+<rect x="25" y="800" width="50" height="10" style="fill:black;stroke:black;stroke-width:2"/>
+<rect x="246" y="0" width="100" height="20" style="fill:white;stroke:black;stroke-width:2"/>
+<text x="296" y="15" text-anchor="middle" style="font-family: Arial, Helvetica, sans-serif">
+i</text>
+<line x1="296" y1="20" x2="296" y2="800" style="stroke:black;stroke-width:2" />
+<rect x="271" y="800" width="50" height="10" style="fill:black;stroke:black;stroke-width:2"/>
+<rect x="492" y="0" width="100" height="20" style="fill:white;stroke:black;stroke-width:2"/>
+<text x="542" y="15" text-anchor="middle" style="font-family: Arial, Helvetica, sans-serif">
+(x1101,2)</text>
+<line x1="542" y1="20" x2="542" y2="800" style="stroke:black;stroke-width:2" />
+<rect x="517" y="800" width="50" height="10" style="fill:black;stroke:black;stroke-width:2"/>
+<rect x="738" y="0" width="100" height="20" style="fill:white;stroke:black;stroke-width:2"/>
+<text x="788" y="15" text-anchor="middle" style="font-family: Arial, Helvetica, sans-serif">
+(x1102,1)</text>
+<line x1="788" y1="20" x2="788" y2="800" style="stroke:black;stroke-width:2" />
+<rect x="763" y="800" width="50" height="10" style="fill:black;stroke:black;stroke-width:2"/>
+<rect x="984" y="0" width="100" height="20" style="fill:white;stroke:black;stroke-width:2"/>
+<text x="1034" y="15" text-anchor="middle" style="font-family: Arial, Helvetica, sans-serif">
+(x1102,2)</text>
+<line x1="1034" y1="20" x2="1034" y2="800" style="stroke:black;stroke-width:2" />
+<rect x="1009" y="800" width="50" height="10" style="fill:black;stroke:black;stroke-width:2"/>
+<line x1="50.0" y1="50" x2="296.0" y2="50" style="stroke:black;stroke-width:2" />
+<line x1="286.0" y1="40" x2="296.0" y2="50" style="stroke:black;stroke-width:2" />
+<line x1="286.0" y1="60" x2="296.0" y2="50" style="stroke:black;stroke-width:2" />
+<text x="173.0" y="45" text-anchor="middle" style="font-family: Arial, Helvetica, sans-serif"> x1101,{|tag,NA(1)|}_(shk(x1101,x1102))</text>
+<line x1="296.0" y1="100" x2="542.0" y2="100" style="stroke:black;stroke-width:2" />
+<line x1="306.0" y1="90" x2="296.0" y2="100" style="stroke:black;stroke-width:2" />
+<line x1="306.0" y1="110" x2="296.0" y2="100" style="stroke:black;stroke-width:2" />
+<text x="419.0" y="95" text-anchor="middle" style="font-family: Arial, Helvetica, sans-serif"> x1101,{|tag,NA(2)|}_(shk(x1101,x1102))</text>
+<line x1="296.0" y1="150" x2="788.0" y2="150" style="stroke:black;stroke-width:2" />
+<line x1="778.0" y1="140" x2="788.0" y2="150" style="stroke:black;stroke-width:2" />
+<line x1="778.0" y1="160" x2="788.0" y2="150" style="stroke:black;stroke-width:2" />
+<text x="542.0" y="145" text-anchor="middle" style="font-family: Arial, Helvetica, sans-serif"> x1101,{|tag,NA(2)|}_(shk(x1101,x1102))</text>
+<line x1="296.0" y1="200" x2="788.0" y2="200" style="stroke:black;stroke-width:2" />
+<line x1="306.0" y1="190" x2="296.0" y2="200" style="stroke:black;stroke-width:2" />
+<line x1="306.0" y1="210" x2="296.0" y2="200" style="stroke:black;stroke-width:2" />
+<text x="542.0" y="195" text-anchor="middle" style="font-family: Arial, Helvetica, sans-serif"> {|succ(NA(2)),NB(3)|}_(shk(x1101,x1102))</text>
+<line x1="296.0" y1="250" x2="1034.0" y2="250" style="stroke:black;stroke-width:2" />
+<line x1="1024.0" y1="240" x2="1034.0" y2="250" style="stroke:black;stroke-width:2" />
+<line x1="1024.0" y1="260" x2="1034.0" y2="250" style="stroke:black;stroke-width:2" />
+<text x="665.0" y="245" text-anchor="middle" style="font-family: Arial, Helvetica, sans-serif"> x1101,{|tag,NA(1)|}_(shk(x1101,x1102))</text>
+<line x1="296.0" y1="300" x2="1034.0" y2="300" style="stroke:black;stroke-width:2" />
+<line x1="306.0" y1="290" x2="296.0" y2="300" style="stroke:black;stroke-width:2" />
+<line x1="306.0" y1="310" x2="296.0" y2="300" style="stroke:black;stroke-width:2" />
+<text x="665.0" y="295" text-anchor="middle" style="font-family: Arial, Helvetica, sans-serif"> {|succ(NA(1)),NB(4)|}_(shk(x1101,x1102))</text>
+<line x1="50.0" y1="350" x2="296.0" y2="350" style="stroke:black;stroke-width:2" />
+<line x1="60.0" y1="340" x2="50.0" y2="350" style="stroke:black;stroke-width:2" />
+<line x1="60.0" y1="360" x2="50.0" y2="350" style="stroke:black;stroke-width:2" />
+<text x="173.0" y="345" text-anchor="middle" style="font-family: Arial, Helvetica, sans-serif"> {|succ(NA(1)),NB(4)|}_(shk(x1101,x1102))</text>
+<line x1="50.0" y1="400" x2="296.0" y2="400" style="stroke:black;stroke-width:2" />
+<line x1="286.0" y1="390" x2="296.0" y2="400" style="stroke:black;stroke-width:2" />
+<line x1="286.0" y1="410" x2="296.0" y2="400" style="stroke:black;stroke-width:2" />
+<text x="173.0" y="395" text-anchor="middle" style="font-family: Arial, Helvetica, sans-serif"> {|succ(NB(4))|}_(shk(x1101,x1102))</text>
+<line x1="296.0" y1="450" x2="542.0" y2="450" style="stroke:black;stroke-width:2" />
+<line x1="532.0" y1="440" x2="542.0" y2="450" style="stroke:black;stroke-width:2" />
+<line x1="532.0" y1="460" x2="542.0" y2="450" style="stroke:black;stroke-width:2" />
+<text x="419.0" y="445" text-anchor="middle" style="font-family: Arial, Helvetica, sans-serif"> {|succ(NA(2)),NB(3)|}_(shk(x1101,x1102))</text>
+<line x1="296.0" y1="500" x2="542.0" y2="500" style="stroke:black;stroke-width:2" />
+<line x1="306.0" y1="490" x2="296.0" y2="500" style="stroke:black;stroke-width:2" />
+<line x1="306.0" y1="510" x2="296.0" y2="500" style="stroke:black;stroke-width:2" />
+<text x="419.0" y="495" text-anchor="middle" style="font-family: Arial, Helvetica, sans-serif"> {|succ(NB(3))|}_(shk(x1101,x1102))</text>
+<line x1="296.0" y1="550" x2="788.0" y2="550" style="stroke:black;stroke-width:2" />
+<line x1="778.0" y1="540" x2="788.0" y2="550" style="stroke:black;stroke-width:2" />
+<line x1="778.0" y1="560" x2="788.0" y2="550" style="stroke:black;stroke-width:2" />
+<text x="542.0" y="545" text-anchor="middle" style="font-family: Arial, Helvetica, sans-serif"> {|succ(NB(3))|}_(shk(x1101,x1102))</text>
+<line x1="296.0" y1="600" x2="788.0" y2="600" style="stroke:black;stroke-width:2" />
+<line x1="306.0" y1="590" x2="296.0" y2="600" style="stroke:black;stroke-width:2" />
+<line x1="306.0" y1="610" x2="296.0" y2="600" style="stroke:black;stroke-width:2" />
+<text x="542.0" y="595" text-anchor="middle" style="font-family: Arial, Helvetica, sans-serif"> {|NB2(7)|}_(shk(x1101,x1102))</text>
+<line x1="50.0" y1="650" x2="296.0" y2="650" style="stroke:black;stroke-width:2" />
+<line x1="60.0" y1="640" x2="50.0" y2="650" style="stroke:black;stroke-width:2" />
+<line x1="60.0" y1="660" x2="50.0" y2="650" style="stroke:black;stroke-width:2" />
+<text x="173.0" y="645" text-anchor="middle" style="font-family: Arial, Helvetica, sans-serif"> {|NB2(7)|}_(shk(x1101,x1102))</text>
+<line x1="296.0" y1="700" x2="542.0" y2="700" style="stroke:black;stroke-width:2" />
+<line x1="532.0" y1="690" x2="542.0" y2="700" style="stroke:black;stroke-width:2" />
+<line x1="532.0" y1="710" x2="542.0" y2="700" style="stroke:black;stroke-width:2" />
+<text x="419.0" y="695" text-anchor="middle" style="font-family: Arial, Helvetica, sans-serif"> {|NB2(7)|}_(shk(x1101,x1102))</text>
+</svg>

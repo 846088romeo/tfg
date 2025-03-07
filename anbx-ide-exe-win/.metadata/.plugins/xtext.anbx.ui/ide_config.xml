@@ -14,13 +14,14 @@
 <entry key="OFMC_Advanced__BOUNDS">383,163,771,490</entry>
 <entry key="UPDATE_TOOLS_AUTOCHECK">true</entry>
 <entry key="PATH_ProVerif">C:\UNI\TFG\anbx-ide-exe-win\ext-tools\proverif.exe</entry>
+<entry key="AnBxC_Last_-expandbullets"></entry>
 <entry key="MAX_THREADS">4</entry>
 <entry key="AnBxC_Last_-noprivatekeygoals"></entry>
 <entry key="AnBxC_Advanced__BOUNDS">378,163,781,490</entry>
 <entry key="OFMC_Last_--untyped"></entry>
 <entry key="AnBx_IDE_Task_Manager_BOUNDS">5,5,700,400</entry>
 <entry key="AnBxC_Last_-nocfgmsg"></entry>
-<entry key="VALIDATION">true</entry>
+<entry key="VALIDATION">false</entry>
 <entry key="AnBxC_Last_-silent"></entry>
 <entry key="ProVerif_MUST_LOG">false</entry>
 <entry key="AnBxC_Last_AnBxIDEAdditionalArgs"></entry>
@@ -32,11 +33,13 @@
 <entry key="AnBxC_Last_-pvnomutual"></entry>
 <entry key="ProVerif_Advanced__BOUNDS">378,223,781,371</entry>
 <entry key="PATH_OFMC">C:\UNI\TFG\anbx-ide-exe-win\ext-tools\ofmc.exe</entry>
-<entry key="LAST_UPDATE_CHECK_DATE">2025-02-27</entry>
+<entry key="LAST_UPDATE_CHECK_DATE">2025-03-06</entry>
 <entry key="AnBxC_Last_-singlegoals">-singlegoals</entry>
 <entry key="PATH_AnBxC">C:\UNI\TFG\anbx-ide-exe-win\AnBx2\bin\anbxc.exe</entry>
+<entry key="AnBxC_Last_-silentcode"></entry>
 <entry key="PATH_FOLDER_ProVerif">C:\UNI\TFG\anbx-ide-exe-win\ext-tools</entry>
 <entry key="PATH_CFG_AnBxC">C:\UNI\TFG\anbx-ide-exe-win\AnBx2\bin\anbxc.cfg</entry>
+<entry key="AnBxC_Last_-expandbullets_AnB">false</entry>
 <entry key="PATH_FOLDER_Logs">C:\UNI\TFG\anbx-ide-exe-win\logs</entry>
 <entry key="AnBxC_cannot_be_run_BOUNDS">586,323,365,171</entry>
 <entry key="OFMC_RUN_SAMEFILE_THY">false</entry>
@@ -46,7 +49,7 @@
 <entry key="Help_BOUNDS">536,331,464,154</entry>
 <entry key="OFMC_Last_--numSess">--numSess 2</entry>
 <entry key="OFMC_Last_--noowngoal">--noowngoal</entry>
-<entry key="AnBxC_Last_-out">-out:PVT</entry>
+<entry key="AnBxC_Last_-out">-out:Java</entry>
 <entry key="AnBxC_MUST_LOG">false</entry>
 <entry key="ProVerif_Last_AnBxIDEAdditionalArgs"></entry>
 </properties>

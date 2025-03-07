@@ -1,0 +1,31 @@
+Protocol: SET_Orig
+
+Types:
+	Agent C,M,a;		# Certified
+	Number PurchAmt,NxXID,OrderDesc,NxLIDM,NxChallC,NxChallM,NxAuthCode;
+	Function pan;		# Agent,Agent ->* Number
+	Number empty;
+	Function sk;		# Agent -> PublicKey
+	Function hk;		# Agent -> PublicKey
+	Function pk;		# Agent -> PublicKey
+	Function hash;		# Untyped -> Number
+	Function hmac;		# Untyped,SymmetricKey -> Number
+
+Knowledge:
+	C: C,M,a,inv(pk(C)),inv(hk(C)),inv(sk(C)),empty,pk,hk,sk,hash,hmac,pan(C,a);
+	M: C,M,a,inv(pk(M)),inv(hk(M)),inv(sk(M)),empty,pk,hk,sk,hash,hmac;
+	a: C,M,a,inv(pk(a)),inv(hk(a)),inv(sk(a)),empty,pk,hk,sk,hash,hmac,pan(C,a)
+
+Actions:
+	C *->* M: PurchAmt,OrderDesc	# agree
+	M *->* C: empty	# agree
+	C -> M: NxLIDM,NxChallC
+	M -> C: {NxLIDM,NxXID,NxChallC,NxChallM}inv(sk(M))
+	C -> M: {hash(NxLIDM,NxXID,hash(OrderDesc,PurchAmt),PurchAmt,M,hash(NxXID,pan(C,a)),pan(C,a)),hash(NxLIDM,NxXID,NxChallC,hash(OrderDesc,PurchAmt),NxChallM)}inv(sk(C)),{NxLIDM,NxXID,hash(OrderDesc,PurchAmt),PurchAmt,M,hash(NxXID,pan(C,a)),hash(NxLIDM,NxXID,NxChallC,hash(OrderDesc,PurchAmt),NxChallM),pan(C,a)}pk(a),NxLIDM,NxXID,NxChallC,hash(OrderDesc,PurchAmt),NxChallM,hash(NxLIDM,NxXID,hash(OrderDesc,PurchAmt),PurchAmt,M,hash(NxXID,pan(C,a)),pan(C,a))
+	M -> a: {{NxLIDM,NxXID,hash(NxLIDM,NxXID,NxChallC,hash(OrderDesc,PurchAmt),NxChallM),hash(OrderDesc,PurchAmt),{hash(NxLIDM,NxXID,hash(OrderDesc,PurchAmt),PurchAmt,M,hash(NxXID,pan(C,a)),pan(C,a)),hash(NxLIDM,NxXID,NxChallC,hash(OrderDesc,PurchAmt),NxChallM)}inv(sk(C)),{NxLIDM,NxXID,hash(OrderDesc,PurchAmt),PurchAmt,M,hash(NxXID,pan(C,a)),hash(NxLIDM,NxXID,NxChallC,hash(OrderDesc,PurchAmt),NxChallM),pan(C,a)}pk(a)}inv(sk(M))}pk(a)
+	a -> M: {{M,NxLIDM,NxXID,PurchAmt,NxAuthCode}inv(sk(a))}pk(M)
+	M -> C: {C,NxLIDM,NxXID,NxChallC,hash(PurchAmt),NxAuthCode}inv(sk(M))
+
+Goals:
+	# 	C authenticates M on Contract
+	C authenticates M on PurchAmt,NxLIDM,NxXID,hash(NxLIDM,NxXID,hash(OrderDesc,PurchAmt),PurchAmt,M,hash(NxXID,pan(C,a)),pan(C,a)),hash(NxLIDM,NxXID,NxChallC,hash(OrderDesc,PurchAmt),NxChallM)

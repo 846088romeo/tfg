@@ -1,0 +1,18 @@
+Protocol: tutorial2
+
+Types:
+	Agent A,B,s;
+	Symmetric_key KAB;
+
+Knowledge:
+	A: A,B,s;
+	B: A,B,s;
+	s: A,B,s
+
+Actions:
+	A -> s: A,B
+	s -> A: KAB
+	A -> B: A,KAB
+
+Goals:
+	A authenticates s on KAB,B

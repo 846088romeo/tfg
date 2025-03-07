@@ -1,0 +1,31 @@
+Protocol: GSM_intr AnB
+
+Types:
+	Agent H,M,B;
+	Number NB,Msg;
+	Function [Agent,Agent ->* Number] ki;
+	Function [Number,Number -> SymmetricKey] kc;
+	Function [Untyped -> Number] hash;
+	Agent intr;
+
+Knowledge:
+	M: M,B,H,kc,hash,ki(M,H);
+	B: B,M,hash;
+	H: B,H,M,kc,hash,ki(M,H);
+	intr: intr,B,H,kc,hash,ki(intr,H),M,ki(M,intr);
+	M,H share ki(M,H);
+	where H!=intr, M!=intr, B!=intr
+
+Actions:
+	H -> intr: NB,hash(NB,ki(M,H)),kc(NB,ki(M,H))
+	intr -> B: NB,hash(NB,ki(M,H)),kc(NB,ki(M,H))
+	B -> intr: NB
+	intr -> M: NB
+	M -> intr: hash(NB,ki(M,H))
+	intr -> B: hash(NB,ki(M,H))
+	B -> intr: {|Msg|}kc(NB,ki(M,H))
+	intr -> M: {|Msg|}kc(NB,ki(M,H))
+
+Goals:
+	B authenticates M on NB
+	Msg secret between B,M
