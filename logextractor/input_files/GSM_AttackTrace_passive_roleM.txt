@@ -1,0 +1,165 @@
+Buildfile: /Users/usuario/anbx-ide-exe-mac/genAnBx/src/gsm_attacktrace_passive/build.xml
+
+ROLE_M:
+     [java] Debug [GSM_AttackTrace_passive-ALWAYS] - Verbose mode on
+     [java] Debug [ROLE_M-APPLICATION] - Reading config file: GSM_AttackTrace_passive.properties
+     [java] Debug [ROLE_M-ENCRYPTION] - -------------------- crypto config --------------------
+     [java] Debug [ROLE_M-ENCRYPTION] - cipherScheme = AES/CBC/PKCS5Padding
+     [java] Debug [ROLE_M-ENCRYPTION] - keySize = 256
+     [java] Debug [ROLE_M-ENCRYPTION] - keyGenerationScheme = AES
+     [java] Debug [ROLE_M-ENCRYPTION] - keyGenerationSize = 256
+     [java] Debug [ROLE_M-ENCRYPTION] - keyGenerationSchemePBE = PBKDF2WithHmacSHA512
+     [java] Debug [ROLE_M-ENCRYPTION] - keyPairGenerationScheme = RSA
+     [java] Debug [ROLE_M-ENCRYPTION] - keyPairGenerationSize = 2048
+     [java] Debug [ROLE_M-ENCRYPTION] - secureRandomAlgorithm = DRBG
+     [java] Debug [ROLE_M-ENCRYPTION] - hmacAlgorithm = HmacSHA256
+     [java] Debug [ROLE_M-ENCRYPTION] - messageDigestAlgorithm = SHA-256
+     [java] Debug [ROLE_M-ENCRYPTION] - messageDigestSignatureAlgorithm = SHA256
+     [java] Debug [ROLE_M-ENCRYPTION] - keyAgreementAlgorithm = DH
+     [java] Debug [ROLE_M-ENCRYPTION] - keyAgreementKeyPairGenerationScheme = DH
+     [java] Debug [ROLE_M-ENCRYPTION] - dhRndExpSize = 4096
+     [java] Debug [ROLE_M-ENCRYPTION] - ecGenParameterSpec = secp256r1
+     [java] Debug [ROLE_M-ENCRYPTION] - asymCipherSchemeBlock = RSA
+     [java] Debug [ROLE_M-ENCRYPTION] - sslContext = TLSv1.3
+     [java] Debug [ROLE_M-ENCRYPTION] - securityProvider = default
+     [java] Debug [ROLE_M-ENCRYPTION] - cipherSchemeProvider = default
+     [java] Debug [ROLE_M-ENCRYPTION] - keyGenerationSchemeProvider = default
+     [java] Debug [ROLE_M-ENCRYPTION] - keyGenerationSchemePBEProvider = default
+     [java] Debug [ROLE_M-ENCRYPTION] - keyPairGenerationSchemeProvider = default
+     [java] Debug [ROLE_M-ENCRYPTION] - secureRandomProvider = default
+     [java] Debug [ROLE_M-ENCRYPTION] - hmacProvider = default
+     [java] Debug [ROLE_M-ENCRYPTION] - messageDigestProvider = default
+     [java] Debug [ROLE_M-ENCRYPTION] - signatureProvider = default
+     [java] Debug [ROLE_M-ENCRYPTION] - asymEncProvider = default
+     [java] Debug [ROLE_M-ENCRYPTION] - keyAgreementProvider = default
+     [java] Debug [ROLE_M-ENCRYPTION] - sslContextProvider = default
+     [java] Debug [ROLE_M-ENCRYPTION] - -------------------- crypto config --------------------
+     [java] Debug [[21:40:05:715]ROLE_M-APPLICATION] - Loading aliases
+     [java] Debug [[21:40:05:715]ROLE_M-APPLICATION] - Role: ROLE_H - Alias: alice
+     [java] Debug [[21:40:05:715]ROLE_M-APPLICATION] - Role: ROLE_I - Alias: bob
+     [java] Debug [[21:40:05:715]ROLE_M-APPLICATION] - Role: ROLE_B - Alias: charlie
+     [java] Debug [[21:40:05:715]ROLE_M-APPLICATION] - Role: ROLE_M - Alias: david
+     [java] Debug [[21:40:05:715]ROLE_M-APPLICATION] - myAlias: david
+     [java] Debug [[21:40:05:715]ROLE_M-APPLICATION] - Host: localhost - Port: 55559
+     [java] Debug [[21:40:05:715]ROLE_M-APPLICATION] - Channel Type: SSL_PLAIN - Role: SERVER
+     [java] Debug [[21:40:05:715]ROLE_M-APPLICATION] - Channel: ROLE_M_channel_ROLE_I_Server_Insecure
+     [java] Debug [[21:40:05:715]ROLE_M-APPLICATION] - [21:40:05:726]myRole: ROLE_M
+     [java] Debug [[21:40:05:715]ROLE_M-APPLICATION] - [21:40:05:726]sessions: 1
+     [java] Debug [[21:40:05:715]ROLE_M-ENCRYPTION] - Loading KeyStore: tls #0
+     [java] Debug [[21:40:05:715]ROLE_M-ENCRYPTION] - Reading config file (KSS): ../../keystore/david.pwd
+     [java] Debug [[21:40:05:715]ROLE_M-ENCRYPTION] - tls - KeyStoreType: PKCS12
+     [java] Debug [[21:40:05:715]ROLE_M-ENCRYPTION] - tls - LocalKeyStore: ../../keystore/david_tls.private
+     [java] Debug [[21:40:05:715]ROLE_M-ENCRYPTION] - tls - RemotelKeyStore: ../../keystore/david_tls.public
+     [java] Debug [[21:40:05:715]ROLE_M-ENCRYPTION] - My Alias: david
+     [java] Debug [[21:40:05:715]ROLE_M-ENCRYPTION] - RootCA: root
+     [java] Debug [[21:40:05:715]ROLE_M-ENCRYPTION] - Loading KeyStore: enc #1
+     [java] Debug [[21:40:05:715]ROLE_M-ENCRYPTION] - Reading config file (KSS): ../../keystore/david.pwd
+     [java] Debug [[21:40:05:715]ROLE_M-ENCRYPTION] - enc - KeyStoreType: PKCS12
+     [java] Debug [[21:40:05:715]ROLE_M-ENCRYPTION] - enc - LocalKeyStore: ../../keystore/david_enc.private
+     [java] Debug [[21:40:05:715]ROLE_M-ENCRYPTION] - enc - RemotelKeyStore: ../../keystore/david_enc.public
+     [java] Debug [[21:40:05:715]ROLE_M-ENCRYPTION] - My Alias: david
+     [java] Debug [[21:40:05:715]ROLE_M-ENCRYPTION] - RootCA: root
+     [java] Debug [[21:40:05:715]ROLE_M-ENCRYPTION] - Loading KeyStore: sig #2
+     [java] Debug [[21:40:05:715]ROLE_M-ENCRYPTION] - Reading config file (KSS): ../../keystore/david.pwd
+     [java] Debug [[21:40:05:715]ROLE_M-ENCRYPTION] - sig - KeyStoreType: PKCS12
+     [java] Debug [[21:40:05:715]ROLE_M-ENCRYPTION] - sig - LocalKeyStore: ../../keystore/david_sig.private
+     [java] Debug [[21:40:05:715]ROLE_M-ENCRYPTION] - sig - RemotelKeyStore: ../../keystore/david_sig.public
+     [java] Debug [[21:40:05:715]ROLE_M-ENCRYPTION] - My Alias: david
+     [java] Debug [[21:40:05:715]ROLE_M-ENCRYPTION] - RootCA: root
+     [java] Debug [[21:40:05:715]ROLE_M-ENCRYPTION] - Loading KeyStore: hmc #3
+     [java] Debug [[21:40:05:715]ROLE_M-ENCRYPTION] - Reading config file (KSS): ../../keystore/david.pwd
+     [java] Debug [[21:40:05:715]ROLE_M-ENCRYPTION] - hmc - KeyStoreType: PKCS12
+     [java] Debug [[21:40:05:715]ROLE_M-ENCRYPTION] - hmc - LocalKeyStore: ../../keystore/david_hmc.private
+     [java] Debug [[21:40:05:715]ROLE_M-ENCRYPTION] - hmc - RemotelKeyStore: ../../keystore/david_hmc.public
+     [java] Debug [[21:40:05:715]ROLE_M-ENCRYPTION] - My Alias: david
+     [java] Debug [[21:40:05:715]ROLE_M-ENCRYPTION] - RootCA: root
+     [java] Debug [[21:40:05:715]ROLE_M-ENCRYPTION] - Building KeyStore: tls #0
+     [java] Debug [[21:40:05:715]ROLE_M-ENCRYPTION] - Loading KeyStore: ../../keystore/david_tls.private - Type: PKCS12
+     [java] Debug [[21:40:05:715]ROLE_M-ENCRYPTION] - Loading KeyStore: ../../keystore/david_tls.public - Type: PKCS12
+     [java] Debug [[21:40:05:715]ROLE_M-ENCRYPTION] - Building KeyStore: enc #1
+     [java] Debug [[21:40:05:715]ROLE_M-ENCRYPTION] - Loading KeyStore: ../../keystore/david_enc.private - Type: PKCS12
+     [java] Debug [[21:40:05:715]ROLE_M-ENCRYPTION] - Loading KeyStore: ../../keystore/david_enc.public - Type: PKCS12
+     [java] Debug [[21:40:05:715]ROLE_M-ENCRYPTION] - Building KeyStore: sig #2
+     [java] Debug [[21:40:05:715]ROLE_M-ENCRYPTION] - Loading KeyStore: ../../keystore/david_sig.private - Type: PKCS12
+     [java] Debug [[21:40:05:715]ROLE_M-ENCRYPTION] - Loading KeyStore: ../../keystore/david_sig.public - Type: PKCS12
+     [java] Debug [[21:40:05:715]ROLE_M-ENCRYPTION] - Building KeyStore: hmc #3
+     [java] Debug [[21:40:05:715]ROLE_M-ENCRYPTION] - Loading KeyStore: ../../keystore/david_hmc.private - Type: PKCS12
+     [java] Debug [[21:40:05:715]ROLE_M-ENCRYPTION] - Loading KeyStore: ../../keystore/david_hmc.public - Type: PKCS12
+     [java] Debug [[21:40:05:715]ROLE_M-ENCRYPTION] - Certificate retrieved: <david>
+     [java] Debug [[21:40:05:715]ROLE_M-ENCRYPTION] - Certificate retrieved: <david>
+     [java] Debug [[21:40:05:715]ROLE_M-ENCRYPTION] - Certificate retrieved: <david>
+     [java] Debug [[21:40:05:715]ROLE_M-ENCRYPTION] - Certificate retrieved: <david>
+     [java] Debug [[21:40:05:715]ROLE_M-SESSION] - Initializing channel - cs: Channel Settings - Port: 55559 - Role: SERVER - Type: SSL_PLAIN
+     [java] Debug [[21:40:05:715]ROLE_M-SESSION] - Initializing channel - keystore: anbxj.Crypto_KeyStoreSettings@880ec60
+     [java] Debug [[21:40:05:715]ROLE_M-ENCRYPTION] - readObject - Serialized data from ./ki_david_bob.ser
+     [java] Debug [[21:40:05:715]ROLE_M-ENCRYPTION] - readObject - anbxj.Crypto_ByteArray.toString: Crypto_ByteArray [bytearray=[104, -82, -36, -103, 81, -76, 1, 18, 2, 10, -17, -21, 56, 99, 20, 61, -119, -22, 83, -115, 87, -49, 37, 18, -41, -50, -38, 114, -58, 107, -102, -12, -128, -89, 55, 24, -39, 30, -47, 105, 86, 61, -89, 11, 32, -108, 105, -90, -54, 107, -22, 10, 118, 46, -111, -90, -77, 78, -85, 15, 64, 70, -117, 109, -46, -7, 108, 58, -86, -5, 127, 109, 92, -85, 33, 32, -70, 6, 31, -81, 4, 123, 3, 51, 93, 68, 105, 86, 86, -89, -96, 41, 77, -40, -6, 39, 29, 95, 72, 52, 100, 89, -16, -19, 97, 102, 55, -78, -127, -20, -122, -11, 40, 101, 9, -76, 93, 64, 21, 121, 18, 91, -95, 13, -107, -109, -15, -24, 33, 23, 100, 69, -47, -1, -40, 44, 24, 97, -98, 100, 30, -112, -45, 30, 92, 81, 100, 81, -107, 88, -67, -53, -38, -1, 104, 91, 16, 22, 102, 48, 114, 74, -115, 118, 74, 35, -46, -49, 57, -107, -15, -61, -11, -54, 29, -47, -72, 51, -2, -65, 43, 108, 113, 39, 122, -76, 42, 106, -128, -113, 84, -4, 27, -38, -86, 82, 125, -67, 66, 74, -39, 100, -19, 48, -111, -11, 47, 109, -14, -118, -50, 57, -49, -58, 85, 90, -4, 4, -75, -95, 28, -3, -109, -44, -41, 88, -125, 35, 9, 45, 51, 5, 103, -24, 22, 26, 101, 14, 118, -13, 82, 62, 40, 71, 27, -87, 57, -114, -17, -96, -96, 70, 110, 87, 43, -25]]
+     [java] Debug [[21:40:05:715]ROLE_M-ENCRYPTION] - readObject - anbxj.Crypto_ByteArray.hashCode: 1538342563
+     [java] Debug [[21:40:05:715]ROLE_M-ENCRYPTION] - readObject - Serialized data from ./ki_david_alice.ser
+     [java] Debug [[21:40:05:715]ROLE_M-ENCRYPTION] - readObject - anbxj.Crypto_ByteArray.toString: Crypto_ByteArray [bytearray=[48, -82, -67, -17, -51, -116, -111, -13, -46, -67, -68, 43, 93, -91, 10, 72, 69, -6, -102, -25, 36, 124, 77, -101, 77, -54, -121, 120, -16, -61, 105, 107, 84, 52, -106, -67, 62, 50, 108, 68, 19, -3, 39, 9, 68, 23, -3, 127, -103, 107, 59, 83, -19, -122, 2, 67, -29, 29, 108, -45, 22, 122, 2, 102, -66, -44, -35, -31, -111, 57, 23, 111, 39, -31, -28, 99, 62, 106, 28, -62, -73, -97, 73, 50, -116, 73, 88, -56, -115, -82, 58, -30, 10, -107, -30, 37, -112, -15, -101, -89, 68, 106, 71, 78, 19, 36, 75, -118, -99, 90, -63, -53, -106, 113, -63, 3, 96, 27, -3, -16, 13, 6, 54, 61, 79, 11, 47, -35, 18, -12, -126, 123, 46, -88, -51, 98, -95, -82, 97, 115, 44, -18, 67, -4, 14, 104, 76, -60, 90, -54, 25, -39, -108, -18, -6, -70, -23, 117, 120, -107, -5, 45, -94, -18, -38, 126, -17, 82, 12, -21, -39, -83, 56, -26, 34, 41, -89, -77, -14, -51, 52, -39, 121, -100, 79, 59, -29, -70, 99, 96, -60, -83, 104, 102, 83, 126, 20, -76, -75, -120, -111, 32, 0, 34, 91, 30, -52, 78, -14, -67, 38, 74, -93, -48, -1, -63, 101, -67, 49, -110, 17, 57, -60, 64, -23, -66, -28, 102, 83, 7, -59, 29, 71, 59, -66, -83, -43, -21, -25, -117, -45, 65, 114, 77, -65, -60, 105, 81, -48, -113, 77, -43, -92, 55, -51, 23]]
+     [java] Debug [[21:40:05:715]ROLE_M-ENCRYPTION] - readObject - anbxj.Crypto_ByteArray.hashCode: -908464654
+     [java] Debug [[21:40:05:715]ROLE_M-SESSION] - Opening session
+     [java] Debug [[21:40:05:715]ROLE_M-NETWORK] - Starting server on port 55559 ...
+     [java] Debug [[21:40:05:715]ROLE_M-ALWAYS] - Server started on port 55559
+     [java] Debug [[21:40:05:715]ROLE_M-NETWORK] - Waiting for clients ...
+     [java] Debug [[21:40:05:715]ROLE_M-NETWORK] - Request from Client received ...
+     [java] Debug [[21:40:05:715]ROLE_M-PROTOCOL] - [21:40:07:102]Session started: 1/1
+     [java] Debug [[21:40:05:715]ROLE_M-PROTOCOL] - GSM_AttackTrace_passive - ROLE_M - STEP_3
+     [java] Debug [[21:40:05:715]ROLE_M-PROTOCOL] - gsm_attacktrace_passive.GSM_AttackTrace_passive_ROLE_M@13a57a3b
+     [java] Debug [[21:40:05:715]ROLE_M-PROTOCOL] - Timestamp: [21:40:07:111]
+     [java] Debug [[21:40:05:715]ROLE_M-SESSION] - Receive
+     [java] Debug [[21:40:05:715]ROLE_M-LANGUAGE] - Receive
+     [java] Debug [[21:40:05:715]ROLE_M-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [[21:40:05:715]ROLE_M-NETWORK] - [21:40:07:530]Received <- Crypto_ByteArray [bytearray=[29, 53, -36, -82, 60, 97, 114, -116, 84, 60, -32, -88, 27, 102, -95, -106, 53, 42, 45, 82, -56, 13, -105, -41, 101, -114, 6, 55, 23, 39, 6, 127, 49, -80, -33, 38, 127, 50, -127, 70, 88, 61, 2, 14, -6, 48, 97, -56, -2, -84, -30, -90, -70, -26, 29, -46, 118, 36, 19, -92, 5, -88, -13, -50, -62, -22, 38, -120, -110, -46, 121, -3, -41, -46, 22, 60, 106, 97, 69, -111, -36, 113, 84, -81, 94, -77, 63, 83, -68, 90, -41, -103, -48, -59, 97, -125, -4, 124, -79, 31, -17, 111, 43, 77, 20, 67, 39, -61, 65, -61, -122, 41, 8, 64, -6, -66, 96, 83, 118, -114, -40, -15, 42, -26, 116, -105, 89, 7, 107, 58, -18, 89, 87, -98, 5, 103, 77, 47, 7, -14, -52, 90, 16, 34, -30, -36, 122, -34, 45, 55, -59, -93, 94, -92, -27, 8, 40, 13, 78, -67, 71, 88, 43, 71, 94, 73, -78, -128, -71, -38, 22, 31, -115, -54, 19, 36, -57, -128, 97, -65, -30, 38, 99, 55, -59, -126, 9, 87, 24, -29, -122, -123, -71, 97, -22, -99, 52, -47, 70, 22, 92, 39, 28, -82, 59, 62, 126, -102, -77, -120, 98, -33, 81, -125, 116, -100, 108, 92, 86, -23, 20, 41, 48, 20, 9, 53, -29, 86, -125, -83, -123, -71, -119, -110, -5, -22, -4, 41, -72, -107, -42, -43, 75, 23, 63, 115, 88, 19, -32, -93, -99, -105, -79, 6, 21, 117]]
+     [java] Debug [[21:40:05:715]ROLE_M-PROTOCOL] - CHECK # 3.1
+     [java] Debug [[21:40:05:715]ROLE_M-PROTOCOL] - [21:40:07:531]INV check PERFORMED on anbxj.Crypto_ByteArray
+     [java] Debug [[21:40:05:715]ROLE_M-PROTOCOL] - [21:40:07:531]INV check OK - anbxj.Crypto_ByteArray.toString - Crypto_ByteArray [bytearray=[29, 53, -36, -82, 60, 97, 114, -116, 84, 60, -32, -88, 27, 102, -95, -106, 53, 42, 45, 82, -56, 13, -105, -41, 101, -114, 6, 55, 23, 39, 6, 127, 49, -80, -33, 38, 127, 50, -127, 70, 88, 61, 2, 14, -6, 48, 97, -56, -2, -84, -30, -90, -70, -26, 29, -46, 118, 36, 19, -92, 5, -88, -13, -50, -62, -22, 38, -120, -110, -46, 121, -3, -41, -46, 22, 60, 106, 97, 69, -111, -36, 113, 84, -81, 94, -77, 63, 83, -68, 90, -41, -103, -48, -59, 97, -125, -4, 124, -79, 31, -17, 111, 43, 77, 20, 67, 39, -61, 65, -61, -122, 41, 8, 64, -6, -66, 96, 83, 118, -114, -40, -15, 42, -26, 116, -105, 89, 7, 107, 58, -18, 89, 87, -98, 5, 103, 77, 47, 7, -14, -52, 90, 16, 34, -30, -36, 122, -34, 45, 55, -59, -93, 94, -92, -27, 8, 40, 13, 78, -67, 71, 88, 43, 71, 94, 73, -78, -128, -71, -38, 22, 31, -115, -54, 19, 36, -57, -128, 97, -65, -30, 38, 99, 55, -59, -126, 9, 87, 24, -29, -122, -123, -71, 97, -22, -99, 52, -47, 70, 22, 92, 39, 28, -82, 59, 62, 126, -102, -77, -120, 98, -33, 81, -125, 116, -100, 108, 92, 86, -23, 20, 41, 48, 20, 9, 53, -29, 86, -125, -83, -123, -71, -119, -110, -5, -22, -4, 41, -72, -107, -42, -43, 75, 23, 63, 115, 88, 19, -32, -93, -99, -105, -79, 6, 21, 117]]
+     [java] Debug [[21:40:05:715]ROLE_M-PROTOCOL] - [21:40:07:531]INV check OK - anbxj.Crypto_ByteArray.hashCode - 1091202962
+     [java] Debug [[21:40:05:715]ROLE_M-PROTOCOL] - GSM_AttackTrace_passive - ROLE_M - STEP_3
+     [java] Debug [[21:40:05:715]ROLE_M-PROTOCOL] - gsm_attacktrace_passive.GSM_AttackTrace_passive_ROLE_M@13a57a3b
+     [java] Debug [[21:40:05:715]ROLE_M-PROTOCOL] - GSM_AttackTrace_passive - ROLE_M - STEP_4
+     [java] Debug [[21:40:05:715]ROLE_M-PROTOCOL] - gsm_attacktrace_passive.GSM_AttackTrace_passive_ROLE_M@13a57a3b
+     [java] Debug [[21:40:05:715]ROLE_M-PROTOCOL] - Timestamp: [21:40:07:538]
+     [java] Debug [[21:40:05:715]ROLE_M-LANGUAGE] - AnBx_Params - size: 2
+     [java] Debug [[21:40:05:715]ROLE_M-LANGUAGE] - AnBx_Params - hash: -1440910208
+     [java] Debug [[21:40:05:715]ROLE_M-LANGUAGE] - AnBx_Params - params: AnBx_Params [v=[Crypto_ByteArray [bytearray=[29, 53, -36, -82, 60, 97, 114, -116, 84, 60, -32, -88, 27, 102, -95, -106, 53, 42, 45, 82, -56, 13, -105, -41, 101, -114, 6, 55, 23, 39, 6, 127, 49, -80, -33, 38, 127, 50, -127, 70, 88, 61, 2, 14, -6, 48, 97, -56, -2, -84, -30, -90, -70, -26, 29, -46, 118, 36, 19, -92, 5, -88, -13, -50, -62, -22, 38, -120, -110, -46, 121, -3, -41, -46, 22, 60, 106, 97, 69, -111, -36, 113, 84, -81, 94, -77, 63, 83, -68, 90, -41, -103, -48, -59, 97, -125, -4, 124, -79, 31, -17, 111, 43, 77, 20, 67, 39, -61, 65, -61, -122, 41, 8, 64, -6, -66, 96, 83, 118, -114, -40, -15, 42, -26, 116, -105, 89, 7, 107, 58, -18, 89, 87, -98, 5, 103, 77, 47, 7, -14, -52, 90, 16, 34, -30, -36, 122, -34, 45, 55, -59, -93, 94, -92, -27, 8, 40, 13, 78, -67, 71, 88, 43, 71, 94, 73, -78, -128, -71, -38, 22, 31, -115, -54, 19, 36, -57, -128, 97, -65, -30, 38, 99, 55, -59, -126, 9, 87, 24, -29, -122, -123, -71, 97, -22, -99, 52, -47, 70, 22, 92, 39, 28, -82, 59, 62, 126, -102, -77, -120, 98, -33, 81, -125, 116, -100, 108, 92, 86, -23, 20, 41, 48, 20, 9, 53, -29, 86, -125, -83, -123, -71, -119, -110, -5, -22, -4, 41, -72, -107, -42, -43, 75, 23, 63, 115, 88, 19, -32, -93, -99, -105, -79, 6, 21, 117]], Crypto_ByteArray [bytearray=[48, -82, -67, -17, -51, -116, -111, -13, -46, -67, -68, 43, 93, -91, 10, 72, 69, -6, -102, -25, 36, 124, 77, -101, 77, -54, -121, 120, -16, -61, 105, 107, 84, 52, -106, -67, 62, 50, 108, 68, 19, -3, 39, 9, 68, 23, -3, 127, -103, 107, 59, 83, -19, -122, 2, 67, -29, 29, 108, -45, 22, 122, 2, 102, -66, -44, -35, -31, -111, 57, 23, 111, 39, -31, -28, 99, 62, 106, 28, -62, -73, -97, 73, 50, -116, 73, 88, -56, -115, -82, 58, -30, 10, -107, -30, 37, -112, -15, -101, -89, 68, 106, 71, 78, 19, 36, 75, -118, -99, 90, -63, -53, -106, 113, -63, 3, 96, 27, -3, -16, 13, 6, 54, 61, 79, 11, 47, -35, 18, -12, -126, 123, 46, -88, -51, 98, -95, -82, 97, 115, 44, -18, 67, -4, 14, 104, 76, -60, 90, -54, 25, -39, -108, -18, -6, -70, -23, 117, 120, -107, -5, 45, -94, -18, -38, 126, -17, 82, 12, -21, -39, -83, 56, -26, 34, 41, -89, -77, -14, -51, 52, -39, 121, -100, 79, 59, -29, -70, 99, 96, -60, -83, 104, 102, 83, 126, 20, -76, -75, -120, -111, 32, 0, 34, 91, 30, -52, 78, -14, -67, 38, 74, -93, -48, -1, -63, 101, -67, 49, -110, 17, 57, -60, 64, -23, -66, -28, 102, 83, 7, -59, 29, 71, 59, -66, -83, -43, -21, -25, -117, -45, 65, 114, 77, -65, -60, 105, 81, -48, -113, 77, -43, -92, 55, -51, 23]]]]
+     [java] Debug [[21:40:05:715]ROLE_M-ENCRYPTION] - Digest Generation - obj: anbxj.AnBx_Params
+     [java] Debug [[21:40:05:715]ROLE_M-ENCRYPTION] - Digest Generation - obj.hashCode: -1440910208
+     [java] Debug [[21:40:05:715]ROLE_M-ENCRYPTION] - Digest Generation - obj.toString: AnBx_Params [v=[Crypto_ByteArray [bytearray=[29, 53, -36, -82, 60, 97, 114, -116, 84, 60, -32, -88, 27, 102, -95, -106, 53, 42, 45, 82, -56, 13, -105, -41, 101, -114, 6, 55, 23, 39, 6, 127, 49, -80, -33, 38, 127, 50, -127, 70, 88, 61, 2, 14, -6, 48, 97, -56, -2, -84, -30, -90, -70, -26, 29, -46, 118, 36, 19, -92, 5, -88, -13, -50, -62, -22, 38, -120, -110, -46, 121, -3, -41, -46, 22, 60, 106, 97, 69, -111, -36, 113, 84, -81, 94, -77, 63, 83, -68, 90, -41, -103, -48, -59, 97, -125, -4, 124, -79, 31, -17, 111, 43, 77, 20, 67, 39, -61, 65, -61, -122, 41, 8, 64, -6, -66, 96, 83, 118, -114, -40, -15, 42, -26, 116, -105, 89, 7, 107, 58, -18, 89, 87, -98, 5, 103, 77, 47, 7, -14, -52, 90, 16, 34, -30, -36, 122, -34, 45, 55, -59, -93, 94, -92, -27, 8, 40, 13, 78, -67, 71, 88, 43, 71, 94, 73, -78, -128, -71, -38, 22, 31, -115, -54, 19, 36, -57, -128, 97, -65, -30, 38, 99, 55, -59, -126, 9, 87, 24, -29, -122, -123, -71, 97, -22, -99, 52, -47, 70, 22, 92, 39, 28, -82, 59, 62, 126, -102, -77, -120, 98, -33, 81, -125, 116, -100, 108, 92, 86, -23, 20, 41, 48, 20, 9, 53, -29, 86, -125, -83, -123, -71, -119, -110, -5, -22, -4, 41, -72, -107, -42, -43, 75, 23, 63, 115, 88, 19, -32, -93, -99, -105, -79, 6, 21, 117]], Crypto_ByteArray [bytearray=[48, -82, -67, -17, -51, -116, -111, -13, -46, -67, -68, 43, 93, -91, 10, 72, 69, -6, -102, -25, 36, 124, 77, -101, 77, -54, -121, 120, -16, -61, 105, 107, 84, 52, -106, -67, 62, 50, 108, 68, 19, -3, 39, 9, 68, 23, -3, 127, -103, 107, 59, 83, -19, -122, 2, 67, -29, 29, 108, -45, 22, 122, 2, 102, -66, -44, -35, -31, -111, 57, 23, 111, 39, -31, -28, 99, 62, 106, 28, -62, -73, -97, 73, 50, -116, 73, 88, -56, -115, -82, 58, -30, 10, -107, -30, 37, -112, -15, -101, -89, 68, 106, 71, 78, 19, 36, 75, -118, -99, 90, -63, -53, -106, 113, -63, 3, 96, 27, -3, -16, 13, 6, 54, 61, 79, 11, 47, -35, 18, -12, -126, 123, 46, -88, -51, 98, -95, -82, 97, 115, 44, -18, 67, -4, 14, 104, 76, -60, 90, -54, 25, -39, -108, -18, -6, -70, -23, 117, 120, -107, -5, 45, -94, -18, -38, 126, -17, 82, 12, -21, -39, -83, 56, -26, 34, 41, -89, -77, -14, -51, 52, -39, 121, -100, 79, 59, -29, -70, 99, 96, -60, -83, 104, 102, 83, 126, 20, -76, -75, -120, -111, 32, 0, 34, 91, 30, -52, 78, -14, -67, 38, 74, -93, -48, -1, -63, 101, -67, 49, -110, 17, 57, -60, 64, -23, -66, -28, 102, 83, 7, -59, 29, 71, 59, -66, -83, -43, -21, -25, -117, -45, 65, 114, 77, -65, -60, 105, 81, -48, -113, 77, -43, -92, 55, -51, 23]]]]
+     [java] Debug [[21:40:05:715]ROLE_M-ENCRYPTION] - Digest Generation - messageDigestAlgorithm: SHA-256
+     [java] Debug [[21:40:05:715]ROLE_M-ENCRYPTION] - makeBytes - anbxj.AnBx_Params.toString: AnBx_Params [v=[Crypto_ByteArray [bytearray=[29, 53, -36, -82, 60, 97, 114, -116, 84, 60, -32, -88, 27, 102, -95, -106, 53, 42, 45, 82, -56, 13, -105, -41, 101, -114, 6, 55, 23, 39, 6, 127, 49, -80, -33, 38, 127, 50, -127, 70, 88, 61, 2, 14, -6, 48, 97, -56, -2, -84, -30, -90, -70, -26, 29, -46, 118, 36, 19, -92, 5, -88, -13, -50, -62, -22, 38, -120, -110, -46, 121, -3, -41, -46, 22, 60, 106, 97, 69, -111, -36, 113, 84, -81, 94, -77, 63, 83, -68, 90, -41, -103, -48, -59, 97, -125, -4, 124, -79, 31, -17, 111, 43, 77, 20, 67, 39, -61, 65, -61, -122, 41, 8, 64, -6, -66, 96, 83, 118, -114, -40, -15, 42, -26, 116, -105, 89, 7, 107, 58, -18, 89, 87, -98, 5, 103, 77, 47, 7, -14, -52, 90, 16, 34, -30, -36, 122, -34, 45, 55, -59, -93, 94, -92, -27, 8, 40, 13, 78, -67, 71, 88, 43, 71, 94, 73, -78, -128, -71, -38, 22, 31, -115, -54, 19, 36, -57, -128, 97, -65, -30, 38, 99, 55, -59, -126, 9, 87, 24, -29, -122, -123, -71, 97, -22, -99, 52, -47, 70, 22, 92, 39, 28, -82, 59, 62, 126, -102, -77, -120, 98, -33, 81, -125, 116, -100, 108, 92, 86, -23, 20, 41, 48, 20, 9, 53, -29, 86, -125, -83, -123, -71, -119, -110, -5, -22, -4, 41, -72, -107, -42, -43, 75, 23, 63, 115, 88, 19, -32, -93, -99, -105, -79, 6, 21, 117]], Crypto_ByteArray [bytearray=[48, -82, -67, -17, -51, -116, -111, -13, -46, -67, -68, 43, 93, -91, 10, 72, 69, -6, -102, -25, 36, 124, 77, -101, 77, -54, -121, 120, -16, -61, 105, 107, 84, 52, -106, -67, 62, 50, 108, 68, 19, -3, 39, 9, 68, 23, -3, 127, -103, 107, 59, 83, -19, -122, 2, 67, -29, 29, 108, -45, 22, 122, 2, 102, -66, -44, -35, -31, -111, 57, 23, 111, 39, -31, -28, 99, 62, 106, 28, -62, -73, -97, 73, 50, -116, 73, 88, -56, -115, -82, 58, -30, 10, -107, -30, 37, -112, -15, -101, -89, 68, 106, 71, 78, 19, 36, 75, -118, -99, 90, -63, -53, -106, 113, -63, 3, 96, 27, -3, -16, 13, 6, 54, 61, 79, 11, 47, -35, 18, -12, -126, 123, 46, -88, -51, 98, -95, -82, 97, 115, 44, -18, 67, -4, 14, 104, 76, -60, 90, -54, 25, -39, -108, -18, -6, -70, -23, 117, 120, -107, -5, 45, -94, -18, -38, 126, -17, 82, 12, -21, -39, -83, 56, -26, 34, 41, -89, -77, -14, -51, 52, -39, 121, -100, 79, 59, -29, -70, 99, 96, -60, -83, 104, 102, 83, 126, 20, -76, -75, -120, -111, 32, 0, 34, 91, 30, -52, 78, -14, -67, 38, 74, -93, -48, -1, -63, 101, -67, 49, -110, 17, 57, -60, 64, -23, -66, -28, 102, 83, 7, -59, 29, 71, 59, -66, -83, -43, -21, -25, -117, -45, 65, 114, 77, -65, -60, 105, 81, -48, -113, 77, -43, -92, 55, -51, 23]]]]
+     [java] Debug [[21:40:05:715]ROLE_M-ENCRYPTION] - makeBytes - anbxj.AnBx_Params.hashCode: -1440910208
+     [java] Debug [[21:40:05:715]ROLE_M-ENCRYPTION] - makeBytes - ByteArrayOutputStream.size: 711
+     [java] Debug [[21:40:05:715]ROLE_M-ENCRYPTION] - makeBytes - ByteArrayOutputStream.toByteArray: [B@51efea79
+     [java] Debug [[21:40:05:715]ROLE_M-ENCRYPTION] - Digest Generation - serialize(obj).length: 711
+     [java] Debug [[21:40:05:715]ROLE_M-ENCRYPTION] - Digest Generation - algorithm: SHA-256 - length: 32
+     [java] Debug [[21:40:05:715]ROLE_M-ENCRYPTION] - Digest Generation - digest: Crypto_ByteArray [bytearray=[-56, -29, -115, -108, 18, -94, 99, 104, -65, 116, -46, 24, 44, 20, 99, 92, 70, 78, 65, 100, -6, -42, 124, -74, 40, -77, -7, 47, -73, 69, -30, 99]]
+     [java] Debug [[21:40:05:715]ROLE_M-ENCRYPTION] - Digest Generation - hashCode: 637757732
+     [java] Debug [[21:40:05:715]ROLE_M-LANGUAGE] - Send
+     [java] Debug [[21:40:05:715]ROLE_M-NETWORK] - ---------- SEND -----------
+     [java] Debug [[21:40:05:715]ROLE_M-NETWORK] - Sending -> Crypto_ByteArray [bytearray=[-56, -29, -115, -108, 18, -94, 99, 104, -65, 116, -46, 24, 44, 20, 99, 92, 70, 78, 65, 100, -6, -42, 124, -74, 40, -77, -7, 47, -73, 69, -30, 99]]
+     [java] Debug [[21:40:05:715]ROLE_M-NETWORK] - [21:40:07:544]Sent -> Crypto_ByteArray [bytearray=[-56, -29, -115, -108, 18, -94, 99, 104, -65, 116, -46, 24, 44, 20, 99, 92, 70, 78, 65, 100, -6, -42, 124, -74, 40, -77, -7, 47, -73, 69, -30, 99]]
+     [java] Debug [[21:40:05:715]ROLE_M-PROTOCOL] - GSM_AttackTrace_passive - ROLE_M - STEP_4
+     [java] Debug [[21:40:05:715]ROLE_M-PROTOCOL] - gsm_attacktrace_passive.GSM_AttackTrace_passive_ROLE_M@13a57a3b
+     [java] Debug [[21:40:05:715]ROLE_M-PROTOCOL] - GSM_AttackTrace_passive - ROLE_M - STEP_7
+     [java] Debug [[21:40:05:715]ROLE_M-PROTOCOL] - gsm_attacktrace_passive.GSM_AttackTrace_passive_ROLE_M@13a57a3b
+     [java] Debug [[21:40:05:715]ROLE_M-PROTOCOL] - Timestamp: [21:40:07:545]
+     [java] Debug [[21:40:05:715]ROLE_M-SESSION] - Receive
+     [java] Debug [[21:40:05:715]ROLE_M-LANGUAGE] - Receive
+     [java] Debug [[21:40:05:715]ROLE_M-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [[21:40:05:715]ROLE_M-NETWORK] - [21:40:07:758]Received <- javax.crypto.SealedObject@7dc7cbad
+     [java] Debug [[21:40:05:715]ROLE_M-ENCRYPTION] - PBE Key Generated [Sym] [AES/RAW/256] javax.crypto.spec.SecretKeySpec@fffe984c - Provider: SunJCE
+     [java] Debug [[21:40:05:715]ROLE_M-ENCRYPTION] - Decrypting [Sym] [AES/RAW/256] javax.crypto.SealedObject@7dc7cbad
+     [java] Debug [[21:40:05:715]ROLE_M-ENCRYPTION] - Decrypted [Sym] [AES/RAW/256] javax.crypto.SealedObject@7dc7cbad
+     [java] Debug [[21:40:05:715]ROLE_M-PROTOCOL] - CHECK # 7.1
+     [java] Debug [[21:40:05:715]ROLE_M-PROTOCOL] - [21:40:07:897]INV check PERFORMED on anbxj.Crypto_ByteArray
+     [java] Debug [[21:40:05:715]ROLE_M-PROTOCOL] - [21:40:07:897]INV check OK - anbxj.Crypto_ByteArray.toString - Crypto_ByteArray [bytearray=[33, -122, -17, -24, -104, 3, -120, 57, -27, -72, 23, 49, 59, 45, -8, 6, -105, 13, 78, -33, 85, -71, 101, -73, -28, 28, 106, 89, -115, 64, -50, -14, 105, 12, -105, -108, 111, -7, -28, 43, 103, -52, 5, 76, -112, 94, -113, 55, 1, -123, 49, -23, 55, -57, 80, 106, -121, -77, -56, -5, 98, 77, 68, 30, -34, -41, -56, -13, -121, -12, 75, -90, -103, -23, -99, -108, -5, -86, -116, -97, -108, -93, 5, -117, -95, -73, -40, 28, 82, -39, -60, -122, 77, -126, 48, -92, 102, 119, 109, -46, -26, 44, 51, 115, 33, -101, -128, 97, 99, 27, 102, -81, 127, -127, -26, -15, -95, -28, -118, -73, 68, 123, 26, -30, -49, 121, -104, 24, 44, -55, -58, 39, -13, -1, -124, 23, -13, 40, -104, 61, 86, 74, 109, 18, 32, 91, 85, 56, 31, -15, -54, 52, 31, 88, -40, -53, -12, 49, 121, -15, 124, 77, -70, 89, -107, 90, -16, 23, -96, -68, 3, 35, -21, -123, 12, 35, -108, 35, -104, 79, 123, 46, -105, 30, -27, -95, 48, 16, -50, 49, 126, 97, -19, 73, 103, -54, 75, -23, 72, -8, 96, 9, 99, -97, -59, 121, -25, -53, 123, 62, 122, 0, -123, -52, -80, -105, 114, -3, 17, 35, -58, -17, 106, -120, -108, 12, 119, -68, -59, -105, 0, -115, -63, -49, 58, -46, 35, -90, -98, 92, -28, 60, -4, -56, 22, -11, -31, 9, 41, -101, -4, 68, -46, 107, -6, 108]]
+     [java] Debug [[21:40:05:715]ROLE_M-PROTOCOL] - [21:40:07:897]INV check OK - anbxj.Crypto_ByteArray.hashCode - -1149569535
+     [java] Debug [[21:40:05:715]ROLE_M-PROTOCOL] - GSM_AttackTrace_passive - ROLE_M - STEP_7
+     [java] Debug [[21:40:05:715]ROLE_M-PROTOCOL] - gsm_attacktrace_passive.GSM_AttackTrace_passive_ROLE_M@13a57a3b
+     [java] Debug [[21:40:05:715]ROLE_M-PROTOCOL] - [21:40:07:897]Session completed: 1/1
+     [java] Debug [[21:40:05:715]ROLE_M-NETWORK] - Connection closed
+     [java] Debug [[21:40:05:715]ROLE_M-SESSION] - Session closed
+     [java] GSM_AttackTrace_passive [ROLE_M] - Execution time was 2296,585 ms.
+
+BUILD SUCCESSFUL
+Total time: 3 seconds

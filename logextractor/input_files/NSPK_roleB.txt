@@ -1,0 +1,180 @@
+Buildfile: /Users/usuario/anbx-ide-exe-mac/genAnBx/src/nspk/build.xml
+
+ROLE_B:
+     [java] Debug [NSPK-ALWAYS] - Verbose mode on
+     [java] Debug [ROLE_B-APPLICATION] - Reading config file: NSPK.properties
+     [java] Debug [ROLE_B-ENCRYPTION] - -------------------- crypto config --------------------
+     [java] Debug [ROLE_B-ENCRYPTION] - cipherScheme = AES/CBC/PKCS5Padding
+     [java] Debug [ROLE_B-ENCRYPTION] - keySize = 256
+     [java] Debug [ROLE_B-ENCRYPTION] - keyGenerationScheme = AES
+     [java] Debug [ROLE_B-ENCRYPTION] - keyGenerationSize = 256
+     [java] Debug [ROLE_B-ENCRYPTION] - keyGenerationSchemePBE = PBKDF2WithHmacSHA512
+     [java] Debug [ROLE_B-ENCRYPTION] - keyPairGenerationScheme = RSA
+     [java] Debug [ROLE_B-ENCRYPTION] - keyPairGenerationSize = 2048
+     [java] Debug [ROLE_B-ENCRYPTION] - secureRandomAlgorithm = DRBG
+     [java] Debug [ROLE_B-ENCRYPTION] - hmacAlgorithm = HmacSHA256
+     [java] Debug [ROLE_B-ENCRYPTION] - messageDigestAlgorithm = SHA-256
+     [java] Debug [ROLE_B-ENCRYPTION] - messageDigestSignatureAlgorithm = SHA256
+     [java] Debug [ROLE_B-ENCRYPTION] - keyAgreementAlgorithm = DH
+     [java] Debug [ROLE_B-ENCRYPTION] - keyAgreementKeyPairGenerationScheme = DH
+     [java] Debug [ROLE_B-ENCRYPTION] - dhRndExpSize = 4096
+     [java] Debug [ROLE_B-ENCRYPTION] - ecGenParameterSpec = secp256r1
+     [java] Debug [ROLE_B-ENCRYPTION] - asymCipherSchemeBlock = RSA
+     [java] Debug [ROLE_B-ENCRYPTION] - sslContext = TLSv1.3
+     [java] Debug [ROLE_B-ENCRYPTION] - securityProvider = default
+     [java] Debug [ROLE_B-ENCRYPTION] - cipherSchemeProvider = default
+     [java] Debug [ROLE_B-ENCRYPTION] - keyGenerationSchemeProvider = default
+     [java] Debug [ROLE_B-ENCRYPTION] - keyGenerationSchemePBEProvider = default
+     [java] Debug [ROLE_B-ENCRYPTION] - keyPairGenerationSchemeProvider = default
+     [java] Debug [ROLE_B-ENCRYPTION] - secureRandomProvider = default
+     [java] Debug [ROLE_B-ENCRYPTION] - hmacProvider = default
+     [java] Debug [ROLE_B-ENCRYPTION] - messageDigestProvider = default
+     [java] Debug [ROLE_B-ENCRYPTION] - signatureProvider = default
+     [java] Debug [ROLE_B-ENCRYPTION] - asymEncProvider = default
+     [java] Debug [ROLE_B-ENCRYPTION] - keyAgreementProvider = default
+     [java] Debug [ROLE_B-ENCRYPTION] - sslContextProvider = default
+     [java] Debug [ROLE_B-ENCRYPTION] - -------------------- crypto config --------------------
+     [java] Debug [[21:44:15:958]ROLE_B-APPLICATION] - Loading aliases
+     [java] Debug [[21:44:15:958]ROLE_B-APPLICATION] - Role: ROLE_A - Alias: alice
+     [java] Debug [[21:44:15:958]ROLE_B-APPLICATION] - Role: ROLE_B - Alias: bob
+     [java] Debug [[21:44:15:958]ROLE_B-APPLICATION] - myAlias: bob
+     [java] Debug [[21:44:15:958]ROLE_B-APPLICATION] - Host: localhost - Port: 55556
+     [java] Debug [[21:44:15:958]ROLE_B-APPLICATION] - Channel Type: SSL_PLAIN - Role: SERVER
+     [java] Debug [[21:44:15:958]ROLE_B-APPLICATION] - Channel: ROLE_B_channel_ROLE_A_Server_Insecure
+     [java] Debug [[21:44:15:958]ROLE_B-APPLICATION] - [21:44:15:964]myRole: ROLE_B
+     [java] Debug [[21:44:15:958]ROLE_B-APPLICATION] - [21:44:15:964]sessions: 1
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - Loading KeyStore: tls #0
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - Reading config file (KSS): ../../keystore/bob.pwd
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - tls - KeyStoreType: PKCS12
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - tls - LocalKeyStore: ../../keystore/bob_tls.private
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - tls - RemotelKeyStore: ../../keystore/bob_tls.public
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - My Alias: bob
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - RootCA: root
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - Loading KeyStore: enc #1
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - Reading config file (KSS): ../../keystore/bob.pwd
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - enc - KeyStoreType: PKCS12
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - enc - LocalKeyStore: ../../keystore/bob_enc.private
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - enc - RemotelKeyStore: ../../keystore/bob_enc.public
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - My Alias: bob
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - RootCA: root
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - Loading KeyStore: sig #2
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - Reading config file (KSS): ../../keystore/bob.pwd
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - sig - KeyStoreType: PKCS12
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - sig - LocalKeyStore: ../../keystore/bob_sig.private
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - sig - RemotelKeyStore: ../../keystore/bob_sig.public
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - My Alias: bob
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - RootCA: root
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - Loading KeyStore: hmc #3
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - Reading config file (KSS): ../../keystore/bob.pwd
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - hmc - KeyStoreType: PKCS12
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - hmc - LocalKeyStore: ../../keystore/bob_hmc.private
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - hmc - RemotelKeyStore: ../../keystore/bob_hmc.public
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - My Alias: bob
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - RootCA: root
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - Building KeyStore: tls #0
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_tls.private - Type: PKCS12
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_tls.public - Type: PKCS12
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - Building KeyStore: enc #1
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_enc.private - Type: PKCS12
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_enc.public - Type: PKCS12
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - Building KeyStore: sig #2
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_sig.private - Type: PKCS12
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_sig.public - Type: PKCS12
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - Building KeyStore: hmc #3
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_hmc.private - Type: PKCS12
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_hmc.public - Type: PKCS12
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - Certificate retrieved: <bob>
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - Certificate retrieved: <bob>
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - Certificate retrieved: <bob>
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - Certificate retrieved: <bob>
+     [java] Debug [[21:44:15:958]ROLE_B-SESSION] - Initializing channel - cs: Channel Settings - Port: 55556 - Role: SERVER - Type: SSL_PLAIN
+     [java] Debug [[21:44:15:958]ROLE_B-SESSION] - Initializing channel - keystore: anbxj.Crypto_KeyStoreSettings@880ec60
+     [java] Debug [[21:44:15:958]ROLE_B-SESSION] - Opening session
+     [java] Debug [[21:44:15:958]ROLE_B-NETWORK] - Starting server on port 55556 ...
+     [java] Debug [[21:44:15:958]ROLE_B-ALWAYS] - Server started on port 55556
+     [java] Debug [[21:44:15:958]ROLE_B-NETWORK] - Waiting for clients ...
+     [java] Debug [[21:44:15:958]ROLE_B-NETWORK] - Request from Client received ...
+     [java] Debug [[21:44:15:958]ROLE_B-PROTOCOL] - [21:44:16:998]Session started: 1/1
+     [java] Debug [[21:44:15:958]ROLE_B-PROTOCOL] - NSPK - ROLE_B - STEP_0
+     [java] Debug [[21:44:15:958]ROLE_B-PROTOCOL] - nspk.NSPK_ROLE_B@531be3c5
+     [java] Debug [[21:44:15:958]ROLE_B-PROTOCOL] - Timestamp: [21:44:17:003]
+     [java] Debug [[21:44:15:958]ROLE_B-SESSION] - Receive
+     [java] Debug [[21:44:15:958]ROLE_B-LANGUAGE] - Receive
+     [java] Debug [[21:44:15:958]ROLE_B-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [[21:44:15:958]ROLE_B-NETWORK] - [21:44:17:103]Received <- Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@32e6e9c3, sealedMessage=javax.crypto.SealedObject@5056dfcb, cipherScheme='AES'}
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - PrivateKey retrieved: <bob>
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - Decrypting [Asym] [RSA/PKCS#8/9728]
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - Decrypted [Asym] [RSA/PKCS#8/9728] javax.crypto.SealedObject@32e6e9c3
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - Decrypting [Sym] [AES/RAW/256] javax.crypto.SealedObject@5056dfcb
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - Decrypted [Sym] [AES/RAW/256] javax.crypto.SealedObject@5056dfcb
+     [java] Debug [[21:44:15:958]ROLE_B-PROTOCOL] - CHECK # 0.1
+     [java] Debug [[21:44:15:958]ROLE_B-PROTOCOL] - [21:44:17:156]INV check PERFORMED on java.lang.String
+     [java] Debug [[21:44:15:958]ROLE_B-PROTOCOL] - [21:44:17:156]INV check OK - java.lang.String.toString - alice
+     [java] Debug [[21:44:15:958]ROLE_B-PROTOCOL] - [21:44:17:156]INV check OK - java.lang.String.hashCode - 92903040
+     [java] Debug [[21:44:15:958]ROLE_B-PROTOCOL] - NSPK - ROLE_B - STEP_0
+     [java] Debug [[21:44:15:958]ROLE_B-PROTOCOL] - nspk.NSPK_ROLE_B@531be3c5
+     [java] Debug [[21:44:15:958]ROLE_B-PROTOCOL] - NSPK - ROLE_B - STEP_1
+     [java] Debug [[21:44:15:958]ROLE_B-PROTOCOL] - nspk.NSPK_ROLE_B@531be3c5
+     [java] Debug [[21:44:15:958]ROLE_B-PROTOCOL] - Timestamp: [21:44:17:164]
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - Nonce - DRBG - Value: [-85, 106, 47, -15, 108, 123, -90, 19, 85, 116, -106, 41, -99, 20, -39, -39, -51, 94, 76, 33, 12, -118, 105, -56, 108, -51, -126, -59, -84, 95, 75, 105, 105, 16, 57, 106, -110, -75, -14, 112, -117, -95, -106, -73, -40, 79, -64, -76, 37, 126, 90, 60, 78, 110, 21, -99, 86, 127, 17, -105, -19, -1, -97, 42, 126, -43, 45, 92, -24, 124, -9, 123, 98, -6, 111, -71, -100, 51, 112, 36, 78, -47, -121, 50, -67, 97, -55, 17, -110, 37, 97, 41, 7, -10, 97, -42, -5, 31, -99, -115, 49, 32, -62, -38, -105, -82, 6, -56, -93, 118, 46, 39, 95, -126, 87, -62, 67, -43, 36, -69, -19, -78, -77, 92, -126, -27, 57, 69, 106, -25, -70, 40, 1, -64, 33, 99, -8, -33, 46, 1, -29, 10, -84, -32, -42, -122, -120, -20, -99, 107, 53, 110, 72, 100, 97, -38, 115, -31, -5, -102, -50, 109, -88, -79, -40, 11, -3, -36, 16, 83, 105, -44, 4, -104, -102, -117, -80, 87, -89, -4, -44, 48, 69, -40, 55, 85, 82, -103, -19, -19, -115, 77, -58, 30, 7, 57, 118, 75, -17, 118, 77, -81, 92, -50, -45, 17, 115, 73, -116, -27, -43, 123, 60, 111, 112, -1, -18, -14, 83, 89, 111, -31, 82, -24, 101, 40, 70, 92, 125, 55, -73, -98, 120, -68, -85, -56, -82, 103, 34, 31, -11, -95, -115, 57, 55, -122, -47, 94, -73, -19, -44, -16, -77, 113, 69, 58]
+     [java] Debug [[21:44:15:958]ROLE_B-LANGUAGE] - AnBx_Params - size: 2
+     [java] Debug [[21:44:15:958]ROLE_B-LANGUAGE] - AnBx_Params - hash: 1525465324
+     [java] Debug [[21:44:15:958]ROLE_B-LANGUAGE] - AnBx_Params - params: AnBx_Params [v=[Crypto_ByteArray [bytearray=[-89, -30, -42, 9, -32, 28, -91, 33, 41, -86, -70, -13, -23, 13, -9, -112, -9, 1, -5, 106, -115, -62, 27, -76, -44, -3, 58, 17, 78, 4, -60, 9, -33, 100, 96, 115, 116, 125, 101, 47, -20, 65, 38, 24, 34, -64, 70, -26, 114, -128, -14, -112, -51, -121, -109, 95, 85, -62, 33, 24, 94, -65, 116, -62, 17, 113, -117, 18, 31, -68, 18, 23, -68, -66, 25, 114, 42, -13, -13, -18, -91, 116, 8, 83, -76, -32, 2, -26, -3, 12, 89, 94, -38, 64, -94, -66, -19, 5, -83, -126, -16, 38, 53, -56, 73, -83, 15, 61, 35, 25, 94, -77, -121, -88, -13, -4, -37, -116, 48, -14, -58, -45, -64, 69, -69, 40, -25, -12, -122, 4, -98, 114, -6, -25, 6, 117, 118, -104, 111, -21, 75, 49, -3, 99, 78, -45, -75, 60, -14, -22, -96, -122, 52, 5, -66, -18, 59, 43, -109, 100, 92, -1, 125, 37, -27, 110, -70, -52, -98, -42, -41, 44, 78, 79, -116, -17, 41, -44, 96, -118, -59, 98, 1, 8, -5, 14, -91, -106, 2, 88, 56, -49, 25, -48, -113, 81, -19, 1, -107, -113, -37, 108, 31, 31, -88, -18, 125, -21, 24, -86, 63, 96, 30, 103, -114, 58, 112, 109, -11, -22, 97, -8, -25, -60, -109, 116, 117, 37, 19, -2, -92, 3, -37, -8, 17, -25, 69, -50, -91, 12, 8, -22, 76, 102, -85, -65, 107, -21, -7, 26, -14, -49, -7, -7, -100, -13]], Crypto_ByteArray [bytearray=[-85, 106, 47, -15, 108, 123, -90, 19, 85, 116, -106, 41, -99, 20, -39, -39, -51, 94, 76, 33, 12, -118, 105, -56, 108, -51, -126, -59, -84, 95, 75, 105, 105, 16, 57, 106, -110, -75, -14, 112, -117, -95, -106, -73, -40, 79, -64, -76, 37, 126, 90, 60, 78, 110, 21, -99, 86, 127, 17, -105, -19, -1, -97, 42, 126, -43, 45, 92, -24, 124, -9, 123, 98, -6, 111, -71, -100, 51, 112, 36, 78, -47, -121, 50, -67, 97, -55, 17, -110, 37, 97, 41, 7, -10, 97, -42, -5, 31, -99, -115, 49, 32, -62, -38, -105, -82, 6, -56, -93, 118, 46, 39, 95, -126, 87, -62, 67, -43, 36, -69, -19, -78, -77, 92, -126, -27, 57, 69, 106, -25, -70, 40, 1, -64, 33, 99, -8, -33, 46, 1, -29, 10, -84, -32, -42, -122, -120, -20, -99, 107, 53, 110, 72, 100, 97, -38, 115, -31, -5, -102, -50, 109, -88, -79, -40, 11, -3, -36, 16, 83, 105, -44, 4, -104, -102, -117, -80, 87, -89, -4, -44, 48, 69, -40, 55, 85, 82, -103, -19, -19, -115, 77, -58, 30, 7, 57, 118, 75, -17, 118, 77, -81, 92, -50, -45, 17, 115, 73, -116, -27, -43, 123, 60, 111, 112, -1, -18, -14, 83, 89, 111, -31, 82, -24, 101, 40, 70, 92, 125, 55, -73, -98, 120, -68, -85, -56, -82, 103, 34, 31, -11, -95, -115, 57, 55, -122, -47, 94, -73, -19, -44, -16, -77, 113, 69, 58]]]]
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - PublicKey found: <alice>
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - Root Certificate found: <root>
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - Certificate #0
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - Subject: CN=root,OU=CA,O=Certificati Digitali,L=Rome,ST=Italy,C=European Union
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - Issuer: CN=root,OU=CA,O=Certificati Digitali,L=Rome,ST=Italy,C=European Union
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - Validity: from Sun Feb 11 23:47:00 CET 2024 to Fri Feb 09 23:47:00 CET 2029
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - Version: 3
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - Serial Number: 658743272021970120643348023544875863741843963262
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - Signature Algorithm Name: SHA256withRSA
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - Certificate #1
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - Subject: CN=alice,OU=Computer Science,O=Teesside University,L=Middlesbrough,ST=Tees Valley,C=United Kingdom
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - Issuer: CN=root,OU=CA,O=Certificati Digitali,L=Rome,ST=Italy,C=European Union
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - Validity: from Sun Feb 11 23:49:00 CET 2024 to Thu Feb 10 23:49:00 CET 2028
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - Version: 3
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - Serial Number: 586609186607927906660704442711286400745122951141
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - Signature Algorithm Name: SHA256withRSA
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - Root Certificate
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - Subject: CN=root,OU=CA,O=Certificati Digitali,L=Rome,ST=Italy,C=European Union
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - Issuer: CN=root,OU=CA,O=Certificati Digitali,L=Rome,ST=Italy,C=European Union
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - Validity: from Sun Feb 11 23:47:00 CET 2024 to Fri Feb 09 23:47:00 CET 2029
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - Version: 3
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - Serial Number: 658743272021970120643348023544875863741843963262
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - Signature Algorithm Name: SHA256withRSA
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - Key Generated [Sym] [AES/RAW/256] javax.crypto.spec.SecretKeySpec@149a0 - Provider: SunJCE
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - Encrypting [Sym] IV [AES/RAW/256] [B@3ffc5af1 - Provider: SunJCE
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - Encrypted [Sym] [AES/RAW/256] javax.crypto.SealedObject@1bce4f0a - Provider: SunJCE
+     [java] Debug [[21:44:15:958]ROLE_B-LANGUAGE] - Send
+     [java] Debug [[21:44:15:958]ROLE_B-NETWORK] - ---------- SEND -----------
+     [java] Debug [[21:44:15:958]ROLE_B-NETWORK] - Sending -> Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@91161c7, sealedMessage=javax.crypto.SealedObject@1bce4f0a, cipherScheme='AES'}
+     [java] Debug [[21:44:15:958]ROLE_B-NETWORK] - [21:44:17:200]Sent -> Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@91161c7, sealedMessage=javax.crypto.SealedObject@1bce4f0a, cipherScheme='AES'}
+     [java] Debug [[21:44:15:958]ROLE_B-PROTOCOL] - NSPK - ROLE_B - STEP_1
+     [java] Debug [[21:44:15:958]ROLE_B-PROTOCOL] - nspk.NSPK_ROLE_B@531be3c5
+     [java] Debug [[21:44:15:958]ROLE_B-PROTOCOL] - NSPK - ROLE_B - STEP_2
+     [java] Debug [[21:44:15:958]ROLE_B-PROTOCOL] - nspk.NSPK_ROLE_B@531be3c5
+     [java] Debug [[21:44:15:958]ROLE_B-PROTOCOL] - Timestamp: [21:44:17:201]
+     [java] Debug [[21:44:15:958]ROLE_B-SESSION] - Receive
+     [java] Debug [[21:44:15:958]ROLE_B-LANGUAGE] - Receive
+     [java] Debug [[21:44:15:958]ROLE_B-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [[21:44:15:958]ROLE_B-NETWORK] - [21:44:17:341]Received <- Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@343f4d3d, sealedMessage=javax.crypto.SealedObject@53b32d7, cipherScheme='AES'}
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - PrivateKey retrieved: <bob>
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - Decrypting [Asym] [RSA/PKCS#8/9728]
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - Decrypted [Asym] [RSA/PKCS#8/9728] javax.crypto.SealedObject@343f4d3d
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - Decrypting [Sym] [AES/RAW/256] javax.crypto.SealedObject@53b32d7
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - Decrypted [Sym] [AES/RAW/256] javax.crypto.SealedObject@53b32d7
+     [java] Debug [[21:44:15:958]ROLE_B-PROTOCOL] - CHECK # 2.1
+     [java] Debug [[21:44:15:958]ROLE_B-PROTOCOL] - [21:44:17:371]EQ check PERFORMED on anbxj.Crypto_ByteArray
+     [java] Debug [[21:44:15:958]ROLE_B-ENCRYPTION] - Crypto_ByteArray check
+     [java] Debug [[21:44:15:958]ROLE_B-PROTOCOL] - [21:44:17:371]EQ check OK - anbxj.Crypto_ByteArray.toString - Crypto_ByteArray [bytearray=[-85, 106, 47, -15, 108, 123, -90, 19, 85, 116, -106, 41, -99, 20, -39, -39, -51, 94, 76, 33, 12, -118, 105, -56, 108, -51, -126, -59, -84, 95, 75, 105, 105, 16, 57, 106, -110, -75, -14, 112, -117, -95, -106, -73, -40, 79, -64, -76, 37, 126, 90, 60, 78, 110, 21, -99, 86, 127, 17, -105, -19, -1, -97, 42, 126, -43, 45, 92, -24, 124, -9, 123, 98, -6, 111, -71, -100, 51, 112, 36, 78, -47, -121, 50, -67, 97, -55, 17, -110, 37, 97, 41, 7, -10, 97, -42, -5, 31, -99, -115, 49, 32, -62, -38, -105, -82, 6, -56, -93, 118, 46, 39, 95, -126, 87, -62, 67, -43, 36, -69, -19, -78, -77, 92, -126, -27, 57, 69, 106, -25, -70, 40, 1, -64, 33, 99, -8, -33, 46, 1, -29, 10, -84, -32, -42, -122, -120, -20, -99, 107, 53, 110, 72, 100, 97, -38, 115, -31, -5, -102, -50, 109, -88, -79, -40, 11, -3, -36, 16, 83, 105, -44, 4, -104, -102, -117, -80, 87, -89, -4, -44, 48, 69, -40, 55, 85, 82, -103, -19, -19, -115, 77, -58, 30, 7, 57, 118, 75, -17, 118, 77, -81, 92, -50, -45, 17, 115, 73, -116, -27, -43, 123, 60, 111, 112, -1, -18, -14, 83, 89, 111, -31, 82, -24, 101, 40, 70, 92, 125, 55, -73, -98, 120, -68, -85, -56, -82, 103, 34, 31, -11, -95, -115, 57, 55, -122, -47, 94, -73, -19, -44, -16, -77, 113, 69, 58]] = Crypto_ByteArray [bytearray=[-85, 106, 47, -15, 108, 123, -90, 19, 85, 116, -106, 41, -99, 20, -39, -39, -51, 94, 76, 33, 12, -118, 105, -56, 108, -51, -126, -59, -84, 95, 75, 105, 105, 16, 57, 106, -110, -75, -14, 112, -117, -95, -106, -73, -40, 79, -64, -76, 37, 126, 90, 60, 78, 110, 21, -99, 86, 127, 17, -105, -19, -1, -97, 42, 126, -43, 45, 92, -24, 124, -9, 123, 98, -6, 111, -71, -100, 51, 112, 36, 78, -47, -121, 50, -67, 97, -55, 17, -110, 37, 97, 41, 7, -10, 97, -42, -5, 31, -99, -115, 49, 32, -62, -38, -105, -82, 6, -56, -93, 118, 46, 39, 95, -126, 87, -62, 67, -43, 36, -69, -19, -78, -77, 92, -126, -27, 57, 69, 106, -25, -70, 40, 1, -64, 33, 99, -8, -33, 46, 1, -29, 10, -84, -32, -42, -122, -120, -20, -99, 107, 53, 110, 72, 100, 97, -38, 115, -31, -5, -102, -50, 109, -88, -79, -40, 11, -3, -36, 16, 83, 105, -44, 4, -104, -102, -117, -80, 87, -89, -4, -44, 48, 69, -40, 55, 85, 82, -103, -19, -19, -115, 77, -58, 30, 7, 57, 118, 75, -17, 118, 77, -81, 92, -50, -45, 17, 115, 73, -116, -27, -43, 123, 60, 111, 112, -1, -18, -14, 83, 89, 111, -31, 82, -24, 101, 40, 70, 92, 125, 55, -73, -98, 120, -68, -85, -56, -82, 103, 34, 31, -11, -95, -115, 57, 55, -122, -47, 94, -73, -19, -44, -16, -77, 113, 69, 58]]
+     [java] Debug [[21:44:15:958]ROLE_B-PROTOCOL] - [21:44:17:371]EQ check OK - anbxj.Crypto_ByteArray.hashCode - 600801190 = 600801190
+     [java] Debug [[21:44:15:958]ROLE_B-PROTOCOL] - NSPK - ROLE_B - STEP_2
+     [java] Debug [[21:44:15:958]ROLE_B-PROTOCOL] - nspk.NSPK_ROLE_B@531be3c5
+     [java] Debug [[21:44:15:958]ROLE_B-PROTOCOL] - [21:44:17:380]Session completed: 1/1
+     [java] Debug [[21:44:15:958]ROLE_B-NETWORK] - Connection closed
+     [java] Debug [[21:44:15:958]ROLE_B-SESSION] - Session closed
+     [java] NSPK [ROLE_B] - Execution time was 1494,868 ms.
+
+BUILD SUCCESSFUL
+Total time: 1 second

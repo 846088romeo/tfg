@@ -1,0 +1,25 @@
+Protocol: WooLam1_AttackTrace_active AnB
+
+Types:
+	Agent I,A,B,s;
+	Number NB;
+	Function [Agent,Agent ->* SymmetricKey] shk
+
+Knowledge:
+	I: A,B,I,s,shk(I,s);
+	A: A,I,s,shk(A,s),B;
+	B: B,I,s,shk(B,s),A;
+	s: I,s,shk(I,s),A,B,shk(A,s),shk(B,s)
+
+Actions:
+
+
+	I -> B: I
+	B -> I: NB
+	I -> B: NB
+	B -> I: {|I,B,NB|}shk(B,s)
+	I -> B: {|I,B,NB|}shk(B,s)
+
+Goals:
+	# B authenticates A on NB
+	B authenticates I on NB

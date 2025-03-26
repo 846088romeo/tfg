@@ -1,0 +1,271 @@
+Buildfile: /Users/usuario/anbx-ide-exe-mac/genAnBx/src/woolam1_attacktrace_passive/build.xml
+
+ROLE_I:
+     [java] Debug [WooLam1_AttackTrace_passive-ALWAYS] - Verbose mode on
+     [java] Debug [ROLE_I-APPLICATION] - Reading config file: WooLam1_AttackTrace_passive.properties
+     [java] Debug [ROLE_I-ENCRYPTION] - -------------------- crypto config --------------------
+     [java] Debug [ROLE_I-ENCRYPTION] - cipherScheme = AES/CBC/PKCS5Padding
+     [java] Debug [ROLE_I-ENCRYPTION] - keySize = 256
+     [java] Debug [ROLE_I-ENCRYPTION] - keyGenerationScheme = AES
+     [java] Debug [ROLE_I-ENCRYPTION] - keyGenerationSize = 256
+     [java] Debug [ROLE_I-ENCRYPTION] - keyGenerationSchemePBE = PBKDF2WithHmacSHA512
+     [java] Debug [ROLE_I-ENCRYPTION] - keyPairGenerationScheme = RSA
+     [java] Debug [ROLE_I-ENCRYPTION] - keyPairGenerationSize = 2048
+     [java] Debug [ROLE_I-ENCRYPTION] - secureRandomAlgorithm = DRBG
+     [java] Debug [ROLE_I-ENCRYPTION] - hmacAlgorithm = HmacSHA256
+     [java] Debug [ROLE_I-ENCRYPTION] - messageDigestAlgorithm = SHA-256
+     [java] Debug [ROLE_I-ENCRYPTION] - messageDigestSignatureAlgorithm = SHA256
+     [java] Debug [ROLE_I-ENCRYPTION] - keyAgreementAlgorithm = DH
+     [java] Debug [ROLE_I-ENCRYPTION] - keyAgreementKeyPairGenerationScheme = DH
+     [java] Debug [ROLE_I-ENCRYPTION] - dhRndExpSize = 4096
+     [java] Debug [ROLE_I-ENCRYPTION] - ecGenParameterSpec = secp256r1
+     [java] Debug [ROLE_I-ENCRYPTION] - asymCipherSchemeBlock = RSA
+     [java] Debug [ROLE_I-ENCRYPTION] - sslContext = TLSv1.3
+     [java] Debug [ROLE_I-ENCRYPTION] - securityProvider = default
+     [java] Debug [ROLE_I-ENCRYPTION] - cipherSchemeProvider = default
+     [java] Debug [ROLE_I-ENCRYPTION] - keyGenerationSchemeProvider = default
+     [java] Debug [ROLE_I-ENCRYPTION] - keyGenerationSchemePBEProvider = default
+     [java] Debug [ROLE_I-ENCRYPTION] - keyPairGenerationSchemeProvider = default
+     [java] Debug [ROLE_I-ENCRYPTION] - secureRandomProvider = default
+     [java] Debug [ROLE_I-ENCRYPTION] - hmacProvider = default
+     [java] Debug [ROLE_I-ENCRYPTION] - messageDigestProvider = default
+     [java] Debug [ROLE_I-ENCRYPTION] - signatureProvider = default
+     [java] Debug [ROLE_I-ENCRYPTION] - asymEncProvider = default
+     [java] Debug [ROLE_I-ENCRYPTION] - keyAgreementProvider = default
+     [java] Debug [ROLE_I-ENCRYPTION] - sslContextProvider = default
+     [java] Debug [ROLE_I-ENCRYPTION] - -------------------- crypto config --------------------
+     [java] Debug [[22:26:42:764]ROLE_I-APPLICATION] - Loading aliases
+     [java] Debug [[22:26:42:764]ROLE_I-APPLICATION] - Role: ROLE_A - Alias: alice
+     [java] Debug [[22:26:42:764]ROLE_I-APPLICATION] - Role: ROLE_I - Alias: bob
+     [java] Debug [[22:26:42:764]ROLE_I-APPLICATION] - myAlias: bob
+     [java] Debug [[22:26:42:764]ROLE_I-APPLICATION] - Role: ROLE_B - Alias: charlie
+     [java] Debug [[22:26:42:764]ROLE_I-APPLICATION] - Role: ROLE_s - Alias: david
+     [java] Debug [[22:26:42:764]ROLE_I-APPLICATION] - Host: localhost - Port: 55556
+     [java] Debug [[22:26:42:764]ROLE_I-APPLICATION] - Channel Type: SSL_PLAIN - Role: SERVER
+     [java] Debug [[22:26:42:764]ROLE_I-APPLICATION] - Channel: ROLE_I_channel_ROLE_A_Server_Insecure
+     [java] Debug [[22:26:42:764]ROLE_I-APPLICATION] - Host: 127.0.0.1 - Port: 55557
+     [java] Debug [[22:26:42:764]ROLE_I-APPLICATION] - Channel Type: SSL_PLAIN - Role: CLIENT
+     [java] Debug [[22:26:42:764]ROLE_I-APPLICATION] - Channel: ROLE_I_channel_ROLE_B_Client_Insecure
+     [java] Debug [[22:26:42:764]ROLE_I-APPLICATION] - Host: 127.0.0.1 - Port: 55563
+     [java] Debug [[22:26:42:764]ROLE_I-APPLICATION] - Channel Type: SSL_PLAIN - Role: CLIENT
+     [java] Debug [[22:26:42:764]ROLE_I-APPLICATION] - Channel: ROLE_I_channel_ROLE_s_Client_Insecure
+     [java] Debug [[22:26:42:764]ROLE_I-APPLICATION] - [22:26:42:780]myRole: ROLE_I
+     [java] Debug [[22:26:42:764]ROLE_I-APPLICATION] - [22:26:42:780]sessions: 1
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - Loading KeyStore: tls #0
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - Reading config file (KSS): ../../keystore/bob.pwd
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - tls - KeyStoreType: PKCS12
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - tls - LocalKeyStore: ../../keystore/bob_tls.private
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - tls - RemotelKeyStore: ../../keystore/bob_tls.public
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - My Alias: bob
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - RootCA: root
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - Loading KeyStore: enc #1
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - Reading config file (KSS): ../../keystore/bob.pwd
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - enc - KeyStoreType: PKCS12
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - enc - LocalKeyStore: ../../keystore/bob_enc.private
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - enc - RemotelKeyStore: ../../keystore/bob_enc.public
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - My Alias: bob
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - RootCA: root
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - Loading KeyStore: sig #2
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - Reading config file (KSS): ../../keystore/bob.pwd
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - sig - KeyStoreType: PKCS12
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - sig - LocalKeyStore: ../../keystore/bob_sig.private
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - sig - RemotelKeyStore: ../../keystore/bob_sig.public
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - My Alias: bob
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - RootCA: root
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - Loading KeyStore: hmc #3
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - Reading config file (KSS): ../../keystore/bob.pwd
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - hmc - KeyStoreType: PKCS12
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - hmc - LocalKeyStore: ../../keystore/bob_hmc.private
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - hmc - RemotelKeyStore: ../../keystore/bob_hmc.public
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - My Alias: bob
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - RootCA: root
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - Building KeyStore: tls #0
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_tls.private - Type: PKCS12
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_tls.public - Type: PKCS12
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - Building KeyStore: enc #1
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_enc.private - Type: PKCS12
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_enc.public - Type: PKCS12
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - Building KeyStore: sig #2
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_sig.private - Type: PKCS12
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_sig.public - Type: PKCS12
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - Building KeyStore: hmc #3
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_hmc.private - Type: PKCS12
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_hmc.public - Type: PKCS12
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - Certificate retrieved: <bob>
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - Certificate retrieved: <bob>
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - Certificate retrieved: <bob>
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - Certificate retrieved: <bob>
+     [java] Debug [[22:26:42:764]ROLE_I-SESSION] - Initializing channel - cs: Channel Settings - Port: 55556 - Role: SERVER - Type: SSL_PLAIN
+     [java] Debug [[22:26:42:764]ROLE_I-SESSION] - Initializing channel - keystore: anbxj.Crypto_KeyStoreSettings@3ac3fd8b
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - Building KeyStore: tls #0
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_tls.private - Type: PKCS12
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_tls.public - Type: PKCS12
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - Building KeyStore: enc #1
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_enc.private - Type: PKCS12
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_enc.public - Type: PKCS12
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - Building KeyStore: sig #2
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_sig.private - Type: PKCS12
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_sig.public - Type: PKCS12
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - Building KeyStore: hmc #3
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_hmc.private - Type: PKCS12
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_hmc.public - Type: PKCS12
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - Certificate retrieved: <bob>
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - Certificate retrieved: <bob>
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - Certificate retrieved: <bob>
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - Certificate retrieved: <bob>
+     [java] Debug [[22:26:42:764]ROLE_I-SESSION] - Initializing channel - cs: Channel Settings - Port: 55557 - Role: CLIENT - Type: SSL_PLAIN
+     [java] Debug [[22:26:42:764]ROLE_I-SESSION] - Initializing channel - keystore: anbxj.Crypto_KeyStoreSettings@3ac3fd8b
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - Building KeyStore: tls #0
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_tls.private - Type: PKCS12
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_tls.public - Type: PKCS12
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - Building KeyStore: enc #1
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_enc.private - Type: PKCS12
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_enc.public - Type: PKCS12
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - Building KeyStore: sig #2
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_sig.private - Type: PKCS12
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_sig.public - Type: PKCS12
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - Building KeyStore: hmc #3
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_hmc.private - Type: PKCS12
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_hmc.public - Type: PKCS12
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - Certificate retrieved: <bob>
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - Certificate retrieved: <bob>
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - Certificate retrieved: <bob>
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - Certificate retrieved: <bob>
+     [java] Debug [[22:26:42:764]ROLE_I-SESSION] - Initializing channel - cs: Channel Settings - Port: 55563 - Role: CLIENT - Type: SSL_PLAIN
+     [java] Debug [[22:26:42:764]ROLE_I-SESSION] - Initializing channel - keystore: anbxj.Crypto_KeyStoreSettings@3ac3fd8b
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - readObject - Serialized data from ./shk_bob_david.ser
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - readObject - javax.crypto.spec.SecretKeySpec.toString: javax.crypto.spec.SecretKeySpec@147a8
+     [java] Debug [[22:26:42:764]ROLE_I-ENCRYPTION] - readObject - javax.crypto.spec.SecretKeySpec.hashCode: 83880
+     [java] Debug [[22:26:42:764]ROLE_I-SESSION] - Opening session
+     [java] Debug [[22:26:42:764]ROLE_I-NETWORK] - Starting server on port 55556 ...
+     [java] Debug [[22:26:42:764]ROLE_I-ALWAYS] - Server started on port 55556
+     [java] Debug [[22:26:42:764]ROLE_I-NETWORK] - Waiting for clients ...
+     [java] Debug [[22:26:42:764]ROLE_I-NETWORK] - Request from Client received ...
+     [java] Debug [[22:26:42:764]ROLE_I-SESSION] - Opening session
+     [java] Debug [[22:26:42:764]ROLE_I-NETWORK] - Starting Client for 127.0.0.1:55557
+     [java] Debug [[22:26:42:764]ROLE_I-ALWAYS] - Connected to Server 127.0.0.1:55557 - ChannelType: SSL_PLAIN
+     [java] Debug [[22:26:42:764]ROLE_I-SESSION] - Opening session
+     [java] Debug [[22:26:42:764]ROLE_I-NETWORK] - Starting Client for 127.0.0.1:55563
+     [java] Debug [[22:26:42:764]ROLE_I-ALWAYS] - Connected to Server 127.0.0.1:55563 - ChannelType: SSL_PLAIN
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - [22:26:44:162]Session started: 1/1
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - WooLam1_AttackTrace_passive - ROLE_I - STEP_0
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - woolam1_attacktrace_passive.WooLam1_AttackTrace_passive_ROLE_I@458ad742
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - Timestamp: [22:26:44:168]
+     [java] Debug [[22:26:42:764]ROLE_I-SESSION] - Receive
+     [java] Debug [[22:26:42:764]ROLE_I-LANGUAGE] - Receive
+     [java] Debug [[22:26:42:764]ROLE_I-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [[22:26:42:764]ROLE_I-NETWORK] - [22:26:44:214]Received <- alice
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - CHECK # 0.1
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - [22:26:44:216]EQ check PERFORMED on java.lang.String
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - [22:26:44:217]EQ check OK - java.lang.String.toString - alice = alice
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - [22:26:44:217]EQ check OK - java.lang.String.hashCode - 92903040 = 92903040
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - WooLam1_AttackTrace_passive - ROLE_I - STEP_0
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - woolam1_attacktrace_passive.WooLam1_AttackTrace_passive_ROLE_I@458ad742
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - WooLam1_AttackTrace_passive - ROLE_I - STEP_1
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - woolam1_attacktrace_passive.WooLam1_AttackTrace_passive_ROLE_I@458ad742
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - Timestamp: [22:26:44:236]
+     [java] Debug [[22:26:42:764]ROLE_I-LANGUAGE] - Send
+     [java] Debug [[22:26:42:764]ROLE_I-NETWORK] - ---------- SEND -----------
+     [java] Debug [[22:26:42:764]ROLE_I-NETWORK] - Sending -> alice
+     [java] Debug [[22:26:42:764]ROLE_I-NETWORK] - [22:26:44:239]Sent -> alice
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - WooLam1_AttackTrace_passive - ROLE_I - STEP_1
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - woolam1_attacktrace_passive.WooLam1_AttackTrace_passive_ROLE_I@458ad742
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - WooLam1_AttackTrace_passive - ROLE_I - STEP_2
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - woolam1_attacktrace_passive.WooLam1_AttackTrace_passive_ROLE_I@458ad742
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - Timestamp: [22:26:44:239]
+     [java] Debug [[22:26:42:764]ROLE_I-SESSION] - Receive
+     [java] Debug [[22:26:42:764]ROLE_I-LANGUAGE] - Receive
+     [java] Debug [[22:26:42:764]ROLE_I-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [[22:26:42:764]ROLE_I-NETWORK] - [22:26:44:379]Received <- Crypto_ByteArray [bytearray=[-28, -95, -113, -82, -41, 98, -42, -25, 0, 51, -111, -50, -60, 112, -14, 51, 42, 107, 57, -19, -40, 46, 68, -3, 124, 108, -87, 109, 84, -115, -3, -57, -75, -28, 55, -102, -126, -16, -98, -71, 104, -80, -50, 77, 54, 110, 44, -81, 37, -29, -71, -14, 119, 110, 116, -70, -108, 115, -48, 5, 29, 103, 23, 101, -87, 52, 102, 51, -23, -13, -86, -125, -58, 24, -79, -23, 31, -71, 22, -42, 54, -20, -81, -110, 39, 29, 17, 71, -108, -127, 76, 3, -79, 68, 65, -103, -97, 116, 94, -4, -14, 28, -118, 3, 14, -101, -108, 84, 96, -55, 2, 27, 20, 51, 65, -36, -62, -64, 37, 69, -26, -7, -20, -112, 66, 124, -13, 78, -35, 114, 17, 22, 122, 70, 21, -36, 102, -73, -73, -66, 94, 1, 12, -76, 119, 109, -85, 110, 26, -126, -81, 41, -121, 31, 48, -117, 109, -19, 75, 42, 120, 33, -29, -4, 4, -119, 14, 32, -7, -113, 37, 126, -29, 125, -66, 22, 89, 82, 33, -12, -98, 66, 65, 17, -49, -119, 86, -12, -34, -120, -85, 96, 19, -81, 14, -25, -104, 35, 85, 17, -30, 71, -70, 50, -27, 114, -52, 73, 14, 94, -63, -106, 19, 46, -127, 53, -24, -70, 37, 42, -17, -115, 12, 95, 9, -94, -26, -84, -6, -16, 113, -125, -67, -17, 46, 113, 13, 44, -101, -103, -127, 84, -34, 41, -20, 16, 109, -13, 126, 0, -48, -7, 78, 19, -94, -74]]
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - CHECK # 2.1
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - [22:26:44:380]INV check PERFORMED on anbxj.Crypto_ByteArray
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - [22:26:44:380]INV check OK - anbxj.Crypto_ByteArray.toString - Crypto_ByteArray [bytearray=[-28, -95, -113, -82, -41, 98, -42, -25, 0, 51, -111, -50, -60, 112, -14, 51, 42, 107, 57, -19, -40, 46, 68, -3, 124, 108, -87, 109, 84, -115, -3, -57, -75, -28, 55, -102, -126, -16, -98, -71, 104, -80, -50, 77, 54, 110, 44, -81, 37, -29, -71, -14, 119, 110, 116, -70, -108, 115, -48, 5, 29, 103, 23, 101, -87, 52, 102, 51, -23, -13, -86, -125, -58, 24, -79, -23, 31, -71, 22, -42, 54, -20, -81, -110, 39, 29, 17, 71, -108, -127, 76, 3, -79, 68, 65, -103, -97, 116, 94, -4, -14, 28, -118, 3, 14, -101, -108, 84, 96, -55, 2, 27, 20, 51, 65, -36, -62, -64, 37, 69, -26, -7, -20, -112, 66, 124, -13, 78, -35, 114, 17, 22, 122, 70, 21, -36, 102, -73, -73, -66, 94, 1, 12, -76, 119, 109, -85, 110, 26, -126, -81, 41, -121, 31, 48, -117, 109, -19, 75, 42, 120, 33, -29, -4, 4, -119, 14, 32, -7, -113, 37, 126, -29, 125, -66, 22, 89, 82, 33, -12, -98, 66, 65, 17, -49, -119, 86, -12, -34, -120, -85, 96, 19, -81, 14, -25, -104, 35, 85, 17, -30, 71, -70, 50, -27, 114, -52, 73, 14, 94, -63, -106, 19, 46, -127, 53, -24, -70, 37, 42, -17, -115, 12, 95, 9, -94, -26, -84, -6, -16, 113, -125, -67, -17, 46, 113, 13, 44, -101, -103, -127, 84, -34, 41, -20, 16, 109, -13, 126, 0, -48, -7, 78, 19, -94, -74]]
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - [22:26:44:380]INV check OK - anbxj.Crypto_ByteArray.hashCode - -1669285061
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - WooLam1_AttackTrace_passive - ROLE_I - STEP_2
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - woolam1_attacktrace_passive.WooLam1_AttackTrace_passive_ROLE_I@458ad742
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - WooLam1_AttackTrace_passive - ROLE_I - STEP_3
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - woolam1_attacktrace_passive.WooLam1_AttackTrace_passive_ROLE_I@458ad742
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - Timestamp: [22:26:44:387]
+     [java] Debug [[22:26:42:764]ROLE_I-LANGUAGE] - Send
+     [java] Debug [[22:26:42:764]ROLE_I-NETWORK] - ---------- SEND -----------
+     [java] Debug [[22:26:42:764]ROLE_I-NETWORK] - Sending -> Crypto_ByteArray [bytearray=[-28, -95, -113, -82, -41, 98, -42, -25, 0, 51, -111, -50, -60, 112, -14, 51, 42, 107, 57, -19, -40, 46, 68, -3, 124, 108, -87, 109, 84, -115, -3, -57, -75, -28, 55, -102, -126, -16, -98, -71, 104, -80, -50, 77, 54, 110, 44, -81, 37, -29, -71, -14, 119, 110, 116, -70, -108, 115, -48, 5, 29, 103, 23, 101, -87, 52, 102, 51, -23, -13, -86, -125, -58, 24, -79, -23, 31, -71, 22, -42, 54, -20, -81, -110, 39, 29, 17, 71, -108, -127, 76, 3, -79, 68, 65, -103, -97, 116, 94, -4, -14, 28, -118, 3, 14, -101, -108, 84, 96, -55, 2, 27, 20, 51, 65, -36, -62, -64, 37, 69, -26, -7, -20, -112, 66, 124, -13, 78, -35, 114, 17, 22, 122, 70, 21, -36, 102, -73, -73, -66, 94, 1, 12, -76, 119, 109, -85, 110, 26, -126, -81, 41, -121, 31, 48, -117, 109, -19, 75, 42, 120, 33, -29, -4, 4, -119, 14, 32, -7, -113, 37, 126, -29, 125, -66, 22, 89, 82, 33, -12, -98, 66, 65, 17, -49, -119, 86, -12, -34, -120, -85, 96, 19, -81, 14, -25, -104, 35, 85, 17, -30, 71, -70, 50, -27, 114, -52, 73, 14, 94, -63, -106, 19, 46, -127, 53, -24, -70, 37, 42, -17, -115, 12, 95, 9, -94, -26, -84, -6, -16, 113, -125, -67, -17, 46, 113, 13, 44, -101, -103, -127, 84, -34, 41, -20, 16, 109, -13, 126, 0, -48, -7, 78, 19, -94, -74]]
+     [java] Debug [[22:26:42:764]ROLE_I-NETWORK] - [22:26:44:389]Sent -> Crypto_ByteArray [bytearray=[-28, -95, -113, -82, -41, 98, -42, -25, 0, 51, -111, -50, -60, 112, -14, 51, 42, 107, 57, -19, -40, 46, 68, -3, 124, 108, -87, 109, 84, -115, -3, -57, -75, -28, 55, -102, -126, -16, -98, -71, 104, -80, -50, 77, 54, 110, 44, -81, 37, -29, -71, -14, 119, 110, 116, -70, -108, 115, -48, 5, 29, 103, 23, 101, -87, 52, 102, 51, -23, -13, -86, -125, -58, 24, -79, -23, 31, -71, 22, -42, 54, -20, -81, -110, 39, 29, 17, 71, -108, -127, 76, 3, -79, 68, 65, -103, -97, 116, 94, -4, -14, 28, -118, 3, 14, -101, -108, 84, 96, -55, 2, 27, 20, 51, 65, -36, -62, -64, 37, 69, -26, -7, -20, -112, 66, 124, -13, 78, -35, 114, 17, 22, 122, 70, 21, -36, 102, -73, -73, -66, 94, 1, 12, -76, 119, 109, -85, 110, 26, -126, -81, 41, -121, 31, 48, -117, 109, -19, 75, 42, 120, 33, -29, -4, 4, -119, 14, 32, -7, -113, 37, 126, -29, 125, -66, 22, 89, 82, 33, -12, -98, 66, 65, 17, -49, -119, 86, -12, -34, -120, -85, 96, 19, -81, 14, -25, -104, 35, 85, 17, -30, 71, -70, 50, -27, 114, -52, 73, 14, 94, -63, -106, 19, 46, -127, 53, -24, -70, 37, 42, -17, -115, 12, 95, 9, -94, -26, -84, -6, -16, 113, -125, -67, -17, 46, 113, 13, 44, -101, -103, -127, 84, -34, 41, -20, 16, 109, -13, 126, 0, -48, -7, 78, 19, -94, -74]]
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - WooLam1_AttackTrace_passive - ROLE_I - STEP_3
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - woolam1_attacktrace_passive.WooLam1_AttackTrace_passive_ROLE_I@458ad742
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - WooLam1_AttackTrace_passive - ROLE_I - STEP_4
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - woolam1_attacktrace_passive.WooLam1_AttackTrace_passive_ROLE_I@458ad742
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - Timestamp: [22:26:44:389]
+     [java] Debug [[22:26:42:764]ROLE_I-SESSION] - Receive
+     [java] Debug [[22:26:42:764]ROLE_I-LANGUAGE] - Receive
+     [java] Debug [[22:26:42:764]ROLE_I-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [[22:26:42:764]ROLE_I-NETWORK] - [22:26:44:496]Received <- javax.crypto.SealedObject@3532ec19
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - CHECK # 4.1
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - [22:26:44:496]INV check PERFORMED on javax.crypto.SealedObject
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - [22:26:44:496]INV check OK - javax.crypto.SealedObject.toString - javax.crypto.SealedObject@3532ec19
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - [22:26:44:496]INV check OK - javax.crypto.SealedObject.hashCode - 892529689
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - WooLam1_AttackTrace_passive - ROLE_I - STEP_4
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - woolam1_attacktrace_passive.WooLam1_AttackTrace_passive_ROLE_I@458ad742
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - WooLam1_AttackTrace_passive - ROLE_I - STEP_5
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - woolam1_attacktrace_passive.WooLam1_AttackTrace_passive_ROLE_I@458ad742
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - Timestamp: [22:26:44:496]
+     [java] Debug [[22:26:42:764]ROLE_I-LANGUAGE] - Send
+     [java] Debug [[22:26:42:764]ROLE_I-NETWORK] - ---------- SEND -----------
+     [java] Debug [[22:26:42:764]ROLE_I-NETWORK] - Sending -> javax.crypto.SealedObject@3532ec19
+     [java] Debug [[22:26:42:764]ROLE_I-NETWORK] - [22:26:44:497]Sent -> javax.crypto.SealedObject@3532ec19
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - WooLam1_AttackTrace_passive - ROLE_I - STEP_5
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - woolam1_attacktrace_passive.WooLam1_AttackTrace_passive_ROLE_I@458ad742
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - WooLam1_AttackTrace_passive - ROLE_I - STEP_6
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - woolam1_attacktrace_passive.WooLam1_AttackTrace_passive_ROLE_I@458ad742
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - Timestamp: [22:26:44:497]
+     [java] Debug [[22:26:42:764]ROLE_I-SESSION] - Receive
+     [java] Debug [[22:26:42:764]ROLE_I-LANGUAGE] - Receive
+     [java] Debug [[22:26:42:764]ROLE_I-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [[22:26:42:764]ROLE_I-NETWORK] - [22:26:44:601]Received <- javax.crypto.SealedObject@47c62251
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - CHECK # 6.1
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - [22:26:44:601]INV check PERFORMED on javax.crypto.SealedObject
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - [22:26:44:601]INV check OK - javax.crypto.SealedObject.toString - javax.crypto.SealedObject@47c62251
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - [22:26:44:601]INV check OK - javax.crypto.SealedObject.hashCode - 1204167249
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - WooLam1_AttackTrace_passive - ROLE_I - STEP_6
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - woolam1_attacktrace_passive.WooLam1_AttackTrace_passive_ROLE_I@458ad742
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - WooLam1_AttackTrace_passive - ROLE_I - STEP_7
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - woolam1_attacktrace_passive.WooLam1_AttackTrace_passive_ROLE_I@458ad742
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - Timestamp: [22:26:44:602]
+     [java] Debug [[22:26:42:764]ROLE_I-LANGUAGE] - Send
+     [java] Debug [[22:26:42:764]ROLE_I-NETWORK] - ---------- SEND -----------
+     [java] Debug [[22:26:42:764]ROLE_I-NETWORK] - Sending -> javax.crypto.SealedObject@47c62251
+     [java] Debug [[22:26:42:764]ROLE_I-NETWORK] - [22:26:44:603]Sent -> javax.crypto.SealedObject@47c62251
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - WooLam1_AttackTrace_passive - ROLE_I - STEP_7
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - woolam1_attacktrace_passive.WooLam1_AttackTrace_passive_ROLE_I@458ad742
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - WooLam1_AttackTrace_passive - ROLE_I - STEP_8
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - woolam1_attacktrace_passive.WooLam1_AttackTrace_passive_ROLE_I@458ad742
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - Timestamp: [22:26:44:604]
+     [java] Debug [[22:26:42:764]ROLE_I-SESSION] - Receive
+     [java] Debug [[22:26:42:764]ROLE_I-LANGUAGE] - Receive
+     [java] Debug [[22:26:42:764]ROLE_I-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [[22:26:42:764]ROLE_I-NETWORK] - [22:26:44:717]Received <- javax.crypto.SealedObject@42d80b78
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - CHECK # 8.1
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - [22:26:44:717]INV check PERFORMED on javax.crypto.SealedObject
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - [22:26:44:718]INV check OK - javax.crypto.SealedObject.toString - javax.crypto.SealedObject@42d80b78
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - [22:26:44:718]INV check OK - javax.crypto.SealedObject.hashCode - 1121454968
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - WooLam1_AttackTrace_passive - ROLE_I - STEP_8
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - woolam1_attacktrace_passive.WooLam1_AttackTrace_passive_ROLE_I@458ad742
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - WooLam1_AttackTrace_passive - ROLE_I - STEP_9
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - woolam1_attacktrace_passive.WooLam1_AttackTrace_passive_ROLE_I@458ad742
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - Timestamp: [22:26:44:718]
+     [java] Debug [[22:26:42:764]ROLE_I-LANGUAGE] - Send
+     [java] Debug [[22:26:42:764]ROLE_I-NETWORK] - ---------- SEND -----------
+     [java] Debug [[22:26:42:764]ROLE_I-NETWORK] - Sending -> javax.crypto.SealedObject@42d80b78
+     [java] Debug [[22:26:42:764]ROLE_I-NETWORK] - [22:26:44:718]Sent -> javax.crypto.SealedObject@42d80b78
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - WooLam1_AttackTrace_passive - ROLE_I - STEP_9
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - woolam1_attacktrace_passive.WooLam1_AttackTrace_passive_ROLE_I@458ad742
+     [java] Debug [[22:26:42:764]ROLE_I-PROTOCOL] - [22:26:44:718]Session completed: 1/1
+     [java] Debug [[22:26:42:764]ROLE_I-NETWORK] - Connection closed
+     [java] Debug [[22:26:42:764]ROLE_I-SESSION] - Session closed
+     [java] Debug [[22:26:42:764]ROLE_I-NETWORK] - Connection closed
+     [java] Debug [[22:26:42:764]ROLE_I-SESSION] - Session closed
+     [java] Debug [[22:26:42:764]ROLE_I-NETWORK] - Connection closed
+     [java] Debug [[22:26:42:764]ROLE_I-SESSION] - Session closed
+     [java] WooLam1_AttackTrace_passive [ROLE_I] - Execution time was 2067,959 ms.
+
+BUILD SUCCESSFUL
+Total time: 3 seconds

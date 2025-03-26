@@ -1,0 +1,25 @@
+Protocol: NSPK_AttackTrace_active AnB
+
+Types:
+	Agent I,A,B;
+	Number NxNA,NxNB;
+	Function [Agent -> PublicKey] pk
+
+Knowledge:
+	I: B,I,pk,inv(pk(I));
+	A: A,pk,inv(pk(A)),I,B;
+	B: B,pk,inv(pk(B)),I
+
+Actions:
+
+	A -> I: {NxNA,A}pk(I)
+	I -> B: {NxNA,A}pk(B)
+	
+	B -> I: {NxNA,NxNB}pk(A)
+	I -> A: {NxNA,NxNB}pk(A)
+
+	A -> I: {NxNB}pk(I)
+	I -> B: {NxNB}pk(B)
+
+Goals:
+	NxNA secret between A,B

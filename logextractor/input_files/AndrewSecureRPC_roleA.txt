@@ -1,0 +1,763 @@
+Buildfile: /Users/usuario/anbx-ide-exe-mac/genAnBx/src/andrewsecurerpc/build.xml
+
+ROLE_A:
+     [java] Debug [AndrewSecureRPC-ALWAYS] - Verbose mode on
+     [java] Debug [ROLE_A-APPLICATION] - Reading config file: AndrewSecureRPC.properties
+     [java] Debug [ROLE_A-ENCRYPTION] - -------------------- crypto config --------------------
+     [java] Debug [ROLE_A-ENCRYPTION] - cipherScheme = AES/CBC/PKCS5Padding
+     [java] Debug [ROLE_A-ENCRYPTION] - keySize = 256
+     [java] Debug [ROLE_A-ENCRYPTION] - keyGenerationScheme = AES
+     [java] Debug [ROLE_A-ENCRYPTION] - keyGenerationSize = 256
+     [java] Debug [ROLE_A-ENCRYPTION] - keyGenerationSchemePBE = PBKDF2WithHmacSHA512
+     [java] Debug [ROLE_A-ENCRYPTION] - keyPairGenerationScheme = RSA
+     [java] Debug [ROLE_A-ENCRYPTION] - keyPairGenerationSize = 2048
+     [java] Debug [ROLE_A-ENCRYPTION] - secureRandomAlgorithm = DRBG
+     [java] Debug [ROLE_A-ENCRYPTION] - hmacAlgorithm = HmacSHA256
+     [java] Debug [ROLE_A-ENCRYPTION] - messageDigestAlgorithm = SHA-256
+     [java] Debug [ROLE_A-ENCRYPTION] - messageDigestSignatureAlgorithm = SHA256
+     [java] Debug [ROLE_A-ENCRYPTION] - keyAgreementAlgorithm = DH
+     [java] Debug [ROLE_A-ENCRYPTION] - keyAgreementKeyPairGenerationScheme = DH
+     [java] Debug [ROLE_A-ENCRYPTION] - dhRndExpSize = 4096
+     [java] Debug [ROLE_A-ENCRYPTION] - ecGenParameterSpec = secp256r1
+     [java] Debug [ROLE_A-ENCRYPTION] - asymCipherSchemeBlock = RSA
+     [java] Debug [ROLE_A-ENCRYPTION] - sslContext = TLSv1.3
+     [java] Debug [ROLE_A-ENCRYPTION] - securityProvider = default
+     [java] Debug [ROLE_A-ENCRYPTION] - cipherSchemeProvider = default
+     [java] Debug [ROLE_A-ENCRYPTION] - keyGenerationSchemeProvider = default
+     [java] Debug [ROLE_A-ENCRYPTION] - keyGenerationSchemePBEProvider = default
+     [java] Debug [ROLE_A-ENCRYPTION] - keyPairGenerationSchemeProvider = default
+     [java] Debug [ROLE_A-ENCRYPTION] - secureRandomProvider = default
+     [java] Debug [ROLE_A-ENCRYPTION] - hmacProvider = default
+     [java] Debug [ROLE_A-ENCRYPTION] - messageDigestProvider = default
+     [java] Debug [ROLE_A-ENCRYPTION] - signatureProvider = default
+     [java] Debug [ROLE_A-ENCRYPTION] - asymEncProvider = default
+     [java] Debug [ROLE_A-ENCRYPTION] - keyAgreementProvider = default
+     [java] Debug [ROLE_A-ENCRYPTION] - sslContextProvider = default
+     [java] Debug [ROLE_A-ENCRYPTION] - -------------------- crypto config --------------------
+     [java] Debug [[19:18:58:043]ROLE_A-APPLICATION] - Loading aliases
+     [java] Debug [[19:18:58:043]ROLE_A-APPLICATION] - Role: ROLE_A - Alias: alice
+     [java] Debug [[19:18:58:043]ROLE_A-APPLICATION] - myAlias: alice
+     [java] Debug [[19:18:58:043]ROLE_A-APPLICATION] - Role: ROLE_B - Alias: bob
+     [java] Debug [[19:18:58:043]ROLE_A-APPLICATION] - Host: 127.0.0.1 - Port: 55556
+     [java] Debug [[19:18:58:043]ROLE_A-APPLICATION] - Channel Type: SSL_PLAIN - Role: CLIENT
+     [java] Debug [[19:18:58:043]ROLE_A-APPLICATION] - Channel: ROLE_A_channel_ROLE_B_Client_Insecure
+     [java] Debug [[19:18:58:043]ROLE_A-APPLICATION] - [19:18:58:050]myRole: ROLE_A
+     [java] Debug [[19:18:58:043]ROLE_A-APPLICATION] - [19:18:58:051]sessions: 10
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Loading KeyStore: tls #0
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Reading config file (KSS): ../../keystore/alice.pwd
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - tls - KeyStoreType: PKCS12
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - tls - LocalKeyStore: ../../keystore/alice_tls.private
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - tls - RemotelKeyStore: ../../keystore/alice_tls.public
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - My Alias: alice
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - RootCA: root
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Loading KeyStore: enc #1
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Reading config file (KSS): ../../keystore/alice.pwd
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - enc - KeyStoreType: PKCS12
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - enc - LocalKeyStore: ../../keystore/alice_enc.private
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - enc - RemotelKeyStore: ../../keystore/alice_enc.public
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - My Alias: alice
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - RootCA: root
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Loading KeyStore: sig #2
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Reading config file (KSS): ../../keystore/alice.pwd
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - sig - KeyStoreType: PKCS12
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - sig - LocalKeyStore: ../../keystore/alice_sig.private
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - sig - RemotelKeyStore: ../../keystore/alice_sig.public
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - My Alias: alice
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - RootCA: root
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Loading KeyStore: hmc #3
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Reading config file (KSS): ../../keystore/alice.pwd
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - hmc - KeyStoreType: PKCS12
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - hmc - LocalKeyStore: ../../keystore/alice_hmc.private
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - hmc - RemotelKeyStore: ../../keystore/alice_hmc.public
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - My Alias: alice
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - RootCA: root
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Building KeyStore: tls #0
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Loading KeyStore: ../../keystore/alice_tls.private - Type: PKCS12
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Loading KeyStore: ../../keystore/alice_tls.public - Type: PKCS12
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Building KeyStore: enc #1
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Loading KeyStore: ../../keystore/alice_enc.private - Type: PKCS12
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Loading KeyStore: ../../keystore/alice_enc.public - Type: PKCS12
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Building KeyStore: sig #2
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Loading KeyStore: ../../keystore/alice_sig.private - Type: PKCS12
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Loading KeyStore: ../../keystore/alice_sig.public - Type: PKCS12
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Building KeyStore: hmc #3
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Loading KeyStore: ../../keystore/alice_hmc.private - Type: PKCS12
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Loading KeyStore: ../../keystore/alice_hmc.public - Type: PKCS12
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Certificate retrieved: <alice>
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Certificate retrieved: <alice>
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Certificate retrieved: <alice>
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Certificate retrieved: <alice>
+     [java] Debug [[19:18:58:043]ROLE_A-SESSION] - Initializing channel - cs: Channel Settings - Port: 55556 - Role: CLIENT - Type: SSL_PLAIN
+     [java] Debug [[19:18:58:043]ROLE_A-SESSION] - Initializing channel - keystore: anbxj.Crypto_KeyStoreSettings@27f674d
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - readObject - Serialized data from ./shk_alice_bob.ser
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - readObject - javax.crypto.spec.SecretKeySpec.toString: javax.crypto.spec.SecretKeySpec@16d04
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - readObject - javax.crypto.spec.SecretKeySpec.hashCode: 93444
+     [java] Debug [[19:18:58:043]ROLE_A-SESSION] - Opening session
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - Starting Client for 127.0.0.1:55556
+     [java] Debug [[19:18:58:043]ROLE_A-ALWAYS] - Connected to Server 127.0.0.1:55556 - ChannelType: SSL_PLAIN
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:18:58:460]Session started: 1/10
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_0
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - Timestamp: [19:18:58:463]
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - [19:18:58:465]Nonce - DRBG - Value: [-21, 81, -51, -54, -62, 92, 107, -76, -119, 61, 61, 88, -92, 125, -128, -77, 113, -11, -47, 67, 77, 97, 113, 124, -25, -37, -109, -117, 38, -115, -67, 39, 106, 75, 112, -92, 124, -38, -35, -70, 14, 100, 67, -90, -101, -48, -31, -17, 125, -94, 127, -40, 43, -85, 47, -65, 57, 17, 20, 84, 19, 40, 29, -29, 113, 99, -102, 94, 3, 58, 6, 8, -21, -57, -66, 29, -82, -97, -108, -68, 81, -72, 21, -14, 57, -37, -74, -33, 4, -118, -126, 118, -82, 15, 125, -111, -99, -32, 103, 48, 126, -108, 108, 77, -46, -116, -95, 76, -118, -19, -63, -53, 45, -79, -31, -87, 30, -95, 90, 34, -30, 20, 82, -65, 76, -78, 36, 17, 72, 53, 59, 108, -4, 117, 0, -77, -53, -58, 87, -74, -32, 116, -41, -20, -78, -61, 90, -47, 34, -80, 93, -95, 24, -117, 35, 119, -64, -106, -84, -97, 127, 94, -128, -71, -31, -114, 55, -76, -49, 21, -90, -70, 47, 15, 105, 55, 22, 76, 126, 97, -102, -105, -53, -13, 28, 124, 19, -82, 120, -50, 27, 5, 20, 56, -8, -127, 11, 110, -115, -47, -107, -25, 56, 14, 119, -119, 65, 120, -28, -80, -51, -101, 123, -125, 35, 16, -23, -50, 40, 70, -4, 0, 46, -56, -84, -54, 69, 29, 12, 10, 86, 49, -57, -109, 63, 108, -57, 83, -32, 43, 90, 20, -26, -23, 62, 62, 7, -97, -65, -107, -77, -120, 48, -80, 34, 78]
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - AnBx_Params - size: 2
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - AnBx_Params - hash: 1182391585
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - [19:18:58:488]AnBx_Params - params: AnBx_Params [v=[Crypto_ByteArray [bytearray=[116, 97, 103]], Crypto_ByteArray [bytearray=[-21, 81, -51, -54, -62, 92, 107, -76, -119, 61, 61, 88, -92, 125, -128, -77, 113, -11, -47, 67, 77, 97, 113, 124, -25, -37, -109, -117, 38, -115, -67, 39, 106, 75, 112, -92, 124, -38, -35, -70, 14, 100, 67, -90, -101, -48, -31, -17, 125, -94, 127, -40, 43, -85, 47, -65, 57, 17, 20, 84, 19, 40, 29, -29, 113, 99, -102, 94, 3, 58, 6, 8, -21, -57, -66, 29, -82, -97, -108, -68, 81, -72, 21, -14, 57, -37, -74, -33, 4, -118, -126, 118, -82, 15, 125, -111, -99, -32, 103, 48, 126, -108, 108, 77, -46, -116, -95, 76, -118, -19, -63, -53, 45, -79, -31, -87, 30, -95, 90, 34, -30, 20, 82, -65, 76, -78, 36, 17, 72, 53, 59, 108, -4, 117, 0, -77, -53, -58, 87, -74, -32, 116, -41, -20, -78, -61, 90, -47, 34, -80, 93, -95, 24, -117, 35, 119, -64, -106, -84, -97, 127, 94, -128, -71, -31, -114, 55, -76, -49, 21, -90, -70, 47, 15, 105, 55, 22, 76, 126, 97, -102, -105, -53, -13, 28, 124, 19, -82, 120, -50, 27, 5, 20, 56, -8, -127, 11, 110, -115, -47, -107, -25, 56, 14, 119, -119, 65, 120, -28, -80, -51, -101, 123, -125, 35, 16, -23, -50, 40, 70, -4, 0, 46, -56, -84, -54, 69, 29, 12, 10, 86, 49, -57, -109, 63, 108, -57, 83, -32, 43, 90, 20, -26, -23, 62, 62, 7, -97, -65, -107, -77, -120, 48, -80, 34, 78]]]]
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Encrypting [Sym] IV [AES/RAW/256] [B@573f2bb1 - Provider: SunJCE
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Encrypted [Sym] [AES/RAW/256] javax.crypto.SealedObject@67c33749 - Provider: SunJCE
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - AnBx_Params - size: 2
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - AnBx_Params - hash: 325874857
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - [19:18:58:562]AnBx_Params - params: AnBx_Params [v=[alice, javax.crypto.SealedObject@67c33749]]
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - Send
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - ---------- SEND -----------
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - Sending -> AnBx_Params [v=[alice, javax.crypto.SealedObject@67c33749]]
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - [19:18:58:568]Sent -> AnBx_Params [v=[alice, javax.crypto.SealedObject@67c33749]]
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_0
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_1
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - Timestamp: [19:18:58:569]
+     [java] Debug [[19:18:58:043]ROLE_A-SESSION] - Receive
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - Receive
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - [19:18:58:815]Received <- javax.crypto.SealedObject@4229bb3f
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Decrypting [Sym] [AES/RAW/256] javax.crypto.SealedObject@4229bb3f
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Decrypted [Sym] [AES/RAW/256] javax.crypto.SealedObject@4229bb3f
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - CHECK # 1.1
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:18:58:829]EQ check PERFORMED on anbxj.Crypto_ByteArray
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Crypto_ByteArray check
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:18:58:829]EQ check OK - anbxj.Crypto_ByteArray.toString - Crypto_ByteArray [bytearray=[-21, 81, -51, -54, -62, 92, 107, -76, -119, 61, 61, 88, -92, 125, -128, -77, 113, -11, -47, 67, 77, 97, 113, 124, -25, -37, -109, -117, 38, -115, -67, 39, 106, 75, 112, -92, 124, -38, -35, -70, 14, 100, 67, -90, -101, -48, -31, -17, 125, -94, 127, -40, 43, -85, 47, -65, 57, 17, 20, 84, 19, 40, 29, -29, 113, 99, -102, 94, 3, 58, 6, 8, -21, -57, -66, 29, -82, -97, -108, -68, 81, -72, 21, -14, 57, -37, -74, -33, 4, -118, -126, 118, -82, 15, 125, -111, -99, -32, 103, 48, 126, -108, 108, 77, -46, -116, -95, 76, -118, -19, -63, -53, 45, -79, -31, -87, 30, -95, 90, 34, -30, 20, 82, -65, 76, -78, 36, 17, 72, 53, 59, 108, -4, 117, 0, -77, -53, -58, 87, -74, -32, 116, -41, -20, -78, -61, 90, -47, 34, -80, 93, -95, 24, -117, 35, 119, -64, -106, -84, -97, 127, 94, -128, -71, -31, -114, 55, -76, -49, 21, -90, -70, 47, 15, 105, 55, 22, 76, 126, 97, -102, -105, -53, -13, 28, 124, 19, -82, 120, -50, 27, 5, 20, 56, -8, -127, 11, 110, -115, -47, -107, -25, 56, 14, 119, -119, 65, 120, -28, -80, -51, -101, 123, -125, 35, 16, -23, -50, 40, 70, -4, 0, 46, -56, -84, -54, 69, 29, 12, 10, 86, 49, -57, -109, 63, 108, -57, 83, -32, 43, 90, 20, -26, -23, 62, 62, 7, -97, -65, -107, -77, -120, 48, -80, 34, 79]] = Crypto_ByteArray [bytearray=[-21, 81, -51, -54, -62, 92, 107, -76, -119, 61, 61, 88, -92, 125, -128, -77, 113, -11, -47, 67, 77, 97, 113, 124, -25, -37, -109, -117, 38, -115, -67, 39, 106, 75, 112, -92, 124, -38, -35, -70, 14, 100, 67, -90, -101, -48, -31, -17, 125, -94, 127, -40, 43, -85, 47, -65, 57, 17, 20, 84, 19, 40, 29, -29, 113, 99, -102, 94, 3, 58, 6, 8, -21, -57, -66, 29, -82, -97, -108, -68, 81, -72, 21, -14, 57, -37, -74, -33, 4, -118, -126, 118, -82, 15, 125, -111, -99, -32, 103, 48, 126, -108, 108, 77, -46, -116, -95, 76, -118, -19, -63, -53, 45, -79, -31, -87, 30, -95, 90, 34, -30, 20, 82, -65, 76, -78, 36, 17, 72, 53, 59, 108, -4, 117, 0, -77, -53, -58, 87, -74, -32, 116, -41, -20, -78, -61, 90, -47, 34, -80, 93, -95, 24, -117, 35, 119, -64, -106, -84, -97, 127, 94, -128, -71, -31, -114, 55, -76, -49, 21, -90, -70, 47, 15, 105, 55, 22, 76, 126, 97, -102, -105, -53, -13, 28, 124, 19, -82, 120, -50, 27, 5, 20, 56, -8, -127, 11, 110, -115, -47, -107, -25, 56, 14, 119, -119, 65, 120, -28, -80, -51, -101, 123, -125, 35, 16, -23, -50, 40, 70, -4, 0, 46, -56, -84, -54, 69, 29, 12, 10, 86, 49, -57, -109, 63, 108, -57, 83, -32, 43, 90, 20, -26, -23, 62, 62, 7, -97, -65, -107, -77, -120, 48, -80, 34, 79]]
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:18:58:829]EQ check OK - anbxj.Crypto_ByteArray.hashCode - 1177913946 = 1177913946
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_1
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_2
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - Timestamp: [19:18:58:840]
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Encrypting [Sym] IV [AES/RAW/256] [B@485966cc - Provider: SunJCE
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Encrypted [Sym] [AES/RAW/256] javax.crypto.SealedObject@593aaf41 - Provider: SunJCE
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - Send
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - ---------- SEND -----------
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - Sending -> javax.crypto.SealedObject@593aaf41
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - [19:18:58:840]Sent -> javax.crypto.SealedObject@593aaf41
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_2
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_3
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - Timestamp: [19:18:58:841]
+     [java] Debug [[19:18:58:043]ROLE_A-SESSION] - Receive
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - Receive
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - [19:18:58:935]Received <- javax.crypto.SealedObject@57cf54e1
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - CHECK # 3.1
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:18:58:935]INV check PERFORMED on anbxj.Crypto_ByteArray
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:18:58:936]INV check OK - anbxj.Crypto_ByteArray.toString - Crypto_ByteArray [bytearray=[-64, -107, 33, -101, 85, 63, 10, 115, 77, -59, -22, 70, 46, 31, -117, -16, 77, -57, -11, -29, 127, -72, 76, 44, 68, -106, -38, -65, -19, -58, -77, 23, 49, -52, -55, -95, 48, -118, 70, 86, -87, 82, -16, 82, 34, 36, 64, 51, -36, 95, -96, -30, -14, 52, 107, 13, 117, -114, -26, 125, 15, 27, 96, -16, 55, -45, -116, 1, 12, 118, -65, 51, -98, -127, 66, -93, 81, -90, -63, -41, -105, 20, -128, -111, -123, -117, 89, 85, -34, 125, -113, 53, 88, -21, 102, -46, 107, 101, 10, 122, 70, -83, -70, -41, -86, -93, 99, 50, 2, 108, -88, 66, -40, -29, 111, 38, -112, 118, -70, 87, -57, 20, 80, 15, -9, 30, -76, 39, 87, 20, -54, 3, -88, -82, -113, 31, -38, -42, -29, 17, 122, -110, 105, -34, -61, -26, 71, -100, 31, 11, -72, 1, -73, -110, -72, -126, -112, -5, -51, -101, 112, -34, -102, -110, 5, -118, 57, -104, 3, -20, 75, -72, -100, -22, 36, -23, -115, 17, 52, -69, 80, -119, 22, -107, 58, 66, 37, -73, 111, 82, 109, -29, -79, 100, 99, -125, 17, -54, 113, -44, -40, -104, 12, 118, 76, 38, 33, -93, 124, -97, -46, -31, 41, -85, 9, 95, -8, 33, -25, 110, -102, -105, 70, 88, -32, -128, -56, 85, -106, 93, 38, 78, -108, -13, 126, -87, 16, 75, -38, -17, 43, 30, -84, -85, 105, -59, 72, 10, 20, -1, -53, 91, -119, 46, 48, 114]]
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:18:58:936]INV check OK - anbxj.Crypto_ByteArray.hashCode - 914849863
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Decrypting [Sym] [AES/RAW/256] javax.crypto.SealedObject@57cf54e1
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Decrypted [Sym] [AES/RAW/256] javax.crypto.SealedObject@57cf54e1
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - CHECK # 3.2
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:18:58:955]INV check PERFORMED on anbxj.Crypto_ByteArray
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:18:58:955]INV check OK - anbxj.Crypto_ByteArray.toString - Crypto_ByteArray [bytearray=[-70, -114, -32, -1, 120, -118, -90, -16, -6, -73, 22, 13, -93, -88, -25, -21, 121, 40, -104, -81, -75, 108, 10, -117, 98, -126, -78, 34, -35, -98, -37, 103, 77, -76, 97, -45, -77, -77, -73, -119, -49, -90, 76, 102, -45, 43, 88, 127, 80, 13, -82, -15, 91, 73, -76, 64, 104, 0, -53, 101, 85, -122, -57, -95, -25, 104, 36, 10, -125, -46, -54, -19, 51, 82, -1, -82, 43, 52, 53, -39, -86, 73, -97, -122, 89, 13, -39, -32, -56, 98, -38, 37, -58, 78, -78, -102, -55, -126, -16, 51, -30, 21, 6, -12, 31, 25, -15, 119, 124, 123, 68, 74, 56, -42, 44, 48, -118, -36, 116, -32, 123, 68, 84, -6, 18, 127, -58, 45, -2, 88, 108, 26, -117, 75, -104, -1, -2, -40, -103, -68, 14, 40, 31, -38, -79, -120, -125, -58, -107, -100, -33, 110, -14, -11, 24, -52, -38, 66, 126, 7, 34, -45, 24, -7, -124, -61, 21, 110, 102, -104, -109, 104, 58, -117, -46, -93, 46, 23, -58, 94, 54, -78, -98, 62, 95, 73, 3, -103, 39, -7, -67, 103, 20, 18, 93, 121, -61, -35, 17, -54, 39, 63, -105, 98, 21, -18, -112, 42, -128, 107, 119, -126, 12, -124, 9, 120, -70, -33, 125, 5, -49, 94, -48, 123, 81, -57, -42, -47, -127, -117, -75, 31, 75, -84, 82, -21, -86, -127, 41, 0, -67, -117, -22, -63, -126, 120, -36, 28, -55, -75, -36, 9, 91, -118, 81, -36]]
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:18:58:955]INV check OK - anbxj.Crypto_ByteArray.hashCode - -239162321
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_3
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:18:58:955]Session completed: 1/10
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:18:58:955]Session started: 2/10
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_0
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - Timestamp: [19:18:58:955]
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - [19:18:58:955]Nonce - DRBG - Value: [-79, 86, 66, -31, 15, 23, 2, 102, -19, 95, 1, -97, 50, -111, -112, 80, 74, 23, 16, -66, -120, 52, 40, 6, 45, -59, -81, -122, -111, -94, 4, 0, -96, -12, -31, -37, 30, 6, 37, -97, -84, 122, -52, 22, -79, 41, 22, -99, 100, -98, -46, 74, -88, 122, -9, -21, -25, -72, 59, 107, -26, 111, 51, 92, 43, -52, 79, -17, 35, 71, 80, -90, -110, -76, -6, 118, 21, -119, -114, -45, -60, -71, 10, 28, -55, -12, -16, -95, 69, 74, 35, 95, -9, 99, 101, -85, 0, 34, 63, 36, -98, 109, 69, 2, 53, -20, -97, -114, -10, 42, 10, -118, -89, -50, -13, 62, 60, 24, 15, 50, -28, 55, -44, -35, -15, -25, 56, -126, -109, -64, 52, -32, 13, 11, 63, 68, 31, 17, -123, -47, 43, -60, -4, -72, 104, -22, 35, -64, 21, -85, 123, 81, -107, 78, -70, 64, 126, -50, 13, -74, 70, -119, 115, -26, 18, -71, -92, 48, -88, 59, -57, 42, -16, 96, 19, -42, 64, -75, -4, -10, -14, 106, 5, -89, -116, -98, -116, -41, -49, 99, 77, -80, 94, -114, -102, -128, -112, -10, -123, 9, 37, 99, -45, -40, 104, -100, -14, -88, -23, -19, 38, -112, 120, -93, -35, -105, -82, -100, -109, -118, 14, 127, 45, 35, -111, -21, 100, -20, 48, 92, -38, 115, 123, 97, -86, 79, -33, 74, 92, -67, 25, 116, 40, 58, 88, -89, -74, -27, -57, -57, -120, 66, -124, 10, -2, 21]
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - AnBx_Params - size: 2
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - AnBx_Params - hash: 2087613449
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - [19:18:58:967]AnBx_Params - params: AnBx_Params [v=[Crypto_ByteArray [bytearray=[116, 97, 103]], Crypto_ByteArray [bytearray=[-79, 86, 66, -31, 15, 23, 2, 102, -19, 95, 1, -97, 50, -111, -112, 80, 74, 23, 16, -66, -120, 52, 40, 6, 45, -59, -81, -122, -111, -94, 4, 0, -96, -12, -31, -37, 30, 6, 37, -97, -84, 122, -52, 22, -79, 41, 22, -99, 100, -98, -46, 74, -88, 122, -9, -21, -25, -72, 59, 107, -26, 111, 51, 92, 43, -52, 79, -17, 35, 71, 80, -90, -110, -76, -6, 118, 21, -119, -114, -45, -60, -71, 10, 28, -55, -12, -16, -95, 69, 74, 35, 95, -9, 99, 101, -85, 0, 34, 63, 36, -98, 109, 69, 2, 53, -20, -97, -114, -10, 42, 10, -118, -89, -50, -13, 62, 60, 24, 15, 50, -28, 55, -44, -35, -15, -25, 56, -126, -109, -64, 52, -32, 13, 11, 63, 68, 31, 17, -123, -47, 43, -60, -4, -72, 104, -22, 35, -64, 21, -85, 123, 81, -107, 78, -70, 64, 126, -50, 13, -74, 70, -119, 115, -26, 18, -71, -92, 48, -88, 59, -57, 42, -16, 96, 19, -42, 64, -75, -4, -10, -14, 106, 5, -89, -116, -98, -116, -41, -49, 99, 77, -80, 94, -114, -102, -128, -112, -10, -123, 9, 37, 99, -45, -40, 104, -100, -14, -88, -23, -19, 38, -112, 120, -93, -35, -105, -82, -100, -109, -118, 14, 127, 45, 35, -111, -21, 100, -20, 48, 92, -38, 115, 123, 97, -86, 79, -33, 74, 92, -67, 25, 116, 40, 58, 88, -89, -74, -27, -57, -57, -120, 66, -124, 10, -2, 21]]]]
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Encrypting [Sym] IV [AES/RAW/256] [B@4dbb42b7 - Provider: SunJCE
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Encrypted [Sym] [AES/RAW/256] javax.crypto.SealedObject@4310d43 - Provider: SunJCE
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - AnBx_Params - size: 2
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - AnBx_Params - hash: -1344648541
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - [19:18:58:971]AnBx_Params - params: AnBx_Params [v=[alice, javax.crypto.SealedObject@4310d43]]
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - Send
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - ---------- SEND -----------
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - Sending -> AnBx_Params [v=[alice, javax.crypto.SealedObject@4310d43]]
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - [19:18:58:972]Sent -> AnBx_Params [v=[alice, javax.crypto.SealedObject@4310d43]]
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_0
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_1
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - Timestamp: [19:18:58:972]
+     [java] Debug [[19:18:58:043]ROLE_A-SESSION] - Receive
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - Receive
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - [19:18:59:097]Received <- javax.crypto.SealedObject@506ae4d4
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Decrypting [Sym] [AES/RAW/256] javax.crypto.SealedObject@506ae4d4
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Decrypted [Sym] [AES/RAW/256] javax.crypto.SealedObject@506ae4d4
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - CHECK # 1.1
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:18:59:101]EQ check PERFORMED on anbxj.Crypto_ByteArray
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Crypto_ByteArray check
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:18:59:101]EQ check OK - anbxj.Crypto_ByteArray.toString - Crypto_ByteArray [bytearray=[-79, 86, 66, -31, 15, 23, 2, 102, -19, 95, 1, -97, 50, -111, -112, 80, 74, 23, 16, -66, -120, 52, 40, 6, 45, -59, -81, -122, -111, -94, 4, 0, -96, -12, -31, -37, 30, 6, 37, -97, -84, 122, -52, 22, -79, 41, 22, -99, 100, -98, -46, 74, -88, 122, -9, -21, -25, -72, 59, 107, -26, 111, 51, 92, 43, -52, 79, -17, 35, 71, 80, -90, -110, -76, -6, 118, 21, -119, -114, -45, -60, -71, 10, 28, -55, -12, -16, -95, 69, 74, 35, 95, -9, 99, 101, -85, 0, 34, 63, 36, -98, 109, 69, 2, 53, -20, -97, -114, -10, 42, 10, -118, -89, -50, -13, 62, 60, 24, 15, 50, -28, 55, -44, -35, -15, -25, 56, -126, -109, -64, 52, -32, 13, 11, 63, 68, 31, 17, -123, -47, 43, -60, -4, -72, 104, -22, 35, -64, 21, -85, 123, 81, -107, 78, -70, 64, 126, -50, 13, -74, 70, -119, 115, -26, 18, -71, -92, 48, -88, 59, -57, 42, -16, 96, 19, -42, 64, -75, -4, -10, -14, 106, 5, -89, -116, -98, -116, -41, -49, 99, 77, -80, 94, -114, -102, -128, -112, -10, -123, 9, 37, 99, -45, -40, 104, -100, -14, -88, -23, -19, 38, -112, 120, -93, -35, -105, -82, -100, -109, -118, 14, 127, 45, 35, -111, -21, 100, -20, 48, 92, -38, 115, 123, 97, -86, 79, -33, 74, 92, -67, 25, 116, 40, 58, 88, -89, -74, -27, -57, -57, -120, 66, -124, 10, -2, 22]] = Crypto_ByteArray [bytearray=[-79, 86, 66, -31, 15, 23, 2, 102, -19, 95, 1, -97, 50, -111, -112, 80, 74, 23, 16, -66, -120, 52, 40, 6, 45, -59, -81, -122, -111, -94, 4, 0, -96, -12, -31, -37, 30, 6, 37, -97, -84, 122, -52, 22, -79, 41, 22, -99, 100, -98, -46, 74, -88, 122, -9, -21, -25, -72, 59, 107, -26, 111, 51, 92, 43, -52, 79, -17, 35, 71, 80, -90, -110, -76, -6, 118, 21, -119, -114, -45, -60, -71, 10, 28, -55, -12, -16, -95, 69, 74, 35, 95, -9, 99, 101, -85, 0, 34, 63, 36, -98, 109, 69, 2, 53, -20, -97, -114, -10, 42, 10, -118, -89, -50, -13, 62, 60, 24, 15, 50, -28, 55, -44, -35, -15, -25, 56, -126, -109, -64, 52, -32, 13, 11, 63, 68, 31, 17, -123, -47, 43, -60, -4, -72, 104, -22, 35, -64, 21, -85, 123, 81, -107, 78, -70, 64, 126, -50, 13, -74, 70, -119, 115, -26, 18, -71, -92, 48, -88, 59, -57, 42, -16, 96, 19, -42, 64, -75, -4, -10, -14, 106, 5, -89, -116, -98, -116, -41, -49, 99, 77, -80, 94, -114, -102, -128, -112, -10, -123, 9, 37, 99, -45, -40, 104, -100, -14, -88, -23, -19, 38, -112, 120, -93, -35, -105, -82, -100, -109, -118, 14, 127, 45, 35, -111, -21, 100, -20, 48, 92, -38, 115, 123, 97, -86, 79, -33, 74, 92, -67, 25, 116, 40, 58, 88, -89, -74, -27, -57, -57, -120, 66, -124, 10, -2, 22]]
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:18:59:101]EQ check OK - anbxj.Crypto_ByteArray.hashCode - 2083135810 = 2083135810
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_1
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_2
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - Timestamp: [19:18:59:101]
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Encrypting [Sym] IV [AES/RAW/256] [B@7d4f9aae - Provider: SunJCE
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Encrypted [Sym] [AES/RAW/256] javax.crypto.SealedObject@53aac487 - Provider: SunJCE
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - Send
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - ---------- SEND -----------
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - Sending -> javax.crypto.SealedObject@53aac487
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - [19:18:59:102]Sent -> javax.crypto.SealedObject@53aac487
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_2
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_3
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - Timestamp: [19:18:59:102]
+     [java] Debug [[19:18:58:043]ROLE_A-SESSION] - Receive
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - Receive
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - [19:18:59:191]Received <- javax.crypto.SealedObject@7db12bb6
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - CHECK # 3.1
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:18:59:191]INV check PERFORMED on anbxj.Crypto_ByteArray
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:18:59:191]INV check OK - anbxj.Crypto_ByteArray.toString - Crypto_ByteArray [bytearray=[120, 86, 50, 51, 116, 3, -5, 39, 119, 104, -22, -123, -25, -107, 27, 116, 25, 31, 125, -16, -6, 38, 107, -42, 75, 113, -118, 63, -78, -3, 67, 31, 34, 126, -67, -112, -123, 70, 83, -121, 123, -100, 64, -36, -36, -2, -115, -35, -34, 47, 65, 8, -90, 12, -114, 33, 90, -64, 9, 39, 11, -67, 33, 5, 11, 64, -47, 81, 122, -57, 27, 6, -34, -76, 34, -63, -86, 34, -65, 99, 85, 90, 39, 46, 3, 108, -4, -36, 33, 13, -72, 84, 81, 56, -47, -100, 21, -37, -55, 87, 113, 124, 61, -32, 48, 28, -36, 119, 122, 14, -85, 2, 118, 6, 46, 83, 38, -25, -124, 82, -30, 91, 9, 76, -65, -43, -21, 16, -77, 109, -120, 66, 85, -63, -27, -1, -65, -58, 103, 115, 51, -57, -44, 64, 79, 108, 52, 121, -125, 84, -85, -63, -99, 0, 114, -127, -92, 7, 37, -93, -18, -2, 48, -82, -7, 80, 24, 123, 56, 38, 26, -113, -6, 106, 33, 107, -53, 74, -89, -47, 16, -13, -72, -67, 118, -123, 126, 121, 118, -21, 97, -93, 25, 88, 14, -35, 112, -117, -67, -112, -56, -72, -42, 127, -49, 10, 122, -70, 28, -31, -100, -81, -111, 95, -110, 94, -32, 110, -15, -11, -14, -71, 0, -43, 42, 22, -99, -86, -102, -120, 117, -76, 35, 37, -18, 71, 18, 120, -89, -57, -111, 36, 77, -118, -115, 93, -64, -124, -16, -119, -39, 114, 65, -36, 122, -80]]
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:18:59:191]INV check OK - anbxj.Crypto_ByteArray.hashCode - -1956467625
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Decrypting [Sym] [AES/RAW/256] javax.crypto.SealedObject@7db12bb6
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Decrypted [Sym] [AES/RAW/256] javax.crypto.SealedObject@7db12bb6
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - CHECK # 3.2
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:18:59:192]INV check PERFORMED on anbxj.Crypto_ByteArray
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:18:59:192]INV check OK - anbxj.Crypto_ByteArray.toString - Crypto_ByteArray [bytearray=[125, -50, 62, 3, -11, -37, -83, 100, -115, -8, 84, 115, -112, 21, -9, 75, -114, -78, -6, -17, -56, 120, -4, 41, -90, 86, 74, 112, -25, 37, -97, 117, 103, -27, -106, 32, -91, -16, -18, -111, 49, -26, 43, -113, -49, 24, -51, 57, 2, 121, 52, 113, -3, -81, -117, 69, 14, -32, 58, 47, 0, -30, 34, -89, 123, 74, -24, -128, 13, -115, -10, -109, -104, 30, 122, -7, -60, 123, 15, 75, 43, -100, 3, -114, 18, 97, -5, 59, -98, -81, 107, -90, -1, -14, -54, 3, 72, -72, 27, -96, 125, 39, 82, 98, -99, 49, -42, -37, 33, 23, -34, -49, -35, -97, -104, -71, 90, 77, 31, -115, 46, -101, -36, 72, -128, -66, 39, 76, 5, -59, -111, 61, 12, 92, -50, -42, 9, 0, -127, 0, -101, -54, 54, 3, -102, -81, 53, 113, -120, 56, -67, 48, -9, 19, 84, 69, 57, -91, 1, -56, -102, 113, -77, 86, -107, -127, -92, -72, 66, 46, -21, 96, 115, 36, 57, -37, 90, -52, 11, -84, 83, 95, -61, 60, -32, 43, -29, 46, -99, -93, 114, -29, 38, 126, 29, -97, -3, 125, -14, 61, -116, -6, -86, 88, -28, -1, -59, -113, -14, 127, -16, 33, -90, -92, 110, -115, -91, -127, 13, 79, -8, -106, -39, -33, 85, -35, 107, 115, 118, 22, 110, -68, 100, -41, 79, 88, 91, 52, 71, -38, -24, -60, 116, 85, -38, -118, -95, 29, 47, 0, 80, 16, -95, 93, -55, -66]]
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:18:59:192]INV check OK - anbxj.Crypto_ByteArray.hashCode - -1357079161
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_3
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:18:59:192]Session completed: 2/10
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:18:59:192]Session started: 3/10
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_0
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - Timestamp: [19:18:59:192]
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - [19:18:59:192]Nonce - DRBG - Value: [65, -90, 117, -12, -95, 107, -102, 60, 63, -100, 16, 86, -33, 110, -24, 6, -108, -31, -44, -100, 65, 39, -13, 34, 34, 68, -56, -78, 81, -19, 40, 18, -42, -97, 102, -62, -25, -22, -47, -96, 64, -81, 113, 68, -106, -37, 119, -79, -35, -16, -72, -40, 102, -97, 10, 78, -38, 101, 63, -96, 33, 9, -98, 54, -45, 30, 101, 14, 65, 68, 23, -74, -36, 81, -96, 122, 36, -117, -123, 28, -66, -110, -24, -3, 57, -83, 69, -8, 44, 84, 31, -94, 38, 50, -79, -69, -57, 76, 56, 54, -7, 84, -106, 106, 8, -65, -85, -14, -102, -111, 72, -95, -8, -71, -57, -11, -38, -107, 15, 115, -87, -54, -84, -2, 121, 7, 114, -85, -79, -5, -73, 73, -105, 18, -55, -96, 67, 104, 104, 66, 89, 92, -100, 64, -73, 29, -88, -98, -73, 60, -60, -29, 115, -45, 35, -26, -31, -54, -31, -11, -70, 41, -85, -82, -69, 35, 11, -28, -97, 53, -1, -96, 94, 124, 125, -7, -80, -99, -87, -108, 35, -52, 51, 48, -61, -86, -12, 60, 85, -69, -123, -100, -104, 1, 76, -106, -94, -26, -88, 78, 79, 98, 95, -60, -12, -21, -76, -102, -99, 53, 125, -82, 75, -89, -115, -54, 54, -84, -98, -122, -59, 88, -39, 42, 34, 10, -10, -63, 10, 72, -20, 54, -99, 10, -6, 49, 116, 16, -102, 52, -14, -73, -64, 14, 112, -109, -84, -104, 37, 84, 117, -81, 40, 52, 65, -31]
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - AnBx_Params - size: 2
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - AnBx_Params - hash: -533629704
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - [19:18:59:206]AnBx_Params - params: AnBx_Params [v=[Crypto_ByteArray [bytearray=[116, 97, 103]], Crypto_ByteArray [bytearray=[65, -90, 117, -12, -95, 107, -102, 60, 63, -100, 16, 86, -33, 110, -24, 6, -108, -31, -44, -100, 65, 39, -13, 34, 34, 68, -56, -78, 81, -19, 40, 18, -42, -97, 102, -62, -25, -22, -47, -96, 64, -81, 113, 68, -106, -37, 119, -79, -35, -16, -72, -40, 102, -97, 10, 78, -38, 101, 63, -96, 33, 9, -98, 54, -45, 30, 101, 14, 65, 68, 23, -74, -36, 81, -96, 122, 36, -117, -123, 28, -66, -110, -24, -3, 57, -83, 69, -8, 44, 84, 31, -94, 38, 50, -79, -69, -57, 76, 56, 54, -7, 84, -106, 106, 8, -65, -85, -14, -102, -111, 72, -95, -8, -71, -57, -11, -38, -107, 15, 115, -87, -54, -84, -2, 121, 7, 114, -85, -79, -5, -73, 73, -105, 18, -55, -96, 67, 104, 104, 66, 89, 92, -100, 64, -73, 29, -88, -98, -73, 60, -60, -29, 115, -45, 35, -26, -31, -54, -31, -11, -70, 41, -85, -82, -69, 35, 11, -28, -97, 53, -1, -96, 94, 124, 125, -7, -80, -99, -87, -108, 35, -52, 51, 48, -61, -86, -12, 60, 85, -69, -123, -100, -104, 1, 76, -106, -94, -26, -88, 78, 79, 98, 95, -60, -12, -21, -76, -102, -99, 53, 125, -82, 75, -89, -115, -54, 54, -84, -98, -122, -59, 88, -39, 42, 34, 10, -10, -63, 10, 72, -20, 54, -99, 10, -6, 49, 116, 16, -102, 52, -14, -73, -64, 14, 112, -109, -84, -104, 37, 84, 117, -81, 40, 52, 65, -31]]]]
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Encrypting [Sym] IV [AES/RAW/256] [B@2d52216b - Provider: SunJCE
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Encrypted [Sym] [AES/RAW/256] javax.crypto.SealedObject@52719fb6 - Provider: SunJCE
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - AnBx_Params - size: 2
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - AnBx_Params - hash: -31793898
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - [19:18:59:210]AnBx_Params - params: AnBx_Params [v=[alice, javax.crypto.SealedObject@52719fb6]]
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - Send
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - ---------- SEND -----------
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - Sending -> AnBx_Params [v=[alice, javax.crypto.SealedObject@52719fb6]]
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - [19:18:59:211]Sent -> AnBx_Params [v=[alice, javax.crypto.SealedObject@52719fb6]]
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_0
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_1
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - Timestamp: [19:18:59:212]
+     [java] Debug [[19:18:58:043]ROLE_A-SESSION] - Receive
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - Receive
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - [19:18:59:336]Received <- javax.crypto.SealedObject@13e344d
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Decrypting [Sym] [AES/RAW/256] javax.crypto.SealedObject@13e344d
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Decrypted [Sym] [AES/RAW/256] javax.crypto.SealedObject@13e344d
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - CHECK # 1.1
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:18:59:340]EQ check PERFORMED on anbxj.Crypto_ByteArray
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Crypto_ByteArray check
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:18:59:340]EQ check OK - anbxj.Crypto_ByteArray.toString - Crypto_ByteArray [bytearray=[65, -90, 117, -12, -95, 107, -102, 60, 63, -100, 16, 86, -33, 110, -24, 6, -108, -31, -44, -100, 65, 39, -13, 34, 34, 68, -56, -78, 81, -19, 40, 18, -42, -97, 102, -62, -25, -22, -47, -96, 64, -81, 113, 68, -106, -37, 119, -79, -35, -16, -72, -40, 102, -97, 10, 78, -38, 101, 63, -96, 33, 9, -98, 54, -45, 30, 101, 14, 65, 68, 23, -74, -36, 81, -96, 122, 36, -117, -123, 28, -66, -110, -24, -3, 57, -83, 69, -8, 44, 84, 31, -94, 38, 50, -79, -69, -57, 76, 56, 54, -7, 84, -106, 106, 8, -65, -85, -14, -102, -111, 72, -95, -8, -71, -57, -11, -38, -107, 15, 115, -87, -54, -84, -2, 121, 7, 114, -85, -79, -5, -73, 73, -105, 18, -55, -96, 67, 104, 104, 66, 89, 92, -100, 64, -73, 29, -88, -98, -73, 60, -60, -29, 115, -45, 35, -26, -31, -54, -31, -11, -70, 41, -85, -82, -69, 35, 11, -28, -97, 53, -1, -96, 94, 124, 125, -7, -80, -99, -87, -108, 35, -52, 51, 48, -61, -86, -12, 60, 85, -69, -123, -100, -104, 1, 76, -106, -94, -26, -88, 78, 79, 98, 95, -60, -12, -21, -76, -102, -99, 53, 125, -82, 75, -89, -115, -54, 54, -84, -98, -122, -59, 88, -39, 42, 34, 10, -10, -63, 10, 72, -20, 54, -99, 10, -6, 49, 116, 16, -102, 52, -14, -73, -64, 14, 112, -109, -84, -104, 37, 84, 117, -81, 40, 52, 65, -30]] = Crypto_ByteArray [bytearray=[65, -90, 117, -12, -95, 107, -102, 60, 63, -100, 16, 86, -33, 110, -24, 6, -108, -31, -44, -100, 65, 39, -13, 34, 34, 68, -56, -78, 81, -19, 40, 18, -42, -97, 102, -62, -25, -22, -47, -96, 64, -81, 113, 68, -106, -37, 119, -79, -35, -16, -72, -40, 102, -97, 10, 78, -38, 101, 63, -96, 33, 9, -98, 54, -45, 30, 101, 14, 65, 68, 23, -74, -36, 81, -96, 122, 36, -117, -123, 28, -66, -110, -24, -3, 57, -83, 69, -8, 44, 84, 31, -94, 38, 50, -79, -69, -57, 76, 56, 54, -7, 84, -106, 106, 8, -65, -85, -14, -102, -111, 72, -95, -8, -71, -57, -11, -38, -107, 15, 115, -87, -54, -84, -2, 121, 7, 114, -85, -79, -5, -73, 73, -105, 18, -55, -96, 67, 104, 104, 66, 89, 92, -100, 64, -73, 29, -88, -98, -73, 60, -60, -29, 115, -45, 35, -26, -31, -54, -31, -11, -70, 41, -85, -82, -69, 35, 11, -28, -97, 53, -1, -96, 94, 124, 125, -7, -80, -99, -87, -108, 35, -52, 51, 48, -61, -86, -12, 60, 85, -69, -123, -100, -104, 1, 76, -106, -94, -26, -88, 78, 79, 98, 95, -60, -12, -21, -76, -102, -99, 53, 125, -82, 75, -89, -115, -54, 54, -84, -98, -122, -59, 88, -39, 42, 34, 10, -10, -63, 10, 72, -20, 54, -99, 10, -6, 49, 116, 16, -102, 52, -14, -73, -64, 14, 112, -109, -84, -104, 37, 84, 117, -81, 40, 52, 65, -30]]
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:18:59:340]EQ check OK - anbxj.Crypto_ByteArray.hashCode - -538107343 = -538107343
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_1
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_2
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - Timestamp: [19:18:59:341]
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Encrypting [Sym] IV [AES/RAW/256] [B@1ffaf86 - Provider: SunJCE
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Encrypted [Sym] [AES/RAW/256] javax.crypto.SealedObject@1c7696c6 - Provider: SunJCE
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - Send
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - ---------- SEND -----------
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - Sending -> javax.crypto.SealedObject@1c7696c6
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - [19:18:59:342]Sent -> javax.crypto.SealedObject@1c7696c6
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_2
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_3
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - Timestamp: [19:18:59:342]
+     [java] Debug [[19:18:58:043]ROLE_A-SESSION] - Receive
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - Receive
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - [19:18:59:433]Received <- javax.crypto.SealedObject@1e6a3214
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - CHECK # 3.1
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:18:59:433]INV check PERFORMED on anbxj.Crypto_ByteArray
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:18:59:434]INV check OK - anbxj.Crypto_ByteArray.toString - Crypto_ByteArray [bytearray=[44, 90, 39, 38, -13, 38, -94, -27, 45, 87, -121, 76, -5, -89, -27, -27, 48, -73, -87, 52, 123, 18, -101, 3, -48, -88, -117, 125, -8, 7, -108, -3, 59, -8, 65, -105, -105, -58, 47, -96, 113, -122, -3, -83, 38, 90, 56, -102, -85, 38, -13, 14, -60, -71, -119, -52, -1, 31, -95, -116, 39, -37, 100, -101, 37, -86, -51, -59, -13, 82, -50, -72, 30, -75, 10, 8, 36, 95, 82, 12, 91, -60, 127, 108, 115, 31, -46, 42, 79, 64, 33, -103, 34, -126, 15, -6, 48, 67, 55, 15, 7, -31, -86, -12, 41, -128, -28, -85, 120, 44, 86, -73, 100, 95, 47, -23, -73, -113, 59, -33, -63, 113, -118, 15, -104, -125, 42, -83, -112, -13, 16, 10, -121, 44, 15, -113, 78, 124, -109, 6, -36, 88, -123, 124, -2, 32, -29, -22, -41, 39, 111, 97, 21, 98, -108, -52, -65, 85, 71, 106, 110, 113, 53, -84, 76, -15, 4, 5, 107, 43, -17, 112, 70, 75, 31, 69, 78, -27, 99, -23, -95, -68, 17, -68, 65, -87, -4, -77, 104, -109, 50, 66, 109, 92, 80, -88, -40, 50, 116, 86, -82, 123, -79, 115, -13, -3, 32, -53, 62, 32, 84, 60, 126, -115, -74, 23, -5, 124, -69, -32, -111, -51, -119, -95, 71, -6, 18, 121, -28, -49, 62, -21, -54, 97, -67, 125, 67, -8, -9, 76, -93, 113, 46, -42, 46, -120, 96, 30, 43, -72, 26, 41, -34, -109, 101, 34]]
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:18:59:434]INV check OK - anbxj.Crypto_ByteArray.hashCode - -2023656215
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Decrypting [Sym] [AES/RAW/256] javax.crypto.SealedObject@1e6a3214
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Decrypted [Sym] [AES/RAW/256] javax.crypto.SealedObject@1e6a3214
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - CHECK # 3.2
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:18:59:436]INV check PERFORMED on anbxj.Crypto_ByteArray
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:18:59:436]INV check OK - anbxj.Crypto_ByteArray.toString - Crypto_ByteArray [bytearray=[-4, -17, 7, -99, 35, 31, -44, -2, 48, -103, -111, -93, 32, 5, -37, 29, -26, -37, -72, 72, -76, 48, -107, 103, 9, -123, 58, -78, -19, -110, 46, -110, -106, -17, 118, -9, -81, 99, 10, -88, 69, -9, -105, 113, 28, -126, 13, 84, 5, -84, -106, 80, -107, -79, -73, -3, -34, 44, 77, 62, 44, 2, -20, -96, 103, 74, -99, 65, 53, 24, -84, -110, -115, 104, 88, 77, 19, -72, -1, 42, 95, -49, -103, 116, 84, -118, 60, -22, -74, 107, -124, 88, 89, -41, -15, -113, 89, 9, 16, 126, -8, -73, -38, -36, 36, 61, -27, 60, -41, -56, -24, -102, -83, -105, 24, -115, -96, 91, 110, -1, 77, -87, 8, -125, 120, 69, 101, -26, -58, 63, -38, -81, 108, -54, 111, -34, 34, -21, -26, 85, -30, -36, 73, 54, 121, 116, -69, -50, -123, -73, 61, 113, 1, -38, -9, 89, -88, -55, 97, -108, -52, 44, 6, -60, -69, 114, -110, 40, -75, 72, 82, -23, 69, 2, -98, 52, -17, 86, -10, 16, -77, -35, -110, -125, -74, 60, 110, 103, 93, 12, -113, -80, -95, 72, -29, 106, 53, -113, 113, -41, -110, -52, 71, -122, -78, -88, 59, 21, 81, 40, 79, 18, 97, 65, -105, -46, -123, 16, -85, 60, 21, -34, -22, 6, 97, 55, -98, -67, 124, 45, 4, -118, 59, 48, 50, 74, -18, 99, -78, 108, 84, 58, -22, 45, -46, 0, -9, 62, 62, 49, -74, -91, -59, -30, -11, 52]]
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:18:59:436]INV check OK - anbxj.Crypto_ByteArray.hashCode - 1166460249
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_3
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:18:59:436]Session completed: 3/10
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:18:59:436]Session started: 4/10
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_0
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - Timestamp: [19:18:59:437]
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - [19:18:59:437]Nonce - DRBG - Value: [-125, -120, -43, 89, 45, -93, 84, 26, -14, 78, -126, -17, -56, -119, 114, 114, 126, -121, -108, 36, -71, -4, 29, 80, 35, 0, 112, -19, -127, 21, 55, -41, 46, 11, -90, 22, -60, -60, -77, -124, 124, -2, 9, 85, -120, -124, 38, 89, 7, 26, -46, -29, -22, 28, -110, 10, -116, 1, 101, -60, -16, 51, -41, 71, 18, -111, -100, 74, 120, 71, -110, -31, 108, 59, 86, -124, -127, 85, -89, -43, 51, 30, -81, -52, 77, 49, 84, -6, -4, 2, 113, -24, 102, 20, -68, -76, 92, -102, 57, -32, 91, -126, 105, 32, -57, -110, 2, -23, 102, -115, 62, -49, -100, 123, -5, 85, -32, -54, -55, 90, 34, 22, -100, -128, -49, -25, -46, 73, 6, -110, -16, 98, -109, -92, -4, -124, -18, -28, -88, -109, 87, -127, -9, -65, -113, -82, 94, 109, 66, -97, -36, -79, 23, 70, 120, -77, -76, -27, -118, 40, 21, 17, -64, -108, -61, 26, 111, 126, -85, -54, -118, 63, 91, -109, 78, -11, -61, 1, -120, 97, 101, -40, 72, 0, 124, -37, -120, 64, -1, -100, 10, -16, 73, 22, -74, -33, 107, -15, -116, 101, 102, 46, 29, 83, 42, 77, 13, 118, -104, -107, 37, 126, -55, -38, -29, -106, 102, 23, -53, 45, -23, 0, 100, -74, -69, -61, -62, 112, -122, 99, -71, -20, 103, -6, 12, -15, -15, 82, 114, -57, -55, 64, -13, 56, 14, -1, -35, 11, 112, 22, 6, 59, -42, 61, 103, -30]
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - AnBx_Params - size: 2
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - AnBx_Params - hash: 102528276
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - [19:18:59:451]AnBx_Params - params: AnBx_Params [v=[Crypto_ByteArray [bytearray=[116, 97, 103]], Crypto_ByteArray [bytearray=[-125, -120, -43, 89, 45, -93, 84, 26, -14, 78, -126, -17, -56, -119, 114, 114, 126, -121, -108, 36, -71, -4, 29, 80, 35, 0, 112, -19, -127, 21, 55, -41, 46, 11, -90, 22, -60, -60, -77, -124, 124, -2, 9, 85, -120, -124, 38, 89, 7, 26, -46, -29, -22, 28, -110, 10, -116, 1, 101, -60, -16, 51, -41, 71, 18, -111, -100, 74, 120, 71, -110, -31, 108, 59, 86, -124, -127, 85, -89, -43, 51, 30, -81, -52, 77, 49, 84, -6, -4, 2, 113, -24, 102, 20, -68, -76, 92, -102, 57, -32, 91, -126, 105, 32, -57, -110, 2, -23, 102, -115, 62, -49, -100, 123, -5, 85, -32, -54, -55, 90, 34, 22, -100, -128, -49, -25, -46, 73, 6, -110, -16, 98, -109, -92, -4, -124, -18, -28, -88, -109, 87, -127, -9, -65, -113, -82, 94, 109, 66, -97, -36, -79, 23, 70, 120, -77, -76, -27, -118, 40, 21, 17, -64, -108, -61, 26, 111, 126, -85, -54, -118, 63, 91, -109, 78, -11, -61, 1, -120, 97, 101, -40, 72, 0, 124, -37, -120, 64, -1, -100, 10, -16, 73, 22, -74, -33, 107, -15, -116, 101, 102, 46, 29, 83, 42, 77, 13, 118, -104, -107, 37, 126, -55, -38, -29, -106, 102, 23, -53, 45, -23, 0, 100, -74, -69, -61, -62, 112, -122, 99, -71, -20, 103, -6, 12, -15, -15, 82, 114, -57, -55, 64, -13, 56, 14, -1, -35, 11, 112, 22, 6, 59, -42, 61, 103, -30]]]]
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Encrypting [Sym] IV [AES/RAW/256] [B@368247b9 - Provider: SunJCE
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Encrypted [Sym] [AES/RAW/256] javax.crypto.SealedObject@f78a47e - Provider: SunJCE
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - AnBx_Params - size: 2
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - AnBx_Params - hash: -1155407394
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - [19:18:59:457]AnBx_Params - params: AnBx_Params [v=[alice, javax.crypto.SealedObject@f78a47e]]
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - Send
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - ---------- SEND -----------
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - Sending -> AnBx_Params [v=[alice, javax.crypto.SealedObject@f78a47e]]
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - [19:18:59:459]Sent -> AnBx_Params [v=[alice, javax.crypto.SealedObject@f78a47e]]
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_0
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_1
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - Timestamp: [19:18:59:460]
+     [java] Debug [[19:18:58:043]ROLE_A-SESSION] - Receive
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - Receive
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - [19:18:59:580]Received <- javax.crypto.SealedObject@470734c3
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Decrypting [Sym] [AES/RAW/256] javax.crypto.SealedObject@470734c3
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Decrypted [Sym] [AES/RAW/256] javax.crypto.SealedObject@470734c3
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - CHECK # 1.1
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:18:59:587]EQ check PERFORMED on anbxj.Crypto_ByteArray
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Crypto_ByteArray check
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:18:59:588]EQ check OK - anbxj.Crypto_ByteArray.toString - Crypto_ByteArray [bytearray=[-125, -120, -43, 89, 45, -93, 84, 26, -14, 78, -126, -17, -56, -119, 114, 114, 126, -121, -108, 36, -71, -4, 29, 80, 35, 0, 112, -19, -127, 21, 55, -41, 46, 11, -90, 22, -60, -60, -77, -124, 124, -2, 9, 85, -120, -124, 38, 89, 7, 26, -46, -29, -22, 28, -110, 10, -116, 1, 101, -60, -16, 51, -41, 71, 18, -111, -100, 74, 120, 71, -110, -31, 108, 59, 86, -124, -127, 85, -89, -43, 51, 30, -81, -52, 77, 49, 84, -6, -4, 2, 113, -24, 102, 20, -68, -76, 92, -102, 57, -32, 91, -126, 105, 32, -57, -110, 2, -23, 102, -115, 62, -49, -100, 123, -5, 85, -32, -54, -55, 90, 34, 22, -100, -128, -49, -25, -46, 73, 6, -110, -16, 98, -109, -92, -4, -124, -18, -28, -88, -109, 87, -127, -9, -65, -113, -82, 94, 109, 66, -97, -36, -79, 23, 70, 120, -77, -76, -27, -118, 40, 21, 17, -64, -108, -61, 26, 111, 126, -85, -54, -118, 63, 91, -109, 78, -11, -61, 1, -120, 97, 101, -40, 72, 0, 124, -37, -120, 64, -1, -100, 10, -16, 73, 22, -74, -33, 107, -15, -116, 101, 102, 46, 29, 83, 42, 77, 13, 118, -104, -107, 37, 126, -55, -38, -29, -106, 102, 23, -53, 45, -23, 0, 100, -74, -69, -61, -62, 112, -122, 99, -71, -20, 103, -6, 12, -15, -15, 82, 114, -57, -55, 64, -13, 56, 14, -1, -35, 11, 112, 22, 6, 59, -42, 61, 103, -29]] = Crypto_ByteArray [bytearray=[-125, -120, -43, 89, 45, -93, 84, 26, -14, 78, -126, -17, -56, -119, 114, 114, 126, -121, -108, 36, -71, -4, 29, 80, 35, 0, 112, -19, -127, 21, 55, -41, 46, 11, -90, 22, -60, -60, -77, -124, 124, -2, 9, 85, -120, -124, 38, 89, 7, 26, -46, -29, -22, 28, -110, 10, -116, 1, 101, -60, -16, 51, -41, 71, 18, -111, -100, 74, 120, 71, -110, -31, 108, 59, 86, -124, -127, 85, -89, -43, 51, 30, -81, -52, 77, 49, 84, -6, -4, 2, 113, -24, 102, 20, -68, -76, 92, -102, 57, -32, 91, -126, 105, 32, -57, -110, 2, -23, 102, -115, 62, -49, -100, 123, -5, 85, -32, -54, -55, 90, 34, 22, -100, -128, -49, -25, -46, 73, 6, -110, -16, 98, -109, -92, -4, -124, -18, -28, -88, -109, 87, -127, -9, -65, -113, -82, 94, 109, 66, -97, -36, -79, 23, 70, 120, -77, -76, -27, -118, 40, 21, 17, -64, -108, -61, 26, 111, 126, -85, -54, -118, 63, 91, -109, 78, -11, -61, 1, -120, 97, 101, -40, 72, 0, 124, -37, -120, 64, -1, -100, 10, -16, 73, 22, -74, -33, 107, -15, -116, 101, 102, 46, 29, 83, 42, 77, 13, 118, -104, -107, 37, 126, -55, -38, -29, -106, 102, 23, -53, 45, -23, 0, 100, -74, -69, -61, -62, 112, -122, 99, -71, -20, 103, -6, 12, -15, -15, 82, 114, -57, -55, 64, -13, 56, 14, -1, -35, 11, 112, 22, 6, 59, -42, 61, 103, -29]]
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:18:59:588]EQ check OK - anbxj.Crypto_ByteArray.hashCode - 98050637 = 98050637
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_1
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_2
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - Timestamp: [19:18:59:588]
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Encrypting [Sym] IV [AES/RAW/256] [B@2cf3d63b - Provider: SunJCE
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Encrypted [Sym] [AES/RAW/256] javax.crypto.SealedObject@173ed316 - Provider: SunJCE
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - Send
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - ---------- SEND -----------
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - Sending -> javax.crypto.SealedObject@173ed316
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - [19:18:59:591]Sent -> javax.crypto.SealedObject@173ed316
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_2
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_3
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - Timestamp: [19:18:59:591]
+     [java] Debug [[19:18:58:043]ROLE_A-SESSION] - Receive
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - Receive
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - [19:18:59:678]Received <- javax.crypto.SealedObject@17f62e33
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - CHECK # 3.1
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:18:59:679]INV check PERFORMED on anbxj.Crypto_ByteArray
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:18:59:679]INV check OK - anbxj.Crypto_ByteArray.toString - Crypto_ByteArray [bytearray=[87, 35, 30, -103, 120, -90, -6, -87, 88, -71, -86, 77, 19, -25, 105, -116, -11, -92, 92, 100, 25, 65, 62, -58, 34, 29, -79, -17, -1, 39, -85, -95, -41, -67, 1, -7, 93, 56, 34, -104, -33, -60, 1, -16, 76, -58, -46, -65, -106, 64, -94, 64, -14, 23, -8, -15, 18, -48, -98, -25, 17, 44, -100, 65, 4, 55, 23, 19, 82, -111, -75, -5, -12, -74, -7, 76, -71, 123, 4, -53, -106, 51, 45, 95, -90, -47, -2, -73, -72, -24, -19, 61, 86, -26, 32, 62, -15, -32, 120, -115, 42, 102, -112, 42, 50, 105, 12, 113, 31, 100, 49, 89, -43, -27, -114, 96, 124, 73, 108, 7, -90, 9, 110, -123, 93, 33, 48, 104, -35, -32, 102, 101, -46, 38, -83, -56, 77, 17, -85, -76, -22, 116, 96, 37, -101, -82, 27, 119, 14, 59, -34, 57, 57, 49, -26, 19, 99, -26, 57, -43, 12, -105, -70, 5, 83, 76, 44, 47, 20, -126, 90, -101, -1, 25, -65, 94, 29, 90, -10, 94, -13, -58, -91, -104, 74, 23, 53, 11, 46, -46, 8, 87, -66, -72, 115, -46, -25, 35, 27, 22, 38, -15, -15, 125, -105, 22, -1, 23, 116, -44, -41, -86, -83, 5, 60, -60, -59, -99, -63, -51, 105, -25, -59, 38, 70, 39, -52, 51, 3, -2, 67, 8, -110, 63, 119, 26, 39, 66, -121, 55, 100, -66, 100, 114, -68, -100, 9, 64, 88, 96, -64, 61, 84, 31, -125, 110]]
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:18:59:679]INV check OK - anbxj.Crypto_ByteArray.hashCode - -2057287842
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Decrypting [Sym] [AES/RAW/256] javax.crypto.SealedObject@17f62e33
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Decrypted [Sym] [AES/RAW/256] javax.crypto.SealedObject@17f62e33
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - CHECK # 3.2
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:18:59:681]INV check PERFORMED on anbxj.Crypto_ByteArray
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:18:59:681]INV check OK - anbxj.Crypto_ByteArray.toString - Crypto_ByteArray [bytearray=[66, 92, -76, -118, 43, -70, 122, 35, -92, -65, -98, -107, 36, -65, -21, 37, 6, 7, -19, -33, -76, 126, 55, -109, -18, -14, 7, -93, -49, 115, -113, -14, -117, 13, -68, 126, 51, 42, -42, 96, -4, -38, 58, 114, -81, 58, 88, -92, -37, -53, 117, 59, 64, 52, 13, -96, -80, 16, -112, -128, 8, 7, 24, -98, -6, -79, -67, -122, 12, -113, 43, 67, -9, 114, -85, -13, -12, -91, 2, -120, -124, 59, 47, -14, -97, -16, 26, 126, 7, 80, 118, -74, 117, -51, -48, -22, 107, -31, -91, -42, 90, 58, 87, -58, 119, -104, 41, 9, -121, -74, 4, 39, -31, -7, -85, -84, -103, 124, -108, 34, -8, -90, 72, -77, -107, 31, 35, 20, -12, -24, -19, -108, -116, -30, -34, 26, 25, -43, 59, 47, 23, 89, -63, 41, 17, -52, 20, 119, 18, -91, -78, -42, -98, 119, -56, 64, -108, 67, 2, -82, 20, 59, -110, -113, -50, 68, -9, -33, -5, -89, 37, 9, 2, -22, -123, 46, 65, 95, -17, -20, -80, 50, -12, 92, -94, -88, -97, -78, -113, -100, 107, -112, -116, 66, 123, 80, -29, 19, -47, 81, -45, 110, -47, 76, 82, 94, 93, -8, 77, -86, -80, -121, -71, 16, -71, -25, -45, 89, 16, -109, 10, 28, -122, 63, -66, -1, -90, 2, -61, 69, -81, 28, 43, 53, 54, -39, -119, -18, 65, -74, -41, -105, -91, 17, 83, 107, -127, -9, 4, 41, -60, 80, 62, -19, 66, 25]]
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:18:59:681]INV check OK - anbxj.Crypto_ByteArray.hashCode - 91754141
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_3
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:18:59:681]Session completed: 4/10
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:18:59:681]Session started: 5/10
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_0
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - Timestamp: [19:18:59:682]
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - [19:18:59:682]Nonce - DRBG - Value: [-82, -7, -127, -94, -99, 46, 1, -92, -51, 58, 110, 120, 108, 11, -55, 13, 75, -74, 46, -54, -50, -70, -37, 96, -58, 44, 97, 78, -96, -117, -95, 77, -29, -86, 120, -7, 79, -126, 54, -21, -97, -38, 38, 105, -82, 90, -105, -65, -53, -100, 99, 97, -92, -124, 46, -16, -44, -15, 85, 81, 11, -48, 55, -109, -96, -81, -11, -120, -111, 127, -122, -108, 17, -104, -51, -64, 111, 115, -15, 11, 113, -119, 41, -107, -97, -79, -13, 86, 104, 47, -93, 22, -27, -7, 12, 89, -80, -111, -38, -18, 87, 54, 98, -35, 46, 52, 59, -10, 62, -80, -83, -78, 22, 84, 17, 3, 32, 25, 72, -42, 75, -97, 125, 110, 6, -47, 67, 107, -48, -23, 73, 11, 71, 87, -104, -77, -80, 80, -42, -9, -44, 77, 9, -96, -109, -25, -101, -100, -42, -57, 33, -57, 89, 64, 35, -109, 49, 111, -50, 12, 79, -128, 0, 97, 101, -116, 55, -57, -126, 64, -24, 25, 2, 24, 99, 61, -43, -35, -5, 71, 45, -108, -77, -94, -54, -41, -12, 8, -61, 21, 13, 42, 15, -23, -90, -67, 15, 81, -105, 105, 5, 25, 26, 54, 55, 114, 74, -93, -49, -54, 82, 56, 40, -79, -106, -56, -12, -90, -56, 94, 64, -70, -48, -47, -25, -27, 118, 33, 95, 97, -60, -69, 125, 83, 21, 89, -119, -74, 35, 74, -67, 23, 52, -33, 84, -19, -118, 73, 115, 95, 36, 80, 115, -15, 53, -27]
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - AnBx_Params - size: 2
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - AnBx_Params - hash: 104628164
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - [19:18:59:693]AnBx_Params - params: AnBx_Params [v=[Crypto_ByteArray [bytearray=[116, 97, 103]], Crypto_ByteArray [bytearray=[-82, -7, -127, -94, -99, 46, 1, -92, -51, 58, 110, 120, 108, 11, -55, 13, 75, -74, 46, -54, -50, -70, -37, 96, -58, 44, 97, 78, -96, -117, -95, 77, -29, -86, 120, -7, 79, -126, 54, -21, -97, -38, 38, 105, -82, 90, -105, -65, -53, -100, 99, 97, -92, -124, 46, -16, -44, -15, 85, 81, 11, -48, 55, -109, -96, -81, -11, -120, -111, 127, -122, -108, 17, -104, -51, -64, 111, 115, -15, 11, 113, -119, 41, -107, -97, -79, -13, 86, 104, 47, -93, 22, -27, -7, 12, 89, -80, -111, -38, -18, 87, 54, 98, -35, 46, 52, 59, -10, 62, -80, -83, -78, 22, 84, 17, 3, 32, 25, 72, -42, 75, -97, 125, 110, 6, -47, 67, 107, -48, -23, 73, 11, 71, 87, -104, -77, -80, 80, -42, -9, -44, 77, 9, -96, -109, -25, -101, -100, -42, -57, 33, -57, 89, 64, 35, -109, 49, 111, -50, 12, 79, -128, 0, 97, 101, -116, 55, -57, -126, 64, -24, 25, 2, 24, 99, 61, -43, -35, -5, 71, 45, -108, -77, -94, -54, -41, -12, 8, -61, 21, 13, 42, 15, -23, -90, -67, 15, 81, -105, 105, 5, 25, 26, 54, 55, 114, 74, -93, -49, -54, 82, 56, 40, -79, -106, -56, -12, -90, -56, 94, 64, -70, -48, -47, -25, -27, 118, 33, 95, 97, -60, -69, 125, 83, 21, 89, -119, -74, 35, 74, -67, 23, 52, -33, 84, -19, -118, 73, 115, 95, 36, 80, 115, -15, 53, -27]]]]
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Encrypting [Sym] IV [AES/RAW/256] [B@76b1e9b8 - Provider: SunJCE
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Encrypted [Sym] [AES/RAW/256] javax.crypto.SealedObject@1cf6d1be - Provider: SunJCE
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - AnBx_Params - size: 2
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - AnBx_Params - hash: -929034466
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - [19:18:59:696]AnBx_Params - params: AnBx_Params [v=[alice, javax.crypto.SealedObject@1cf6d1be]]
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - Send
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - ---------- SEND -----------
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - Sending -> AnBx_Params [v=[alice, javax.crypto.SealedObject@1cf6d1be]]
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - [19:18:59:697]Sent -> AnBx_Params [v=[alice, javax.crypto.SealedObject@1cf6d1be]]
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_0
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_1
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - Timestamp: [19:18:59:698]
+     [java] Debug [[19:18:58:043]ROLE_A-SESSION] - Receive
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - Receive
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - [19:18:59:822]Received <- javax.crypto.SealedObject@4c60d6e9
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Decrypting [Sym] [AES/RAW/256] javax.crypto.SealedObject@4c60d6e9
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Decrypted [Sym] [AES/RAW/256] javax.crypto.SealedObject@4c60d6e9
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - CHECK # 1.1
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:18:59:831]EQ check PERFORMED on anbxj.Crypto_ByteArray
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Crypto_ByteArray check
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:18:59:831]EQ check OK - anbxj.Crypto_ByteArray.toString - Crypto_ByteArray [bytearray=[-82, -7, -127, -94, -99, 46, 1, -92, -51, 58, 110, 120, 108, 11, -55, 13, 75, -74, 46, -54, -50, -70, -37, 96, -58, 44, 97, 78, -96, -117, -95, 77, -29, -86, 120, -7, 79, -126, 54, -21, -97, -38, 38, 105, -82, 90, -105, -65, -53, -100, 99, 97, -92, -124, 46, -16, -44, -15, 85, 81, 11, -48, 55, -109, -96, -81, -11, -120, -111, 127, -122, -108, 17, -104, -51, -64, 111, 115, -15, 11, 113, -119, 41, -107, -97, -79, -13, 86, 104, 47, -93, 22, -27, -7, 12, 89, -80, -111, -38, -18, 87, 54, 98, -35, 46, 52, 59, -10, 62, -80, -83, -78, 22, 84, 17, 3, 32, 25, 72, -42, 75, -97, 125, 110, 6, -47, 67, 107, -48, -23, 73, 11, 71, 87, -104, -77, -80, 80, -42, -9, -44, 77, 9, -96, -109, -25, -101, -100, -42, -57, 33, -57, 89, 64, 35, -109, 49, 111, -50, 12, 79, -128, 0, 97, 101, -116, 55, -57, -126, 64, -24, 25, 2, 24, 99, 61, -43, -35, -5, 71, 45, -108, -77, -94, -54, -41, -12, 8, -61, 21, 13, 42, 15, -23, -90, -67, 15, 81, -105, 105, 5, 25, 26, 54, 55, 114, 74, -93, -49, -54, 82, 56, 40, -79, -106, -56, -12, -90, -56, 94, 64, -70, -48, -47, -25, -27, 118, 33, 95, 97, -60, -69, 125, 83, 21, 89, -119, -74, 35, 74, -67, 23, 52, -33, 84, -19, -118, 73, 115, 95, 36, 80, 115, -15, 53, -26]] = Crypto_ByteArray [bytearray=[-82, -7, -127, -94, -99, 46, 1, -92, -51, 58, 110, 120, 108, 11, -55, 13, 75, -74, 46, -54, -50, -70, -37, 96, -58, 44, 97, 78, -96, -117, -95, 77, -29, -86, 120, -7, 79, -126, 54, -21, -97, -38, 38, 105, -82, 90, -105, -65, -53, -100, 99, 97, -92, -124, 46, -16, -44, -15, 85, 81, 11, -48, 55, -109, -96, -81, -11, -120, -111, 127, -122, -108, 17, -104, -51, -64, 111, 115, -15, 11, 113, -119, 41, -107, -97, -79, -13, 86, 104, 47, -93, 22, -27, -7, 12, 89, -80, -111, -38, -18, 87, 54, 98, -35, 46, 52, 59, -10, 62, -80, -83, -78, 22, 84, 17, 3, 32, 25, 72, -42, 75, -97, 125, 110, 6, -47, 67, 107, -48, -23, 73, 11, 71, 87, -104, -77, -80, 80, -42, -9, -44, 77, 9, -96, -109, -25, -101, -100, -42, -57, 33, -57, 89, 64, 35, -109, 49, 111, -50, 12, 79, -128, 0, 97, 101, -116, 55, -57, -126, 64, -24, 25, 2, 24, 99, 61, -43, -35, -5, 71, 45, -108, -77, -94, -54, -41, -12, 8, -61, 21, 13, 42, 15, -23, -90, -67, 15, 81, -105, 105, 5, 25, 26, 54, 55, 114, 74, -93, -49, -54, 82, 56, 40, -79, -106, -56, -12, -90, -56, 94, 64, -70, -48, -47, -25, -27, 118, 33, 95, 97, -60, -69, 125, 83, 21, 89, -119, -74, 35, 74, -67, 23, 52, -33, 84, -19, -118, 73, 115, 95, 36, 80, 115, -15, 53, -26]]
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:18:59:831]EQ check OK - anbxj.Crypto_ByteArray.hashCode - 100150525 = 100150525
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_1
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_2
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - Timestamp: [19:18:59:832]
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Encrypting [Sym] IV [AES/RAW/256] [B@15043a2f - Provider: SunJCE
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Encrypted [Sym] [AES/RAW/256] javax.crypto.SealedObject@4b29d1d2 - Provider: SunJCE
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - Send
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - ---------- SEND -----------
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - Sending -> javax.crypto.SealedObject@4b29d1d2
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - [19:18:59:833]Sent -> javax.crypto.SealedObject@4b29d1d2
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_2
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_3
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - Timestamp: [19:18:59:834]
+     [java] Debug [[19:18:58:043]ROLE_A-SESSION] - Receive
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - Receive
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - [19:18:59:922]Received <- javax.crypto.SealedObject@d737b89
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - CHECK # 3.1
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:18:59:922]INV check PERFORMED on anbxj.Crypto_ByteArray
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:18:59:923]INV check OK - anbxj.Crypto_ByteArray.toString - Crypto_ByteArray [bytearray=[-108, -16, -62, 17, -85, -84, 110, 30, -103, -8, 125, -55, -101, -54, -81, -31, -101, 62, 15, 88, 10, -21, 75, -13, -126, -89, -81, -90, 38, 75, -119, 115, -117, 46, -107, -72, 91, 21, 13, -100, -88, 77, -107, -106, 32, -26, 42, 25, 120, -121, 58, -30, 38, 54, -88, -75, 125, -20, -44, 16, 76, 37, -12, 119, 98, 53, 1, -41, 76, -22, -64, -26, 52, -45, -91, -110, 118, -7, -46, 96, 17, -121, 107, 99, -17, -28, -127, -41, 42, -46, 20, 42, -13, 5, -95, -49, 118, -127, 110, 23, 100, -72, -81, -61, 65, 116, 22, -100, 100, 89, 21, 64, 7, 20, 10, -49, -52, 83, 117, -65, 60, -15, -8, -29, -42, 75, 93, 94, 44, -44, 61, -124, 71, 109, -96, 4, -108, -98, 116, 32, 34, 65, -41, 78, 18, -111, 71, 104, -94, -63, 112, 90, 16, -117, -34, -25, 101, -99, -56, -110, 56, 41, -80, 107, 75, 12, 6, 62, -120, -61, 80, 3, 84, -38, -117, -88, 127, 78, 78, 59, 61, -57, -67, -72, 63, 121, -54, 49, -55, 105, -3, -114, 39, -127, 31, 78, 7, 71, 23, 6, 40, -90, 14, -19, 69, 8, -80, 17, -30, 71, 31, -71, -23, 12, -59, -10, -44, 77, -110, 50, -42, 45, -23, -103, -101, 96, -5, -30, -74, -15, 11, 55, 26, 105, -68, -128, -43, -70, 34, -97, 32, 52, 63, 93, 64, -93, -46, 20, -39, -64, 74, -91, -92, -50, 9, -126]]
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:18:59:923]INV check OK - anbxj.Crypto_ByteArray.hashCode - -1511911127
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Decrypting [Sym] [AES/RAW/256] javax.crypto.SealedObject@d737b89
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Decrypted [Sym] [AES/RAW/256] javax.crypto.SealedObject@d737b89
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - CHECK # 3.2
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:18:59:924]INV check PERFORMED on anbxj.Crypto_ByteArray
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:18:59:924]INV check OK - anbxj.Crypto_ByteArray.toString - Crypto_ByteArray [bytearray=[-57, 35, 5, -3, 9, 82, 123, -116, -32, -33, 41, 95, 29, -13, 97, 98, 22, -25, 27, 49, 104, 118, -42, -99, 109, 12, 31, 114, -114, 111, -32, -110, -42, -14, -9, -79, 26, 44, 93, -37, -95, -80, 50, 6, -3, -104, 49, -2, -57, -104, 6, -99, -93, 61, -59, -98, -32, -14, -23, -58, 11, -63, 114, -124, -76, 35, -37, -105, -111, -61, -58, 35, 21, 59, -24, -68, -11, 45, -100, -53, -71, 70, -34, -18, 98, 49, -93, -38, 31, 36, 76, 100, -57, 106, -111, 27, 95, -65, 76, -91, -100, 67, -56, 46, -125, -39, 32, -84, 93, 18, -126, -78, -92, -21, 110, -25, -66, 35, -58, -120, -120, -19, -49, -52, 123, -118, -109, 60, 34, -42, 50, -108, -13, 77, -94, -97, -87, 66, -42, -118, 99, 106, -16, -119, -38, 84, 20, 73, 20, 55, -3, 50, -52, -16, 111, 11, 102, -6, -128, -91, -59, -73, 12, -13, -54, 81, -69, -64, -10, -120, 52, 65, 64, 88, -91, -117, 61, 94, -44, -58, 105, 0, -86, -93, 74, 62, -71, 48, 12, 67, -13, -4, 81, 94, -23, -60, 106, 93, -1, 87, 18, -45, -36, -79, -124, 68, 9, 31, 42, 126, 38, -74, 12, -101, 75, -78, -100, -97, 77, -23, -89, 66, 106, -74, -16, 107, -121, 7, 117, -101, 5, 42, 53, -104, 56, -85, -14, -120, -67, 29, 65, -52, -16, 26, 8, 35, -68, 11, 21, -51, 95, 39, -86, 119, -95, -100]]
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:18:59:924]INV check OK - anbxj.Crypto_ByteArray.hashCode - -2135478410
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_3
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:18:59:924]Session completed: 5/10
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:18:59:925]Session started: 6/10
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_0
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - Timestamp: [19:18:59:925]
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - [19:18:59:925]Nonce - DRBG - Value: [-26, -124, -48, -39, -24, -3, -80, 98, 90, 52, 18, 46, 25, -79, -22, 10, 39, -92, 95, 114, 94, 125, 86, -29, -41, 101, 12, -86, -44, 112, 95, 11, -59, 73, -43, 7, 115, 77, -6, 88, 78, -84, -54, 67, 125, -107, -122, 90, 65, -98, -94, 81, 14, -4, 81, 36, -77, 74, -21, -122, 107, -3, 49, 13, 101, -98, 76, 49, 66, 5, 24, -55, 76, 70, -91, 124, 124, 76, 25, -97, 119, 105, -97, 48, 102, 43, -73, 53, -46, -30, 122, 93, -37, 107, -10, 87, -3, -27, -123, -74, 52, -94, -22, 124, -19, -36, -16, -5, -127, -65, 51, 91, 33, 114, 85, -60, -30, 69, -98, 2, 95, -82, -106, -109, 23, 94, -103, 18, -5, -118, 79, 60, 61, 61, 71, -91, -4, -128, -63, 28, -126, -1, 119, -53, -11, -17, -95, -27, 25, 59, 58, -25, 96, -16, -68, 66, 113, -86, 98, -12, -128, 5, 67, 105, 52, -8, 88, 69, 21, -101, -4, 53, -93, 76, -114, -63, 27, -47, -12, 114, -88, -3, 1, 88, -22, 44, -6, -78, -45, -26, 65, -87, -117, -68, 47, -70, 64, -79, 111, -53, 69, -58, -41, 1, 70, -34, 16, -93, 102, 10, -55, 51, -81, 61, -35, -37, 8, 113, 100, -119, 110, -76, -57, 63, 112, 24, 34, 114, 74, 75, 76, -85, -70, -17, 34, 30, -128, -78, 86, 8, 97, 48, -89, -117, -81, 90, 105, -37, -82, -126, -7, 60, -35, 77, -66, -8]
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - AnBx_Params - size: 2
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - AnBx_Params - hash: 1954104008
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - [19:18:59:939]AnBx_Params - params: AnBx_Params [v=[Crypto_ByteArray [bytearray=[116, 97, 103]], Crypto_ByteArray [bytearray=[-26, -124, -48, -39, -24, -3, -80, 98, 90, 52, 18, 46, 25, -79, -22, 10, 39, -92, 95, 114, 94, 125, 86, -29, -41, 101, 12, -86, -44, 112, 95, 11, -59, 73, -43, 7, 115, 77, -6, 88, 78, -84, -54, 67, 125, -107, -122, 90, 65, -98, -94, 81, 14, -4, 81, 36, -77, 74, -21, -122, 107, -3, 49, 13, 101, -98, 76, 49, 66, 5, 24, -55, 76, 70, -91, 124, 124, 76, 25, -97, 119, 105, -97, 48, 102, 43, -73, 53, -46, -30, 122, 93, -37, 107, -10, 87, -3, -27, -123, -74, 52, -94, -22, 124, -19, -36, -16, -5, -127, -65, 51, 91, 33, 114, 85, -60, -30, 69, -98, 2, 95, -82, -106, -109, 23, 94, -103, 18, -5, -118, 79, 60, 61, 61, 71, -91, -4, -128, -63, 28, -126, -1, 119, -53, -11, -17, -95, -27, 25, 59, 58, -25, 96, -16, -68, 66, 113, -86, 98, -12, -128, 5, 67, 105, 52, -8, 88, 69, 21, -101, -4, 53, -93, 76, -114, -63, 27, -47, -12, 114, -88, -3, 1, 88, -22, 44, -6, -78, -45, -26, 65, -87, -117, -68, 47, -70, 64, -79, 111, -53, 69, -58, -41, 1, 70, -34, 16, -93, 102, 10, -55, 51, -81, 61, -35, -37, 8, 113, 100, -119, 110, -76, -57, 63, 112, 24, 34, 114, 74, 75, 76, -85, -70, -17, 34, 30, -128, -78, 86, 8, 97, 48, -89, -117, -81, 90, 105, -37, -82, -126, -7, 60, -35, 77, -66, -8]]]]
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Encrypting [Sym] IV [AES/RAW/256] [B@8519cb4 - Provider: SunJCE
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Encrypted [Sym] [AES/RAW/256] javax.crypto.SealedObject@16eb3ea3 - Provider: SunJCE
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - AnBx_Params - size: 2
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - AnBx_Params - hash: -1030456317
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - [19:18:59:944]AnBx_Params - params: AnBx_Params [v=[alice, javax.crypto.SealedObject@16eb3ea3]]
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - Send
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - ---------- SEND -----------
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - Sending -> AnBx_Params [v=[alice, javax.crypto.SealedObject@16eb3ea3]]
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - [19:18:59:946]Sent -> AnBx_Params [v=[alice, javax.crypto.SealedObject@16eb3ea3]]
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_0
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_1
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - Timestamp: [19:18:59:946]
+     [java] Debug [[19:18:58:043]ROLE_A-SESSION] - Receive
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - Receive
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - [19:19:00:074]Received <- javax.crypto.SealedObject@6e9a5ed8
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Decrypting [Sym] [AES/RAW/256] javax.crypto.SealedObject@6e9a5ed8
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Decrypted [Sym] [AES/RAW/256] javax.crypto.SealedObject@6e9a5ed8
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - CHECK # 1.1
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:19:00:078]EQ check PERFORMED on anbxj.Crypto_ByteArray
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Crypto_ByteArray check
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:19:00:078]EQ check OK - anbxj.Crypto_ByteArray.toString - Crypto_ByteArray [bytearray=[-26, -124, -48, -39, -24, -3, -80, 98, 90, 52, 18, 46, 25, -79, -22, 10, 39, -92, 95, 114, 94, 125, 86, -29, -41, 101, 12, -86, -44, 112, 95, 11, -59, 73, -43, 7, 115, 77, -6, 88, 78, -84, -54, 67, 125, -107, -122, 90, 65, -98, -94, 81, 14, -4, 81, 36, -77, 74, -21, -122, 107, -3, 49, 13, 101, -98, 76, 49, 66, 5, 24, -55, 76, 70, -91, 124, 124, 76, 25, -97, 119, 105, -97, 48, 102, 43, -73, 53, -46, -30, 122, 93, -37, 107, -10, 87, -3, -27, -123, -74, 52, -94, -22, 124, -19, -36, -16, -5, -127, -65, 51, 91, 33, 114, 85, -60, -30, 69, -98, 2, 95, -82, -106, -109, 23, 94, -103, 18, -5, -118, 79, 60, 61, 61, 71, -91, -4, -128, -63, 28, -126, -1, 119, -53, -11, -17, -95, -27, 25, 59, 58, -25, 96, -16, -68, 66, 113, -86, 98, -12, -128, 5, 67, 105, 52, -8, 88, 69, 21, -101, -4, 53, -93, 76, -114, -63, 27, -47, -12, 114, -88, -3, 1, 88, -22, 44, -6, -78, -45, -26, 65, -87, -117, -68, 47, -70, 64, -79, 111, -53, 69, -58, -41, 1, 70, -34, 16, -93, 102, 10, -55, 51, -81, 61, -35, -37, 8, 113, 100, -119, 110, -76, -57, 63, 112, 24, 34, 114, 74, 75, 76, -85, -70, -17, 34, 30, -128, -78, 86, 8, 97, 48, -89, -117, -81, 90, 105, -37, -82, -126, -7, 60, -35, 77, -66, -7]] = Crypto_ByteArray [bytearray=[-26, -124, -48, -39, -24, -3, -80, 98, 90, 52, 18, 46, 25, -79, -22, 10, 39, -92, 95, 114, 94, 125, 86, -29, -41, 101, 12, -86, -44, 112, 95, 11, -59, 73, -43, 7, 115, 77, -6, 88, 78, -84, -54, 67, 125, -107, -122, 90, 65, -98, -94, 81, 14, -4, 81, 36, -77, 74, -21, -122, 107, -3, 49, 13, 101, -98, 76, 49, 66, 5, 24, -55, 76, 70, -91, 124, 124, 76, 25, -97, 119, 105, -97, 48, 102, 43, -73, 53, -46, -30, 122, 93, -37, 107, -10, 87, -3, -27, -123, -74, 52, -94, -22, 124, -19, -36, -16, -5, -127, -65, 51, 91, 33, 114, 85, -60, -30, 69, -98, 2, 95, -82, -106, -109, 23, 94, -103, 18, -5, -118, 79, 60, 61, 61, 71, -91, -4, -128, -63, 28, -126, -1, 119, -53, -11, -17, -95, -27, 25, 59, 58, -25, 96, -16, -68, 66, 113, -86, 98, -12, -128, 5, 67, 105, 52, -8, 88, 69, 21, -101, -4, 53, -93, 76, -114, -63, 27, -47, -12, 114, -88, -3, 1, 88, -22, 44, -6, -78, -45, -26, 65, -87, -117, -68, 47, -70, 64, -79, 111, -53, 69, -58, -41, 1, 70, -34, 16, -93, 102, 10, -55, 51, -81, 61, -35, -37, 8, 113, 100, -119, 110, -76, -57, 63, 112, 24, 34, 114, 74, 75, 76, -85, -70, -17, 34, 30, -128, -78, 86, 8, 97, 48, -89, -117, -81, 90, 105, -37, -82, -126, -7, 60, -35, 77, -66, -7]]
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:19:00:078]EQ check OK - anbxj.Crypto_ByteArray.hashCode - 1949626369 = 1949626369
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_1
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_2
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - Timestamp: [19:19:00:078]
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Encrypting [Sym] IV [AES/RAW/256] [B@7e057f43 - Provider: SunJCE
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Encrypted [Sym] [AES/RAW/256] javax.crypto.SealedObject@6440112d - Provider: SunJCE
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - Send
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - ---------- SEND -----------
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - Sending -> javax.crypto.SealedObject@6440112d
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - [19:19:00:078]Sent -> javax.crypto.SealedObject@6440112d
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_2
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_3
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - Timestamp: [19:19:00:079]
+     [java] Debug [[19:18:58:043]ROLE_A-SESSION] - Receive
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - Receive
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - [19:19:00:166]Received <- javax.crypto.SealedObject@7c137fd5
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - CHECK # 3.1
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:19:00:166]INV check PERFORMED on anbxj.Crypto_ByteArray
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:19:00:167]INV check OK - anbxj.Crypto_ByteArray.toString - Crypto_ByteArray [bytearray=[-17, 43, -115, 74, -24, 41, 22, 22, -35, -47, 106, -16, -80, 75, -95, -80, 96, 22, 110, 17, -117, 50, -125, -107, -110, 89, 6, 114, -6, -127, -69, 69, 76, -75, -53, 29, -40, -17, 117, 47, 1, -82, 30, 48, 9, 31, 11, 60, -6, -24, -65, 37, 2, 62, 58, 13, -35, -98, 35, -107, -111, -6, -16, -62, -34, 0, 115, 46, 47, -102, -67, -14, 65, -104, -104, 100, -43, -107, -12, 17, 68, -89, -124, 19, 47, 63, -78, -87, 116, -90, 34, 0, 30, 8, -107, -78, 123, -108, 101, 81, 52, -117, 12, -66, -101, -69, 23, 117, 5, -15, 73, 107, 62, -11, -25, 29, 94, -26, -71, -113, -72, -94, 35, -110, 84, -68, -48, -113, -113, 37, 20, 106, -51, -33, 72, 5, 3, -94, 40, 14, -59, 110, -27, 19, -83, 84, 125, -98, 30, 23, -101, 102, -69, 20, -85, 7, -51, 107, -111, 10, -52, 26, -73, 41, -65, -43, 7, 80, 116, 122, -124, -125, -28, -37, -92, 73, 116, -44, 38, -70, 58, -98, 30, -63, 11, 8, -57, -117, 92, -46, 125, -128, 89, 92, 3, -75, -58, -3, 109, 73, -33, 113, -4, -113, -8, 9, -4, -77, -55, 13, -84, 77, -24, 28, 44, 60, -91, 14, -109, 49, -34, -84, -53, -59, 16, 102, -21, 16, -66, -3, 58, 64, 25, -13, -22, -39, 3, -86, 91, -105, -82, -9, -63, 121, -102, 66, -62, 57, -33, -27, 69, -121, 119, 116, 112, -82]]
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:19:00:167]INV check OK - anbxj.Crypto_ByteArray.hashCode - 581991049
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Decrypting [Sym] [AES/RAW/256] javax.crypto.SealedObject@7c137fd5
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Decrypted [Sym] [AES/RAW/256] javax.crypto.SealedObject@7c137fd5
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - CHECK # 3.2
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:19:00:168]INV check PERFORMED on anbxj.Crypto_ByteArray
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:19:00:168]INV check OK - anbxj.Crypto_ByteArray.toString - Crypto_ByteArray [bytearray=[92, -52, 109, -82, -97, 57, -27, 29, -70, 7, 28, 1, 8, 95, -22, 48, 120, 92, -99, 48, 15, 122, -14, 98, 25, -36, 27, 65, 44, 87, -55, -4, 21, -20, -32, -95, -86, -122, 113, -119, 73, 27, -104, 4, -75, 18, -68, -31, -71, -49, 19, 58, 46, -67, 31, 66, -49, 123, -18, -22, -110, 17, -119, -106, 50, -17, -38, 66, -32, 12, 107, -85, -12, 100, 21, -89, -9, -56, -67, -56, 83, -73, 65, -79, -105, 116, -80, 103, 104, 118, -85, -36, -91, -125, 45, -24, -20, -9, -77, -10, -41, 79, 101, -33, 52, 113, -33, 19, -126, -19, 122, -22, 62, 85, 62, 71, 57, 28, 69, 90, 10, -118, -106, 59, -18, -35, -46, -49, 50, 101, 58, -77, 76, 110, -43, 85, 113, -92, 102, 119, -106, -79, -79, -126, -103, 41, 105, -40, 24, 73, -89, -36, -73, 80, -31, -104, 24, 31, -54, 56, -29, -44, 46, 38, -19, -35, 25, 44, 61, -80, 51, 30, 23, -95, -41, 84, -52, 0, 75, 98, -88, 26, 62, 116, -62, -110, -97, 96, -97, -54, -61, -36, 121, -90, 93, 5, 127, 24, 78, 60, -7, -49, -118, -122, 91, -71, 52, 53, 39, 39, -27, 10, 121, -30, 44, 102, -95, 81, -37, -112, 44, 7, 83, -51, -75, 83, 83, -111, 29, -97, 80, -118, 42, -65, 91, -25, -49, -48, -94, -92, -69, 18, -2, -85, -12, 75, -88, -2, -26, -77, -84, 30, 40, -19, -26, 56]]
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:19:00:168]INV check OK - anbxj.Crypto_ByteArray.hashCode - -981487983
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_3
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:19:00:168]Session completed: 6/10
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:19:00:169]Session started: 7/10
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_0
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - Timestamp: [19:19:00:169]
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - [19:19:00:169]Nonce - DRBG - Value: [-54, -72, -117, -79, -4, 52, -121, 22, -56, -123, 55, 38, 96, 93, -111, 88, -128, 116, -47, 78, 52, 23, -60, 86, -117, -11, 78, -85, 55, 48, -100, -61, 110, 36, 112, -94, -120, 67, 81, -29, 6, 2, 0, 88, -35, 120, 81, 67, 7, -22, 0, -15, 2, 11, 66, -50, -38, -65, -50, 50, -29, 121, 2, 111, -86, -116, -90, -62, 107, 4, -46, 68, -22, 94, 24, -1, -85, -17, -54, -46, 34, 114, 93, 71, 126, -49, 92, -80, -67, 19, 8, -47, 14, -29, 46, -121, 3, -124, 37, 81, -31, 9, 115, 37, 114, 103, -44, -35, -102, -85, -82, -19, 109, 72, 99, -70, -101, 54, 17, -12, -89, -103, 86, 105, -88, 80, 20, -57, 64, 121, -21, -24, 70, 4, 109, -124, 123, -82, 42, -48, -123, -126, 79, -102, -111, -77, 91, 8, 54, -60, 21, -72, 15, -76, 6, 119, 77, -81, 92, 62, -16, -62, 12, 78, -64, 110, 118, -76, 46, 32, -18, 66, -105, -6, -64, -118, -128, -99, 110, 53, 28, 95, 48, -73, -109, -99, 50, 31, -76, 81, -16, -105, -108, 38, 75, -103, -45, -58, -44, 10, 36, 2, -33, -76, 28, -41, 70, -11, 33, 37, -33, 25, -58, -110, 41, -63, -103, -26, 48, 74, 59, 38, 70, 116, -21, 122, 57, 119, 117, -106, -114, 126, -1, -47, 14, -123, -5, -114, -112, -20, -120, 15, -75, 36, -117, -18, 23, 87, 11, -86, -73, -28, 78, 70, 33, -2]
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - AnBx_Params - size: 2
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - AnBx_Params - hash: 77807942
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - [19:19:00:182]AnBx_Params - params: AnBx_Params [v=[Crypto_ByteArray [bytearray=[116, 97, 103]], Crypto_ByteArray [bytearray=[-54, -72, -117, -79, -4, 52, -121, 22, -56, -123, 55, 38, 96, 93, -111, 88, -128, 116, -47, 78, 52, 23, -60, 86, -117, -11, 78, -85, 55, 48, -100, -61, 110, 36, 112, -94, -120, 67, 81, -29, 6, 2, 0, 88, -35, 120, 81, 67, 7, -22, 0, -15, 2, 11, 66, -50, -38, -65, -50, 50, -29, 121, 2, 111, -86, -116, -90, -62, 107, 4, -46, 68, -22, 94, 24, -1, -85, -17, -54, -46, 34, 114, 93, 71, 126, -49, 92, -80, -67, 19, 8, -47, 14, -29, 46, -121, 3, -124, 37, 81, -31, 9, 115, 37, 114, 103, -44, -35, -102, -85, -82, -19, 109, 72, 99, -70, -101, 54, 17, -12, -89, -103, 86, 105, -88, 80, 20, -57, 64, 121, -21, -24, 70, 4, 109, -124, 123, -82, 42, -48, -123, -126, 79, -102, -111, -77, 91, 8, 54, -60, 21, -72, 15, -76, 6, 119, 77, -81, 92, 62, -16, -62, 12, 78, -64, 110, 118, -76, 46, 32, -18, 66, -105, -6, -64, -118, -128, -99, 110, 53, 28, 95, 48, -73, -109, -99, 50, 31, -76, 81, -16, -105, -108, 38, 75, -103, -45, -58, -44, 10, 36, 2, -33, -76, 28, -41, 70, -11, 33, 37, -33, 25, -58, -110, 41, -63, -103, -26, 48, 74, 59, 38, 70, 116, -21, 122, 57, 119, 117, -106, -114, 126, -1, -47, 14, -123, -5, -114, -112, -20, -120, 15, -75, 36, -117, -18, 23, 87, 11, -86, -73, -28, 78, 70, 33, -2]]]]
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Encrypting [Sym] IV [AES/RAW/256] [B@183ec003 - Provider: SunJCE
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Encrypted [Sym] [AES/RAW/256] javax.crypto.SealedObject@2b30a42c - Provider: SunJCE
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - AnBx_Params - size: 2
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - AnBx_Params - hash: -690364020
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - [19:19:00:185]AnBx_Params - params: AnBx_Params [v=[alice, javax.crypto.SealedObject@2b30a42c]]
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - Send
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - ---------- SEND -----------
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - Sending -> AnBx_Params [v=[alice, javax.crypto.SealedObject@2b30a42c]]
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - [19:19:00:186]Sent -> AnBx_Params [v=[alice, javax.crypto.SealedObject@2b30a42c]]
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_0
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_1
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - Timestamp: [19:19:00:186]
+     [java] Debug [[19:18:58:043]ROLE_A-SESSION] - Receive
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - Receive
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - [19:19:00:310]Received <- javax.crypto.SealedObject@533bda92
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Decrypting [Sym] [AES/RAW/256] javax.crypto.SealedObject@533bda92
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Decrypted [Sym] [AES/RAW/256] javax.crypto.SealedObject@533bda92
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - CHECK # 1.1
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:19:00:317]EQ check PERFORMED on anbxj.Crypto_ByteArray
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Crypto_ByteArray check
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:19:00:317]EQ check OK - anbxj.Crypto_ByteArray.toString - Crypto_ByteArray [bytearray=[-54, -72, -117, -79, -4, 52, -121, 22, -56, -123, 55, 38, 96, 93, -111, 88, -128, 116, -47, 78, 52, 23, -60, 86, -117, -11, 78, -85, 55, 48, -100, -61, 110, 36, 112, -94, -120, 67, 81, -29, 6, 2, 0, 88, -35, 120, 81, 67, 7, -22, 0, -15, 2, 11, 66, -50, -38, -65, -50, 50, -29, 121, 2, 111, -86, -116, -90, -62, 107, 4, -46, 68, -22, 94, 24, -1, -85, -17, -54, -46, 34, 114, 93, 71, 126, -49, 92, -80, -67, 19, 8, -47, 14, -29, 46, -121, 3, -124, 37, 81, -31, 9, 115, 37, 114, 103, -44, -35, -102, -85, -82, -19, 109, 72, 99, -70, -101, 54, 17, -12, -89, -103, 86, 105, -88, 80, 20, -57, 64, 121, -21, -24, 70, 4, 109, -124, 123, -82, 42, -48, -123, -126, 79, -102, -111, -77, 91, 8, 54, -60, 21, -72, 15, -76, 6, 119, 77, -81, 92, 62, -16, -62, 12, 78, -64, 110, 118, -76, 46, 32, -18, 66, -105, -6, -64, -118, -128, -99, 110, 53, 28, 95, 48, -73, -109, -99, 50, 31, -76, 81, -16, -105, -108, 38, 75, -103, -45, -58, -44, 10, 36, 2, -33, -76, 28, -41, 70, -11, 33, 37, -33, 25, -58, -110, 41, -63, -103, -26, 48, 74, 59, 38, 70, 116, -21, 122, 57, 119, 117, -106, -114, 126, -1, -47, 14, -123, -5, -114, -112, -20, -120, 15, -75, 36, -117, -18, 23, 87, 11, -86, -73, -28, 78, 70, 33, -1]] = Crypto_ByteArray [bytearray=[-54, -72, -117, -79, -4, 52, -121, 22, -56, -123, 55, 38, 96, 93, -111, 88, -128, 116, -47, 78, 52, 23, -60, 86, -117, -11, 78, -85, 55, 48, -100, -61, 110, 36, 112, -94, -120, 67, 81, -29, 6, 2, 0, 88, -35, 120, 81, 67, 7, -22, 0, -15, 2, 11, 66, -50, -38, -65, -50, 50, -29, 121, 2, 111, -86, -116, -90, -62, 107, 4, -46, 68, -22, 94, 24, -1, -85, -17, -54, -46, 34, 114, 93, 71, 126, -49, 92, -80, -67, 19, 8, -47, 14, -29, 46, -121, 3, -124, 37, 81, -31, 9, 115, 37, 114, 103, -44, -35, -102, -85, -82, -19, 109, 72, 99, -70, -101, 54, 17, -12, -89, -103, 86, 105, -88, 80, 20, -57, 64, 121, -21, -24, 70, 4, 109, -124, 123, -82, 42, -48, -123, -126, 79, -102, -111, -77, 91, 8, 54, -60, 21, -72, 15, -76, 6, 119, 77, -81, 92, 62, -16, -62, 12, 78, -64, 110, 118, -76, 46, 32, -18, 66, -105, -6, -64, -118, -128, -99, 110, 53, 28, 95, 48, -73, -109, -99, 50, 31, -76, 81, -16, -105, -108, 38, 75, -103, -45, -58, -44, 10, 36, 2, -33, -76, 28, -41, 70, -11, 33, 37, -33, 25, -58, -110, 41, -63, -103, -26, 48, 74, 59, 38, 70, 116, -21, 122, 57, 119, 117, -106, -114, 126, -1, -47, 14, -123, -5, -114, -112, -20, -120, 15, -75, 36, -117, -18, 23, 87, 11, -86, -73, -28, 78, 70, 33, -1]]
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:19:00:317]EQ check OK - anbxj.Crypto_ByteArray.hashCode - 73330303 = 73330303
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_1
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_2
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - Timestamp: [19:19:00:318]
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Encrypting [Sym] IV [AES/RAW/256] [B@304bb45b - Provider: SunJCE
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Encrypted [Sym] [AES/RAW/256] javax.crypto.SealedObject@28dcca0c - Provider: SunJCE
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - Send
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - ---------- SEND -----------
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - Sending -> javax.crypto.SealedObject@28dcca0c
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - [19:19:00:319]Sent -> javax.crypto.SealedObject@28dcca0c
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_2
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_3
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - Timestamp: [19:19:00:319]
+     [java] Debug [[19:18:58:043]ROLE_A-SESSION] - Receive
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - Receive
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - [19:19:00:410]Received <- javax.crypto.SealedObject@4c163e3
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - CHECK # 3.1
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:19:00:410]INV check PERFORMED on anbxj.Crypto_ByteArray
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:19:00:410]INV check OK - anbxj.Crypto_ByteArray.toString - Crypto_ByteArray [bytearray=[-61, 48, 13, 36, -77, -19, 68, 22, -111, -10, -35, -36, 6, 127, -84, 93, -6, -77, -119, 113, 62, -55, -40, -81, -41, 22, -87, -50, -44, -31, 85, -109, 9, -38, -80, -83, 37, 7, -18, 123, 40, 74, 88, -124, -7, 62, 67, 66, -92, 93, 92, -109, -52, 13, -25, -69, 75, -97, -104, -16, -72, -24, -101, 111, 89, -97, -38, -120, -90, -126, -117, 54, 54, 3, 60, 69, 95, 19, -5, 2, 80, 27, -59, -1, -116, -96, 71, 54, 47, 110, -91, 111, -53, 60, -11, -7, -42, 12, -4, -38, 62, -71, -110, 21, 102, -97, 39, -14, 99, 98, -54, -87, 31, -107, -41, -49, -97, -50, -91, 93, -42, 17, -29, -120, -52, 74, 68, -58, 20, 68, -74, -97, -80, -84, -42, 1, 124, -18, 9, 21, 31, 33, 12, -65, -84, -5, -35, -37, 81, -99, -82, 27, -104, -65, -61, -120, 99, -87, -37, 34, 19, -45, -127, -43, 3, -14, -33, -23, -3, -86, -74, 107, -13, 110, -100, -8, 7, -47, -15, 11, 54, 51, 86, -53, 2, -66, -95, 20, -31, -24, -38, 40, 33, -101, -41, -56, -31, 62, -94, 11, -25, 8, -121, 44, -110, 117, 37, 95, 38, -32, -31, 54, -86, -72, 18, -45, -46, -33, -88, -90, 88, -105, 96, -92, -93, -31, -50, -72, -82, 21, -3, -59, 122, -30, -62, -9, 22, 114, -39, -10, -41, 88, -60, -21, 125, 45, -112, 94, 67, 103, 38, -93, -62, 72, 104, -44]]
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:19:00:410]INV check OK - anbxj.Crypto_ByteArray.hashCode - -260786745
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Decrypting [Sym] [AES/RAW/256] javax.crypto.SealedObject@4c163e3
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Decrypted [Sym] [AES/RAW/256] javax.crypto.SealedObject@4c163e3
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - CHECK # 3.2
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:19:00:412]INV check PERFORMED on anbxj.Crypto_ByteArray
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:19:00:412]INV check OK - anbxj.Crypto_ByteArray.toString - Crypto_ByteArray [bytearray=[-111, -19, 16, 4, 58, -35, 49, 80, 59, -20, -51, -4, 57, 2, -31, 76, 3, 123, 70, 55, 104, 21, 71, 126, 108, 69, 37, 78, -109, -98, -128, -29, -37, 97, 70, -80, -125, 24, -60, -44, -6, 127, 101, -119, 32, -71, -73, -55, 33, 92, -62, -33, 89, -56, 123, -47, 72, 98, 107, -109, 81, 120, 87, -2, -40, -112, -81, -61, 67, 57, 76, -31, 127, 41, -88, -73, -47, -82, -64, 30, 25, -42, -28, 0, 64, 96, -43, -42, -74, 86, 53, -54, -46, -59, 25, -92, -58, -100, -87, -67, 68, -60, -13, -63, -77, 70, 27, -97, -104, 122, -78, 22, -114, 6, 60, 120, -52, -17, 77, -95, 104, -39, -78, 27, -31, -33, 83, 73, 120, -13, -58, -99, -38, 127, -92, 16, 65, 102, -44, -92, 72, 74, 104, -19, -60, 120, -50, -126, 25, -90, 115, 65, 6, -105, -67, -81, -64, -109, 100, 35, -27, 61, -116, -99, 11, 13, -27, 111, 77, 42, 67, -33, 93, 38, 36, 55, 12, -33, 73, 114, -79, -24, 1, 92, 124, 13, -120, 67, -126, 124, -55, -128, -120, -30, -94, -43, -74, -63, 64, 40, -112, 106, 26, -87, -4, -40, 51, 71, 2, 24, 36, 29, -86, 70, -22, -15, 70, -74, 121, 24, 64, -94, -28, 64, -116, 18, 12, 59, -91, 111, -37, -16, 102, -29, 121, 72, 114, -41, -110, -81, -47, 1, -95, 65, 68, 118, -116, -118, -82, 26, -42, -46, -75, -35, 25, -77]]
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:19:00:412]INV check OK - anbxj.Crypto_ByteArray.hashCode - 1548298959
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_3
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:19:00:412]Session completed: 7/10
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:19:00:412]Session started: 8/10
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_0
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - Timestamp: [19:19:00:412]
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - [19:19:00:413]Nonce - DRBG - Value: [-71, -79, -12, 93, -118, 119, -76, 58, 27, -61, -113, -113, -43, 61, -101, 92, 32, 93, 112, 106, 33, 25, -22, 80, -117, -78, -91, 112, 48, -53, -115, -107, 42, 82, -89, 46, 43, 73, -66, -82, 64, -124, 25, -6, 120, -64, -76, -6, -42, 41, -72, 20, -58, 95, -31, -43, 5, 33, -25, 43, 10, -35, -106, 23, 69, -111, 4, -114, -83, -119, 35, -14, 40, -73, 87, 108, 66, -47, -63, -14, 104, 45, 112, -30, 95, -103, -47, -125, -40, -6, 105, 27, -83, -87, 30, 39, -16, 113, -114, -117, 115, -93, 68, -95, -114, -14, 58, -72, 37, 80, -62, -117, -35, -114, -32, -123, -19, -15, 71, -38, 73, -64, 66, -5, 78, 56, -29, 59, -80, 73, 96, -45, 6, 30, 94, 111, 22, 81, -40, -126, -121, -26, 1, -25, 92, 46, 13, -75, 74, 55, 35, -57, 110, 115, -48, -55, -75, 53, 44, -5, 69, 102, -126, 78, 99, -21, 70, 64, 124, -36, -128, -100, 30, -69, 15, 19, 0, -4, 0, -91, -87, 77, 98, 54, 39, -48, -42, -23, 107, 1, -100, -108, 112, -101, -12, 73, -22, 99, -38, 121, -35, -116, -123, -99, 67, 4, 84, 117, -33, 86, 44, -58, 3, 125, -1, 62, -83, 39, 71, 49, -36, -86, -115, -68, -44, 66, -68, -5, -59, -103, 15, 72, 99, -42, -122, -23, -93, -41, 32, -59, 86, -72, 116, -115, -94, -114, -74, 76, -23, 40, 102, 125, 84, 104, -111, 103]
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - AnBx_Params - size: 2
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - AnBx_Params - hash: -1158462256
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - [19:19:00:426]AnBx_Params - params: AnBx_Params [v=[Crypto_ByteArray [bytearray=[116, 97, 103]], Crypto_ByteArray [bytearray=[-71, -79, -12, 93, -118, 119, -76, 58, 27, -61, -113, -113, -43, 61, -101, 92, 32, 93, 112, 106, 33, 25, -22, 80, -117, -78, -91, 112, 48, -53, -115, -107, 42, 82, -89, 46, 43, 73, -66, -82, 64, -124, 25, -6, 120, -64, -76, -6, -42, 41, -72, 20, -58, 95, -31, -43, 5, 33, -25, 43, 10, -35, -106, 23, 69, -111, 4, -114, -83, -119, 35, -14, 40, -73, 87, 108, 66, -47, -63, -14, 104, 45, 112, -30, 95, -103, -47, -125, -40, -6, 105, 27, -83, -87, 30, 39, -16, 113, -114, -117, 115, -93, 68, -95, -114, -14, 58, -72, 37, 80, -62, -117, -35, -114, -32, -123, -19, -15, 71, -38, 73, -64, 66, -5, 78, 56, -29, 59, -80, 73, 96, -45, 6, 30, 94, 111, 22, 81, -40, -126, -121, -26, 1, -25, 92, 46, 13, -75, 74, 55, 35, -57, 110, 115, -48, -55, -75, 53, 44, -5, 69, 102, -126, 78, 99, -21, 70, 64, 124, -36, -128, -100, 30, -69, 15, 19, 0, -4, 0, -91, -87, 77, 98, 54, 39, -48, -42, -23, 107, 1, -100, -108, 112, -101, -12, 73, -22, 99, -38, 121, -35, -116, -123, -99, 67, 4, 84, 117, -33, 86, 44, -58, 3, 125, -1, 62, -83, 39, 71, 49, -36, -86, -115, -68, -44, 66, -68, -5, -59, -103, 15, 72, 99, -42, -122, -23, -93, -41, 32, -59, 86, -72, 116, -115, -94, -114, -74, 76, -23, 40, 102, 125, 84, 104, -111, 103]]]]
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Encrypting [Sym] IV [AES/RAW/256] [B@4a8355dd - Provider: SunJCE
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Encrypted [Sym] [AES/RAW/256] javax.crypto.SealedObject@5965d37 - Provider: SunJCE
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - AnBx_Params - size: 2
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - AnBx_Params - hash: -1321231721
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - [19:19:00:431]AnBx_Params - params: AnBx_Params [v=[alice, javax.crypto.SealedObject@5965d37]]
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - Send
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - ---------- SEND -----------
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - Sending -> AnBx_Params [v=[alice, javax.crypto.SealedObject@5965d37]]
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - [19:19:00:435]Sent -> AnBx_Params [v=[alice, javax.crypto.SealedObject@5965d37]]
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_0
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_1
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - Timestamp: [19:19:00:435]
+     [java] Debug [[19:18:58:043]ROLE_A-SESSION] - Receive
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - Receive
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - [19:19:00:560]Received <- javax.crypto.SealedObject@26abb146
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Decrypting [Sym] [AES/RAW/256] javax.crypto.SealedObject@26abb146
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Decrypted [Sym] [AES/RAW/256] javax.crypto.SealedObject@26abb146
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - CHECK # 1.1
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:19:00:563]EQ check PERFORMED on anbxj.Crypto_ByteArray
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Crypto_ByteArray check
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:19:00:563]EQ check OK - anbxj.Crypto_ByteArray.toString - Crypto_ByteArray [bytearray=[-71, -79, -12, 93, -118, 119, -76, 58, 27, -61, -113, -113, -43, 61, -101, 92, 32, 93, 112, 106, 33, 25, -22, 80, -117, -78, -91, 112, 48, -53, -115, -107, 42, 82, -89, 46, 43, 73, -66, -82, 64, -124, 25, -6, 120, -64, -76, -6, -42, 41, -72, 20, -58, 95, -31, -43, 5, 33, -25, 43, 10, -35, -106, 23, 69, -111, 4, -114, -83, -119, 35, -14, 40, -73, 87, 108, 66, -47, -63, -14, 104, 45, 112, -30, 95, -103, -47, -125, -40, -6, 105, 27, -83, -87, 30, 39, -16, 113, -114, -117, 115, -93, 68, -95, -114, -14, 58, -72, 37, 80, -62, -117, -35, -114, -32, -123, -19, -15, 71, -38, 73, -64, 66, -5, 78, 56, -29, 59, -80, 73, 96, -45, 6, 30, 94, 111, 22, 81, -40, -126, -121, -26, 1, -25, 92, 46, 13, -75, 74, 55, 35, -57, 110, 115, -48, -55, -75, 53, 44, -5, 69, 102, -126, 78, 99, -21, 70, 64, 124, -36, -128, -100, 30, -69, 15, 19, 0, -4, 0, -91, -87, 77, 98, 54, 39, -48, -42, -23, 107, 1, -100, -108, 112, -101, -12, 73, -22, 99, -38, 121, -35, -116, -123, -99, 67, 4, 84, 117, -33, 86, 44, -58, 3, 125, -1, 62, -83, 39, 71, 49, -36, -86, -115, -68, -44, 66, -68, -5, -59, -103, 15, 72, 99, -42, -122, -23, -93, -41, 32, -59, 86, -72, 116, -115, -94, -114, -74, 76, -23, 40, 102, 125, 84, 104, -111, 104]] = Crypto_ByteArray [bytearray=[-71, -79, -12, 93, -118, 119, -76, 58, 27, -61, -113, -113, -43, 61, -101, 92, 32, 93, 112, 106, 33, 25, -22, 80, -117, -78, -91, 112, 48, -53, -115, -107, 42, 82, -89, 46, 43, 73, -66, -82, 64, -124, 25, -6, 120, -64, -76, -6, -42, 41, -72, 20, -58, 95, -31, -43, 5, 33, -25, 43, 10, -35, -106, 23, 69, -111, 4, -114, -83, -119, 35, -14, 40, -73, 87, 108, 66, -47, -63, -14, 104, 45, 112, -30, 95, -103, -47, -125, -40, -6, 105, 27, -83, -87, 30, 39, -16, 113, -114, -117, 115, -93, 68, -95, -114, -14, 58, -72, 37, 80, -62, -117, -35, -114, -32, -123, -19, -15, 71, -38, 73, -64, 66, -5, 78, 56, -29, 59, -80, 73, 96, -45, 6, 30, 94, 111, 22, 81, -40, -126, -121, -26, 1, -25, 92, 46, 13, -75, 74, 55, 35, -57, 110, 115, -48, -55, -75, 53, 44, -5, 69, 102, -126, 78, 99, -21, 70, 64, 124, -36, -128, -100, 30, -69, 15, 19, 0, -4, 0, -91, -87, 77, 98, 54, 39, -48, -42, -23, 107, 1, -100, -108, 112, -101, -12, 73, -22, 99, -38, 121, -35, -116, -123, -99, 67, 4, 84, 117, -33, 86, 44, -58, 3, 125, -1, 62, -83, 39, 71, 49, -36, -86, -115, -68, -44, 66, -68, -5, -59, -103, 15, 72, 99, -42, -122, -23, -93, -41, 32, -59, 86, -72, 116, -115, -94, -114, -74, 76, -23, 40, 102, 125, 84, 104, -111, 104]]
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:19:00:563]EQ check OK - anbxj.Crypto_ByteArray.hashCode - -1162939895 = -1162939895
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_1
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_2
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - Timestamp: [19:19:00:564]
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Encrypting [Sym] IV [AES/RAW/256] [B@72c8e7b - Provider: SunJCE
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Encrypted [Sym] [AES/RAW/256] javax.crypto.SealedObject@38467116 - Provider: SunJCE
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - Send
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - ---------- SEND -----------
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - Sending -> javax.crypto.SealedObject@38467116
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - [19:19:00:564]Sent -> javax.crypto.SealedObject@38467116
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_2
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_3
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - Timestamp: [19:19:00:564]
+     [java] Debug [[19:18:58:043]ROLE_A-SESSION] - Receive
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - Receive
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - [19:19:00:657]Received <- javax.crypto.SealedObject@5fb759d6
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - CHECK # 3.1
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:19:00:658]INV check PERFORMED on anbxj.Crypto_ByteArray
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:19:00:658]INV check OK - anbxj.Crypto_ByteArray.toString - Crypto_ByteArray [bytearray=[-74, 121, -109, 36, -50, -86, -52, 46, -23, 70, 16, 52, -13, -64, -62, -100, -5, 80, -38, -15, 51, 78, 34, 32, -17, 38, -67, -83, -55, 53, 80, 51, -91, 22, -95, 45, -42, -93, -32, 103, -77, -89, 10, -105, 76, 67, 88, -47, 92, 108, 48, -62, 124, -111, -100, 85, 0, 103, -44, 27, -106, -116, -38, 52, 31, -121, -99, -116, 34, 85, -24, -27, 78, 1, -44, 83, -69, 109, 26, 112, -88, 55, -119, -17, -120, 24, -80, -10, -41, 98, -118, 52, 120, 11, 12, 74, 3, 115, -6, 109, -23, -96, 95, 50, 74, 5, -2, 0, 82, 75, 50, 105, 2, -55, 103, 19, -83, -69, 8, -13, -13, -69, -54, -50, 51, -6, -34, -49, 76, 101, -36, -5, 83, -79, 71, -56, 2, -91, -105, -16, -105, 44, -28, -74, 98, 24, -26, -11, 74, -105, -14, -53, -63, -91, -107, 69, -4, 78, -24, 100, 122, -21, -119, -42, 8, 86, -67, 68, -89, 107, 127, -82, -30, -64, 73, -49, -23, -112, 116, 18, -101, 13, 62, 8, 4, -73, 71, -96, -28, -102, -19, 60, 116, 35, -50, 125, 91, -64, -39, 89, -73, 28, -29, -103, -125, 19, -17, -122, -20, 58, 46, 0, 70, 26, -26, 50, -115, 116, -41, -34, -109, 47, -127, -41, -60, 49, -25, -87, 27, 74, 49, -53, 122, 78, -125, -96, -35, 75, 56, 38, -40, -22, 20, -72, -110, -33, 66, -116, -88, 32, 117, 42, 54, -52, -100, -12]]
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:19:00:658]INV check OK - anbxj.Crypto_ByteArray.hashCode - 1890071094
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Decrypting [Sym] [AES/RAW/256] javax.crypto.SealedObject@5fb759d6
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Decrypted [Sym] [AES/RAW/256] javax.crypto.SealedObject@5fb759d6
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - CHECK # 3.2
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:19:00:659]INV check PERFORMED on anbxj.Crypto_ByteArray
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:19:00:659]INV check OK - anbxj.Crypto_ByteArray.toString - Crypto_ByteArray [bytearray=[51, -65, 60, 12, -2, 9, 77, -104, 55, 59, 127, 37, 74, -75, 100, -103, -52, -53, -43, 51, 28, -114, -108, 96, -83, 112, -105, 115, -26, 107, 73, -115, 69, 114, -77, 60, -12, -121, 53, 58, 22, 115, 5, -45, -76, -45, 127, 31, 8, 65, -43, -57, -118, -90, -109, -15, 12, 50, 100, 0, -80, -45, 79, -7, 124, -7, 75, 84, 53, -107, 82, 54, -71, 103, -18, 97, 58, -87, 5, 100, -99, 104, 2, 81, -115, -86, 10, 3, 98, -126, 51, 40, -98, -31, -30, -51, -42, -20, -43, 27, 117, -37, -7, -91, -7, 79, -61, -52, -122, -115, 91, 21, -110, -117, 65, -118, -3, -102, 106, 36, -97, 14, -29, 127, 102, -40, 7, -9, 40, 121, -114, 22, 45, -23, -74, 62, -9, -101, -67, 100, -71, 14, 59, 76, -87, -118, -54, 14, -125, -70, -7, 84, -53, 31, -44, 53, -117, 110, 100, -6, 123, 86, -88, 43, -60, 50, 69, 106, 56, -40, 5, 59, 64, -41, -4, 62, -112, 115, -25, -94, 96, -51, -96, -44, 38, -18, 53, 12, -58, 1, -34, -33, 85, 1, -70, 59, 92, -49, -48, 21, -20, -46, 123, 38, -43, 75, 72, 79, 72, 57, 93, 45, 7, 125, 50, -110, 60, -93, 86, -87, -76, 86, 44, 82, -28, -112, 115, -43, 62, 50, -46, -95, -12, -124, -4, -96, -26, 13, 67, -65, 126, 12, 63, -49, 122, 74, 109, 108, -47, -33, -35, -82, 44, -119, 117, 52]]
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:19:00:659]INV check OK - anbxj.Crypto_ByteArray.hashCode - 1944663540
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_3
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:19:00:660]Session completed: 8/10
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:19:00:660]Session started: 9/10
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_0
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - Timestamp: [19:19:00:660]
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - [19:19:00:660]Nonce - DRBG - Value: [-83, -56, -120, 96, 119, -113, 102, 74, 37, -1, -114, -110, -17, 30, 23, -29, 37, 44, -110, -25, -96, -107, 106, 91, -113, -55, 117, -46, 15, -41, -106, 117, 14, -37, 68, -99, 81, 69, 32, -55, 90, 96, -14, 121, -42, 115, 81, 89, -59, -98, 123, 113, -59, 68, 0, -83, -6, -41, -70, -27, 8, -83, 69, 68, 41, 117, -121, -34, 19, -22, -92, -46, 45, 63, 71, 17, -101, 40, 63, -4, 106, -5, -19, -8, -53, -92, 44, 36, -128, -49, -58, 122, 46, -10, -36, 75, -102, -53, 39, 73, -56, -47, -119, 12, 112, 63, -16, 10, -105, -3, -105, 80, -54, -127, 15, -125, -54, 71, 99, -5, 91, -73, -79, 13, 50, -6, 94, 5, -25, -88, 45, -26, -80, 54, 74, 20, -88, 109, -29, 102, 121, 9, -36, 68, -37, -35, -72, 104, -77, 107, 59, 37, 50, 9, -57, 40, -108, -2, -94, -36, -120, 51, -10, 71, -5, 126, 69, -100, 94, 31, 115, -26, -15, 108, 101, -48, -99, 36, -12, -59, 70, -125, -51, 126, 31, 73, -32, -46, -61, 126, 98, 5, -8, -65, 87, 11, 86, 31, 71, 18, 85, -68, 68, 2, -30, 94, 36, 49, 100, 36, 67, 62, -25, 52, -67, -120, 97, 100, 120, 79, 74, 87, 93, -87, 55, -37, -43, -108, 119, -101, -73, -104, 0, -72, -14, -87, -99, -68, -2, -76, 100, -24, 4, 92, 117, 10, -49, -111, -25, -106, -48, 19, 48, -49, 102, -7]
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - AnBx_Params - size: 2
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - AnBx_Params - hash: 1597702815
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - [19:19:00:673]AnBx_Params - params: AnBx_Params [v=[Crypto_ByteArray [bytearray=[116, 97, 103]], Crypto_ByteArray [bytearray=[-83, -56, -120, 96, 119, -113, 102, 74, 37, -1, -114, -110, -17, 30, 23, -29, 37, 44, -110, -25, -96, -107, 106, 91, -113, -55, 117, -46, 15, -41, -106, 117, 14, -37, 68, -99, 81, 69, 32, -55, 90, 96, -14, 121, -42, 115, 81, 89, -59, -98, 123, 113, -59, 68, 0, -83, -6, -41, -70, -27, 8, -83, 69, 68, 41, 117, -121, -34, 19, -22, -92, -46, 45, 63, 71, 17, -101, 40, 63, -4, 106, -5, -19, -8, -53, -92, 44, 36, -128, -49, -58, 122, 46, -10, -36, 75, -102, -53, 39, 73, -56, -47, -119, 12, 112, 63, -16, 10, -105, -3, -105, 80, -54, -127, 15, -125, -54, 71, 99, -5, 91, -73, -79, 13, 50, -6, 94, 5, -25, -88, 45, -26, -80, 54, 74, 20, -88, 109, -29, 102, 121, 9, -36, 68, -37, -35, -72, 104, -77, 107, 59, 37, 50, 9, -57, 40, -108, -2, -94, -36, -120, 51, -10, 71, -5, 126, 69, -100, 94, 31, 115, -26, -15, 108, 101, -48, -99, 36, -12, -59, 70, -125, -51, 126, 31, 73, -32, -46, -61, 126, 98, 5, -8, -65, 87, 11, 86, 31, 71, 18, 85, -68, 68, 2, -30, 94, 36, 49, 100, 36, 67, 62, -25, 52, -67, -120, 97, 100, 120, 79, 74, 87, 93, -87, 55, -37, -43, -108, 119, -101, -73, -104, 0, -72, -14, -87, -99, -68, -2, -76, 100, -24, 4, 92, 117, 10, -49, -111, -25, -106, -48, 19, 48, -49, 102, -7]]]]
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Encrypting [Sym] IV [AES/RAW/256] [B@4b8d604b - Provider: SunJCE
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Encrypted [Sym] [AES/RAW/256] javax.crypto.SealedObject@5884a914 - Provider: SunJCE
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - AnBx_Params - size: 2
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - AnBx_Params - hash: 70116980
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - [19:19:00:677]AnBx_Params - params: AnBx_Params [v=[alice, javax.crypto.SealedObject@5884a914]]
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - Send
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - ---------- SEND -----------
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - Sending -> AnBx_Params [v=[alice, javax.crypto.SealedObject@5884a914]]
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - [19:19:00:679]Sent -> AnBx_Params [v=[alice, javax.crypto.SealedObject@5884a914]]
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_0
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_1
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - Timestamp: [19:19:00:679]
+     [java] Debug [[19:18:58:043]ROLE_A-SESSION] - Receive
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - Receive
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - [19:19:00:804]Received <- javax.crypto.SealedObject@20b2475a
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Decrypting [Sym] [AES/RAW/256] javax.crypto.SealedObject@20b2475a
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Decrypted [Sym] [AES/RAW/256] javax.crypto.SealedObject@20b2475a
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - CHECK # 1.1
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:19:00:810]EQ check PERFORMED on anbxj.Crypto_ByteArray
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Crypto_ByteArray check
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:19:00:810]EQ check OK - anbxj.Crypto_ByteArray.toString - Crypto_ByteArray [bytearray=[-83, -56, -120, 96, 119, -113, 102, 74, 37, -1, -114, -110, -17, 30, 23, -29, 37, 44, -110, -25, -96, -107, 106, 91, -113, -55, 117, -46, 15, -41, -106, 117, 14, -37, 68, -99, 81, 69, 32, -55, 90, 96, -14, 121, -42, 115, 81, 89, -59, -98, 123, 113, -59, 68, 0, -83, -6, -41, -70, -27, 8, -83, 69, 68, 41, 117, -121, -34, 19, -22, -92, -46, 45, 63, 71, 17, -101, 40, 63, -4, 106, -5, -19, -8, -53, -92, 44, 36, -128, -49, -58, 122, 46, -10, -36, 75, -102, -53, 39, 73, -56, -47, -119, 12, 112, 63, -16, 10, -105, -3, -105, 80, -54, -127, 15, -125, -54, 71, 99, -5, 91, -73, -79, 13, 50, -6, 94, 5, -25, -88, 45, -26, -80, 54, 74, 20, -88, 109, -29, 102, 121, 9, -36, 68, -37, -35, -72, 104, -77, 107, 59, 37, 50, 9, -57, 40, -108, -2, -94, -36, -120, 51, -10, 71, -5, 126, 69, -100, 94, 31, 115, -26, -15, 108, 101, -48, -99, 36, -12, -59, 70, -125, -51, 126, 31, 73, -32, -46, -61, 126, 98, 5, -8, -65, 87, 11, 86, 31, 71, 18, 85, -68, 68, 2, -30, 94, 36, 49, 100, 36, 67, 62, -25, 52, -67, -120, 97, 100, 120, 79, 74, 87, 93, -87, 55, -37, -43, -108, 119, -101, -73, -104, 0, -72, -14, -87, -99, -68, -2, -76, 100, -24, 4, 92, 117, 10, -49, -111, -25, -106, -48, 19, 48, -49, 102, -6]] = Crypto_ByteArray [bytearray=[-83, -56, -120, 96, 119, -113, 102, 74, 37, -1, -114, -110, -17, 30, 23, -29, 37, 44, -110, -25, -96, -107, 106, 91, -113, -55, 117, -46, 15, -41, -106, 117, 14, -37, 68, -99, 81, 69, 32, -55, 90, 96, -14, 121, -42, 115, 81, 89, -59, -98, 123, 113, -59, 68, 0, -83, -6, -41, -70, -27, 8, -83, 69, 68, 41, 117, -121, -34, 19, -22, -92, -46, 45, 63, 71, 17, -101, 40, 63, -4, 106, -5, -19, -8, -53, -92, 44, 36, -128, -49, -58, 122, 46, -10, -36, 75, -102, -53, 39, 73, -56, -47, -119, 12, 112, 63, -16, 10, -105, -3, -105, 80, -54, -127, 15, -125, -54, 71, 99, -5, 91, -73, -79, 13, 50, -6, 94, 5, -25, -88, 45, -26, -80, 54, 74, 20, -88, 109, -29, 102, 121, 9, -36, 68, -37, -35, -72, 104, -77, 107, 59, 37, 50, 9, -57, 40, -108, -2, -94, -36, -120, 51, -10, 71, -5, 126, 69, -100, 94, 31, 115, -26, -15, 108, 101, -48, -99, 36, -12, -59, 70, -125, -51, 126, 31, 73, -32, -46, -61, 126, 98, 5, -8, -65, 87, 11, 86, 31, 71, 18, 85, -68, 68, 2, -30, 94, 36, 49, 100, 36, 67, 62, -25, 52, -67, -120, 97, 100, 120, 79, 74, 87, 93, -87, 55, -37, -43, -108, 119, -101, -73, -104, 0, -72, -14, -87, -99, -68, -2, -76, 100, -24, 4, 92, 117, 10, -49, -111, -25, -106, -48, 19, 48, -49, 102, -6]]
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:19:00:810]EQ check OK - anbxj.Crypto_ByteArray.hashCode - 1593225176 = 1593225176
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_1
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_2
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - Timestamp: [19:19:00:811]
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Encrypting [Sym] IV [AES/RAW/256] [B@7857fe2 - Provider: SunJCE
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Encrypted [Sym] [AES/RAW/256] javax.crypto.SealedObject@29d80d2b - Provider: SunJCE
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - Send
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - ---------- SEND -----------
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - Sending -> javax.crypto.SealedObject@29d80d2b
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - [19:19:00:812]Sent -> javax.crypto.SealedObject@29d80d2b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_2
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_3
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - Timestamp: [19:19:00:812]
+     [java] Debug [[19:18:58:043]ROLE_A-SESSION] - Receive
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - Receive
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - [19:19:00:904]Received <- javax.crypto.SealedObject@4f0f2942
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - CHECK # 3.1
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:19:00:904]INV check PERFORMED on anbxj.Crypto_ByteArray
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:19:00:905]INV check OK - anbxj.Crypto_ByteArray.toString - Crypto_ByteArray [bytearray=[-72, 76, -113, 4, -57, 0, -38, -1, -123, -46, 15, -123, -57, 114, -43, -109, 89, -26, -10, -17, -107, -75, 102, 59, 82, 117, -67, -35, 75, 67, -120, -120, 92, 78, -84, -68, -38, 37, -80, -91, -72, -18, -3, 85, 23, -19, 52, 102, 38, -113, -42, 70, 41, 27, -76, 70, 112, -14, -69, 44, 83, -108, -42, 95, 30, -30, 104, -118, 84, 45, -83, 47, 3, 121, 71, 77, -115, -44, -3, -21, -20, 65, -75, -118, 119, -120, -103, -119, -33, 115, 79, 56, 45, -127, -12, 40, -2, -126, 86, 6, -4, -33, 105, -83, 8, -22, 17, -120, 46, -115, 61, 33, 82, 27, 121, 19, 3, 116, -113, -51, 97, 87, 1, 45, 25, 9, 27, -14, -14, -100, 121, -79, -14, 1, 18, 44, 77, -79, 22, 94, 27, -103, -45, 122, -123, 54, 98, -2, 122, -100, 109, 72, -125, -32, 33, -69, -98, 53, 49, -47, -106, 9, -17, 33, 37, 123, 122, -8, -84, 8, -105, 67, 22, -119, 57, -8, -110, -68, -46, 17, -127, -61, -55, -63, -77, -6, -34, 33, -124, 5, -94, 0, 13, -3, -18, -69, -93, 102, 89, -34, 92, 76, 48, 90, -66, -7, 29, 117, -121, 0, -109, 62, 69, -40, -25, -58, 54, -13, -119, 102, -14, 42, -10, -125, -32, -84, -61, -128, 69, 39, 103, -127, 51, -123, -44, 73, 102, 124, 14, -35, -4, 50, 42, 49, -13, 119, -62, 27, 120, 43, 24, 45, -29, -78, -127, 39]]
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:19:00:905]INV check OK - anbxj.Crypto_ByteArray.hashCode - -1319022415
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Decrypting [Sym] [AES/RAW/256] javax.crypto.SealedObject@4f0f2942
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Decrypted [Sym] [AES/RAW/256] javax.crypto.SealedObject@4f0f2942
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - CHECK # 3.2
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:19:00:906]INV check PERFORMED on anbxj.Crypto_ByteArray
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:19:00:906]INV check OK - anbxj.Crypto_ByteArray.toString - Crypto_ByteArray [bytearray=[-112, 42, 108, 85, 34, 21, -22, 95, 32, -17, 9, -9, -10, 69, -9, -61, 66, 68, -39, 92, -121, 7, -82, 33, 13, 32, 38, -47, 3, -82, -123, -81, 48, -107, 114, -114, -99, 8, 107, -51, -46, 87, -111, -84, 2, 3, 41, 114, -2, 30, 117, -38, 20, 114, 97, 54, -112, 114, -75, -4, -38, 77, 38, 79, -95, -64, 23, -44, 108, -88, -41, -4, 31, -74, -104, 36, -99, 119, -60, -36, -96, -123, 31, 127, 102, 65, -4, -42, 75, 19, -72, 80, -122, 48, 33, 101, 106, -112, 101, 102, -45, -96, -23, -123, -108, -105, 85, 119, -14, -112, -9, 81, 22, 78, 101, 31, -71, 68, 23, -32, 45, -126, -109, 39, -104, 28, -1, 116, -15, -37, -128, -50, -15, 9, -61, -27, -86, -20, 67, -41, 27, 8, -20, 18, 4, 2, 8, -75, 112, 127, 16, 76, -122, -44, -113, 95, -49, 71, 107, 85, 47, -47, 57, -122, -78, 64, 40, -82, -38, -67, 127, 96, -7, 62, -34, 50, 53, 126, -115, -7, -11, -53, -31, 75, 37, 63, 13, 67, 57, 34, -89, 32, -49, -9, -112, 33, -68, 82, 96, 103, -9, 12, 98, -27, 9, 92, 24, -13, -84, 24, 73, -14, -91, -40, -127, 22, 6, 126, 71, 0, 86, 109, -17, -46, -68, -104, -19, -94, -101, 67, -10, -6, -38, 66, -73, 82, 20, -124, 75, -6, -76, -23, -92, -121, 122, 109, -26, 68, 123, -8, 66, 102, 78, 53, 104, -123]]
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:19:00:906]INV check OK - anbxj.Crypto_ByteArray.hashCode - 484244667
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_3
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:19:00:907]Session completed: 9/10
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:19:00:907]Session started: 10/10
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_0
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - Timestamp: [19:19:00:907]
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - [19:19:00:907]Nonce - DRBG - Value: [98, -68, 80, -5, -2, 86, 29, 60, 101, -65, -27, 107, -72, 85, -8, -55, -73, -62, 116, -3, -122, -117, 15, 112, 0, -71, -27, -11, 88, -76, -99, 83, 113, 60, 89, -26, -110, -34, 47, 10, -22, -92, -80, 85, -18, -7, 105, -4, -15, -9, -83, -16, 29, -115, 32, -19, 66, 116, 5, -82, 26, 28, 72, 52, -6, 123, -103, -70, -23, 100, 26, 11, 38, -8, -41, -23, -89, 82, 122, -54, 75, 11, 20, 85, -54, 19, 75, -16, 116, -90, 62, -17, 96, -33, 119, -20, -128, -123, -86, -4, -81, -22, -31, 3, -122, 88, 83, -115, -56, 107, 106, -82, -52, -78, 31, -59, -112, -2, 29, 50, 79, 110, -31, -30, 35, -86, -79, 52, 52, 85, -51, -59, 103, -127, -34, 27, 19, -117, 98, 71, -44, -8, 92, -22, 100, -110, 43, -32, -5, -50, -106, 121, -127, -9, 40, -101, -14, -62, -35, 28, 78, 108, -126, -88, -104, -78, 33, 5, 82, -28, 50, 30, -57, -67, -31, -1, -33, 21, 36, 3, -39, 116, 118, -80, 117, 88, -83, 6, -91, 0, 53, -120, -128, 52, 52, -8, 50, 100, 74, 29, 118, 96, 24, 75, 124, -11, 37, 77, 29, -120, -46, -29, 40, 116, 42, 88, -2, 64, 116, 96, 56, -21, 123, 42, -15, 84, -89, 21, 48, 82, -12, 23, 36, 97, 27, -19, 105, 119, -128, 125, -10, 60, -56, 33, 100, -116, -62, 40, -12, -97, -72, 21, 86, -9, -53, -111]
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - AnBx_Params - size: 2
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - AnBx_Params - hash: -1603412086
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - [19:19:00:921]AnBx_Params - params: AnBx_Params [v=[Crypto_ByteArray [bytearray=[116, 97, 103]], Crypto_ByteArray [bytearray=[98, -68, 80, -5, -2, 86, 29, 60, 101, -65, -27, 107, -72, 85, -8, -55, -73, -62, 116, -3, -122, -117, 15, 112, 0, -71, -27, -11, 88, -76, -99, 83, 113, 60, 89, -26, -110, -34, 47, 10, -22, -92, -80, 85, -18, -7, 105, -4, -15, -9, -83, -16, 29, -115, 32, -19, 66, 116, 5, -82, 26, 28, 72, 52, -6, 123, -103, -70, -23, 100, 26, 11, 38, -8, -41, -23, -89, 82, 122, -54, 75, 11, 20, 85, -54, 19, 75, -16, 116, -90, 62, -17, 96, -33, 119, -20, -128, -123, -86, -4, -81, -22, -31, 3, -122, 88, 83, -115, -56, 107, 106, -82, -52, -78, 31, -59, -112, -2, 29, 50, 79, 110, -31, -30, 35, -86, -79, 52, 52, 85, -51, -59, 103, -127, -34, 27, 19, -117, 98, 71, -44, -8, 92, -22, 100, -110, 43, -32, -5, -50, -106, 121, -127, -9, 40, -101, -14, -62, -35, 28, 78, 108, -126, -88, -104, -78, 33, 5, 82, -28, 50, 30, -57, -67, -31, -1, -33, 21, 36, 3, -39, 116, 118, -80, 117, 88, -83, 6, -91, 0, 53, -120, -128, 52, 52, -8, 50, 100, 74, 29, 118, 96, 24, 75, 124, -11, 37, 77, 29, -120, -46, -29, 40, 116, 42, 88, -2, 64, 116, 96, 56, -21, 123, 42, -15, 84, -89, 21, 48, 82, -12, 23, 36, 97, 27, -19, 105, 119, -128, 125, -10, 60, -56, 33, 100, -116, -62, 40, -12, -97, -72, 21, 86, -9, -53, -111]]]]
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Encrypting [Sym] IV [AES/RAW/256] [B@2657d4dd - Provider: SunJCE
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Encrypted [Sym] [AES/RAW/256] javax.crypto.SealedObject@7bbc8656 - Provider: SunJCE
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - AnBx_Params - size: 2
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - AnBx_Params - hash: 660980662
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - [19:19:00:925]AnBx_Params - params: AnBx_Params [v=[alice, javax.crypto.SealedObject@7bbc8656]]
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - Send
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - ---------- SEND -----------
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - Sending -> AnBx_Params [v=[alice, javax.crypto.SealedObject@7bbc8656]]
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - [19:19:00:927]Sent -> AnBx_Params [v=[alice, javax.crypto.SealedObject@7bbc8656]]
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_0
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_1
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - Timestamp: [19:19:00:927]
+     [java] Debug [[19:18:58:043]ROLE_A-SESSION] - Receive
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - Receive
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - [19:19:01:053]Received <- javax.crypto.SealedObject@38145825
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Decrypting [Sym] [AES/RAW/256] javax.crypto.SealedObject@38145825
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Decrypted [Sym] [AES/RAW/256] javax.crypto.SealedObject@38145825
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - CHECK # 1.1
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:19:01:059]EQ check PERFORMED on anbxj.Crypto_ByteArray
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Crypto_ByteArray check
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:19:01:059]EQ check OK - anbxj.Crypto_ByteArray.toString - Crypto_ByteArray [bytearray=[98, -68, 80, -5, -2, 86, 29, 60, 101, -65, -27, 107, -72, 85, -8, -55, -73, -62, 116, -3, -122, -117, 15, 112, 0, -71, -27, -11, 88, -76, -99, 83, 113, 60, 89, -26, -110, -34, 47, 10, -22, -92, -80, 85, -18, -7, 105, -4, -15, -9, -83, -16, 29, -115, 32, -19, 66, 116, 5, -82, 26, 28, 72, 52, -6, 123, -103, -70, -23, 100, 26, 11, 38, -8, -41, -23, -89, 82, 122, -54, 75, 11, 20, 85, -54, 19, 75, -16, 116, -90, 62, -17, 96, -33, 119, -20, -128, -123, -86, -4, -81, -22, -31, 3, -122, 88, 83, -115, -56, 107, 106, -82, -52, -78, 31, -59, -112, -2, 29, 50, 79, 110, -31, -30, 35, -86, -79, 52, 52, 85, -51, -59, 103, -127, -34, 27, 19, -117, 98, 71, -44, -8, 92, -22, 100, -110, 43, -32, -5, -50, -106, 121, -127, -9, 40, -101, -14, -62, -35, 28, 78, 108, -126, -88, -104, -78, 33, 5, 82, -28, 50, 30, -57, -67, -31, -1, -33, 21, 36, 3, -39, 116, 118, -80, 117, 88, -83, 6, -91, 0, 53, -120, -128, 52, 52, -8, 50, 100, 74, 29, 118, 96, 24, 75, 124, -11, 37, 77, 29, -120, -46, -29, 40, 116, 42, 88, -2, 64, 116, 96, 56, -21, 123, 42, -15, 84, -89, 21, 48, 82, -12, 23, 36, 97, 27, -19, 105, 119, -128, 125, -10, 60, -56, 33, 100, -116, -62, 40, -12, -97, -72, 21, 86, -9, -53, -110]] = Crypto_ByteArray [bytearray=[98, -68, 80, -5, -2, 86, 29, 60, 101, -65, -27, 107, -72, 85, -8, -55, -73, -62, 116, -3, -122, -117, 15, 112, 0, -71, -27, -11, 88, -76, -99, 83, 113, 60, 89, -26, -110, -34, 47, 10, -22, -92, -80, 85, -18, -7, 105, -4, -15, -9, -83, -16, 29, -115, 32, -19, 66, 116, 5, -82, 26, 28, 72, 52, -6, 123, -103, -70, -23, 100, 26, 11, 38, -8, -41, -23, -89, 82, 122, -54, 75, 11, 20, 85, -54, 19, 75, -16, 116, -90, 62, -17, 96, -33, 119, -20, -128, -123, -86, -4, -81, -22, -31, 3, -122, 88, 83, -115, -56, 107, 106, -82, -52, -78, 31, -59, -112, -2, 29, 50, 79, 110, -31, -30, 35, -86, -79, 52, 52, 85, -51, -59, 103, -127, -34, 27, 19, -117, 98, 71, -44, -8, 92, -22, 100, -110, 43, -32, -5, -50, -106, 121, -127, -9, 40, -101, -14, -62, -35, 28, 78, 108, -126, -88, -104, -78, 33, 5, 82, -28, 50, 30, -57, -67, -31, -1, -33, 21, 36, 3, -39, 116, 118, -80, 117, 88, -83, 6, -91, 0, 53, -120, -128, 52, 52, -8, 50, 100, 74, 29, 118, 96, 24, 75, 124, -11, 37, 77, 29, -120, -46, -29, 40, 116, 42, 88, -2, 64, 116, 96, 56, -21, 123, 42, -15, 84, -89, 21, 48, 82, -12, 23, 36, 97, 27, -19, 105, 119, -128, 125, -10, 60, -56, 33, 100, -116, -62, 40, -12, -97, -72, 21, 86, -9, -53, -110]]
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:19:01:059]EQ check OK - anbxj.Crypto_ByteArray.hashCode - -1607889725 = -1607889725
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_1
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_2
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - Timestamp: [19:19:01:059]
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Encrypting [Sym] IV [AES/RAW/256] [B@41330d4f - Provider: SunJCE
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Encrypted [Sym] [AES/RAW/256] javax.crypto.SealedObject@24c1b2d2 - Provider: SunJCE
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - Send
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - ---------- SEND -----------
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - Sending -> javax.crypto.SealedObject@24c1b2d2
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - [19:19:01:061]Sent -> javax.crypto.SealedObject@24c1b2d2
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_2
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_3
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - Timestamp: [19:19:01:061]
+     [java] Debug [[19:18:58:043]ROLE_A-SESSION] - Receive
+     [java] Debug [[19:18:58:043]ROLE_A-LANGUAGE] - Receive
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - [19:19:01:148]Received <- javax.crypto.SealedObject@1e4f4a5c
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - CHECK # 3.1
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:19:01:148]INV check PERFORMED on anbxj.Crypto_ByteArray
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:19:01:148]INV check OK - anbxj.Crypto_ByteArray.toString - Crypto_ByteArray [bytearray=[-72, -127, 111, 109, -58, -65, 96, -118, 28, 32, 126, -32, -36, -79, -87, 83, -128, -107, 0, 91, -123, -3, 52, 91, -119, -55, -70, -54, -57, 55, 103, -30, -20, 96, -12, -42, 16, 94, -108, -16, -120, 106, 80, -3, 102, 73, 110, 84, -71, 46, 92, -124, 97, -103, 75, 74, -113, -56, -96, -73, -69, -122, -67, -11, 73, 40, -65, 97, 66, -105, -117, 119, -105, -96, 44, -76, 37, 4, 124, -22, 73, -48, -1, 34, -27, -49, 104, 15, 29, -74, -31, 0, 20, -106, -52, -35, -51, 94, -125, 24, 103, -127, -54, -31, -110, -58, -114, -86, 15, 103, -90, -52, -99, 52, 8, -87, -52, 74, 99, -99, 90, -55, -121, -7, 69, -18, -92, 51, -87, 60, -54, 120, -14, 65, -121, -40, 102, 84, -87, 51, -77, 48, -39, 124, -31, 52, -12, -40, -35, -48, 116, 88, 58, -126, -114, -61, 87, -93, 62, -29, 25, -63, -96, -25, -65, 126, 120, 120, -120, -8, 93, 16, 4, 97, 123, -95, 104, -37, 3, 121, -128, 110, -104, -76, 84, 39, -83, 57, -22, 106, -23, -84, 97, 17, -101, 73, 25, 114, -72, -62, 36, 69, 7, 85, -48, 86, -76, 116, -108, -73, 52, 107, -124, -50, 108, 49, 40, -101, -38, -12, -6, 123, -44, -21, -126, 91, -105, -94, -57, 8, 106, -117, -116, 47, -76, -15, 46, 7, 98, 25, -56, 51, 117, -115, 20, -103, 83, 6, -51, 81, 58, 111, -22, -52, -10, -89]]
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:19:01:148]INV check OK - anbxj.Crypto_ByteArray.hashCode - -884576853
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Decrypting [Sym] [AES/RAW/256] javax.crypto.SealedObject@1e4f4a5c
+     [java] Debug [[19:18:58:043]ROLE_A-ENCRYPTION] - Decrypted [Sym] [AES/RAW/256] javax.crypto.SealedObject@1e4f4a5c
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - CHECK # 3.2
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:19:01:150]INV check PERFORMED on anbxj.Crypto_ByteArray
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:19:01:150]INV check OK - anbxj.Crypto_ByteArray.toString - Crypto_ByteArray [bytearray=[71, 79, 28, 102, -120, 122, -13, -10, 66, -45, 62, 14, 32, 85, 44, 52, -10, -26, 91, -108, -71, 51, 76, -92, -103, -85, -99, -13, -1, 99, 91, -103, -37, 32, -96, 25, -103, 13, -110, 4, 21, 21, -85, -82, -65, 124, 33, 17, 88, -66, 49, 88, -31, -69, 116, 126, 32, 39, 56, 121, 98, -85, 72, -122, -58, 106, 67, 111, 79, 120, 5, -96, 39, 115, -88, 64, -33, 119, -86, 114, -60, 6, -85, -93, -42, -66, 19, 92, 100, 45, 121, 14, -114, 21, -14, -108, -110, -29, -11, -93, -17, -90, -104, 19, -37, -109, -106, -4, 43, -8, -49, 17, 3, 14, -78, -56, 44, -93, -60, -91, -127, 126, 110, 79, -54, -104, -23, 2, 27, 87, 66, -115, -122, -8, 122, -89, 6, -123, 12, -85, 54, 114, 82, 100, -109, -14, 80, 18, -18, 108, -109, 91, 0, -92, 37, -99, -119, -40, 32, -68, -96, 57, -76, 115, 65, 25, 29, -118, 98, 83, 75, 29, 52, -21, -27, 105, -32, -59, 49, -126, 118, 67, -8, 35, 42, 112, 27, 60, -73, -11, 76, 22, 36, 38, 35, 47, 26, 70, -44, -74, -45, 127, 122, 85, -31, 92, 123, 77, 107, -23, -90, -82, -27, -66, 79, -110, 109, -70, -34, 102, -65, -73, -25, -24, -9, -100, 66, -40, -105, 44, -55, 50, -88, 34, -99, -53, 43, -98, -36, 69, 44, 111, 78, -51, 33, -124, 34, -127, 26, -21, 93, 79, 91, 113, 120, 72]]
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:19:01:150]INV check OK - anbxj.Crypto_ByteArray.hashCode - 588746118
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - AndrewSecureRPC - ROLE_A - STEP_3
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - andrewsecurerpc.AndrewSecureRPC_ROLE_A@13c78c0b
+     [java] Debug [[19:18:58:043]ROLE_A-PROTOCOL] - [19:19:01:150]Session completed: 10/10
+     [java] Debug [[19:18:58:043]ROLE_A-NETWORK] - Connection closed
+     [java] Debug [[19:18:58:043]ROLE_A-SESSION] - Session closed
+     [java] AndrewSecureRPC [ROLE_A] - Execution time was 3189,735 ms.
+
+BUILD SUCCESSFUL
+Total time: 3 seconds
