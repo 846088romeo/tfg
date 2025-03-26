@@ -1,0 +1,18 @@
+Protocol: NSPK
+
+Types:
+	Agent A,B;
+	Number NxNA,NxNB;
+	Function pk;		# Agent -> PublicKey
+
+Knowledge:
+	A: A,pk,inv(pk(A)),B;
+	B: B,pk,inv(pk(B))
+
+Actions:
+	A -> B: {NxNA,A}pk(B)
+	B -> A: {NxNA,NxNB}pk(A)
+	A -> B: {NxNB}pk(B)
+
+Goals:
+	inv(pk(A)) secret between A

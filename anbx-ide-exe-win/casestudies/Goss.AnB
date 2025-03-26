@@ -1,0 +1,20 @@
+Protocol: Goss
+
+Types:
+	Agent A,B;
+	Number RA,RB,tag1,tag2;
+	Function pk;		# Agent -> PublicKey
+
+Knowledge:
+	A: A,B,inv(pk(A)),tag1,tag2,pk(B),pk(A);
+	B: B,A,inv(pk(B)),tag1,tag2,pk(B),pk(A)
+
+Actions:
+	A -> B: A,{RA,tag1}pk(B)
+	B -> A: B,{RB,tag2}pk(A)
+
+Goals:
+	RA secret between A,B
+	RB secret between A,B
+	inv(pk(A)) secret between A
+	inv(pk(B)) secret between B

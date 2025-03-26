@@ -1,0 +1,34 @@
+Protocol: Orig_2KP
+
+Types:
+	Agent C;
+	Agent M,a;		# Certified
+	Number Desc,Price,ID,NxV,NxVC,NxNONCE;
+	SeqNumber TID,Auth;
+	Symmetric_key HxRC,HxSALTC;
+	Function can;		# Agent,Agent ->* Number
+	Number empty;
+	Function sk;		# Agent -> PublicKey
+	Function hk;		# Agent -> PublicKey
+	Function pk;		# Agent -> PublicKey
+	Function hash;		# Untyped -> Number
+	Function hmac;		# Untyped,SymmetricKey -> Number
+
+Knowledge:
+	C: C,M,a,empty,pk,hk,sk,hash,hmac,can(C,a);
+	M: C,M,a,inv(pk(M)),inv(hk(M)),inv(sk(M)),empty,pk,hk,sk,hash,hmac;
+	a: C,M,a,inv(pk(a)),inv(hk(a)),inv(sk(a)),empty,pk,hk,sk,hash,hmac,can(C,a)
+
+Actions:
+	C *->* M: Price,Desc	# agree
+	M *->* C: empty	# agree
+	C -> M: HxSALTC,hmac(can(C,a),HxRC)
+	M -> C: ID,TID,NxNONCE,hash(Price,ID,TID,NxNONCE,hmac(can(C,a),HxRC),hmac(Desc,HxSALTC),hash(NxV),hash(NxVC)),hash(NxV),hash(NxVC),{hash(Price,ID,TID,NxNONCE,hmac(can(C,a),HxRC),hmac(Desc,HxSALTC),hash(NxV),hash(NxVC))}inv(sk(M))
+	C -> M: {Price,hash(Price,ID,TID,NxNONCE,hmac(can(C,a),HxRC),hmac(Desc,HxSALTC),hash(NxV),hash(NxVC)),can(C,a),HxRC}pk(a)
+	M -> a: ID,TID,NxNONCE,hash(Price,ID,TID,NxNONCE,hmac(can(C,a),HxRC),hmac(Desc,HxSALTC),hash(NxV),hash(NxVC)),hash(NxV),hash(NxVC),hmac(Desc,HxSALTC),{Price,hash(Price,ID,TID,NxNONCE,hmac(can(C,a),HxRC),hmac(Desc,HxSALTC),hash(NxV),hash(NxVC)),can(C,a),HxRC}pk(a),{hash(Price,ID,TID,NxNONCE,hmac(can(C,a),HxRC),hmac(Desc,HxSALTC),hash(NxV),hash(NxVC)),{Price,hash(Price,ID,TID,NxNONCE,hmac(can(C,a),HxRC),hmac(Desc,HxSALTC),hash(NxV),hash(NxVC)),can(C,a),HxRC}pk(a)}inv(sk(M))
+	a -> M: Auth,{hash(Auth,hash(Price,ID,TID,NxNONCE,hmac(can(C,a),HxRC),hmac(Desc,HxSALTC),hash(NxV),hash(NxVC)))}inv(sk(a))
+	M -> C: Auth,{hash(Auth,hash(Price,ID,TID,NxNONCE,hmac(can(C,a),HxRC),hmac(Desc,HxSALTC),hash(NxV),hash(NxVC)))}inv(sk(a)),NxV,NxVC
+
+Goals:
+	# 	C authenticates M on Common
+	C authenticates M on Price,ID,TID,NxNONCE,hmac(can(C,a),HxRC),hmac(Desc,HxSALTC),hash(NxV),hash(NxVC)

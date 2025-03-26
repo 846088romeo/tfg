@@ -1,0 +1,21 @@
+Protocol: ISO4pass
+
+Types:
+	Agent A,B,s;
+	Number NA,NB,NS,TVPA,Text1,Text2,Text3,Text4,Text5,Text6,Text7,Text8;
+	Symmetric_key KAB;
+	Function shk;		# Agent,Agent ->* SymmetricKey
+
+Knowledge:
+	A: A,B,s,shk(A,s);
+	B: B,A,s,shk(B,s);
+	s: A,B,s,shk(A,s),shk(B,s)
+
+Actions:
+	A -> s: TVPA,B,Text1
+	s -> A: Text4,{|TVPA,KAB,B,Text3|}shk(A,s),{|NS,KAB,A,Text2|}shk(B,s)
+	A -> B: Text6,{|NS,KAB,A,Text2|}shk(B,s),{|NA,B|}KAB
+	B -> A: Text8,{|NB,A,Text7|}KAB
+
+Goals:
+	B weakly authenticates A on KAB
