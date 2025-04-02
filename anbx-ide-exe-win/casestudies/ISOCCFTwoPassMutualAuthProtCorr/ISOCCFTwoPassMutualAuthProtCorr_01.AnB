@@ -1,0 +1,18 @@
+Protocol: ISOCCFTwoPassMutualAuthProtCorr
+
+Types:
+	Agent A,B;
+	Number NxA,NxB,Text1,Text2,Text3,Text4,Text5,tag;
+	Function f;		# Untyped -> Number
+	Function shk;		# Agent,Agent ->* SymmetricKey
+
+Knowledge:
+	A: A,B,f,tag,shk(A,B);
+	B: B,A,f,shk(A,B)
+
+Actions:
+	A -> B: f(shk(A,B),NxA,B,Text1,tag),NxA,B,Text1
+	B -> A: f(shk(A,B),NxB,A,Text3),NxB,A,Text3
+
+Goals:
+	B weakly authenticates A on Text1

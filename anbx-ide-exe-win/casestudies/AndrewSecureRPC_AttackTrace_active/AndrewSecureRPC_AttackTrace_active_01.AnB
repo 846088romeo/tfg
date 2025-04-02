@@ -1,0 +1,27 @@
+Protocol: AndrewSecureRPC_AttackTrace_active
+
+Types:
+	Agent A;
+	Agent B;
+	Number NA,NB,NB2,tag;
+	Function shk;		# Agent,Agent ->* SymmetricKey
+	Function succ;		# Number -> Number
+	Agent I;
+
+Knowledge:
+	A: A,B,I,succ,tag,shk(A,B);
+	B: B,A,I,succ,shk(A,B);
+	I: A,B,I,succ
+
+Actions:
+	A -> I: A,{|tag,NA|}shk(A,B)
+	I -> B: A,{|tag,NA|}shk(A,B)
+	B -> I: {|succ(NA),NB|}shk(A,B)
+	I -> A: {|succ(NA),NB|}shk(A,B)
+	A -> I: {|succ(NB)|}shk(A,B)
+	I -> B: {|succ(NB)|}shk(A,B)
+	B -> I: {|NB2|}shk(A,B)
+	I -> A: {|NB2|}shk(A,B)
+
+Goals:
+	A authenticates B on NB2

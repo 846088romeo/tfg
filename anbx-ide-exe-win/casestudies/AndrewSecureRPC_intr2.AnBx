@@ -1,0 +1,29 @@
+Protocol: AndrewSecureRPC_intr2 AnB
+
+Types:
+	Agent A,B;
+	Number NA,NB,NB2,tag;
+	Function [Agent,Agent ->* SymmetricKey] shk;
+	Function [Number -> Number] succ;
+	Agent intr;
+
+Knowledge:
+	A: A,B,succ,tag,shk(A,B);
+	B: B,A,succ,shk(A,B);
+	intr: intr,B,succ,tag,shk(intr,B),A,shk(A,intr);
+	A,B share shk(A,B);
+	where A!=intr, B!=intr
+
+Actions:
+	A -> intr: A,{|tag,NA|}shk(A,B)
+	intr -> B: A,{|tag,NA|}shk(A,B)
+	B -> intr: {|succ(NA),NB|}shk(A,B)
+	intr -> A: {|succ(NA),NB|}shk(A,B)
+	A -> intr: {|succ(NB)|}shk(A,B)
+	intr -> B: {|succ(NB)|}shk(A,B)
+	B -> intr: {|NB2|}shk(A,B)
+	intr -> A: {|NB2|}shk(A,B)
+
+Goals:
+	B *->* A: NB2
+	A authenticates B on NB2
