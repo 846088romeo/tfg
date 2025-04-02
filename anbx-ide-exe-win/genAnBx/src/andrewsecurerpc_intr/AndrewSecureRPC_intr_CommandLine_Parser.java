@@ -52,7 +52,7 @@ public final class AndrewSecureRPC_intr_CommandLine_Parser extends AnBx_CommandL
 
 	protected void initProtocol() {
 
-		sessions = 2;
+//		sessions = 2;
 		Map<String, Channel_Settings> cs = new HashMap<String, Channel_Settings>();
 		Map<String, String> aliases = new HashMap<String, String>();
 		AndrewSecureRPC_intr_Principal AndrewSecureRPC_intr_pr = null;

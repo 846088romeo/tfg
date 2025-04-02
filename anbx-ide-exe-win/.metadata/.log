@@ -6005,3 +6005,6 @@ type: chat_enabled,
  details: [
 
 ])])
+
+!ENTRY com.genuitec.copilot4eclipse 2 0 2025-04-02 16:00:03.834
+!MESSAGE Timeout while checking Copilot status
