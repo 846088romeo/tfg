@@ -1,0 +1,79 @@
+Protocol: SSO_SessionConfusion_Attack AnBx
+
+Types:
+    Agent C, idp, SP, I;  # I es el intruso
+    Number URI1, URI2, ID1, ID2, Data1, Data2, Nonce;
+    Function sk;          # Agent -> PublicKey
+    Function hk;          # Agent -> PublicKey
+    Function pk;          # Agent -> PublicKey
+    Function hash;
+    Function hmac;
+
+Knowledge:
+    C: C, idp, SP, inv(pk(C)), inv(hk(C)), inv(sk(C)), pk, hk, sk, hash, hmac;
+    idp: idp, inv(sk(idp)), sk(idp), pk, hk, sk, hash, hmac;
+    SP: SP, inv(pk(SP)), pk, hk, sk, hash, hmac, sk(idp);
+    I: I, sk, pk, hk, hash, hmac;  # Intruso con conocimiento básico
+
+Actions:
+
+# -------------------------------------------------------------------
+# Sesión Legítima 1 (URI1)
+# -------------------------------------------------------------------
+    [C] *->* I: C, SP, URI1           # Paso 1a: Cliente inicia sesión 1
+    I *->* SP: C, SP, URI1            # Intruso reenvía (transparente)
+    
+    SP *->* I: C, idp, SP, ID1, URI1  # Paso 2a: SP redirige a IdP
+    I *->* [C]: C, idp, SP, ID1, URI1 # Intruso reenvía
+    
+    [C] *->* I: C, idp, SP, ID1, URI1 # Paso 3a: Cliente contacta IdP
+    I *->* idp: C, idp, SP, ID1, URI1 # Reenvío
+    
+    idp *->* I: {C, idp}inv(sk(idp)), URI1  # Paso 4a: IdP emite token
+    # Intruso ALMACENA este token para usarlo después
+    I *->* [C]: {C, idp}inv(sk(idp)), URI1  # Reenvío a cliente
+
+# -------------------------------------------------------------------
+# Sesión Legítima 2 (URI2)
+# ------------------------------------------------------------------- 
+    [C] *->* I: C, SP, URI2           # Paso 1b: Cliente inicia sesión 2
+    I *->* SP: C, SP, URI2            # Reenvío
+    
+    SP *->* I: C, idp, SP, ID2, URI2  # Paso 2b: SP redirige
+    I *->* [C]: C, idp, SP, ID2, URI2
+    
+    [C] *->* I: C, idp, SP, ID2, URI2 # Paso 3b: Cliente a IdP
+    I *->* idp: C, idp, SP, ID2, URI2
+    
+    idp *->* I: {C, idp}inv(sk(idp)), URI2  # Paso 4b: Token para sesión 2
+    I *->* [C]: {C, idp}inv(sk(idp)), URI2
+
+# -------------------------------------------------------------------
+# Fase de Ataque (Reutilización de Tokens)
+# -------------------------------------------------------------------
+    # Intruso INYECTA el token de la sesión 1 en la sesión 2
+    [C] *->* I: {C, idp}inv(sk(idp)), URI1  # Cliente envía token correcto (sesión 1)
+    I *->* SP: {C, idp}inv(sk(idp)), URI2   # Pero Intruso CAMBIA URI1 por URI2
+    
+    # SP verifica la firma (válida) pero asocia a URI2
+    SP *->* I: Data2                        # SP envía datos de URI2
+    I *->* [C]: Data2                       # Intruso envía a cliente (que esperaba Data1)
+
+Goals:
+    C authenticates SP on Data1  # Falla porque recibe Data2 asociado a URI2
+
+Attacks:
+    # Ataque de confusión de sesión exitoso:
+    # 1. Intruso hace que SP procese una solicitud con mezcla de tokens
+    # 2. Cliente recibe Data2 cuando esperaba Data1
+    # 3. Violación de autenticación fuerte porque:
+    #    - La firma es válida (no hay falsificación)
+    #    - Pero el contexto (URI) no coincide con la sesión
+    # 4. SP no detecta que el token fue reutilizado de otra sesión
+
+Defenses:
+    # Contramedidas recomendadas:
+    # 1. Incluir nonces de sesión: {C, idp, Nonce}inv(sk(idp))
+    # 2. Vincular explícitamente URI con token: {C, idp, URI}inv(sk(idp))
+    # 3. Usar identificadores únicos por transacción
+    # 4. SP debe verificar que URI en token coincide con solicitud actual

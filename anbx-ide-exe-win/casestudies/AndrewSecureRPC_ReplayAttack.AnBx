@@ -1,0 +1,38 @@
+Protocol: AndrewSecureRPC_ReplayAttack AnB
+
+# Protocolo original con vulnerabilidad a replay attack
+# Intrusos activos I1 e I2 simulan múltiples sesiones
+
+Types:
+	Agent A,B,I;  # Añadido intruso I
+	Number NA,NB,NB2,NB_2,tag;
+	Function [Agent,Agent ->* SymmetricKey] shk;
+	Function [Number -> Number] succ
+
+Knowledge:
+    A: A,B,succ,tag;
+    B: B,A,succ;
+    I: I,succ;         # Intruso con conocimiento básico
+    A,B share shk(A,B)
+
+Actions:
+
+	# Sesión legítima inicial (A inicia con B)
+	A -> I: A,{|tag,NA|}shk(A,B)
+	I -> B: A,{|tag,NA|}shk(A,B)
+	B -> I: {|succ(NA),NB|}shk(A,B)
+	I -> A: {|succ(NA),NB|}shk(A,B)
+	A -> I: {|succ(NB)|}shk(A,B)
+	I -> B: {|succ(NB)|}shk(A,B)
+	B -> I: {|NB2|}shk(A,B)
+	I -> A: {|NB2|}shk(A,B)
+	
+	# ATAQUE REPLAY: El intruso reutiliza el primer mensaje guardado
+	# Simulando una segunda sesión (que no puede modelarse directamente)
+    I -> B: A,{|tag,NA|}shk(A,B)  # Replay del primer mensaje guardado
+    B -> I: {|succ(NA),NB_2|}shk(A,B)  # B genera nueva respuesta
+    # El intruso no puede continuar pero ya hizo que B avance sin A
+
+Goals:
+	B *->* A: NB2
+	A authenticates B on NB2
