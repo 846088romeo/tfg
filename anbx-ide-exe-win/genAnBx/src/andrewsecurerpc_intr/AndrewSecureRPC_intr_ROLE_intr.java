@@ -138,28 +138,13 @@ public final class AndrewSecureRPC_intr_ROLE_intr extends AnB_Protocol<AndrewSec
 			noteqCheck("0.4",aliases.get("ROLE_intr"),aliases.get("ROLE_B"));
 			VAR_INTR_R0 = (AnBx_Params) s.Receive();
 			eqCheck("0.1",aliases.get("ROLE_A"),(String) VAR_INTR_R0.getValue(0));
-			
-			// Save the attack message for later only in this session
-			if (VAR_attack == null) {
-				AnBx_Debug.out(layer, ">>> STORING MESSAGE FOR ATTACK");
-				VAR_attack = (SealedObject) VAR_INTR_R0.getValue(1);
-			}
 
 		    break;
-		
+		  
 		case STEP_1:
 			
-			if (VAR_attack != VAR_INTR_R0.getValue(1)) {
-				AnBx_Debug.out(layer, ">>> POSSIBLE ATTACK");
-			}
-			if (VAR_attack != VAR_INTR_R0.getValue(1) && shouldAttack()) {
-				AnBx_Debug.out(layer, ">>> REALIZING REPLAY");
-		        s.Send(new AnBx_Params(aliases.get("ROLE_A"), VAR_attack));
-		    } else {
-		    	AnBx_Debug.out(layer, ">>> REALIZING NORMAL");
-		        VAR_INTR_J22INTRR0 = (SealedObject) VAR_INTR_R0.getValue(1);
-		        s.Send(new AnBx_Params(aliases.get("ROLE_A"), VAR_INTR_J22INTRR0));
-		    }
+	        VAR_INTR_J22INTRR0 = (SealedObject) VAR_INTR_R0.getValue(1);
+	        s.Send(new AnBx_Params(aliases.get("ROLE_A"), VAR_INTR_J22INTRR0));
 			
 			break;
 		
@@ -199,8 +184,18 @@ public final class AndrewSecureRPC_intr_ROLE_intr extends AnB_Protocol<AndrewSec
 		
 		case STEP_7:
 			
-			s.Send(VAR_INTR_R6);
-
+			// Attack simulation
+			
+			if (VAR_attack == null  || !shouldAttack()) {
+				AnBx_Debug.out(layer, ">>> NO ATTACK <<<");
+				VAR_attack = VAR_INTR_R6;
+				s.Send(VAR_INTR_R6);
+            } else {
+                // Simulate attack by sending previous message
+            	AnBx_Debug.out(layer, ">>> REPLAY ATTACK <<<");
+                s.Send(VAR_attack);
+			}
+				
 			break;
 		
 		default:

@@ -1,0 +1,42 @@
+Protocol: AndrewSecureRPC AnB
+# Has a reflection attack
+# Secrecy holds, though, see ...Secrecy.AnB
+
+# Proverif: use -out:PVT_CBAB or PV to avoid loops  
+
+Types:
+	Agent A,B,I1,I2;
+	Number NA_1,NA_2,NB_1,NB_2,NB2,tag;
+	Function [Agent,Agent ->* SymmetricKey] shk;
+	Function [Number -> Number] succ
+
+Knowledge:
+	A: A,B,succ,tag;
+	B: B,A,succ;
+	I1: I1,B,succ,tag,shk(I1,B),A,shk(A,I1);
+	I2: I2,A,succ,tag,shk(I2,A),B,shk(B,I2);
+	A,B share shk(A,B);
+	where I1 != I2, I1 != A, I1 != B, I2 != A, I2 != B;
+
+Actions:
+
+	A -> I1: A,{|tag,NA_1|}(shk(A,B))
+	A -> I2: A,{|tag,NA_2|}(shk(A,B))
+	I2 -> B: A,{|tag,NA_2|}(shk(A,B))
+	B -> I2: {|succ(NA_2),NB_1|}(shk(A,B))
+	I1 -> B: A,{|tag,NA_1|}(shk(A,B))
+	B -> I1: {|succ(NA_1),NB_2|}(shk(A,B))
+	I1 -> A: {|succ(NA_1),NB_2|}(shk(A,B))
+	A -> I1: {|succ(NB_2)|}(shk(A,B))
+	I2 -> A: {|succ(NA_2),NB_1|}(shk(A,B))
+	A -> I2: {|succ(NB_1)|}(shk(A,B))
+	I2 -> B: {|succ(NB_1)|}(shk(A,B))
+	B -> I2: {|NB2|}(shk(A,B))
+	I2 -> I1: {|NB2|}(shk(A,B))
+	I1 -> A: {|NB2|}(shk(A,B))
+	I2 -> A: {|NB2|}(shk(A,B))
+
+Goals:
+	B *->* A: NB2
+	A authenticates B on NB2
+	
