@@ -6447,3 +6447,9 @@ type: chat_enabled,
 
 !ENTRY com.genuitec.copilot4eclipse.chat 1 0 2025-04-22 17:01:04.671
 !MESSAGE [C4E] Workspace labels: java,ant
+
+!ENTRY com.genuitec.copilot4eclipse.chat 1 0 2025-04-22 21:28:49.777
+!MESSAGE [C4E] Internal server stopped: Server@10239dba{STOPPED}[10.0.20,sto=0]
+
+!ENTRY com.genuitec.copilot4eclipse.chat 1 0 2025-04-22 21:28:49.780
+!MESSAGE [C4E] Internal server stopped: true
