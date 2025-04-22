@@ -23,14 +23,18 @@ Actions:
 	intr -> A: {A,sk(A)}inv(sk(s))
 	A -> intr: empty
 	intr -> s: empty
+	
 	s -> intr: {B,sk(B)}inv(sk(s))
 	intr -> B: {B,sk(B)}inv(sk(s))
 	B -> intr: empty
-	intr -> A: empty
-	A -> intr: {A,sk(A)}inv(sk(s)),{NxNA,B,Text1}inv(sk(A))
-	intr -> B: {A,sk(A)}inv(sk(s)),{NxNA,B,Text1}inv(sk(A))
-	B -> intr: {B,sk(B)}inv(sk(s)),{NxNB,A,Text3}inv(sk(B))
-	intr -> A: {B,sk(B)}inv(sk(s)),{NxNB,A,Text3}inv(sk(B))
+	intr -> s: empty
+	
+#	=== Fase 2: Ataque MITM ===
+    A -> intr: {A, sk(A)}inv(sk(s)), {NxNA, B, Text1}inv(sk(A))
+    intr -> B: {A, sk(A)}inv(sk(s)), {NxNA, B, Text1}inv(sk(A))
+
+    B -> intr: {B, sk(B)}inv(sk(s)), {NxNB, A, Text3}inv(sk(B))
+    intr -> A: {B, sk(B)}inv(sk(s)), {NxNB, A, Text3}inv(sk(B))
 
 Goals:
 	B weakly authenticates A on Text1
