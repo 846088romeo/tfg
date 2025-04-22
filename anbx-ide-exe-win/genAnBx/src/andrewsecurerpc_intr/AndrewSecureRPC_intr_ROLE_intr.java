@@ -192,7 +192,7 @@ public final class AndrewSecureRPC_intr_ROLE_intr extends AnB_Protocol<AndrewSec
 				s.Send(VAR_INTR_R6);
             } else {
                 // Simulate attack by sending previous message
-            	AnBx_Debug.out(layer, ">>> REPLAY ATTACK <<<");
+            	AnBx_Debug.out(layer, ">>> ATTACK <<<");
                 s.Send(VAR_attack);
 			}
 				
