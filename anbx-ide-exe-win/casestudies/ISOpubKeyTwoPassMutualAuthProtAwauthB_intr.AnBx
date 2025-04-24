@@ -29,7 +29,6 @@ Actions:
 	B -> intr: empty
 	intr -> s: empty
 	
-#	=== Fase 2: Ataque MITM ===
     A -> intr: {A, sk(A)}inv(sk(s)), {NxNA, B, Text1}inv(sk(A))
     intr -> B: {A, sk(A)}inv(sk(s)), {NxNA, B, Text1}inv(sk(A))
 
