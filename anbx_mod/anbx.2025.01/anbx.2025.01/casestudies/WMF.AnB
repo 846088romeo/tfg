@@ -1,0 +1,21 @@
+Protocol: WMF
+
+Types:
+	Agent A,B,s;
+	Number Msg,empty;
+	Symmetric_key KxKAB;
+	Function shk;		# Agent,Agent ->* SymmetricKey
+
+Knowledge:
+	A: A,B,s,empty,shk(A,s);
+	B: B,A,s,empty,shk(B,s);
+	s: A,B,s,empty,shk(A,s),shk(B,s)
+
+Actions:
+	A -> s: A,{|B,KxKAB|}shk(A,s)
+	s -> B: {|A,B,KxKAB|}shk(B,s)
+	B -> A: empty
+	A -> B: {|Msg|}KxKAB
+
+Goals:
+	Msg secret between A,B

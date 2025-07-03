@@ -1,0 +1,26 @@
+Protocol: ShareAgree
+
+Types:
+	Agent A,B;
+	Number Price,Desc,empty,Msg;
+	Function prova;		# Agent,Agent -> Number
+	Function shk;		# Agent,Agent ->* SymmetricKey
+	Function hash;		# Untyped -> Number
+
+Knowledge:
+	A: A,B,empty,hash(A),prova(A,B),shk(A,B);
+	B: B,A,empty,prova,hash(A),prova(A,B),shk(A,B)
+
+Actions:
+	A -> B: Desc	# insecurely agree
+	B -> A: empty	# insecurely agree
+	A *->* B: Price,Desc	# agree
+	B *->* A: empty	# agree
+	A -> B: {|Price|}shk(A,B)
+	B -> A: {|Desc|}shk(A,B)
+	A -> B: empty,Msg
+	B -> A: prova(A,B)
+
+Goals:
+	Price,Desc secret between A,B
+	shk(A,B) secret between A,B

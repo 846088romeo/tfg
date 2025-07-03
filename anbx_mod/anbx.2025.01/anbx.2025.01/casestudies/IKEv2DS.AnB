@@ -1,0 +1,29 @@
+Protocol: IKEv2DS
+
+Types:
+	Agent A,B;
+	Number SA,Na,Nb;
+	Number g,XxKEa,YxKEb;
+	Number M1,M2;
+	Function sk;		# Agent -> PublicKey
+	Function h;		# Number,Number,Number,SymmetricKey -> SymmetricKey
+
+Knowledge:
+	A: A,sk,inv(sk(A)),B,h,g,sk(B);
+	B: B,sk,inv(sk(B)),h,g
+	where A!=B
+
+Actions:
+	A -> B: A,B,SA,exp(g,XxKEa),Na
+	B -> A: SA,exp(g,YxKEb),Nb
+	A -> B: {|A,{SA,exp(g,XxKEa),Na,Nb}inv(sk(A)),SA|}h(Na,Nb,SA,exp(exp(g,XxKEa),YxKEb))
+	B -> A: {|B,{SA,exp(g,YxKEb),Na,Nb}inv(sk(B)),SA|}h(Na,Nb,SA,exp(exp(g,XxKEa),YxKEb))
+	A -> B: {|M1|}exp(exp(g,XxKEa),YxKEb)
+
+Goals:
+	A authenticates B on exp(exp(g,XxKEa),YxKEb)
+	B authenticates A on exp(exp(g,XxKEa),YxKEb)
+	exp(exp(g,XxKEa),YxKEb) secret between A,B
+	A *->* B: M1
+	inv(sk(A)) secret between A
+	inv(sk(B)) secret between B

@@ -1,0 +1,25 @@
+Protocol: Basic_Kerberos
+
+Types:
+	Agent C,ath,gw,s;
+	Number N1,N2,T1,T2,T3,Payload,tag;
+	Function hash;
+	Function shk;		# Agent,Agent ->* SymmetricKey
+	Symmetric_key KCG,KCS;
+
+Knowledge:
+	C: C,ath,gw,s,hash,tag,shk(C,ath);
+	ath: ath,gw,hash,C,tag,shk(ath,gw),shk(C,ath);
+	gw: ath,gw,s,hash,tag,shk(gw,s),shk(ath,gw);
+	s: gw,s,hash,tag,shk(gw,s)
+
+Actions:
+	C -> ath: C,gw,N1
+	ath -> C: {|KCG,C,T1|}shk(ath,gw),{|KCG,N1,T1,gw|}shk(C,ath)
+	C -> gw: {|KCG,C,T1|}shk(ath,gw),{|C,T1|}KCG,s,N2
+	gw -> C: {|KCS,C,T2|}shk(gw,s),{|KCS,N2,T2,s|}KCG
+	C -> s: {|KCS,C,T2|}shk(gw,s),{|C,T3|}KCS
+	s -> C: {|T3|}KCS,{|tag,Payload|}KCS
+
+Goals:
+	s *->* C: Payload

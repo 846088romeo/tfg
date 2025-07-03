@@ -1,0 +1,38 @@
+Protocol: DH_auth
+
+Types:
+	Agent B;
+	Agent A;		# Certified
+	Number Msg,XxX,YxY,g;
+	Number empty;
+	Function sk;		# Agent -> PublicKey
+	Function hk;		# Agent -> PublicKey
+	Function pk;		# Agent -> PublicKey
+	Function hash;		# Untyped -> Number
+	Function hmac;		# Untyped,SymmetricKey -> Number
+
+Knowledge:
+	A: A,B,g,inv(pk(A)),inv(hk(A)),inv(sk(A)),empty,pk,hk,sk,hash,hmac;
+	B: A,B,g,empty,pk,hk,sk,hash,hmac
+
+Actions:
+
+	# 	A -> B, (-|-|-): A,B
+	A -> B: A,B
+
+	# 	B -> A, (-|-|-): exp(g,YxY)
+	B -> A: exp(g,YxY)
+
+	# 	A -> B, (A|B|-): Msg
+	A -> B: {B,Msg}inv(sk(A))
+	B -> A: empty
+
+	# 	A -> B, (A|B|-): exp(g,XxX),{|Msg|}exp(exp(g,YxY),XxX)
+	A -> B: {B,exp(g,XxX),{|Msg|}exp(exp(g,YxY),XxX)}inv(sk(A))
+
+Goals:
+	Msg secret between A,B
+	B weakly authenticates A on Msg
+	inv(pk(A)) secret between A
+	inv(hk(A)) secret between A
+	inv(sk(A)) secret between A

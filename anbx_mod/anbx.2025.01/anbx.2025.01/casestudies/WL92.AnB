@@ -1,0 +1,31 @@
+Protocol: WL92
+
+Types:
+	Agent A,B,s;
+	Number NxNA,NxNB;
+	Symmetric_key KxKS;
+	Function pk,sk;		# Agent -> PublicKey
+
+Knowledge:
+	A: A,pk(A),inv(pk(A)),s,B,sk(s);
+	B: A,B,pk(B),inv(pk(B)),s,pk(s),sk(s);
+	s: s,A,B,pk(A),pk(B),pk(s),inv(pk(s)),sk(s),inv(sk(s))
+	where B!=s, A!=B
+
+Actions:
+	A -> s: A,B
+	s -> A: {B,pk(B)}inv(sk(s))
+	A -> B: {NxNA,A}pk(B)
+	B -> s: A,B,{NxNA}pk(s)
+	s -> B: {A,pk(A)}inv(sk(s)),{{NxNA,KxKS,B,A}inv(sk(s))}pk(B)
+	B -> A: {{NxNA,KxKS,B,A}inv(sk(s)),NxNB}pk(A)
+	A -> B: {|NxNB|}KxKS
+
+Goals:
+	A authenticates s on KxKS,B
+	B authenticates s on KxKS,A
+	KxKS secret between A,B,s
+	inv(pk(A)) secret between A
+	inv(pk(B)) secret between B
+	inv(pk(s)) secret between s
+	inv(sk(s)) secret between s

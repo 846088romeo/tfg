@@ -1,0 +1,18 @@
+Protocol: PK_Lookup_honest
+
+Types:
+	Agent A,b;
+	Number Msg;
+	Function pk;		# Agent -> PublicKey
+
+Knowledge:
+	A: A,inv(pk(A));
+	b: b,pk
+
+Actions:
+	A -> b: A
+	b -> A: {Msg}pk(A)
+
+Goals:
+	b ->* A: Msg
+	inv(pk(A)) secret between A

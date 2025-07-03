@@ -1,0 +1,21 @@
+Protocol: WooLamF
+
+Types:
+	Agent A,B,s;
+	Number NB;
+	Function shk;		# Agent,Agent ->* SymmetricKey
+
+Knowledge:
+	A: A,B,s,shk(A,s);
+	B: B,A,s,shk(B,s);
+	s: A,B,s,shk(A,s),shk(B,s)
+
+Actions:
+	A -> B: A
+	B -> A: NB
+	A -> B: {|A,B,NB|}shk(A,s)
+	B -> s: {|A,B,NB,{|A,B,NB|}shk(A,s)|}shk(B,s)
+	s -> B: {|A,B,NB|}shk(B,s)
+
+Goals:
+	B authenticates A on NB

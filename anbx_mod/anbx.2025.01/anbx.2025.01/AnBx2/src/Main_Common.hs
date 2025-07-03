@@ -1,0 +1,38 @@
+{-
+
+ AnBx Compiler and Code Generator
+
+ Copyright 2011-2025 Paolo Modesti
+ Copyright 2018-2025 SCM/SCDT/SCEDT, Teesside University
+ Copyright 2016-2018 School of Computer Science, University of Sunderland
+ Copyright 2013-2015 School of Computing Science, Newcastle University
+ Copyright 2011-2012 DAIS, Universita' Ca' Foscari Venezia
+ 
+ AnBx is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ any later version.
+
+ AnBx is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with AnBx. If not, see <http://www.gnu.org/licenses/>.
+
+-}
+
+module Main_Common where
+
+productName :: String
+productName = "AnBx Compiler and Code Generator"
+
+shortProductName :: String
+shortProductName = "anbxc"
+
+version :: String
+version = "2025.01"
+
+fullProductName :: String
+fullProductName = productName ++ " - " ++ "Version" ++ " " ++ version

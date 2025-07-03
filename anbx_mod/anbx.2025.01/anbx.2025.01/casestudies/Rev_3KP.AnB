@@ -1,0 +1,79 @@
+Protocol: Rev_3KP
+
+Types:
+	Agent C,M,a;		# Certified
+	Number Desc,Price,TID,Auth;
+	Function ccn;		# Agent,Agent ->* Number
+	Number empty;
+	Function sk;		# Agent -> PublicKey
+	Function hk;		# Agent -> PublicKey
+	Function pk;		# Agent -> PublicKey
+	Function hash;		# Untyped -> Number
+	Function hmac;		# Untyped,SymmetricKey -> Number
+	Symmetric_key Hx3MDesc;
+	Symmetric_key Hx3accnCa;
+	SeqNumber SQNx3;
+	SeqNumber SQNx4;
+	SeqNumber SQNx8;
+	SeqNumber SQNx9;
+
+Knowledge:
+	C: C,M,a,inv(pk(C)),inv(hk(C)),inv(sk(C)),empty,pk,hk,sk,hash,hmac,ccn(C,a);
+	M: C,M,a,inv(pk(M)),inv(hk(M)),inv(sk(M)),empty,pk,hk,sk,hash,hmac;
+	a: C,M,a,inv(pk(a)),inv(hk(a)),inv(sk(a)),empty,pk,hk,sk,hash,hmac,ccn(C,a)
+
+Actions:
+	C *->* M: Price,Desc	# agree
+	M *->* C: empty	# agree
+
+	# 	C -> M, @(C|M|M): [ccn(C,a):a],[Desc:M]
+	C -> M: {{hmac(ccn(C,a),Hx3accnCa),{Hx3accnCa}hk(a),hmac(Desc,Hx3MDesc),{Hx3MDesc}hk(M),SQNx3,M}inv(sk(C))}pk(M)
+
+	# 	M -> C, @(M|C|C): TID,[Price,TID,[ccn(C,a):a],[Desc:M]]
+	M -> C: {{C,SQNx4,TID,hash(Price,TID,hmac(ccn(C,a),Hx3accnCa),hmac(Desc,Hx3MDesc))}inv(sk(M))}pk(C)
+
+	# 	C -> M, (C|a|a): Price,TID,ccn(C,a),[ccn(C,a):a],[Price,TID,[ccn(C,a):a],[Desc:M]]
+	C -> M: {{a,Price,TID,ccn(C,a),hmac(ccn(C,a),Hx3accnCa),{Hx3accnCa}hk(a),hash(Price,TID,hmac(ccn(C,a),Hx3accnCa),hmac(Desc,Hx3MDesc))}inv(sk(C))}pk(a)
+
+	# 	M -> a, ^(C|a|a): Price,TID,ccn(C,a),[ccn(C,a):a],[Price,TID,[ccn(C,a):a],[Desc:M]]
+	M -> a: {{a,Price,TID,ccn(C,a),hmac(ccn(C,a),Hx3accnCa),{Hx3accnCa}hk(a),hash(Price,TID,hmac(ccn(C,a),Hx3accnCa),hmac(Desc,Hx3MDesc))}inv(sk(C))}pk(a)
+	a -> M: empty
+
+	# 	M -> a, @(M|a|a): Price,TID,[Desc:M],[Price,TID,[ccn(C,a):a],[Desc:M]]
+	M -> a: {{a,SQNx8,Price,TID,hmac(Desc,Hx3MDesc),{Hx3MDesc}hk(M),hash(Price,TID,hmac(ccn(C,a),Hx3accnCa),hmac(Desc,Hx3MDesc))}inv(sk(M))}pk(a)
+
+	# 	a -> M, @(a|M,C|M): Auth,TID,[Price,TID,[ccn(C,a):a],[Desc:M]]
+	a -> M: {{Auth,TID,hash(Price,TID,hmac(ccn(C,a),Hx3accnCa),hmac(Desc,Hx3MDesc)),SQNx9,M,C}inv(sk(a))}pk(M)
+
+	# 	M -> C, ^@(a|M,C|C): Auth,TID,[Price,TID,[ccn(C,a):a],[Desc:M]]
+	M -> C: {{Auth,TID,hash(Price,TID,hmac(ccn(C,a),Hx3accnCa),hmac(Desc,Hx3MDesc)),SQNx9,M,C}inv(sk(a))}pk(C)
+
+Goals:
+	# 	Can secret between C,a
+	ccn(C,a) secret between C,a
+	# 	a weakly authenticates C on Can
+	a weakly authenticates C on ccn(C,a)
+	M authenticates a on Auth
+	C authenticates a on Auth
+	# 	C authenticates M on HContract
+	C authenticates M on hash(Price,TID,hmac(ccn(C,a),Hx3accnCa),hmac(Desc,Hx3MDesc))
+	# 	a weakly authenticates M on HContract
+	a weakly authenticates M on hash(Price,TID,hmac(ccn(C,a),Hx3accnCa),hmac(Desc,Hx3MDesc))
+	# 	M authenticates a on HContract,Auth
+	M authenticates a on hash(Price,TID,hmac(ccn(C,a),Hx3accnCa),hmac(Desc,Hx3MDesc)),Auth
+	# 	C authenticates a on HContract,Auth
+	C authenticates a on hash(Price,TID,hmac(ccn(C,a),Hx3accnCa),hmac(Desc,Hx3MDesc)),Auth
+	# 	M authenticates C on HContract
+	M authenticates C on hash(Price,TID,hmac(ccn(C,a),Hx3accnCa),hmac(Desc,Hx3MDesc))
+	Desc secret between C,M
+	Auth secret between C,M,a
+	Price secret between C,M,a
+	inv(pk(C)) secret between C
+	inv(hk(C)) secret between C
+	inv(sk(C)) secret between C
+	inv(pk(M)) secret between M
+	inv(hk(M)) secret between M
+	inv(sk(M)) secret between M
+	inv(pk(a)) secret between a
+	inv(hk(a)) secret between a
+	inv(sk(a)) secret between a

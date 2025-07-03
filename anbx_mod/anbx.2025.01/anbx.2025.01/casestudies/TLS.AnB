@@ -1,0 +1,31 @@
+Protocol: TLS
+
+Types:
+	Agent A,B,s;
+	Number NA,NB,Sid,PA,PB,PMS,empty;
+	Function pk,sk;		# Agent -> PublicKey
+	Function hash;		# Untyped -> Number
+	Function prf;		# Number,Number,Number -> SymmetricKey
+	Function clientK,serverK;		# Number,Number,SymmetricKey -> SymmetricKey
+
+Knowledge:
+	A: A,B,s,sk(A),inv(sk(A)),hash,clientK,serverK,prf,sk(s);
+	B: B,s,sk(s),pk(B),inv(pk(B)),hash,serverK,clientK,prf,empty;
+	s: s,A,B,pk,sk,inv(sk(s)),sk(s)
+
+Actions:
+	s -> B: {B,pk(B)}inv(sk(s))
+	B -> s: empty
+	s -> A: {A,sk(A)}inv(sk(s))
+	A -> B: A,NA,Sid,PA
+	B -> A: NB,Sid,PB,{B,pk(B)}inv(sk(s))
+	A -> B: {A,sk(A)}inv(sk(s)),{PMS}pk(B),{hash(NB,B,PMS)}inv(sk(A)),{|hash(prf(PMS,NA,NB),A,B,NA,NB,Sid,PA,PB,PMS)|}clientK(NA,NB,prf(PMS,NA,NB))
+	B -> A: {|hash(prf(PMS,NA,NB),A,B,NA,NB,Sid,PA,PB,PMS)|}serverK(NA,NB,prf(PMS,NA,NB))
+
+Goals:
+	B authenticates A on prf(PMS,NA,NB)
+	A authenticates B on prf(PMS,NA,NB)
+	prf(PMS,NA,NB) secret between A,B
+	inv(sk(A)) secret between A
+	inv(pk(B)) secret between B
+	inv(sk(s)) secret between s

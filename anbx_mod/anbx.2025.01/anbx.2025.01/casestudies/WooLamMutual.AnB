@@ -1,0 +1,26 @@
+Protocol: WooLamMutual
+
+Types:
+	Agent A,B,s;
+	Number NA,NB;
+	Symmetric_key KAB;
+	Function shk;		# Agent,Agent ->* SymmetricKey
+
+Knowledge:
+	A: A,B,s,shk(A,s);
+	B: B,A,s,shk(B,s);
+	s: A,B,s,shk(A,s),shk(B,s)
+
+Actions:
+	A -> B: A,NA
+	B -> A: B,NB
+	A -> B: {|A,B,NA,NB|}shk(A,s)
+	B -> s: {|A,B,NA,NB|}shk(A,s),{|A,B,NA,NB|}shk(B,s)
+	s -> B: {|B,NA,NB,KAB|}shk(A,s),{|A,NA,NB,KAB|}shk(B,s)
+	B -> A: {|B,NA,NB,KAB|}shk(A,s),{|NA,NB|}KAB
+	A -> B: {|NB|}KAB
+
+Goals:
+	B authenticates s on KAB,A
+	A authenticates s on KAB,B
+	KAB secret between A,B

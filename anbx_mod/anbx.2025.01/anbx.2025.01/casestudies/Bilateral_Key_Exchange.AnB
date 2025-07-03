@@ -1,0 +1,22 @@
+Protocol: Bilateral_Key_Exchange
+
+Types:
+	Agent A,B;
+	Number NxNA,NxNB;
+	Symmetric_key KxK;
+	Function pk;		# Agent -> PublicKey
+	Function f;		# Number -> Number
+
+Knowledge:
+	A: A,B,inv(pk(A)),f,pk(A),pk(B);
+	B: A,B,inv(pk(B)),pk,f,pk(A),pk(B)
+
+Actions:
+	B -> A: B,{NxNB,B}pk(A)
+	A -> B: {f(NxNB),NxNA,A,KxK}pk(B)
+	B -> A: {|f(NxNA)|}KxK
+
+Goals:
+	B authenticates A on KxK
+	inv(pk(A)) secret between A
+	inv(pk(B)) secret between B

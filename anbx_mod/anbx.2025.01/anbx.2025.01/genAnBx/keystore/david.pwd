@@ -1,0 +1,25 @@
+# david keystore config file 
+# david_enc
+david_enc.type = PKCS12
+david_enc.private = david_encPRIV14258
+david_enc.pwd = david_encPRIV14258
+david_enc.public = david_encPUB21598
+CA = root
+# david_sig
+david_sig.type = PKCS12
+david_sig.private = david_sigPRIV14258
+david_sig.pwd = david_sigPRIV14258
+david_sig.public = david_sigPUB21598
+CA = root
+# david_hmc
+david_hmc.type = PKCS12
+david_hmc.private = david_hmcPRIV14258
+david_hmc.pwd = david_hmcPRIV14258
+david_hmc.public = david_hmcPUB21598
+CA = root
+# david_tls
+david_tls.type = PKCS12
+david_tls.private = david_tlsPRIV14258
+david_tls.pwd = david_tlsPRIV14258
+david_tls.public = david_tlsPUB21598
+CA = root

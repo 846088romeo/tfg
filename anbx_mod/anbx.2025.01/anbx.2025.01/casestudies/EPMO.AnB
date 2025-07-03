@@ -1,0 +1,41 @@
+Protocol: EPMO
+
+Types:
+	Agent b,C,M;		# Certified
+	Number NxC,NxM,NxB,Goods,Price,one,two,three,four,five,six;
+	Number empty;
+	Function sk;		# Agent -> PublicKey
+	Function hk;		# Agent -> PublicKey
+	Function pk;		# Agent -> PublicKey
+	Function hash;		# Untyped -> Number
+	Function hmac;		# Untyped,SymmetricKey -> Number
+
+Knowledge:
+	b: b,C,M,one,two,three,four,five,six,inv(pk(b)),inv(hk(b)),inv(sk(b)),empty,pk,hk,sk,hash,hmac;
+	C: b,C,M,one,two,three,four,five,six,inv(pk(C)),inv(hk(C)),inv(sk(C)),empty,pk,hk,sk,hash,hmac;
+	M: b,C,M,one,two,three,four,five,six,inv(pk(M)),inv(hk(M)),inv(sk(M)),empty,pk,hk,sk,hash,hmac
+	where C!=b, M!=b, C!=M
+
+Actions:
+	C *->* M: Goods,Price	# agree
+	M *->* C: empty	# agree
+	C -> M: one,{C,NxC,Goods,Price}pk(M)
+	M -> C: two,{NxC,NxM,M,Goods,Price}pk(C)
+	C -> b: three,{C,NxC,NxM,Price}pk(b)
+	b -> C: four,{hash(C,NxC,NxB,NxM,Price)}inv(sk(b)),{NxC,NxB}pk(C)
+	C -> M: five,{hash(C,NxC,NxB,NxM,Price)}inv(sk(b)),NxB
+	M -> b: six,{hash(b,NxB,NxM)}inv(sk(M))
+
+Goals:
+	M authenticates C on Goods,Price,b
+	b authenticates C on Price,b,M
+	Goods,Price secret between C,M
+	inv(pk(b)) secret between b
+	inv(hk(b)) secret between b
+	inv(sk(b)) secret between b
+	inv(pk(C)) secret between C
+	inv(hk(C)) secret between C
+	inv(sk(C)) secret between C
+	inv(pk(M)) secret between M
+	inv(hk(M)) secret between M
+	inv(sk(M)) secret between M

@@ -1,0 +1,16 @@
+Protocol: Insecure
+
+Types:
+	Agent A,B;
+	Number Msg;
+
+Knowledge:
+	A: A,B;
+	B: B,A
+
+Actions:
+	A -> B: Msg
+
+Goals:
+	A -> B: Msg
+	A ->* B: Msg

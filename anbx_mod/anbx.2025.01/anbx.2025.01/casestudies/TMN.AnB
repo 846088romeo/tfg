@@ -1,0 +1,22 @@
+Protocol: TMN
+
+Types:
+	Agent A,B,s;
+	Number Ka,Kb,empty;
+	Function pk;		# Agent -> PublicKey
+
+Knowledge:
+	A: A,B,s,empty,pk(s);
+	B: B,A,s,empty,pk(s);
+	s: A,B,pk(s),inv(pk(s)),empty
+
+Actions:
+	A -> s: {Ka}pk(s)
+	s -> B: empty
+	B -> s: {Kb}pk(s)
+	s -> A: xor(Ka,Kb)
+
+Goals:
+	Ka secret between A,s
+	Kb secret between A,B,s
+	inv(pk(s)) secret between s

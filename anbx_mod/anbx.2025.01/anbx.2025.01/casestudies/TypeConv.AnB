@@ -1,0 +1,27 @@
+Protocol: TypeConv
+
+Types:
+	Agent A,B;
+	Number Msg1,Msg2;
+	IntNum Msg3,Msg4;
+	Function shk;		# Agent,Agent ->* SymmetricKey
+	Number empty;
+	Function sk;		# Agent -> PublicKey
+	Function hk;		# Agent -> PublicKey
+	Function pk;		# Agent -> PublicKey
+	Function hash;		# Untyped -> Number
+	Function hmac;		# Untyped,SymmetricKey -> Number
+
+Knowledge:
+	A: A,B,empty,pk,hk,sk,hash,hmac,shk(A,B);
+	B: B,A,empty,pk,hk,sk,hash,hmac,shk(A,B)
+
+Actions:
+	A -> B: {|Msg1,{|Msg3|}shk(A,B)|}shk(A,B)
+	B -> A: {|Msg1|}shk(A,B),Msg1,Msg3
+
+Goals:
+	Msg1 secret between A,B
+	Msg3 secret between A,B
+	A ->* B: Msg1
+	A ->* B: Msg3

@@ -1,0 +1,16 @@
+Protocol: Insecure_Const
+
+Types:
+	Agent A,B;
+	Number msg;
+
+Knowledge:
+	A: A,B,msg;
+	B: B,A
+
+Actions:
+	A -> B: msg
+
+Goals:
+	A -> B: msg
+	A ->* B: msg

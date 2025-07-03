@@ -1,0 +1,25 @@
+Protocol: KeyEx5c
+
+Types:
+	Agent A,B,s;
+	Number NA,NB;
+	Symmetric_key KAB;
+	Function pre;		# Number -> Number
+	Function shk;		# Agent,Agent ->* SymmetricKey
+
+Knowledge:
+	A: A,B,s,pre,shk(A,s);
+	B: B,A,s,pre,shk(B,s);
+	s: A,B,s,pre,shk(A,s),shk(B,s)
+	where A!=B
+
+Actions:
+	B -> A: A,B,NB
+	A -> s: A,B,NA,NB
+	s -> A: {|KAB,A,B,NA|}shk(A,s),{|KAB,A,B,NB|}shk(B,s)
+	A -> B: {|KAB,A,B,NB|}shk(B,s)
+
+Goals:
+	A authenticates s on KAB,B
+	B authenticates s on KAB,A
+	KAB secret between A,B,s

@@ -1,0 +1,24 @@
+Protocol: H530fix
+
+Types:
+	Agent A,B,s;
+	Number XxX,YxY,g,M,t1,t2,t3,t4,t5,empty;
+	Function shk;		# Agent,Agent ->* SymmetricKey
+	Function hash;		# Untyped -> Number
+
+Knowledge:
+	A: A,s,B,g,hash,t1,t2,t3,t4,t5,empty,shk(A,s);
+	B: A,B,s,g,hash,t1,t2,t3,t4,t5,empty,shk(B,s);
+	s: A,B,s,g,hash,t1,t2,t3,t4,t5,empty,shk(A,s),shk(B,s)
+
+Actions:
+	A -> B: A,B,exp(g,XxX),hash(shk(A,s),t1,A,B,exp(g,XxX))
+	B -> s: A,B,exp(g,XxX),hash(shk(A,s),t1,A,B,exp(g,XxX)),B,exp(g,XxX),exp(g,YxY),hash(shk(B,s),t2,A,B,exp(g,XxX),hash(shk(A,s),t1,A,B,exp(g,XxX)),B,exp(g,XxX),exp(g,YxY))
+	s -> B: B,A,exp(g,XxX),hash(shk(A,s),t3,B,exp(g,XxX),exp(g,YxY)),hash(shk(B,s),t4,B,A,exp(g,XxX),hash(shk(A,s),t3,B,exp(g,XxX),exp(g,YxY)))
+	B -> A: B,A,exp(g,YxY),hash(shk(A,s),t3,B,exp(g,XxX),exp(g,YxY)),hash(exp(exp(g,XxX),YxY),t5,B,A,exp(g,YxY),hash(shk(A,s),t3,B,exp(g,XxX),exp(g,YxY)))
+	A -> B: {|M|}exp(exp(g,XxX),YxY)
+
+Goals:
+	A *->* B: M
+	B authenticates A on M
+	M secret between A,B

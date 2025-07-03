@@ -1,0 +1,21 @@
+Protocol: NonReversible
+
+Types:
+	Agent A,B;
+	Number NxA,NxB;
+	Symmetric_key KxK,KxskAB;
+	Function shk;		# Agent,Agent ->* SymmetricKey
+	Function f;		# Number -> Number
+
+Knowledge:
+	A: A,B,f,shk(A,B);
+	B: B,A,f,shk(A,B)
+
+Actions:
+	B -> A: B,NxB
+	A -> B: A,{|f(NxB),NxA,A,KxK|}shk(A,B)
+	B -> A: B,{|f(NxA)|}KxK
+
+Goals:
+	A *->* B: NxA
+	B *-> A: NxB

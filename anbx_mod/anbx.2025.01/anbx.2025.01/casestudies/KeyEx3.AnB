@@ -1,0 +1,21 @@
+Protocol: KeyEx3
+
+Types:
+	Agent A,B,s;
+	Symmetric_key KAB;
+	Function shk;		# Agent,Agent ->* SymmetricKey
+
+Knowledge:
+	A: A,B,s,shk(A,s);
+	B: B,A,s,shk(B,s);
+	s: A,B,s,shk(A,s),shk(B,s)
+
+Actions:
+	A -> s: A,B
+	s -> A: {|KAB,B|}shk(A,s),{|KAB,A|}shk(B,s)
+	A -> B: {|KAB,A|}shk(B,s)
+
+Goals:
+	A authenticates s on KAB,B
+	B authenticates s on KAB,A
+	KAB secret between A,B,s

@@ -1,0 +1,19 @@
+Protocol: Fresh_PublicKey_Sign
+
+Types:
+	Agent A,B;
+	PublicKey PKA;
+	Number Msg,empty;
+
+Knowledge:
+	A: A,B;
+	B: B,empty
+
+Actions:
+	A -> B: PKA
+	B -> A: empty
+	A -> B: {B,Msg}inv(PKA)
+
+Goals:
+	A weakly authenticates A on Msg
+	inv(PKA) secret between A

@@ -1,0 +1,22 @@
+Protocol: TagTT
+
+Types:
+	Agent A,B;
+	Number Msg;
+	Function f;		# Number -> Number
+	Number empty;
+	Function sk;		# Agent -> PublicKey
+	Function hk;		# Agent -> PublicKey
+	Function pk;		# Agent -> PublicKey
+	Function hash;		# Untyped -> Number
+	Function hmac;		# Untyped,SymmetricKey -> Number
+
+Knowledge:
+	A: A,B,f,empty,pk,hk,sk,hash,hmac;
+	B: B,A,f,empty,pk,hk,sk,hash,hmac
+
+Actions:
+	A -> B: f(Msg)
+
+Goals:
+	A -> B: f(Msg)

@@ -1,0 +1,31 @@
+Protocol: NSL_KeyServer
+
+Types:
+	Agent A,B,s;
+	Number NxNA,NxNB;
+	Function pk,sk;		# Agent -> PublicKey
+
+Knowledge:
+	A: A,pk(A),inv(pk(A)),s,B,sk(s);
+	B: B,pk(B),inv(pk(B)),s,A,sk(s);
+	s: s,pk,sk,inv(sk(s)),B,A
+
+Actions:
+	A -> s: A,B
+	s -> A: {B,pk(B)}inv(sk(s))
+	A -> B: {NxNA,A}pk(B)
+	B -> s: B,A
+	s -> B: {A,pk(A)}inv(sk(s))
+	B -> A: {NxNA,NxNB,B}pk(A)
+	A -> B: {NxNB}pk(B)
+
+Goals:
+	B authenticates A on NxNA
+	A authenticates B on NxNB
+	NxNA secret between A,B
+	NxNB secret between A,B
+	A *->* B: NxNA
+	B *->* A: NxNB
+	inv(pk(A)) secret between A
+	inv(pk(B)) secret between B
+	inv(sk(s)) secret between s

@@ -1,0 +1,24 @@
+Protocol: Carlsen
+
+Types:
+	Agent A,B,s;
+	Number NxNA,NxNB,NxNB2;
+	Symmetric_key KxKAB;
+	Function shk;		# Agent,Agent ->* SymmetricKey
+
+Knowledge:
+	A: A,B,s,shk(A,s);
+	B: B,A,s,shk(B,s);
+	s: A,B,s,shk(A,s),shk(B,s)
+
+Actions:
+	A -> B: A,NxNA
+	B -> s: A,NxNA,B,NxNB
+	s -> B: {|KxKAB,NxNB,A|}shk(B,s),{|NxNA,B,KxKAB|}shk(A,s)
+	B -> A: {|NxNA,B,KxKAB|}shk(A,s),{|NxNA|}KxKAB,NxNB2
+	A -> B: {|NxNB2|}KxKAB
+
+Goals:
+	B authenticates s on KxKAB,A
+	A authenticates s on KxKAB,B
+	KxKAB secret between A,B,s

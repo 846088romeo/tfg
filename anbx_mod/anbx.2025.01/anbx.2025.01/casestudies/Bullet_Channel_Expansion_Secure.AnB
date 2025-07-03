@@ -1,0 +1,28 @@
+Protocol: Bullet_Channel_Expansion_Secure
+
+Types:
+	Number Msg;
+	Agent A,B;		# Certified
+	Number empty;
+	Function sk;		# Agent -> PublicKey
+	Function hk;		# Agent -> PublicKey
+	Function pk;		# Agent -> PublicKey
+	Function hash;		# Untyped -> Number
+	Function hmac;		# Untyped,SymmetricKey -> Number
+
+Knowledge:
+	A: A,B,inv(pk(A)),inv(hk(A)),inv(sk(A)),empty,pk,hk,sk,hash,hmac;
+	B: B,A,inv(pk(B)),inv(hk(B)),inv(sk(B)),empty,pk,hk,sk,hash,hmac
+
+Actions:
+	A *->* B: Msg
+
+Goals:
+	B weakly authenticates A on Msg
+	Msg secret between A,B
+	inv(pk(A)) secret between A
+	inv(hk(A)) secret between A
+	inv(sk(A)) secret between A
+	inv(pk(B)) secret between B
+	inv(hk(B)) secret between B
+	inv(sk(B)) secret between B

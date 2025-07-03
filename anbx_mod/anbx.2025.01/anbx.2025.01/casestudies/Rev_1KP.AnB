@@ -1,0 +1,60 @@
+Protocol: Rev_1KP
+
+Types:
+	Agent C,M;
+	Agent a;		# Certified
+	Number Desc,Price,TID,Auth;
+	Function ccn;		# Agent,Agent ->* Number
+	Number empty;
+	Function sk;		# Agent -> PublicKey
+	Function hk;		# Agent -> PublicKey
+	Function pk;		# Agent -> PublicKey
+	Function hash;		# Untyped -> Number
+	Function hmac;		# Untyped,SymmetricKey -> Number
+	Symmetric_key Hx3accnCa;
+	SeqNumber SQNx9;
+
+Knowledge:
+	C: C,M,a,empty,pk,hk,sk,hash,hmac,ccn(C,a);
+	M: C,M,a,empty,pk,hk,sk,hash,hmac;
+	a: C,M,a,inv(pk(a)),inv(hk(a)),inv(sk(a)),empty,pk,hk,sk,hash,hmac,ccn(C,a)
+
+Actions:
+	C *->* M: Price,Desc	# agree
+	M *->* C: empty	# agree
+
+	# 	C -> M, (-|-|-): [ccn(C,a):a],[Desc]
+	C -> M: hmac(ccn(C,a),Hx3accnCa),{Hx3accnCa}hk(a),hash(Desc)
+
+	# 	M -> C, (-|-|-): TID,[Price,TID,[ccn(C,a):a],[Desc]]
+	M -> C: TID,hash(Price,TID,hmac(ccn(C,a),Hx3accnCa),hash(Desc))
+
+	# 	C -> M, (-|-|a): Price,TID,ccn(C,a),[ccn(C,a):a],[Price,TID,[ccn(C,a):a],[Desc]]
+	C -> M: {Price,TID,ccn(C,a),hmac(ccn(C,a),Hx3accnCa),{Hx3accnCa}hk(a),hash(Price,TID,hmac(ccn(C,a),Hx3accnCa),hash(Desc))}pk(a)
+
+	# 	M -> a, ^(-|-|a): Price,TID,ccn(C,a),[ccn(C,a):a],[Price,TID,[ccn(C,a):a],[Desc]]
+	M -> a: {Price,TID,ccn(C,a),hmac(ccn(C,a),Hx3accnCa),{Hx3accnCa}hk(a),hash(Price,TID,hmac(ccn(C,a),Hx3accnCa),hash(Desc))}pk(a)
+	a -> M: empty
+
+	# 	M -> a, (-|-|a): Price,TID,[Desc],[Price,TID,[ccn(C,a):a],[Desc]]
+	M -> a: {Price,TID,hash(Desc),hash(Price,TID,hmac(ccn(C,a),Hx3accnCa),hash(Desc))}pk(a)
+
+	# 	a -> M, @(a|M,C|-): Auth,TID,[Price,TID,[ccn(C,a):a],[Desc]]
+	a -> M: {Auth,TID,hash(Price,TID,hmac(ccn(C,a),Hx3accnCa),hash(Desc)),SQNx9,M,C}inv(sk(a))
+
+	# 	M -> C, ^(a|M,C|-): Auth,TID,[Price,TID,[ccn(C,a):a],[Desc]]
+	M -> C: {Auth,TID,hash(Price,TID,hmac(ccn(C,a),Hx3accnCa),hash(Desc)),SQNx9,M,C}inv(sk(a))
+
+Goals:
+	# 	Can secret between C,a
+	ccn(C,a) secret between C,a
+	M authenticates a on Auth
+	C authenticates a on Auth
+	# 	M authenticates a on HContract,Auth
+	M authenticates a on hash(Price,TID,hmac(ccn(C,a),Hx3accnCa),hash(Desc)),Auth
+	# 	C authenticates a on HContract,Auth
+	C authenticates a on hash(Price,TID,hmac(ccn(C,a),Hx3accnCa),hash(Desc)),Auth
+	Desc secret between C,M
+	inv(pk(a)) secret between a
+	inv(hk(a)) secret between a
+	inv(sk(a)) secret between a

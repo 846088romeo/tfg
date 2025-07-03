@@ -1,0 +1,22 @@
+Protocol: From_A_and_Back
+
+Types:
+	Agent a,B;
+	Number Msg;
+	Function sk,pk;		# Agent -> PublicKey
+
+Knowledge:
+	a: a,B,sk,pk,inv(sk(a));
+	B: a,B,sk,pk(B),inv(pk(B))
+
+Actions:
+	a -> B: {{{B,Msg,a}inv(sk(a))}pk(B)}pk(B)
+	B -> a: Msg
+	a -> B: {{a,Msg,B}inv(sk(a))}pk(B)
+
+Goals:
+	a weakly authenticates B on Msg
+	B weakly authenticates a on Msg
+	Msg secret between a,B
+	inv(sk(a)) secret between a
+	inv(pk(B)) secret between B

@@ -1,0 +1,38 @@
+Protocol: AnBx_BlindForwarding
+
+Types:
+	Number Price;
+	Agent C,M,A;		# Certified
+	Function ccn;		# Agent,Agent ->* Number
+	Number empty;
+	Function sk;		# Agent -> PublicKey
+	Function hk;		# Agent -> PublicKey
+	Function pk;		# Agent -> PublicKey
+	Function hash;		# Untyped -> Number
+	Function hmac;		# Untyped,SymmetricKey -> Number
+
+Knowledge:
+	C: C,M,A,inv(pk(C)),inv(hk(C)),inv(sk(C)),empty,pk,hk,sk,hash,hmac,ccn(C,A);
+	M: C,M,A,inv(pk(M)),inv(hk(M)),inv(sk(M)),empty,pk,hk,sk,hash,hmac;
+	A: C,M,A,inv(pk(A)),inv(hk(A)),inv(sk(A)),empty,pk,hk,sk,hash,hmac,ccn(C,A)
+
+Actions:
+
+	# 	C -> M, (C|A|A): ccn(C,A)
+	C -> M: {{A,ccn(C,A)}inv(sk(C))}pk(A)
+
+	# 	M -> A, ^(C|A|A): ccn(C,A)
+	M -> A: {{A,ccn(C,A)}inv(sk(C))}pk(A)
+
+Goals:
+	A weakly authenticates C on ccn(C,A)
+	ccn(C,A) secret between C,A
+	inv(pk(C)) secret between C
+	inv(hk(C)) secret between C
+	inv(sk(C)) secret between C
+	inv(pk(M)) secret between M
+	inv(hk(M)) secret between M
+	inv(sk(M)) secret between M
+	inv(pk(A)) secret between A
+	inv(hk(A)) secret between A
+	inv(sk(A)) secret between A

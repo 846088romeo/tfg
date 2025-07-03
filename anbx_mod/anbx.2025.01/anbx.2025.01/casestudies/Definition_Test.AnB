@@ -1,0 +1,26 @@
+Protocol: Definition_Test
+
+Types:
+	Agent A,B;
+	Number Msg;
+	Function fun1,fun2,fun3;		# Agent,Number -> Number
+	Function fun4;		# Agent -> Number
+	Function fun5;		# Agent,Number -> Number
+	Function pk;		# Agent -> PublicKey
+
+Knowledge:
+	A: A,B,fun1,fun2,fun3,fun4,fun5,pk;
+	B: A,B,fun1,fun2,fun3,fun4,fun5,pk
+
+Actions:
+	A -> B: Msg
+	B -> A: fun2(A,Msg)
+	A -> B: fun3(A,Msg)
+	B -> A: fun4(B)
+	A -> B: fun5(B,fun2(A,Msg))
+	B -> A: A,{Msg}pk(B),Msg
+	A -> B: fun5(A,fun2(A,Msg))
+
+Goals:
+	# 	A -> B: Def2(A)
+	A -> B: fun2(A,Msg)

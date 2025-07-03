@@ -1,0 +1,26 @@
+Protocol: NSCK
+
+Types:
+	Agent A,B,s;
+	Number NA,NB,NB2;
+	Symmetric_key KAB;
+	Function shk;		# Agent,Agent ->* SymmetricKey
+	Function pre;		# Number -> Number
+
+Knowledge:
+	A: A,B,s,pre,shk(A,s);
+	B: B,A,s,pre,shk(B,s);
+	s: A,B,s,pre,shk(A,s),shk(B,s)
+
+Actions:
+	A -> s: A,B,NA
+	s -> A: {|NA,B,KAB,{|KAB,A|}shk(B,s)|}shk(A,s)
+	A -> B: {|KAB,A|}shk(B,s)
+	B -> A: {|NB|}KAB
+	A -> B: {|pre(NB)|}KAB
+
+Goals:
+	B *->* A: NB
+	B weakly authenticates A on NB
+	A authenticates s on KAB
+	B authenticates s on KAB

@@ -1,0 +1,35 @@
+Protocol: ShareAgreeCertified
+
+Types:
+	Agent A,B;		# Certified
+	Number Price,Desc,Msg;
+	Function prova;		# Agent,Agent -> Number
+	Function shk;		# Agent,Agent ->* SymmetricKey
+	Number empty;
+	Function sk;		# Agent -> PublicKey
+	Function hk;		# Agent -> PublicKey
+	Function pk;		# Agent -> PublicKey
+	Function hash;		# Untyped -> Number
+	Function hmac;		# Untyped,SymmetricKey -> Number
+
+Knowledge:
+	A: A,B,inv(pk(A)),inv(hk(A)),inv(sk(A)),empty,pk,hk,sk,hash,hmac,shk(A,B);
+	B: B,A,prova,inv(pk(B)),inv(hk(B)),inv(sk(B)),empty,pk,hk,sk,hash,hmac,shk(A,B)
+
+Actions:
+	A *->* B: Price,Desc	# agree
+	B *->* A: empty	# agree
+	A -> B: {|Price|}shk(A,B)
+	B -> A: {|Desc|}shk(A,B)
+	A -> B: empty,Msg
+	B -> A: prova(A,B)
+
+Goals:
+	Price,Desc secret between A,B
+	shk(A,B) secret between A,B
+	inv(pk(A)) secret between A
+	inv(hk(A)) secret between A
+	inv(sk(A)) secret between A
+	inv(pk(B)) secret between B
+	inv(hk(B)) secret between B
+	inv(sk(B)) secret between B

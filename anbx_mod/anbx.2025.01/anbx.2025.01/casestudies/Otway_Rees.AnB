@@ -1,0 +1,24 @@
+Protocol: Otway_Rees
+
+Types:
+	Agent A,B,s;
+	Number NxM,NxA,NxB;
+	Symmetric_key KxKAB;
+	Function shk;		# Agent,Agent ->* SymmetricKey
+
+Knowledge:
+	A: A,B,s,shk(A,s);
+	B: B,A,s,shk(B,s);
+	s: A,B,s,shk(A,s),shk(B,s)
+	where A!=B
+
+Actions:
+	A -> B: NxM,A,B,{|NxA,NxM,A,B|}shk(A,s)
+	B -> s: NxM,A,B,{|NxA,NxM,A,B|}shk(A,s),{|NxB,NxM,A,B|}shk(B,s)
+	s -> B: NxM,{|NxA,KxKAB|}shk(A,s),{|NxB,KxKAB|}shk(B,s)
+	B -> A: NxM,{|NxA,KxKAB|}shk(A,s)
+
+Goals:
+	KxKAB secret between A,B,s
+	B authenticates s on KxKAB
+	A authenticates s on KxKAB

@@ -1,0 +1,18 @@
+Protocol: Test_Inactive_Agent
+
+Types:
+	Agent A,B,C;
+	Number NxA;
+	Function pk;		# Agent -> PublicKey
+
+Knowledge:
+	A: A,B,C,pk(C),pk(B);
+	B: B,A,inv(pk(B)),pk(B);
+	C: inv(pk(C)),pk(C)
+
+Actions:
+	A -> B: {NxA,{NxA}pk(C),{NxA}pk(C)}pk(B)
+
+Goals:
+	A -> B: NxA
+	inv(pk(B)) secret between B

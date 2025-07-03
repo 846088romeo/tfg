@@ -1,0 +1,18 @@
+Protocol: Fresh_PublicKey
+
+Types:
+	Agent A,B;
+	PublicKey PKA;
+	Number Msg;
+
+Knowledge:
+	A: A,B;
+	B: B
+
+Actions:
+	A -> B: PKA
+	B -> A: {Msg}PKA
+
+Goals:
+	B ->* A: Msg
+	inv(PKA) secret between A

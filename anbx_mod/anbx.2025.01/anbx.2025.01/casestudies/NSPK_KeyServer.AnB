@@ -1,0 +1,27 @@
+Protocol: NSPK_KeyServer
+
+Types:
+	Agent A,B,s;
+	Number NA,NB;
+	Function pk,sk;		# Agent -> PublicKey
+
+Knowledge:
+	A: A,pk(A),inv(pk(A)),s,sk(s),B;
+	B: B,pk(B),inv(pk(B)),s,sk(s);
+	s: s,pk,sk,inv(sk(s))
+
+Actions:
+	A -> s: A,B
+	s -> A: {B,pk(B)}inv(sk(s))
+	A -> B: {NA,A}pk(B)
+	B -> s: B,A
+	s -> B: {A,pk(A)}inv(sk(s))
+	B -> A: {NA,NB}pk(A)
+	A -> B: {NB}pk(B)
+
+Goals:
+	A *->* B: NA
+	B *->* A: NB
+	inv(pk(A)) secret between A
+	inv(pk(B)) secret between B
+	inv(sk(s)) secret between s

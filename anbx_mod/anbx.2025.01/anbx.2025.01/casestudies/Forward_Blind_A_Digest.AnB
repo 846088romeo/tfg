@@ -1,0 +1,36 @@
+Protocol: Forward_Blind_A_Digest
+
+Types:
+	Agent B;
+	Agent A,C;		# Certified
+	Number Msg;
+	Number empty;
+	Function sk;		# Agent -> PublicKey
+	Function hk;		# Agent -> PublicKey
+	Function pk;		# Agent -> PublicKey
+	Function hash;		# Untyped -> Number
+	Function hmac;		# Untyped,SymmetricKey -> Number
+	Symmetric_key Hx1CMsg;
+
+Knowledge:
+	A: A,B,C,inv(pk(A)),inv(hk(A)),inv(sk(A)),empty,pk,hk,sk,hash,hmac;
+	B: A,B,C,empty,pk,hk,sk,hash,hmac;
+	C: A,B,C,inv(pk(C)),inv(hk(C)),inv(sk(C)),empty,pk,hk,sk,hash,hmac
+
+Actions:
+
+	# 	A -> B, (A|C|C): [Msg,[[Msg:C]]]
+	A -> B: {{C,hash(Msg,hash(hmac(Msg,Hx1CMsg)))}inv(sk(A))}pk(C)
+
+	# 	B -> C, ^(A|C|C): [Msg,[[Msg:C]]]
+	B -> C: {{C,hash(Msg,hash(hmac(Msg,Hx1CMsg)))}inv(sk(A))}pk(C)
+
+Goals:
+	# 	A ->* C: [Msg,[[Msg:C]]]
+	A ->* C: hash(Msg,hash(hmac(Msg,Hx1CMsg)))
+	inv(pk(A)) secret between A
+	inv(hk(A)) secret between A
+	inv(sk(A)) secret between A
+	inv(pk(C)) secret between C
+	inv(hk(C)) secret between C
+	inv(sk(C)) secret between C

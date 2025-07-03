@@ -1,0 +1,20 @@
+Protocol: ISOpubKeyOnePassUnilateralAuthProt
+
+Types:
+	Agent A,B,s;
+	Number NxNA,Text1;
+	Function sk;		# Agent -> PublicKey
+
+Knowledge:
+	A: A,B,sk(A),inv(sk(A));
+	B: B,sk(s);
+	s: A,sk(A),inv(sk(s))
+
+Actions:
+	s -> A: {A,sk(A)}inv(sk(s))
+	A -> B: {A,sk(A)}inv(sk(s)),{NxNA,B,Text1}inv(sk(A))
+
+Goals:
+	B weakly authenticates A on Text1
+	inv(sk(A)) secret between A
+	inv(sk(s)) secret between s

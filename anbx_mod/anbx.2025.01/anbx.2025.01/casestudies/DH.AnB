@@ -1,0 +1,35 @@
+Protocol: DH
+
+Types:
+	Agent A,B;		# Certified
+	Number Msg,XxX,YxY,g;
+	Number empty;
+	Function sk;		# Agent -> PublicKey
+	Function hk;		# Agent -> PublicKey
+	Function pk;		# Agent -> PublicKey
+	Function hash;		# Untyped -> Number
+	Function hmac;		# Untyped,SymmetricKey -> Number
+
+Knowledge:
+	A: A,B,g,inv(pk(A)),inv(hk(A)),inv(sk(A)),empty,pk,hk,sk,hash,hmac;
+	B: A,B,g,inv(pk(B)),inv(hk(B)),inv(sk(B)),empty,pk,hk,sk,hash,hmac
+
+Actions:
+
+	# 	A -> B, (A|B|-): exp(g,XxX)
+	A -> B: {B,exp(g,XxX)}inv(sk(A))
+
+	# 	B -> A, (B|A|-): exp(g,YxY)
+	B -> A: {A,exp(g,YxY)}inv(sk(B))
+	A -> B: {|Msg|}exp(exp(g,YxY),XxX)
+	B -> A: Msg
+
+Goals:
+	B authenticates A on Msg
+	Msg secret between A,B
+	inv(pk(A)) secret between A
+	inv(hk(A)) secret between A
+	inv(sk(A)) secret between A
+	inv(pk(B)) secret between B
+	inv(hk(B)) secret between B
+	inv(sk(B)) secret between B
