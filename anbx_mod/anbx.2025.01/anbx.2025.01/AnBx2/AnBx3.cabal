@@ -73,19 +73,19 @@ executable anbxc
   build-tool-depends: alex:alex, happy:happy
   
   build-depends:   
-                    base,
+                    base >=4.11 && <5,
                     array,
                     bytestring,
-                    ConfigFile,
+                    ConfigFile >= 1.1.4,
                     containers,
                     directory,
                     filepath,
                     hashable,
                     hashids,
                     HStringTemplate,
-                    ip,
+                    ip >= 1.7,
                     MissingH,
-                    mtl,
+                    mtl <2.3,
                     network,
                     network-info,
                     random,

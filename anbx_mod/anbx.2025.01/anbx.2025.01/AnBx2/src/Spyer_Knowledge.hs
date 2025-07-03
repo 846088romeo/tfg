@@ -47,6 +47,7 @@ import Spyer_Common
 import qualified Data.Set as Set
 import qualified Data.Map as Map
 import AnBxOnP
+import AnBxMsg (AnBxMsg)
 import AnBxMsgCommon
 import Debug.Trace(trace)
 import Data.Containers.ListUtils (nubOrd)
@@ -54,6 +55,7 @@ import AnB2NExpression (id2NExpression)
 import Java_TypeSystem_Context
 import Java_TypeSystem_JType
 import Data.List (foldl')
+
 
 -- differents ways to synthetise a tuple
 -- default (fast): 1

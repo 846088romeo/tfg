@@ -533,19 +533,18 @@ trProt2Execnarr origprot trImpsAndProt options = case trImpsAndProt of
 trProt2NExecnarr :: Protocol -> OFMCAttackImpersonationsAndProt -> AnBxOnP -> IO NExecnarr
 trProt2NExecnarr prot@((name,_), types, _,anbequations,_, shares, _, _, _) intrProt options = do
   let ctx = buildJContext prot
-  let options1 = options {do_opt = optimize options && nrofActions ex options <= maxActionsOpt options}
-  let prot1 = if anbtypecheck options1 then typeCheckProtocol prot PTAnB else prot
+  let prot1 = if anbtypecheck options then typeCheckProtocol prot PTAnB else prot
   let equations = trEquations anbequations types ctx
-  let declsWithoutIntrValues = trAnB2ExecnarrKnowledge prot1 ctx options1
+  let declsWithoutIntrValues = trAnB2ExecnarrKnowledge prot1 ctx options
 
   (decl, ex, ctx2) <- case intrProt of
     Just (_,(trname,trtypes,trdefs,treqs,trkn,trsh,trabs,tracts,goals),trActsIdx,intrMsgToPrint) -> do
       let intrName = anbxmitm options
       let trProt = (trname,trtypes,trdefs,treqs,trkn,union trsh shares, trabs, tracts,goals)
       let trCtx = buildJContext trProt
-      let trDecls = trAnB2ExecnarrKnowledge trProt trCtx options1
-      passiveIntrNarr <- execnarrOfProt prot1 Nothing options1
-      fullNarr <- mergeHonestAndTraceExecNarrs passiveIntrNarr trProt trActsIdx intrMsgToPrint options1
+      let trDecls = trAnB2ExecnarrKnowledge trProt trCtx options
+      passiveIntrNarr <- execnarrOfProt prot1 Nothing options
+      fullNarr <- mergeHonestAndTraceExecNarrs passiveIntrNarr trProt trActsIdx intrMsgToPrint options
       let declsIntr = filter (\decl -> case decl of
                                     DKnow ((_,a),_) -> a==intrName
                                     DGenerates ((_,a),_) -> a==intrName
@@ -553,8 +552,11 @@ trProt2NExecnarr prot@((name,_), types, _,anbequations,_, shares, _, _, _) intrP
                           ) trDecls
       return (declsIntr ++ declsWithoutIntrValues, fullNarr, trCtx)
     Nothing -> do
-      passiveIntrNarr <- execnarrOfProt prot1 Nothing options1
+      passiveIntrNarr <- execnarrOfProt prot1 Nothing options
       return (declsWithoutIntrValues, passiveIntrNarr, ctx)
+
+  -- Ahora que ya tenemos `ex`, podemos usarlo para definir `options1`
+  let options1 = options {do_opt = optimize options && nrofActions ex options <= maxActionsOpt options}
 
   let ex1 = trExecnarrNewActOpt ex ctx2
   let ex2 = trNExecnarrActionsTuple ex1 options1
@@ -569,6 +571,7 @@ trProt2NExecnarr prot@((name,_), types, _,anbequations,_, shares, _, _, _) intrP
           else ex2
 
   return ((name, decl, equations), execnarr)
+
 
 ------------------------------------------------------------------------------------------------------------------------------------------
 

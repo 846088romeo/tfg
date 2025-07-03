@@ -40,7 +40,7 @@ import           AnBxOnP         (cmdRelaxGoalsOtherAgentKnow,isOutTypePV,AnBxOn
 import           Data.Maybe      (fromJust, fromMaybe)
 import           Data.List       ((\\), find, foldl')
 import           Spyer_Ast       (Declaration (DGenerates, DKnow, DShare))
-import           Spyer_Knowledge (addKnowledge, irreducibles, rep,analysisStepEq,knAdd,inSynthesis)
+import           Spyer_Knowledge (addKnowledge, irreducibles, rep,analysisStepEq,knAdd,inSynthesis, ReplayCache, updateReplayCache)
 import           Spyer_Message   (KnowledgeMap, namesOfKnowlegde, NEquations, Formula (FAnd,FSingle), Atom (FNotEq,FWff), showKnowledgeMap)
 import           Spyer_Common    (setChoose)
 import qualified Data.Map as Map
@@ -184,21 +184,20 @@ type SeenSQN = [(String,String)]    -- Agent, Ident
 errorInSynthesis :: Ident -> NExpression -> KnowledgeMap -> NEquations -> String
 errorInSynthesis agent message knowledge equations = "\tagent " ++ agent ++ " cannot synthesise the message\n\tmessage: " ++ show message ++ "\n\tknowledge: " ++ showKnowledgeMap knowledge ++ if null equations then "" else "\n\tequations: " ++ show equations
 
-chooseReplay :: ReplayCache -> AnBxOnP -> IO AnBxMsg
+chooseReplay :: ReplayCache -> AnBxMsg -> IO AnBxMsg
 chooseReplay [] legitMsg = return legitMsg
 chooseReplay (old:_) legitMsg = do
     p <- randomRIO (1, 100) :: IO Int
-    if p < 40 then
-        return old  -- 40% chance to choose a message from the replay cache
-    else
-        return legitMsg  -- 60% chance to return the legitimate message
+    if p < 40 then return old else return legitMsg 
+    -- 40% chance to choose a message from the replay cache 
+    -- 60% chance to return the legitimate message
 
 -- Protocol compilation
 compileAnB2ExecnarrKnow :: (Int,StringSet,MapSK,StringSet) -> (JContext,Types,AnBShares,[Declaration],[Declaration],NEquations,Actions,Goals,Goals,SeenSQN) -> MapGoals -> EVNumbers -> AnBxOnP -> OutType -> ReplayCache -> IO (Execnarr,MapSK,MapGoals)
 -- compileAnB2ExecnarrKnow (step,privnames,kappa,gennames) (_,_,_,_,decl,equations,a,g1,g2,sg) mapgoals _ _ | trace ("\ncompileAnB2ExecnarrKnow - step: " ++ show step ++ "\n" ++ "gennames: " ++ showIdents (Set.toList gennames) ++ "\nprivnames: " ++ showIdents (Set.toList privnames) ++ "\nknowledge:\n" ++ printMapSK kappa ++ "decl: " ++ show decl ++ "\nequations: " ++ show equations ++ "\nActions:\n" ++ showActions a ++ "\nGoals Sender: " ++ showSimpleGoals g1 ++ "\nGoals Receiver: " ++ showSimpleGoals g2 ++ "\nSeen: " ++ show sg ++ "\nMapGoals: " ++ show mapgoals) False = undefined
 
 -- no actions - no goals (on both sides) to process 
-compileAnB2ExecnarrKnow (_,_,kappa,_) (_,_,_,_,_,_,[],[],[],_) mapgoals _ _ _ _ = ([],kappa,mapgoals)
+compileAnB2ExecnarrKnow (_,_,kappa,_) (_,_,_,_,_,_,[],[],[],_) mapgoals _ _ _ _ = return ([],kappa,mapgoals)
 
 -- comments
 compileAnB2ExecnarrKnow context@(next_var,_,_,_) (ctx,types,sh,[],decl,equations,((_,ActionComment _ s,_),_,_,_):xs,goalsS,goalsR,seenSQN) mapgoals evn opt out replayCache = do
@@ -233,14 +232,18 @@ compileAnB2ExecnarrKnow (next_var,privnames,kappa,gennames) (ctx,types,sh,DGener
                         return (NANew (next_var, a,id2NEIdent ng ctx):xnarr,newKappa1,newMapGoals)
                 else error ("cannot compile AnB to ExecNarr - " ++ ng ++ " cannot be freshly generated.")
 
-compileAnB2ExecnarrKnow (next_var,privnames,kappa,gennames) (ctx,types,sh,DShare (_,(_,k),_,_):ds,decl,equations,xs,goalsS,goalsR,seenSQN) mapgoals evn opt out =
+compileAnB2ExecnarrKnow (next_var,privnames,kappa,gennames) (ctx,types,sh,DShare (_,(_,k),_,_):ds,decl,equations,xs,goalsS,goalsR,seenSQN) mapgoals evn opt out replayCache =
                let all_names = Set.unions [privnames,gennames,namesOfKappa kappa] in
-                 if not (Set.member k all_names) then
-                        let
-                            privnames1 = Set.insert k privnames
-                            (xnarr,newKappa,newMapGoals) = compileAnB2ExecnarrKnow (next_var,privnames1,kappa,gennames) (ctx,types,sh,ds,decl,equations,xs,goalsS,goalsR,seenSQN) mapgoals evn opt out replayCache
-                        in (xnarr,newKappa,newMapGoals)         -- skip Share declarations
-                else error ("cannot compile AnB to ExecNarr - " ++ k ++ " cannot be a private name.")
+                 if not (Set.member k all_names) 
+                    then do
+                        let privnames1 = Set.insert k privnames
+                        (xnarr, newKappa, newMapGoals) <-
+                            compileAnB2ExecnarrKnow
+                            (next_var, privnames1, kappa, gennames)
+                            (ctx, types, sh, ds, decl, equations, xs, goalsS, goalsR, seenSQN)
+                            mapgoals evn opt out replayCache
+                        return (xnarr, newKappa, newMapGoals)
+                    else error ("cannot compile AnB to ExecNarr - " ++ k ++ " cannot be a private name.")
 
 -- actions 
 
@@ -250,8 +253,8 @@ compileAnB2ExecnarrKnow (next_var,_,kappa,_) (ctx,types,sh,[],_,equations,[],g:g
     -- check all agents can synthetise the message
         execnarrComputed = execnarrComp next_var kappa (ctx,types,sh,equations,gs) g msg agentList mapgoals evn opt out True
     in case g of -- process secrecy goals
-        Secret {} -> execnarrComputed
-        ChGoal (_,Insecure,_) _ _ -> execnarrComputed
+        Secret {} -> return execnarrComputed
+        ChGoal (_,Insecure,_) _ _ -> return execnarrComputed
         _ -> error (errorGoalSynMsg g kappa mapgoals out) -- execnarrComputed
 
 -- no actions left, all goals processed on the sender side, this is the receiver side, only authentication goals on receiver side
@@ -263,7 +266,7 @@ compileAnB2ExecnarrKnow (next_var,_,kappa,_) (ctx,types,sh,[],_,equations,[],[],
         -- no secrecy goals allow at this stage 
         Secret {} -> error ("cannot compile AnB to ExecNarr - this goal should have been already processed at this stage: " ++ errorMsgGoalKnowledgeEquations g kappa equations)
         ChGoal (_,Insecure,_) _ _ -> error ("cannot compile AnB to ExecNarr - this goal should have been already processed at this stage: " ++ errorMsgGoalKnowledgeEquations g kappa equations)
-        _ -> if relaxGoalsOtherAgentKnow opt then execnarrComputed else error (errorGoalSynMsg g kappa mapgoals out)
+        _ -> if relaxGoalsOtherAgentKnow opt then return execnarrComputed else error (errorGoalSynMsg g kappa mapgoals out)
 
 -- processing list of actions
 compileAnB2ExecnarrKnow context@(next_var,privnames,kappa,gennames) (ctx,types,sh,[],decl,equations,x@(((a,_,_),channeltype,(b,_,_)),msg,_,_):xs,goalsS,goalsR,seenSQN) mapgoals evn@(_,endEvnrAuth,endEvnrSecr) opt out replayCache
@@ -616,7 +619,7 @@ execnarrKnowOfProt prot@(_,types,_,anbequations,(_,wh),shares,_,actions,goals) a
                         let
                             ctx = buildJContext prot 
                             newmapgoals = initMapGoals goals ctx
-                            let goals2ver = if nogoals anbxopt then [] else goals
+                            goals2ver = if nogoals anbxopt then [] else goals
                             evn = evnOfProt actions
                             out = anbxouttype anbxopt
                             decs = trAnB2ExecnarrKnowledge prot ctx anbxopt
@@ -641,7 +644,7 @@ execnarrOfProt prot trImpsAndProt anbxopt = do
   (origNarr, _, _) <- execnarrKnowOfProt prot anbxopt
   case trImpsAndProt of
     Just (_,trProt,trActsIdx,toprint) ->
-      return (mergeHonestAndTraceExecNarrs origNarr trProt trActsIdx toprint anbxopt)
+      mergeHonestAndTraceExecNarrs origNarr trProt trActsIdx toprint anbxopt
     Nothing ->
       return origNarr
 -- compute knowledge map
