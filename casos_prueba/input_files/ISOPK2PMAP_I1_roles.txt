@@ -1,0 +1,513 @@
+Buildfile: /Users/usuario/anbx-ide-exe-mac/genAnBx/src/isopk2pmap_i1/build.xml
+
+ROLE_s:
+     [java] Debug [ISOPK2PMAP_I1-ALWAYS] - Verbose mode on
+     [java] Debug [ROLE_s-APPLICATION] - Reading config file: ISOPK2PMAP_I1.properties
+     [java] Debug [ROLE_s-ENCRYPTION] - -------------------- crypto config --------------------
+     [java] Debug [ROLE_s-ENCRYPTION] - cipherScheme = AES/CBC/PKCS5Padding
+     [java] Debug [ROLE_s-ENCRYPTION] - keySize = 256
+     [java] Debug [ROLE_s-ENCRYPTION] - keyGenerationScheme = AES
+     [java] Debug [ROLE_s-ENCRYPTION] - keyGenerationSize = 256
+     [java] Debug [ROLE_s-ENCRYPTION] - keyGenerationSchemePBE = PBKDF2WithHmacSHA512
+     [java] Debug [ROLE_s-ENCRYPTION] - keyPairGenerationScheme = RSA
+     [java] Debug [ROLE_s-ENCRYPTION] - keyPairGenerationSize = 2048
+     [java] Debug [ROLE_s-ENCRYPTION] - secureRandomAlgorithm = DRBG
+     [java] Debug [ROLE_s-ENCRYPTION] - hmacAlgorithm = HmacSHA256
+     [java] Debug [ROLE_s-ENCRYPTION] - messageDigestAlgorithm = SHA-256
+     [java] Debug [ROLE_s-ENCRYPTION] - messageDigestSignatureAlgorithm = SHA256
+     [java] Debug [ROLE_s-ENCRYPTION] - keyAgreementAlgorithm = DH
+     [java] Debug [ROLE_s-ENCRYPTION] - keyAgreementKeyPairGenerationScheme = DH
+     [java] Debug [ROLE_s-ENCRYPTION] - dhRndExpSize = 4096
+     [java] Debug [ROLE_s-ENCRYPTION] - ecGenParameterSpec = secp256r1
+     [java] Debug [ROLE_s-ENCRYPTION] - asymCipherSchemeBlock = RSA
+     [java] Debug [ROLE_s-ENCRYPTION] - sslContext = TLSv1.3
+     [java] Debug [ROLE_s-ENCRYPTION] - securityProvider = default
+     [java] Debug [ROLE_s-ENCRYPTION] - cipherSchemeProvider = default
+     [java] Debug [ROLE_s-ENCRYPTION] - keyGenerationSchemeProvider = default
+     [java] Debug [ROLE_s-ENCRYPTION] - keyGenerationSchemePBEProvider = default
+     [java] Debug [ROLE_s-ENCRYPTION] - keyPairGenerationSchemeProvider = default
+     [java] Debug [ROLE_s-ENCRYPTION] - secureRandomProvider = default
+     [java] Debug [ROLE_s-ENCRYPTION] - hmacProvider = default
+     [java] Debug [ROLE_s-ENCRYPTION] - messageDigestProvider = default
+     [java] Debug [ROLE_s-ENCRYPTION] - signatureProvider = default
+     [java] Debug [ROLE_s-ENCRYPTION] - asymEncProvider = default
+     [java] Debug [ROLE_s-ENCRYPTION] - keyAgreementProvider = default
+     [java] Debug [ROLE_s-ENCRYPTION] - sslContextProvider = default
+     [java] Debug [ROLE_s-ENCRYPTION] - -------------------- crypto config --------------------
+     [java] Debug [ROLE_s-APPLICATION] - Loading aliases
+     [java] Debug [ROLE_s-APPLICATION] - Role: ROLE_s - Alias: alice
+     [java] Debug [ROLE_s-APPLICATION] - myAlias: alice
+     [java] Debug [ROLE_s-APPLICATION] - Role: ROLE_I - Alias: bob
+     [java] Debug [ROLE_s-APPLICATION] - Role: ROLE_A - Alias: charlie
+     [java] Debug [ROLE_s-APPLICATION] - Role: ROLE_B - Alias: david
+     [java] Debug [ROLE_s-APPLICATION] - Host: 127.0.0.1 - Port: 55556
+     [java] Debug [ROLE_s-APPLICATION] - Channel Type: SSL_PLAIN - Role: CLIENT
+     [java] Debug [ROLE_s-APPLICATION] - Channel: ROLE_s_channel_ROLE_I_Client_Insecure
+     [java] Debug [ROLE_s-APPLICATION] - myRole: ROLE_s
+     [java] Debug [ROLE_s-APPLICATION] - sessions: 10
+     [java] Debug [ROLE_s-ENCRYPTION] - Loading KeyStore: tls #0
+     [java] Debug [ROLE_s-ENCRYPTION] - Reading config file (KSS): ../../keystore/alice.pwd
+     [java] Debug [ROLE_s-ENCRYPTION] - tls - KeyStoreType: PKCS12
+     [java] Debug [ROLE_s-ENCRYPTION] - tls - LocalKeyStore: ../../keystore/alice_tls.private
+     [java] Debug [ROLE_s-ENCRYPTION] - tls - RemotelKeyStore: ../../keystore/alice_tls.public
+     [java] Debug [ROLE_s-ENCRYPTION] - My Alias: alice
+     [java] Debug [ROLE_s-ENCRYPTION] - RootCA: root
+     [java] Debug [ROLE_s-ENCRYPTION] - Loading KeyStore: enc #1
+     [java] Debug [ROLE_s-ENCRYPTION] - Reading config file (KSS): ../../keystore/alice.pwd
+     [java] Debug [ROLE_s-ENCRYPTION] - enc - KeyStoreType: PKCS12
+     [java] Debug [ROLE_s-ENCRYPTION] - enc - LocalKeyStore: ../../keystore/alice_enc.private
+     [java] Debug [ROLE_s-ENCRYPTION] - enc - RemotelKeyStore: ../../keystore/alice_enc.public
+     [java] Debug [ROLE_s-ENCRYPTION] - My Alias: alice
+     [java] Debug [ROLE_s-ENCRYPTION] - RootCA: root
+     [java] Debug [ROLE_s-ENCRYPTION] - Loading KeyStore: sig #2
+     [java] Debug [ROLE_s-ENCRYPTION] - Reading config file (KSS): ../../keystore/alice.pwd
+     [java] Debug [ROLE_s-ENCRYPTION] - sig - KeyStoreType: PKCS12
+     [java] Debug [ROLE_s-ENCRYPTION] - sig - LocalKeyStore: ../../keystore/alice_sig.private
+     [java] Debug [ROLE_s-ENCRYPTION] - sig - RemotelKeyStore: ../../keystore/alice_sig.public
+     [java] Debug [ROLE_s-ENCRYPTION] - My Alias: alice
+     [java] Debug [ROLE_s-ENCRYPTION] - RootCA: root
+     [java] Debug [ROLE_s-ENCRYPTION] - Loading KeyStore: hmc #3
+     [java] Debug [ROLE_s-ENCRYPTION] - Reading config file (KSS): ../../keystore/alice.pwd
+     [java] Debug [ROLE_s-ENCRYPTION] - hmc - KeyStoreType: PKCS12
+     [java] Debug [ROLE_s-ENCRYPTION] - hmc - LocalKeyStore: ../../keystore/alice_hmc.private
+     [java] Debug [ROLE_s-ENCRYPTION] - hmc - RemotelKeyStore: ../../keystore/alice_hmc.public
+     [java] Debug [ROLE_s-ENCRYPTION] - My Alias: alice
+     [java] Debug [ROLE_s-ENCRYPTION] - RootCA: root
+     [java] Debug [ROLE_s-ENCRYPTION] - Building KeyStore: tls #0
+     [java] Debug [ROLE_s-ENCRYPTION] - Loading KeyStore: ../../keystore/alice_tls.private - Type: PKCS12
+     [java] Debug [ROLE_s-ENCRYPTION] - Loading KeyStore: ../../keystore/alice_tls.public - Type: PKCS12
+     [java] Debug [ROLE_s-ENCRYPTION] - Building KeyStore: enc #1
+     [java] Debug [ROLE_s-ENCRYPTION] - Loading KeyStore: ../../keystore/alice_enc.private - Type: PKCS12
+     [java] Debug [ROLE_s-ENCRYPTION] - Loading KeyStore: ../../keystore/alice_enc.public - Type: PKCS12
+     [java] Debug [ROLE_s-ENCRYPTION] - Building KeyStore: sig #2
+     [java] Debug [ROLE_s-ENCRYPTION] - Loading KeyStore: ../../keystore/alice_sig.private - Type: PKCS12
+     [java] Debug [ROLE_s-ENCRYPTION] - Loading KeyStore: ../../keystore/alice_sig.public - Type: PKCS12
+     [java] Debug [ROLE_s-ENCRYPTION] - Building KeyStore: hmc #3
+     [java] Debug [ROLE_s-ENCRYPTION] - Loading KeyStore: ../../keystore/alice_hmc.private - Type: PKCS12
+     [java] Debug [ROLE_s-ENCRYPTION] - Loading KeyStore: ../../keystore/alice_hmc.public - Type: PKCS12
+     [java] Debug [ROLE_s-ENCRYPTION] - Certificate retrieved: <alice>
+     [java] Debug [ROLE_s-ENCRYPTION] - Certificate retrieved: <alice>
+     [java] Debug [ROLE_s-ENCRYPTION] - Certificate retrieved: <alice>
+     [java] Debug [ROLE_s-ENCRYPTION] - Certificate retrieved: <alice>
+     [java] Debug [ROLE_s-SESSION] - Initializing channel - cs: Channel Settings - Port: 55556 - Role: CLIENT - Type: SSL_PLAIN
+     [java] Debug [ROLE_s-SESSION] - Initializing channel - keystore: anbxj.Crypto_KeyStoreSettings@27f674d
+     [java] Debug [ROLE_s-SESSION] - Opening session
+     [java] Debug [ROLE_s-NETWORK] - Starting Client for 127.0.0.1:55556
+     [java] Debug [ROLE_s-ALWAYS] - IOException - Unable to connect: 127.0.0.1:55556 - Attempt: 1/10 - Trying again in 500ms
+     [java] Debug [ROLE_s-ALWAYS] - Connected to Server 127.0.0.1:55556 - ChannelType: SSL_PLAIN
+     [java] Debug [ROLE_s-PROTOCOL] - Session started: 1/10
+     [java] Debug [ROLE_s-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_s - STEP_0
+     [java] Debug [ROLE_s-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_s@7946e1f4
+     [java] Debug [ROLE_s-ENCRYPTION] - PublicKey found: <charlie>
+     [java] Debug [ROLE_s-ENCRYPTION] - Root Certificate found: <root>
+     [java] Debug [ROLE_s-ENCRYPTION] - Certificate #0
+     [java] Debug [ROLE_s-ENCRYPTION] - Subject: CN=root,OU=CA,O=Certificati Digitali,L=Rome,ST=Italy,C=European Union
+     [java] Debug [ROLE_s-ENCRYPTION] - Issuer: CN=root,OU=CA,O=Certificati Digitali,L=Rome,ST=Italy,C=European Union
+     [java] Debug [ROLE_s-ENCRYPTION] - Validity: from Sun Feb 11 23:47:00 CET 2024 to Fri Feb 09 23:47:00 CET 2029
+     [java] Debug [ROLE_s-ENCRYPTION] - Version: 3
+     [java] Debug [ROLE_s-ENCRYPTION] - Serial Number: 658743272021970120643348023544875863741843963262
+     [java] Debug [ROLE_s-ENCRYPTION] - Signature Algorithm Name: SHA256withRSA
+     [java] Debug [ROLE_s-ENCRYPTION] - Certificate #1
+     [java] Debug [ROLE_s-ENCRYPTION] - Subject: CN=charlie,OU=Computer Science,O=Teesside University,L=Middlesbrough,ST=Tees Valley,C=United Kingdom
+     [java] Debug [ROLE_s-ENCRYPTION] - Issuer: CN=root,OU=CA,O=Certificati Digitali,L=Rome,ST=Italy,C=European Union
+     [java] Debug [ROLE_s-ENCRYPTION] - Validity: from Sun Feb 11 23:50:00 CET 2024 to Thu Feb 10 23:50:00 CET 2028
+     [java] Debug [ROLE_s-ENCRYPTION] - Version: 3
+     [java] Debug [ROLE_s-ENCRYPTION] - Serial Number: 432599062341958780416942254291267429475864802134
+     [java] Debug [ROLE_s-ENCRYPTION] - Signature Algorithm Name: SHA256withRSA
+     [java] Debug [ROLE_s-ENCRYPTION] - Root Certificate
+     [java] Debug [ROLE_s-ENCRYPTION] - Subject: CN=root,OU=CA,O=Certificati Digitali,L=Rome,ST=Italy,C=European Union
+     [java] Debug [ROLE_s-ENCRYPTION] - Issuer: CN=root,OU=CA,O=Certificati Digitali,L=Rome,ST=Italy,C=European Union
+     [java] Debug [ROLE_s-ENCRYPTION] - Validity: from Sun Feb 11 23:47:00 CET 2024 to Fri Feb 09 23:47:00 CET 2029
+     [java] Debug [ROLE_s-ENCRYPTION] - Version: 3
+     [java] Debug [ROLE_s-ENCRYPTION] - Serial Number: 658743272021970120643348023544875863741843963262
+     [java] Debug [ROLE_s-ENCRYPTION] - Signature Algorithm Name: SHA256withRSA
+     [java] Debug [ROLE_s-LANGUAGE] - AnBx_Params - size: 2
+     [java] Debug [ROLE_s-LANGUAGE] - AnBx_Params - hash: 1437597095
+     [java] Debug [ROLE_s-LANGUAGE] - [19:16:52:326]AnBx_Params - params: AnBx_Params [v=[charlie, Sun RSA public key, 2048 bits
+     [java]   params: null
+     [java]   modulus: 25841705985275738149920162972721961294861552097434008604965228071605054303783773429820670795645426990587884507291871437703470462639636458706506867770908110184326647885611517627844615950205800163466370004036074755433745473741628962405959868461136641094719005943536257978953548002828575988934298009617638932496514265306313562525528397663668839609016235360576669615362940042922265988878134234899112652980699872286218393412875766723024684797848368467979720605473598229700819925186265190184334648764716263781450595048084058217434045478944327440664714014176314745712761062446977004373303381482658415193885899176011360088323
+     [java]   public exponent: 65537]]
+     [java] Debug [ROLE_s-ENCRYPTION] - PrivateKey retrieved: <alice>
+     [java] Debug [ROLE_s-ENCRYPTION] - Signed  [RSA/PKCS#8/9736] java.security.SignedObject@71def8f8 - Provider: SunRsaSign
+     [java] Debug [ROLE_s-LANGUAGE] - Send
+     [java] Debug [ROLE_s-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_s-NETWORK] - Sending -> java.security.SignedObject@71def8f8
+     [java] Debug [ROLE_s-NETWORK] - [19:16:52:417]Sent -> java.security.SignedObject@71def8f8
+     [java] Debug [ROLE_s-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_s - STEP_0
+     [java] Debug [ROLE_s-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_s@7946e1f4
+     [java] Debug [ROLE_s-PROTOCOL] - Session completed: 1/10
+     [java] Debug [ROLE_s-PROTOCOL] - Session started: 2/10
+     [java] Debug [ROLE_s-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_s - STEP_5
+     [java] Debug [ROLE_s-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_s@7946e1f4
+     [java] Debug [ROLE_s-ENCRYPTION] - PublicKey found: <david>
+     [java] Debug [ROLE_s-ENCRYPTION] - Root Certificate found: <root>
+     [java] Debug [ROLE_s-ENCRYPTION] - Certificate #0
+     [java] Debug [ROLE_s-ENCRYPTION] - Subject: CN=root,OU=CA,O=Certificati Digitali,L=Rome,ST=Italy,C=European Union
+     [java] Debug [ROLE_s-ENCRYPTION] - Issuer: CN=root,OU=CA,O=Certificati Digitali,L=Rome,ST=Italy,C=European Union
+     [java] Debug [ROLE_s-ENCRYPTION] - Validity: from Sun Feb 11 23:47:00 CET 2024 to Fri Feb 09 23:47:00 CET 2029
+     [java] Debug [ROLE_s-ENCRYPTION] - Version: 3
+     [java] Debug [ROLE_s-ENCRYPTION] - Serial Number: 658743272021970120643348023544875863741843963262
+     [java] Debug [ROLE_s-ENCRYPTION] - Signature Algorithm Name: SHA256withRSA
+     [java] Debug [ROLE_s-ENCRYPTION] - Certificate #1
+     [java] Debug [ROLE_s-ENCRYPTION] - Subject: CN=david,OU=Computer Science,O=Teesside University,L=Middlesbrough,ST=Tees Valley,C=United Kingdom
+     [java] Debug [ROLE_s-ENCRYPTION] - Issuer: CN=root,OU=CA,O=Certificati Digitali,L=Rome,ST=Italy,C=European Union
+     [java] Debug [ROLE_s-ENCRYPTION] - Validity: from Sun Feb 11 23:50:00 CET 2024 to Thu Feb 10 23:50:00 CET 2028
+     [java] Debug [ROLE_s-ENCRYPTION] - Version: 3
+     [java] Debug [ROLE_s-ENCRYPTION] - Serial Number: 354573758810963109925742508302461650180260491452
+     [java] Debug [ROLE_s-ENCRYPTION] - Signature Algorithm Name: SHA256withRSA
+     [java] Debug [ROLE_s-ENCRYPTION] - Root Certificate
+     [java] Debug [ROLE_s-ENCRYPTION] - Subject: CN=root,OU=CA,O=Certificati Digitali,L=Rome,ST=Italy,C=European Union
+     [java] Debug [ROLE_s-ENCRYPTION] - Issuer: CN=root,OU=CA,O=Certificati Digitali,L=Rome,ST=Italy,C=European Union
+     [java] Debug [ROLE_s-ENCRYPTION] - Validity: from Sun Feb 11 23:47:00 CET 2024 to Fri Feb 09 23:47:00 CET 2029
+     [java] Debug [ROLE_s-ENCRYPTION] - Version: 3
+     [java] Debug [ROLE_s-ENCRYPTION] - Serial Number: 658743272021970120643348023544875863741843963262
+     [java] Debug [ROLE_s-ENCRYPTION] - Signature Algorithm Name: SHA256withRSA
+     [java] Debug [ROLE_s-LANGUAGE] - AnBx_Params - size: 2
+     [java] Debug [ROLE_s-LANGUAGE] - AnBx_Params - hash: -1337631472
+     [java] Debug [ROLE_s-LANGUAGE] - [19:16:52:420]AnBx_Params - params: AnBx_Params [v=[david, Sun RSA public key, 2048 bits
+     [java]   params: null
+     [java]   modulus: 19330069983498690154469908677521350586281095691134725934325530421686739225237275595567912646834499096414180354321478751897325909502328341329080945932207187793498887058915624779405420232794844844432300329803603263751508414694248113508845656540237348885788420856365520678070556687227640344463362463403058686011172015992249070453675867299318874758104294179111295698854224410013930386165662628566907350396839384125437358040530436916597168289418349323789364976532332669574505823109358728951268860968566831860911710402572966535490079109900507233568494099476297782029543566959433328835108437214177157226518565763486283034941
+     [java]   public exponent: 65537]]
+     [java] Debug [ROLE_s-ENCRYPTION] - PrivateKey retrieved: <alice>
+     [java] Debug [ROLE_s-ENCRYPTION] - Signed  [RSA/PKCS#8/9736] java.security.SignedObject@a530d0a - Provider: SunRsaSign
+     [java] Debug [ROLE_s-LANGUAGE] - Send
+     [java] Debug [ROLE_s-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_s-NETWORK] - Sending -> java.security.SignedObject@a530d0a
+     [java] Debug [ROLE_s-NETWORK] - [19:16:52:467]Sent -> java.security.SignedObject@a530d0a
+     [java] Debug [ROLE_s-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_s - STEP_5
+     [java] Debug [ROLE_s-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_s@7946e1f4
+     [java] Debug [ROLE_s-PROTOCOL] - Session completed: 2/10
+     [java] Debug [ROLE_s-PROTOCOL] - Session started: 3/10
+     [java] Debug [ROLE_s-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_s - STEP_0
+     [java] Debug [ROLE_s-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_s@7946e1f4
+     [java] Debug [ROLE_s-ENCRYPTION] - PublicKey found: <charlie>
+     [java] Debug [ROLE_s-ENCRYPTION] - Root Certificate found: <root>
+     [java] Debug [ROLE_s-ENCRYPTION] - Certificate #0
+     [java] Debug [ROLE_s-ENCRYPTION] - Subject: CN=root,OU=CA,O=Certificati Digitali,L=Rome,ST=Italy,C=European Union
+     [java] Debug [ROLE_s-ENCRYPTION] - Issuer: CN=root,OU=CA,O=Certificati Digitali,L=Rome,ST=Italy,C=European Union
+     [java] Debug [ROLE_s-ENCRYPTION] - Validity: from Sun Feb 11 23:47:00 CET 2024 to Fri Feb 09 23:47:00 CET 2029
+     [java] Debug [ROLE_s-ENCRYPTION] - Version: 3
+     [java] Debug [ROLE_s-ENCRYPTION] - Serial Number: 658743272021970120643348023544875863741843963262
+     [java] Debug [ROLE_s-ENCRYPTION] - Signature Algorithm Name: SHA256withRSA
+     [java] Debug [ROLE_s-ENCRYPTION] - Certificate #1
+     [java] Debug [ROLE_s-ENCRYPTION] - Subject: CN=charlie,OU=Computer Science,O=Teesside University,L=Middlesbrough,ST=Tees Valley,C=United Kingdom
+     [java] Debug [ROLE_s-ENCRYPTION] - Issuer: CN=root,OU=CA,O=Certificati Digitali,L=Rome,ST=Italy,C=European Union
+     [java] Debug [ROLE_s-ENCRYPTION] - Validity: from Sun Feb 11 23:50:00 CET 2024 to Thu Feb 10 23:50:00 CET 2028
+     [java] Debug [ROLE_s-ENCRYPTION] - Version: 3
+     [java] Debug [ROLE_s-ENCRYPTION] - Serial Number: 432599062341958780416942254291267429475864802134
+     [java] Debug [ROLE_s-ENCRYPTION] - Signature Algorithm Name: SHA256withRSA
+     [java] Debug [ROLE_s-ENCRYPTION] - Root Certificate
+     [java] Debug [ROLE_s-ENCRYPTION] - Subject: CN=root,OU=CA,O=Certificati Digitali,L=Rome,ST=Italy,C=European Union
+     [java] Debug [ROLE_s-ENCRYPTION] - Issuer: CN=root,OU=CA,O=Certificati Digitali,L=Rome,ST=Italy,C=European Union
+     [java] Debug [ROLE_s-ENCRYPTION] - Validity: from Sun Feb 11 23:47:00 CET 2024 to Fri Feb 09 23:47:00 CET 2029
+     [java] Debug [ROLE_s-ENCRYPTION] - Version: 3
+     [java] Debug [ROLE_s-ENCRYPTION] - Serial Number: 658743272021970120643348023544875863741843963262
+     [java] Debug [ROLE_s-ENCRYPTION] - Signature Algorithm Name: SHA256withRSA
+     [java] Debug [ROLE_s-LANGUAGE] - AnBx_Params - size: 2
+     [java] Debug [ROLE_s-LANGUAGE] - AnBx_Params - hash: 1437597095
+     [java] Debug [ROLE_s-LANGUAGE] - [19:16:52:470]AnBx_Params - params: AnBx_Params [v=[charlie, Sun RSA public key, 2048 bits
+     [java]   params: null
+     [java]   modulus: 25841705985275738149920162972721961294861552097434008604965228071605054303783773429820670795645426990587884507291871437703470462639636458706506867770908110184326647885611517627844615950205800163466370004036074755433745473741628962405959868461136641094719005943536257978953548002828575988934298009617638932496514265306313562525528397663668839609016235360576669615362940042922265988878134234899112652980699872286218393412875766723024684797848368467979720605473598229700819925186265190184334648764716263781450595048084058217434045478944327440664714014176314745712761062446977004373303381482658415193885899176011360088323
+     [java]   public exponent: 65537]]
+     [java] Debug [ROLE_s-ENCRYPTION] - PrivateKey retrieved: <alice>
+     [java] Debug [ROLE_s-ENCRYPTION] - Signed  [RSA/PKCS#8/9736] java.security.SignedObject@306e95ec - Provider: SunRsaSign
+     [java] Debug [ROLE_s-LANGUAGE] - Send
+     [java] Debug [ROLE_s-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_s-NETWORK] - Sending -> java.security.SignedObject@306e95ec
+     [java] Debug [ROLE_s-NETWORK] - [19:16:52:496]Sent -> java.security.SignedObject@306e95ec
+     [java] Debug [ROLE_s-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_s - STEP_0
+     [java] Debug [ROLE_s-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_s@7946e1f4
+     [java] Debug [ROLE_s-PROTOCOL] - Session completed: 3/10
+     [java] Debug [ROLE_s-PROTOCOL] - Session started: 4/10
+     [java] Debug [ROLE_s-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_s - STEP_5
+     [java] Debug [ROLE_s-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_s@7946e1f4
+     [java] Debug [ROLE_s-ENCRYPTION] - PublicKey found: <david>
+     [java] Debug [ROLE_s-ENCRYPTION] - Root Certificate found: <root>
+     [java] Debug [ROLE_s-ENCRYPTION] - Certificate #0
+     [java] Debug [ROLE_s-ENCRYPTION] - Subject: CN=root,OU=CA,O=Certificati Digitali,L=Rome,ST=Italy,C=European Union
+     [java] Debug [ROLE_s-ENCRYPTION] - Issuer: CN=root,OU=CA,O=Certificati Digitali,L=Rome,ST=Italy,C=European Union
+     [java] Debug [ROLE_s-ENCRYPTION] - Validity: from Sun Feb 11 23:47:00 CET 2024 to Fri Feb 09 23:47:00 CET 2029
+     [java] Debug [ROLE_s-ENCRYPTION] - Version: 3
+     [java] Debug [ROLE_s-ENCRYPTION] - Serial Number: 658743272021970120643348023544875863741843963262
+     [java] Debug [ROLE_s-ENCRYPTION] - Signature Algorithm Name: SHA256withRSA
+     [java] Debug [ROLE_s-ENCRYPTION] - Certificate #1
+     [java] Debug [ROLE_s-ENCRYPTION] - Subject: CN=david,OU=Computer Science,O=Teesside University,L=Middlesbrough,ST=Tees Valley,C=United Kingdom
+     [java] Debug [ROLE_s-ENCRYPTION] - Issuer: CN=root,OU=CA,O=Certificati Digitali,L=Rome,ST=Italy,C=European Union
+     [java] Debug [ROLE_s-ENCRYPTION] - Validity: from Sun Feb 11 23:50:00 CET 2024 to Thu Feb 10 23:50:00 CET 2028
+     [java] Debug [ROLE_s-ENCRYPTION] - Version: 3
+     [java] Debug [ROLE_s-ENCRYPTION] - Serial Number: 354573758810963109925742508302461650180260491452
+     [java] Debug [ROLE_s-ENCRYPTION] - Signature Algorithm Name: SHA256withRSA
+     [java] Debug [ROLE_s-ENCRYPTION] - Root Certificate
+     [java] Debug [ROLE_s-ENCRYPTION] - Subject: CN=root,OU=CA,O=Certificati Digitali,L=Rome,ST=Italy,C=European Union
+     [java] Debug [ROLE_s-ENCRYPTION] - Issuer: CN=root,OU=CA,O=Certificati Digitali,L=Rome,ST=Italy,C=European Union
+     [java] Debug [ROLE_s-ENCRYPTION] - Validity: from Sun Feb 11 23:47:00 CET 2024 to Fri Feb 09 23:47:00 CET 2029
+     [java] Debug [ROLE_s-ENCRYPTION] - Version: 3
+     [java] Debug [ROLE_s-ENCRYPTION] - Serial Number: 658743272021970120643348023544875863741843963262
+     [java] Debug [ROLE_s-ENCRYPTION] - Signature Algorithm Name: SHA256withRSA
+     [java] Debug [ROLE_s-LANGUAGE] - AnBx_Params - size: 2
+     [java] Debug [ROLE_s-LANGUAGE] - AnBx_Params - hash: -1337631472
+     [java] Debug [ROLE_s-LANGUAGE] - [19:16:52:498]AnBx_Params - params: AnBx_Params [v=[david, Sun RSA public key, 2048 bits
+     [java]   params: null
+     [java]   modulus: 19330069983498690154469908677521350586281095691134725934325530421686739225237275595567912646834499096414180354321478751897325909502328341329080945932207187793498887058915624779405420232794844844432300329803603263751508414694248113508845656540237348885788420856365520678070556687227640344463362463403058686011172015992249070453675867299318874758104294179111295698854224410013930386165662628566907350396839384125437358040530436916597168289418349323789364976532332669574505823109358728951268860968566831860911710402572966535490079109900507233568494099476297782029543566959433328835108437214177157226518565763486283034941
+     [java]   public exponent: 65537]]
+     [java] Debug [ROLE_s-ENCRYPTION] - PrivateKey retrieved: <alice>
+     [java] Debug [ROLE_s-ENCRYPTION] - Signed  [RSA/PKCS#8/9736] java.security.SignedObject@3c7f66c4 - Provider: SunRsaSign
+     [java] Debug [ROLE_s-LANGUAGE] - Send
+     [java] Debug [ROLE_s-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_s-NETWORK] - Sending -> java.security.SignedObject@3c7f66c4
+     [java] Debug [ROLE_s-NETWORK] - [19:16:52:520]Sent -> java.security.SignedObject@3c7f66c4
+     [java] Debug [ROLE_s-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_s - STEP_5
+     [java] Debug [ROLE_s-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_s@7946e1f4
+     [java] Debug [ROLE_s-PROTOCOL] - Session completed: 4/10
+     [java] Debug [ROLE_s-PROTOCOL] - Session started: 5/10
+     [java] Debug [ROLE_s-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_s - STEP_0
+     [java] Debug [ROLE_s-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_s@7946e1f4
+     [java] Debug [ROLE_s-ENCRYPTION] - PublicKey found: <charlie>
+     [java] Debug [ROLE_s-ENCRYPTION] - Root Certificate found: <root>
+     [java] Debug [ROLE_s-ENCRYPTION] - Certificate #0
+     [java] Debug [ROLE_s-ENCRYPTION] - Subject: CN=root,OU=CA,O=Certificati Digitali,L=Rome,ST=Italy,C=European Union
+     [java] Debug [ROLE_s-ENCRYPTION] - Issuer: CN=root,OU=CA,O=Certificati Digitali,L=Rome,ST=Italy,C=European Union
+     [java] Debug [ROLE_s-ENCRYPTION] - Validity: from Sun Feb 11 23:47:00 CET 2024 to Fri Feb 09 23:47:00 CET 2029
+     [java] Debug [ROLE_s-ENCRYPTION] - Version: 3
+     [java] Debug [ROLE_s-ENCRYPTION] - Serial Number: 658743272021970120643348023544875863741843963262
+     [java] Debug [ROLE_s-ENCRYPTION] - Signature Algorithm Name: SHA256withRSA
+     [java] Debug [ROLE_s-ENCRYPTION] - Certificate #1
+     [java] Debug [ROLE_s-ENCRYPTION] - Subject: CN=charlie,OU=Computer Science,O=Teesside University,L=Middlesbrough,ST=Tees Valley,C=United Kingdom
+     [java] Debug [ROLE_s-ENCRYPTION] - Issuer: CN=root,OU=CA,O=Certificati Digitali,L=Rome,ST=Italy,C=European Union
+     [java] Debug [ROLE_s-ENCRYPTION] - Validity: from Sun Feb 11 23:50:00 CET 2024 to Thu Feb 10 23:50:00 CET 2028
+     [java] Debug [ROLE_s-ENCRYPTION] - Version: 3
+     [java] Debug [ROLE_s-ENCRYPTION] - Serial Number: 432599062341958780416942254291267429475864802134
+     [java] Debug [ROLE_s-ENCRYPTION] - Signature Algorithm Name: SHA256withRSA
+     [java] Debug [ROLE_s-ENCRYPTION] - Root Certificate
+     [java] Debug [ROLE_s-ENCRYPTION] - Subject: CN=root,OU=CA,O=Certificati Digitali,L=Rome,ST=Italy,C=European Union
+     [java] Debug [ROLE_s-ENCRYPTION] - Issuer: CN=root,OU=CA,O=Certificati Digitali,L=Rome,ST=Italy,C=European Union
+     [java] Debug [ROLE_s-ENCRYPTION] - Validity: from Sun Feb 11 23:47:00 CET 2024 to Fri Feb 09 23:47:00 CET 2029
+     [java] Debug [ROLE_s-ENCRYPTION] - Version: 3
+     [java] Debug [ROLE_s-ENCRYPTION] - Serial Number: 658743272021970120643348023544875863741843963262
+     [java] Debug [ROLE_s-ENCRYPTION] - Signature Algorithm Name: SHA256withRSA
+     [java] Debug [ROLE_s-LANGUAGE] - AnBx_Params - size: 2
+     [java] Debug [ROLE_s-LANGUAGE] - AnBx_Params - hash: 1437597095
+     [java] Debug [ROLE_s-LANGUAGE] - [19:16:52:522]AnBx_Params - params: AnBx_Params [v=[charlie, Sun RSA public key, 2048 bits
+     [java]   params: null
+     [java]   modulus: 25841705985275738149920162972721961294861552097434008604965228071605054303783773429820670795645426990587884507291871437703470462639636458706506867770908110184326647885611517627844615950205800163466370004036074755433745473741628962405959868461136641094719005943536257978953548002828575988934298009617638932496514265306313562525528397663668839609016235360576669615362940042922265988878134234899112652980699872286218393412875766723024684797848368467979720605473598229700819925186265190184334648764716263781450595048084058217434045478944327440664714014176314745712761062446977004373303381482658415193885899176011360088323
+     [java]   public exponent: 65537]]
+     [java] Debug [ROLE_s-ENCRYPTION] - PrivateKey retrieved: <alice>
+     [java] Debug [ROLE_s-ENCRYPTION] - Signed  [RSA/PKCS#8/9736] java.security.SignedObject@12aba8be - Provider: SunRsaSign
+     [java] Debug [ROLE_s-LANGUAGE] - Send
+     [java] Debug [ROLE_s-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_s-NETWORK] - Sending -> java.security.SignedObject@12aba8be
+     [java] Debug [ROLE_s-NETWORK] - [19:16:52:549]Sent -> java.security.SignedObject@12aba8be
+     [java] Debug [ROLE_s-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_s - STEP_0
+     [java] Debug [ROLE_s-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_s@7946e1f4
+     [java] Debug [ROLE_s-PROTOCOL] - Session completed: 5/10
+     [java] Debug [ROLE_s-PROTOCOL] - Session started: 6/10
+     [java] Debug [ROLE_s-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_s - STEP_5
+     [java] Debug [ROLE_s-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_s@7946e1f4
+     [java] Debug [ROLE_s-ENCRYPTION] - PublicKey found: <david>
+     [java] Debug [ROLE_s-ENCRYPTION] - Root Certificate found: <root>
+     [java] Debug [ROLE_s-ENCRYPTION] - Certificate #0
+     [java] Debug [ROLE_s-ENCRYPTION] - Subject: CN=root,OU=CA,O=Certificati Digitali,L=Rome,ST=Italy,C=European Union
+     [java] Debug [ROLE_s-ENCRYPTION] - Issuer: CN=root,OU=CA,O=Certificati Digitali,L=Rome,ST=Italy,C=European Union
+     [java] Debug [ROLE_s-ENCRYPTION] - Validity: from Sun Feb 11 23:47:00 CET 2024 to Fri Feb 09 23:47:00 CET 2029
+     [java] Debug [ROLE_s-ENCRYPTION] - Version: 3
+     [java] Debug [ROLE_s-ENCRYPTION] - Serial Number: 658743272021970120643348023544875863741843963262
+     [java] Debug [ROLE_s-ENCRYPTION] - Signature Algorithm Name: SHA256withRSA
+     [java] Debug [ROLE_s-ENCRYPTION] - Certificate #1
+     [java] Debug [ROLE_s-ENCRYPTION] - Subject: CN=david,OU=Computer Science,O=Teesside University,L=Middlesbrough,ST=Tees Valley,C=United Kingdom
+     [java] Debug [ROLE_s-ENCRYPTION] - Issuer: CN=root,OU=CA,O=Certificati Digitali,L=Rome,ST=Italy,C=European Union
+     [java] Debug [ROLE_s-ENCRYPTION] - Validity: from Sun Feb 11 23:50:00 CET 2024 to Thu Feb 10 23:50:00 CET 2028
+     [java] Debug [ROLE_s-ENCRYPTION] - Version: 3
+     [java] Debug [ROLE_s-ENCRYPTION] - Serial Number: 354573758810963109925742508302461650180260491452
+     [java] Debug [ROLE_s-ENCRYPTION] - Signature Algorithm Name: SHA256withRSA
+     [java] Debug [ROLE_s-ENCRYPTION] - Root Certificate
+     [java] Debug [ROLE_s-ENCRYPTION] - Subject: CN=root,OU=CA,O=Certificati Digitali,L=Rome,ST=Italy,C=European Union
+     [java] Debug [ROLE_s-ENCRYPTION] - Issuer: CN=root,OU=CA,O=Certificati Digitali,L=Rome,ST=Italy,C=European Union
+     [java] Debug [ROLE_s-ENCRYPTION] - Validity: from Sun Feb 11 23:47:00 CET 2024 to Fri Feb 09 23:47:00 CET 2029
+     [java] Debug [ROLE_s-ENCRYPTION] - Version: 3
+     [java] Debug [ROLE_s-ENCRYPTION] - Serial Number: 658743272021970120643348023544875863741843963262
+     [java] Debug [ROLE_s-ENCRYPTION] - Signature Algorithm Name: SHA256withRSA
+     [java] Debug [ROLE_s-LANGUAGE] - AnBx_Params - size: 2
+     [java] Debug [ROLE_s-LANGUAGE] - AnBx_Params - hash: -1337631472
+     [java] Debug [ROLE_s-LANGUAGE] - [19:16:52:551]AnBx_Params - params: AnBx_Params [v=[david, Sun RSA public key, 2048 bits
+     [java]   params: null
+     [java]   modulus: 19330069983498690154469908677521350586281095691134725934325530421686739225237275595567912646834499096414180354321478751897325909502328341329080945932207187793498887058915624779405420232794844844432300329803603263751508414694248113508845656540237348885788420856365520678070556687227640344463362463403058686011172015992249070453675867299318874758104294179111295698854224410013930386165662628566907350396839384125437358040530436916597168289418349323789364976532332669574505823109358728951268860968566831860911710402572966535490079109900507233568494099476297782029543566959433328835108437214177157226518565763486283034941
+     [java]   public exponent: 65537]]
+     [java] Debug [ROLE_s-ENCRYPTION] - PrivateKey retrieved: <alice>
+     [java] Debug [ROLE_s-ENCRYPTION] - Signed  [RSA/PKCS#8/9736] java.security.SignedObject@428640fa - Provider: SunRsaSign
+     [java] Debug [ROLE_s-LANGUAGE] - Send
+     [java] Debug [ROLE_s-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_s-NETWORK] - Sending -> java.security.SignedObject@428640fa
+     [java] Debug [ROLE_s-NETWORK] - [19:16:52:581]Sent -> java.security.SignedObject@428640fa
+     [java] Debug [ROLE_s-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_s - STEP_5
+     [java] Debug [ROLE_s-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_s@7946e1f4
+     [java] Debug [ROLE_s-PROTOCOL] - Session completed: 6/10
+     [java] Debug [ROLE_s-PROTOCOL] - Session started: 7/10
+     [java] Debug [ROLE_s-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_s - STEP_0
+     [java] Debug [ROLE_s-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_s@7946e1f4
+     [java] Debug [ROLE_s-ENCRYPTION] - PublicKey found: <charlie>
+     [java] Debug [ROLE_s-ENCRYPTION] - Root Certificate found: <root>
+     [java] Debug [ROLE_s-ENCRYPTION] - Certificate #0
+     [java] Debug [ROLE_s-ENCRYPTION] - Subject: CN=root,OU=CA,O=Certificati Digitali,L=Rome,ST=Italy,C=European Union
+     [java] Debug [ROLE_s-ENCRYPTION] - Issuer: CN=root,OU=CA,O=Certificati Digitali,L=Rome,ST=Italy,C=European Union
+     [java] Debug [ROLE_s-ENCRYPTION] - Validity: from Sun Feb 11 23:47:00 CET 2024 to Fri Feb 09 23:47:00 CET 2029
+     [java] Debug [ROLE_s-ENCRYPTION] - Version: 3
+     [java] Debug [ROLE_s-ENCRYPTION] - Serial Number: 658743272021970120643348023544875863741843963262
+     [java] Debug [ROLE_s-ENCRYPTION] - Signature Algorithm Name: SHA256withRSA
+     [java] Debug [ROLE_s-ENCRYPTION] - Certificate #1
+     [java] Debug [ROLE_s-ENCRYPTION] - Subject: CN=charlie,OU=Computer Science,O=Teesside University,L=Middlesbrough,ST=Tees Valley,C=United Kingdom
+     [java] Debug [ROLE_s-ENCRYPTION] - Issuer: CN=root,OU=CA,O=Certificati Digitali,L=Rome,ST=Italy,C=European Union
+     [java] Debug [ROLE_s-ENCRYPTION] - Validity: from Sun Feb 11 23:50:00 CET 2024 to Thu Feb 10 23:50:00 CET 2028
+     [java] Debug [ROLE_s-ENCRYPTION] - Version: 3
+     [java] Debug [ROLE_s-ENCRYPTION] - Serial Number: 432599062341958780416942254291267429475864802134
+     [java] Debug [ROLE_s-ENCRYPTION] - Signature Algorithm Name: SHA256withRSA
+     [java] Debug [ROLE_s-ENCRYPTION] - Root Certificate
+     [java] Debug [ROLE_s-ENCRYPTION] - Subject: CN=root,OU=CA,O=Certificati Digitali,L=Rome,ST=Italy,C=European Union
+     [java] Debug [ROLE_s-ENCRYPTION] - Issuer: CN=root,OU=CA,O=Certificati Digitali,L=Rome,ST=Italy,C=European Union
+     [java] Debug [ROLE_s-ENCRYPTION] - Validity: from Sun Feb 11 23:47:00 CET 2024 to Fri Feb 09 23:47:00 CET 2029
+     [java] Debug [ROLE_s-ENCRYPTION] - Version: 3
+     [java] Debug [ROLE_s-ENCRYPTION] - Serial Number: 658743272021970120643348023544875863741843963262
+     [java] Debug [ROLE_s-ENCRYPTION] - Signature Algorithm Name: SHA256withRSA
+     [java] Debug [ROLE_s-LANGUAGE] - AnBx_Params - size: 2
+     [java] Debug [ROLE_s-LANGUAGE] - AnBx_Params - hash: 1437597095
+     [java] Debug [ROLE_s-LANGUAGE] - [19:16:52:583]AnBx_Params - params: AnBx_Params [v=[charlie, Sun RSA public key, 2048 bits
+     [java]   params: null
+     [java]   modulus: 25841705985275738149920162972721961294861552097434008604965228071605054303783773429820670795645426990587884507291871437703470462639636458706506867770908110184326647885611517627844615950205800163466370004036074755433745473741628962405959868461136641094719005943536257978953548002828575988934298009617638932496514265306313562525528397663668839609016235360576669615362940042922265988878134234899112652980699872286218393412875766723024684797848368467979720605473598229700819925186265190184334648764716263781450595048084058217434045478944327440664714014176314745712761062446977004373303381482658415193885899176011360088323
+     [java]   public exponent: 65537]]
+     [java] Debug [ROLE_s-ENCRYPTION] - PrivateKey retrieved: <alice>
+     [java] Debug [ROLE_s-ENCRYPTION] - Signed  [RSA/PKCS#8/9736] java.security.SignedObject@942a29c - Provider: SunRsaSign
+     [java] Debug [ROLE_s-LANGUAGE] - Send
+     [java] Debug [ROLE_s-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_s-NETWORK] - Sending -> java.security.SignedObject@942a29c
+     [java] Debug [ROLE_s-NETWORK] - [19:16:52:607]Sent -> java.security.SignedObject@942a29c
+     [java] Debug [ROLE_s-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_s - STEP_0
+     [java] Debug [ROLE_s-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_s@7946e1f4
+     [java] Debug [ROLE_s-PROTOCOL] - Session completed: 7/10
+     [java] Debug [ROLE_s-PROTOCOL] - Session started: 8/10
+     [java] Debug [ROLE_s-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_s - STEP_5
+     [java] Debug [ROLE_s-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_s@7946e1f4
+     [java] Debug [ROLE_s-ENCRYPTION] - PublicKey found: <david>
+     [java] Debug [ROLE_s-ENCRYPTION] - Root Certificate found: <root>
+     [java] Debug [ROLE_s-ENCRYPTION] - Certificate #0
+     [java] Debug [ROLE_s-ENCRYPTION] - Subject: CN=root,OU=CA,O=Certificati Digitali,L=Rome,ST=Italy,C=European Union
+     [java] Debug [ROLE_s-ENCRYPTION] - Issuer: CN=root,OU=CA,O=Certificati Digitali,L=Rome,ST=Italy,C=European Union
+     [java] Debug [ROLE_s-ENCRYPTION] - Validity: from Sun Feb 11 23:47:00 CET 2024 to Fri Feb 09 23:47:00 CET 2029
+     [java] Debug [ROLE_s-ENCRYPTION] - Version: 3
+     [java] Debug [ROLE_s-ENCRYPTION] - Serial Number: 658743272021970120643348023544875863741843963262
+     [java] Debug [ROLE_s-ENCRYPTION] - Signature Algorithm Name: SHA256withRSA
+     [java] Debug [ROLE_s-ENCRYPTION] - Certificate #1
+     [java] Debug [ROLE_s-ENCRYPTION] - Subject: CN=david,OU=Computer Science,O=Teesside University,L=Middlesbrough,ST=Tees Valley,C=United Kingdom
+     [java] Debug [ROLE_s-ENCRYPTION] - Issuer: CN=root,OU=CA,O=Certificati Digitali,L=Rome,ST=Italy,C=European Union
+     [java] Debug [ROLE_s-ENCRYPTION] - Validity: from Sun Feb 11 23:50:00 CET 2024 to Thu Feb 10 23:50:00 CET 2028
+     [java] Debug [ROLE_s-ENCRYPTION] - Version: 3
+     [java] Debug [ROLE_s-ENCRYPTION] - Serial Number: 354573758810963109925742508302461650180260491452
+     [java] Debug [ROLE_s-ENCRYPTION] - Signature Algorithm Name: SHA256withRSA
+     [java] Debug [ROLE_s-ENCRYPTION] - Root Certificate
+     [java] Debug [ROLE_s-ENCRYPTION] - Subject: CN=root,OU=CA,O=Certificati Digitali,L=Rome,ST=Italy,C=European Union
+     [java] Debug [ROLE_s-ENCRYPTION] - Issuer: CN=root,OU=CA,O=Certificati Digitali,L=Rome,ST=Italy,C=European Union
+     [java] Debug [ROLE_s-ENCRYPTION] - Validity: from Sun Feb 11 23:47:00 CET 2024 to Fri Feb 09 23:47:00 CET 2029
+     [java] Debug [ROLE_s-ENCRYPTION] - Version: 3
+     [java] Debug [ROLE_s-ENCRYPTION] - Serial Number: 658743272021970120643348023544875863741843963262
+     [java] Debug [ROLE_s-ENCRYPTION] - Signature Algorithm Name: SHA256withRSA
+     [java] Debug [ROLE_s-LANGUAGE] - AnBx_Params - size: 2
+     [java] Debug [ROLE_s-LANGUAGE] - AnBx_Params - hash: -1337631472
+     [java] Debug [ROLE_s-LANGUAGE] - [19:16:52:609]AnBx_Params - params: AnBx_Params [v=[david, Sun RSA public key, 2048 bits
+     [java]   params: null
+     [java]   modulus: 19330069983498690154469908677521350586281095691134725934325530421686739225237275595567912646834499096414180354321478751897325909502328341329080945932207187793498887058915624779405420232794844844432300329803603263751508414694248113508845656540237348885788420856365520678070556687227640344463362463403058686011172015992249070453675867299318874758104294179111295698854224410013930386165662628566907350396839384125437358040530436916597168289418349323789364976532332669574505823109358728951268860968566831860911710402572966535490079109900507233568494099476297782029543566959433328835108437214177157226518565763486283034941
+     [java]   public exponent: 65537]]
+     [java] Debug [ROLE_s-ENCRYPTION] - PrivateKey retrieved: <alice>
+     [java] Debug [ROLE_s-ENCRYPTION] - Signed  [RSA/PKCS#8/9736] java.security.SignedObject@5677323c - Provider: SunRsaSign
+     [java] Debug [ROLE_s-LANGUAGE] - Send
+     [java] Debug [ROLE_s-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_s-NETWORK] - Sending -> java.security.SignedObject@5677323c
+     [java] Debug [ROLE_s-NETWORK] - [19:16:52:621]Sent -> java.security.SignedObject@5677323c
+     [java] Debug [ROLE_s-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_s - STEP_5
+     [java] Debug [ROLE_s-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_s@7946e1f4
+     [java] Debug [ROLE_s-PROTOCOL] - Session completed: 8/10
+     [java] Debug [ROLE_s-PROTOCOL] - Session started: 9/10
+     [java] Debug [ROLE_s-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_s - STEP_0
+     [java] Debug [ROLE_s-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_s@7946e1f4
+     [java] Debug [ROLE_s-ENCRYPTION] - PublicKey found: <charlie>
+     [java] Debug [ROLE_s-ENCRYPTION] - Root Certificate found: <root>
+     [java] Debug [ROLE_s-ENCRYPTION] - Certificate #0
+     [java] Debug [ROLE_s-ENCRYPTION] - Subject: CN=root,OU=CA,O=Certificati Digitali,L=Rome,ST=Italy,C=European Union
+     [java] Debug [ROLE_s-ENCRYPTION] - Issuer: CN=root,OU=CA,O=Certificati Digitali,L=Rome,ST=Italy,C=European Union
+     [java] Debug [ROLE_s-ENCRYPTION] - Validity: from Sun Feb 11 23:47:00 CET 2024 to Fri Feb 09 23:47:00 CET 2029
+     [java] Debug [ROLE_s-ENCRYPTION] - Version: 3
+     [java] Debug [ROLE_s-ENCRYPTION] - Serial Number: 658743272021970120643348023544875863741843963262
+     [java] Debug [ROLE_s-ENCRYPTION] - Signature Algorithm Name: SHA256withRSA
+     [java] Debug [ROLE_s-ENCRYPTION] - Certificate #1
+     [java] Debug [ROLE_s-ENCRYPTION] - Subject: CN=charlie,OU=Computer Science,O=Teesside University,L=Middlesbrough,ST=Tees Valley,C=United Kingdom
+     [java] Debug [ROLE_s-ENCRYPTION] - Issuer: CN=root,OU=CA,O=Certificati Digitali,L=Rome,ST=Italy,C=European Union
+     [java] Debug [ROLE_s-ENCRYPTION] - Validity: from Sun Feb 11 23:50:00 CET 2024 to Thu Feb 10 23:50:00 CET 2028
+     [java] Debug [ROLE_s-ENCRYPTION] - Version: 3
+     [java] Debug [ROLE_s-ENCRYPTION] - Serial Number: 432599062341958780416942254291267429475864802134
+     [java] Debug [ROLE_s-ENCRYPTION] - Signature Algorithm Name: SHA256withRSA
+     [java] Debug [ROLE_s-ENCRYPTION] - Root Certificate
+     [java] Debug [ROLE_s-ENCRYPTION] - Subject: CN=root,OU=CA,O=Certificati Digitali,L=Rome,ST=Italy,C=European Union
+     [java] Debug [ROLE_s-ENCRYPTION] - Issuer: CN=root,OU=CA,O=Certificati Digitali,L=Rome,ST=Italy,C=European Union
+     [java] Debug [ROLE_s-ENCRYPTION] - Validity: from Sun Feb 11 23:47:00 CET 2024 to Fri Feb 09 23:47:00 CET 2029
+     [java] Debug [ROLE_s-ENCRYPTION] - Version: 3
+     [java] Debug [ROLE_s-ENCRYPTION] - Serial Number: 658743272021970120643348023544875863741843963262
+     [java] Debug [ROLE_s-ENCRYPTION] - Signature Algorithm Name: SHA256withRSA
+     [java] Debug [ROLE_s-LANGUAGE] - AnBx_Params - size: 2
+     [java] Debug [ROLE_s-LANGUAGE] - AnBx_Params - hash: 1437597095
+     [java] Debug [ROLE_s-LANGUAGE] - [19:16:52:622]AnBx_Params - params: AnBx_Params [v=[charlie, Sun RSA public key, 2048 bits
+     [java]   params: null
+     [java]   modulus: 25841705985275738149920162972721961294861552097434008604965228071605054303783773429820670795645426990587884507291871437703470462639636458706506867770908110184326647885611517627844615950205800163466370004036074755433745473741628962405959868461136641094719005943536257978953548002828575988934298009617638932496514265306313562525528397663668839609016235360576669615362940042922265988878134234899112652980699872286218393412875766723024684797848368467979720605473598229700819925186265190184334648764716263781450595048084058217434045478944327440664714014176314745712761062446977004373303381482658415193885899176011360088323
+     [java]   public exponent: 65537]]
+     [java] Debug [ROLE_s-ENCRYPTION] - PrivateKey retrieved: <alice>
+     [java] Debug [ROLE_s-ENCRYPTION] - Signed  [RSA/PKCS#8/9736] java.security.SignedObject@1a942c18 - Provider: SunRsaSign
+     [java] Debug [ROLE_s-LANGUAGE] - Send
+     [java] Debug [ROLE_s-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_s-NETWORK] - Sending -> java.security.SignedObject@1a942c18
+     [java] Debug [ROLE_s-NETWORK] - [19:16:52:630]Sent -> java.security.SignedObject@1a942c18
+     [java] Debug [ROLE_s-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_s - STEP_0
+     [java] Debug [ROLE_s-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_s@7946e1f4
+     [java] Debug [ROLE_s-PROTOCOL] - Session completed: 9/10
+     [java] Debug [ROLE_s-PROTOCOL] - Session started: 10/10
+     [java] Debug [ROLE_s-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_s - STEP_5
+     [java] Debug [ROLE_s-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_s@7946e1f4
+     [java] Debug [ROLE_s-ENCRYPTION] - PublicKey found: <david>
+     [java] Debug [ROLE_s-ENCRYPTION] - Root Certificate found: <root>
+     [java] Debug [ROLE_s-ENCRYPTION] - Certificate #0
+     [java] Debug [ROLE_s-ENCRYPTION] - Subject: CN=root,OU=CA,O=Certificati Digitali,L=Rome,ST=Italy,C=European Union
+     [java] Debug [ROLE_s-ENCRYPTION] - Issuer: CN=root,OU=CA,O=Certificati Digitali,L=Rome,ST=Italy,C=European Union
+     [java] Debug [ROLE_s-ENCRYPTION] - Validity: from Sun Feb 11 23:47:00 CET 2024 to Fri Feb 09 23:47:00 CET 2029
+     [java] Debug [ROLE_s-ENCRYPTION] - Version: 3
+     [java] Debug [ROLE_s-ENCRYPTION] - Serial Number: 658743272021970120643348023544875863741843963262
+     [java] Debug [ROLE_s-ENCRYPTION] - Signature Algorithm Name: SHA256withRSA
+     [java] Debug [ROLE_s-ENCRYPTION] - Certificate #1
+     [java] Debug [ROLE_s-ENCRYPTION] - Subject: CN=david,OU=Computer Science,O=Teesside University,L=Middlesbrough,ST=Tees Valley,C=United Kingdom
+     [java] Debug [ROLE_s-ENCRYPTION] - Issuer: CN=root,OU=CA,O=Certificati Digitali,L=Rome,ST=Italy,C=European Union
+     [java] Debug [ROLE_s-ENCRYPTION] - Validity: from Sun Feb 11 23:50:00 CET 2024 to Thu Feb 10 23:50:00 CET 2028
+     [java] Debug [ROLE_s-ENCRYPTION] - Version: 3
+     [java] Debug [ROLE_s-ENCRYPTION] - Serial Number: 354573758810963109925742508302461650180260491452
+     [java] Debug [ROLE_s-ENCRYPTION] - Signature Algorithm Name: SHA256withRSA
+     [java] Debug [ROLE_s-ENCRYPTION] - Root Certificate
+     [java] Debug [ROLE_s-ENCRYPTION] - Subject: CN=root,OU=CA,O=Certificati Digitali,L=Rome,ST=Italy,C=European Union
+     [java] Debug [ROLE_s-ENCRYPTION] - Issuer: CN=root,OU=CA,O=Certificati Digitali,L=Rome,ST=Italy,C=European Union
+     [java] Debug [ROLE_s-ENCRYPTION] - Validity: from Sun Feb 11 23:47:00 CET 2024 to Fri Feb 09 23:47:00 CET 2029
+     [java] Debug [ROLE_s-ENCRYPTION] - Version: 3
+     [java] Debug [ROLE_s-ENCRYPTION] - Serial Number: 658743272021970120643348023544875863741843963262
+     [java] Debug [ROLE_s-ENCRYPTION] - Signature Algorithm Name: SHA256withRSA
+     [java] Debug [ROLE_s-LANGUAGE] - AnBx_Params - size: 2
+     [java] Debug [ROLE_s-LANGUAGE] - AnBx_Params - hash: -1337631472
+     [java] Debug [ROLE_s-LANGUAGE] - [19:16:52:631]AnBx_Params - params: AnBx_Params [v=[david, Sun RSA public key, 2048 bits
+     [java]   params: null
+     [java]   modulus: 19330069983498690154469908677521350586281095691134725934325530421686739225237275595567912646834499096414180354321478751897325909502328341329080945932207187793498887058915624779405420232794844844432300329803603263751508414694248113508845656540237348885788420856365520678070556687227640344463362463403058686011172015992249070453675867299318874758104294179111295698854224410013930386165662628566907350396839384125437358040530436916597168289418349323789364976532332669574505823109358728951268860968566831860911710402572966535490079109900507233568494099476297782029543566959433328835108437214177157226518565763486283034941
+     [java]   public exponent: 65537]]
+     [java] Debug [ROLE_s-ENCRYPTION] - PrivateKey retrieved: <alice>
+     [java] Debug [ROLE_s-ENCRYPTION] - Signed  [RSA/PKCS#8/9736] java.security.SignedObject@6d4d66d2 - Provider: SunRsaSign
+     [java] Debug [ROLE_s-LANGUAGE] - Send
+     [java] Debug [ROLE_s-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_s-NETWORK] - Sending -> java.security.SignedObject@6d4d66d2
+     [java] Debug [ROLE_s-NETWORK] - [19:16:52:639]Sent -> java.security.SignedObject@6d4d66d2
+     [java] Debug [ROLE_s-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_s - STEP_5
+     [java] Debug [ROLE_s-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_s@7946e1f4
+     [java] Debug [ROLE_s-PROTOCOL] - Session completed: 10/10
+     [java] Debug [ROLE_s-NETWORK] - Connection closed
+     [java] Debug [ROLE_s-SESSION] - Session closed
+     [java] ISOPK2PMAP_I1 [ROLE_s] - Execution time was 1794,251 ms.
+
+BUILD SUCCESSFUL
+Total time: 2 seconds

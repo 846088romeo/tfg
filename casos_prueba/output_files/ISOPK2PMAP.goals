@@ -1,0 +1,5 @@
+_SET ?s 'alice'
+_SET ?A 'bob'
+_SET ?B 'charlie'
+;GOAL auth:[?Text3],[?A,?B]
+_SET ?Text3 'X1','X5','X9','X13','X17','X21','X25','X29','X33','X37'

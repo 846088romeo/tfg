@@ -1,0 +1,550 @@
+Buildfile: /Users/usuario/anbx-ide-exe-mac/genAnBx/src/sso/build.xml
+
+ROLE_idp:
+     [java] Debug [SSO-ALWAYS] - Verbose mode on
+     [java] Debug [ROLE_idp-APPLICATION] - Reading config file: SSO.properties
+     [java] Debug [ROLE_idp-ENCRYPTION] - -------------------- crypto config --------------------
+     [java] Debug [ROLE_idp-ENCRYPTION] - cipherScheme = AES/CBC/PKCS5Padding
+     [java] Debug [ROLE_idp-ENCRYPTION] - keySize = 256
+     [java] Debug [ROLE_idp-ENCRYPTION] - keyGenerationScheme = AES
+     [java] Debug [ROLE_idp-ENCRYPTION] - keyGenerationSize = 256
+     [java] Debug [ROLE_idp-ENCRYPTION] - keyGenerationSchemePBE = PBKDF2WithHmacSHA512
+     [java] Debug [ROLE_idp-ENCRYPTION] - keyPairGenerationScheme = RSA
+     [java] Debug [ROLE_idp-ENCRYPTION] - keyPairGenerationSize = 2048
+     [java] Debug [ROLE_idp-ENCRYPTION] - secureRandomAlgorithm = DRBG
+     [java] Debug [ROLE_idp-ENCRYPTION] - hmacAlgorithm = HmacSHA256
+     [java] Debug [ROLE_idp-ENCRYPTION] - messageDigestAlgorithm = SHA-256
+     [java] Debug [ROLE_idp-ENCRYPTION] - messageDigestSignatureAlgorithm = SHA256
+     [java] Debug [ROLE_idp-ENCRYPTION] - keyAgreementAlgorithm = DH
+     [java] Debug [ROLE_idp-ENCRYPTION] - keyAgreementKeyPairGenerationScheme = DH
+     [java] Debug [ROLE_idp-ENCRYPTION] - dhRndExpSize = 4096
+     [java] Debug [ROLE_idp-ENCRYPTION] - ecGenParameterSpec = secp256r1
+     [java] Debug [ROLE_idp-ENCRYPTION] - asymCipherSchemeBlock = RSA
+     [java] Debug [ROLE_idp-ENCRYPTION] - sslContext = TLSv1.3
+     [java] Debug [ROLE_idp-ENCRYPTION] - securityProvider = default
+     [java] Debug [ROLE_idp-ENCRYPTION] - cipherSchemeProvider = default
+     [java] Debug [ROLE_idp-ENCRYPTION] - keyGenerationSchemeProvider = default
+     [java] Debug [ROLE_idp-ENCRYPTION] - keyGenerationSchemePBEProvider = default
+     [java] Debug [ROLE_idp-ENCRYPTION] - keyPairGenerationSchemeProvider = default
+     [java] Debug [ROLE_idp-ENCRYPTION] - secureRandomProvider = default
+     [java] Debug [ROLE_idp-ENCRYPTION] - hmacProvider = default
+     [java] Debug [ROLE_idp-ENCRYPTION] - messageDigestProvider = default
+     [java] Debug [ROLE_idp-ENCRYPTION] - signatureProvider = default
+     [java] Debug [ROLE_idp-ENCRYPTION] - asymEncProvider = default
+     [java] Debug [ROLE_idp-ENCRYPTION] - keyAgreementProvider = default
+     [java] Debug [ROLE_idp-ENCRYPTION] - sslContextProvider = default
+     [java] Debug [ROLE_idp-ENCRYPTION] - -------------------- crypto config --------------------
+     [java] Debug [ROLE_idp-APPLICATION] - Loading aliases
+     [java] Debug [ROLE_idp-APPLICATION] - Role: ROLE_C - Alias: alice
+     [java] Debug [ROLE_idp-APPLICATION] - Role: ROLE_SP - Alias: bob
+     [java] Debug [ROLE_idp-APPLICATION] - Role: ROLE_idp - Alias: charlie
+     [java] Debug [ROLE_idp-APPLICATION] - myAlias: charlie
+     [java] Debug [ROLE_idp-APPLICATION] - Host: localhost - Port: 55558
+     [java] Debug [ROLE_idp-APPLICATION] - Channel Type: SSL_SECURE - Role: SERVER
+     [java] Debug [ROLE_idp-APPLICATION] - Channel: ROLE_idp_channel_ROLE_C_Server_Secure
+     [java] Debug [ROLE_idp-APPLICATION] - myRole: ROLE_idp
+     [java] Debug [ROLE_idp-APPLICATION] - sessions: 10
+     [java] Debug [ROLE_idp-ENCRYPTION] - Loading KeyStore: tls #0
+     [java] Debug [ROLE_idp-ENCRYPTION] - Reading config file (KSS): ../../keystore/charlie.pwd
+     [java] Debug [ROLE_idp-ENCRYPTION] - tls - KeyStoreType: PKCS12
+     [java] Debug [ROLE_idp-ENCRYPTION] - tls - LocalKeyStore: ../../keystore/charlie_tls.private
+     [java] Debug [ROLE_idp-ENCRYPTION] - tls - RemotelKeyStore: ../../keystore/charlie_tls.public
+     [java] Debug [ROLE_idp-ENCRYPTION] - My Alias: charlie
+     [java] Debug [ROLE_idp-ENCRYPTION] - RootCA: root
+     [java] Debug [ROLE_idp-ENCRYPTION] - Loading KeyStore: enc #1
+     [java] Debug [ROLE_idp-ENCRYPTION] - Reading config file (KSS): ../../keystore/charlie.pwd
+     [java] Debug [ROLE_idp-ENCRYPTION] - enc - KeyStoreType: PKCS12
+     [java] Debug [ROLE_idp-ENCRYPTION] - enc - LocalKeyStore: ../../keystore/charlie_enc.private
+     [java] Debug [ROLE_idp-ENCRYPTION] - enc - RemotelKeyStore: ../../keystore/charlie_enc.public
+     [java] Debug [ROLE_idp-ENCRYPTION] - My Alias: charlie
+     [java] Debug [ROLE_idp-ENCRYPTION] - RootCA: root
+     [java] Debug [ROLE_idp-ENCRYPTION] - Loading KeyStore: sig #2
+     [java] Debug [ROLE_idp-ENCRYPTION] - Reading config file (KSS): ../../keystore/charlie.pwd
+     [java] Debug [ROLE_idp-ENCRYPTION] - sig - KeyStoreType: PKCS12
+     [java] Debug [ROLE_idp-ENCRYPTION] - sig - LocalKeyStore: ../../keystore/charlie_sig.private
+     [java] Debug [ROLE_idp-ENCRYPTION] - sig - RemotelKeyStore: ../../keystore/charlie_sig.public
+     [java] Debug [ROLE_idp-ENCRYPTION] - My Alias: charlie
+     [java] Debug [ROLE_idp-ENCRYPTION] - RootCA: root
+     [java] Debug [ROLE_idp-ENCRYPTION] - Loading KeyStore: hmc #3
+     [java] Debug [ROLE_idp-ENCRYPTION] - Reading config file (KSS): ../../keystore/charlie.pwd
+     [java] Debug [ROLE_idp-ENCRYPTION] - hmc - KeyStoreType: PKCS12
+     [java] Debug [ROLE_idp-ENCRYPTION] - hmc - LocalKeyStore: ../../keystore/charlie_hmc.private
+     [java] Debug [ROLE_idp-ENCRYPTION] - hmc - RemotelKeyStore: ../../keystore/charlie_hmc.public
+     [java] Debug [ROLE_idp-ENCRYPTION] - My Alias: charlie
+     [java] Debug [ROLE_idp-ENCRYPTION] - RootCA: root
+     [java] Debug [ROLE_idp-ENCRYPTION] - Building KeyStore: tls #0
+     [java] Debug [ROLE_idp-ENCRYPTION] - Loading KeyStore: ../../keystore/charlie_tls.private - Type: PKCS12
+     [java] Debug [ROLE_idp-ENCRYPTION] - Loading KeyStore: ../../keystore/charlie_tls.public - Type: PKCS12
+     [java] Debug [ROLE_idp-ENCRYPTION] - Building KeyStore: enc #1
+     [java] Debug [ROLE_idp-ENCRYPTION] - Loading KeyStore: ../../keystore/charlie_enc.private - Type: PKCS12
+     [java] Debug [ROLE_idp-ENCRYPTION] - Loading KeyStore: ../../keystore/charlie_enc.public - Type: PKCS12
+     [java] Debug [ROLE_idp-ENCRYPTION] - Building KeyStore: sig #2
+     [java] Debug [ROLE_idp-ENCRYPTION] - Loading KeyStore: ../../keystore/charlie_sig.private - Type: PKCS12
+     [java] Debug [ROLE_idp-ENCRYPTION] - Loading KeyStore: ../../keystore/charlie_sig.public - Type: PKCS12
+     [java] Debug [ROLE_idp-ENCRYPTION] - Building KeyStore: hmc #3
+     [java] Debug [ROLE_idp-ENCRYPTION] - Loading KeyStore: ../../keystore/charlie_hmc.private - Type: PKCS12
+     [java] Debug [ROLE_idp-ENCRYPTION] - Loading KeyStore: ../../keystore/charlie_hmc.public - Type: PKCS12
+     [java] Debug [ROLE_idp-ENCRYPTION] - Certificate retrieved: <charlie>
+     [java] Debug [ROLE_idp-ENCRYPTION] - Certificate retrieved: <charlie>
+     [java] Debug [ROLE_idp-ENCRYPTION] - Certificate retrieved: <charlie>
+     [java] Debug [ROLE_idp-ENCRYPTION] - Certificate retrieved: <charlie>
+     [java] Debug [ROLE_idp-SESSION] - Initializing channel - cs: Channel Settings - Port: 55558 - Role: SERVER - Type: SSL_SECURE
+     [java] Debug [ROLE_idp-SESSION] - Initializing channel - keystore: anbxj.Crypto_KeyStoreSettings@49e4cb85
+     [java] Debug [ROLE_idp-SESSION] - Opening session
+     [java] Debug [ROLE_idp-NETWORK] - Starting server on port 55558 ...
+     [java] Debug [ROLE_idp-ALWAYS] - Server started on port 55558
+     [java] Debug [ROLE_idp-NETWORK] - Waiting for clients ...
+     [java] Debug [ROLE_idp-ENCRYPTION] - Loading KeyStore: ../../keystore/charlie_sig.private - Type: PKCS12
+     [java] Debug [ROLE_idp-ENCRYPTION] - Loading KeyStore: ../../keystore/charlie_sig.public - Type: PKCS12
+     [java] Debug [ROLE_idp-NETWORK] - SSLContext Algorithm: TLSv1.3
+     [java] Debug [ROLE_idp-NETWORK] - --- SupportedCipherSuites ---
+     [java] Debug [ROLE_idp-NETWORK] - TLS_AES_256_GCM_SHA384
+     [java] Debug [ROLE_idp-NETWORK] - TLS_AES_128_GCM_SHA256
+     [java] Debug [ROLE_idp-NETWORK] - TLS_CHACHA20_POLY1305_SHA256
+     [java] Debug [ROLE_idp-NETWORK] - TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+     [java] Debug [ROLE_idp-NETWORK] - TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+     [java] Debug [ROLE_idp-NETWORK] - TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256
+     [java] Debug [ROLE_idp-NETWORK] - TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+     [java] Debug [ROLE_idp-NETWORK] - TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256
+     [java] Debug [ROLE_idp-NETWORK] - TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+     [java] Debug [ROLE_idp-NETWORK] - TLS_DHE_RSA_WITH_AES_256_GCM_SHA384
+     [java] Debug [ROLE_idp-NETWORK] - TLS_DHE_RSA_WITH_CHACHA20_POLY1305_SHA256
+     [java] Debug [ROLE_idp-NETWORK] - TLS_DHE_DSS_WITH_AES_256_GCM_SHA384
+     [java] Debug [ROLE_idp-NETWORK] - TLS_DHE_RSA_WITH_AES_128_GCM_SHA256
+     [java] Debug [ROLE_idp-NETWORK] - TLS_DHE_DSS_WITH_AES_128_GCM_SHA256
+     [java] Debug [ROLE_idp-NETWORK] - TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
+     [java] Debug [ROLE_idp-NETWORK] - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
+     [java] Debug [ROLE_idp-NETWORK] - TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
+     [java] Debug [ROLE_idp-NETWORK] - TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
+     [java] Debug [ROLE_idp-NETWORK] - TLS_DHE_RSA_WITH_AES_256_CBC_SHA256
+     [java] Debug [ROLE_idp-NETWORK] - TLS_DHE_DSS_WITH_AES_256_CBC_SHA256
+     [java] Debug [ROLE_idp-NETWORK] - TLS_DHE_RSA_WITH_AES_128_CBC_SHA256
+     [java] Debug [ROLE_idp-NETWORK] - TLS_DHE_DSS_WITH_AES_128_CBC_SHA256
+     [java] Debug [ROLE_idp-NETWORK] - TLS_ECDH_ECDSA_WITH_AES_256_GCM_SHA384
+     [java] Debug [ROLE_idp-NETWORK] - TLS_ECDH_RSA_WITH_AES_256_GCM_SHA384
+     [java] Debug [ROLE_idp-NETWORK] - TLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256
+     [java] Debug [ROLE_idp-NETWORK] - TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256
+     [java] Debug [ROLE_idp-NETWORK] - TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA384
+     [java] Debug [ROLE_idp-NETWORK] - TLS_ECDH_RSA_WITH_AES_256_CBC_SHA384
+     [java] Debug [ROLE_idp-NETWORK] - TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256
+     [java] Debug [ROLE_idp-NETWORK] - TLS_ECDH_RSA_WITH_AES_128_CBC_SHA256
+     [java] Debug [ROLE_idp-NETWORK] - TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA
+     [java] Debug [ROLE_idp-NETWORK] - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA
+     [java] Debug [ROLE_idp-NETWORK] - TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA
+     [java] Debug [ROLE_idp-NETWORK] - TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA
+     [java] Debug [ROLE_idp-NETWORK] - TLS_DHE_RSA_WITH_AES_256_CBC_SHA
+     [java] Debug [ROLE_idp-NETWORK] - TLS_DHE_DSS_WITH_AES_256_CBC_SHA
+     [java] Debug [ROLE_idp-NETWORK] - TLS_DHE_RSA_WITH_AES_128_CBC_SHA
+     [java] Debug [ROLE_idp-NETWORK] - TLS_DHE_DSS_WITH_AES_128_CBC_SHA
+     [java] Debug [ROLE_idp-NETWORK] - TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA
+     [java] Debug [ROLE_idp-NETWORK] - TLS_ECDH_RSA_WITH_AES_256_CBC_SHA
+     [java] Debug [ROLE_idp-NETWORK] - TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA
+     [java] Debug [ROLE_idp-NETWORK] - TLS_ECDH_RSA_WITH_AES_128_CBC_SHA
+     [java] Debug [ROLE_idp-NETWORK] - TLS_RSA_WITH_AES_256_GCM_SHA384
+     [java] Debug [ROLE_idp-NETWORK] - TLS_RSA_WITH_AES_128_GCM_SHA256
+     [java] Debug [ROLE_idp-NETWORK] - TLS_RSA_WITH_AES_256_CBC_SHA256
+     [java] Debug [ROLE_idp-NETWORK] - TLS_RSA_WITH_AES_128_CBC_SHA256
+     [java] Debug [ROLE_idp-NETWORK] - TLS_RSA_WITH_AES_256_CBC_SHA
+     [java] Debug [ROLE_idp-NETWORK] - TLS_RSA_WITH_AES_128_CBC_SHA
+     [java] Debug [ROLE_idp-NETWORK] - TLS_EMPTY_RENEGOTIATION_INFO_SCSV
+     [java] Debug [ROLE_idp-NETWORK] - ---------------------------
+     [java] Debug [ROLE_idp-NETWORK] - --- EnabledCipherSuites ---
+     [java] Debug [ROLE_idp-NETWORK] - TLS_AES_256_GCM_SHA384
+     [java] Debug [ROLE_idp-NETWORK] - TLS_AES_128_GCM_SHA256
+     [java] Debug [ROLE_idp-NETWORK] - TLS_CHACHA20_POLY1305_SHA256
+     [java] Debug [ROLE_idp-NETWORK] - TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+     [java] Debug [ROLE_idp-NETWORK] - TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+     [java] Debug [ROLE_idp-NETWORK] - TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256
+     [java] Debug [ROLE_idp-NETWORK] - TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+     [java] Debug [ROLE_idp-NETWORK] - TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256
+     [java] Debug [ROLE_idp-NETWORK] - TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+     [java] Debug [ROLE_idp-NETWORK] - TLS_DHE_RSA_WITH_AES_256_GCM_SHA384
+     [java] Debug [ROLE_idp-NETWORK] - TLS_DHE_RSA_WITH_CHACHA20_POLY1305_SHA256
+     [java] Debug [ROLE_idp-NETWORK] - TLS_DHE_DSS_WITH_AES_256_GCM_SHA384
+     [java] Debug [ROLE_idp-NETWORK] - TLS_DHE_RSA_WITH_AES_128_GCM_SHA256
+     [java] Debug [ROLE_idp-NETWORK] - TLS_DHE_DSS_WITH_AES_128_GCM_SHA256
+     [java] Debug [ROLE_idp-NETWORK] - TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
+     [java] Debug [ROLE_idp-NETWORK] - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
+     [java] Debug [ROLE_idp-NETWORK] - TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
+     [java] Debug [ROLE_idp-NETWORK] - TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
+     [java] Debug [ROLE_idp-NETWORK] - TLS_DHE_RSA_WITH_AES_256_CBC_SHA256
+     [java] Debug [ROLE_idp-NETWORK] - TLS_DHE_DSS_WITH_AES_256_CBC_SHA256
+     [java] Debug [ROLE_idp-NETWORK] - TLS_DHE_RSA_WITH_AES_128_CBC_SHA256
+     [java] Debug [ROLE_idp-NETWORK] - TLS_DHE_DSS_WITH_AES_128_CBC_SHA256
+     [java] Debug [ROLE_idp-NETWORK] - TLS_ECDH_ECDSA_WITH_AES_256_GCM_SHA384
+     [java] Debug [ROLE_idp-NETWORK] - TLS_ECDH_RSA_WITH_AES_256_GCM_SHA384
+     [java] Debug [ROLE_idp-NETWORK] - TLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256
+     [java] Debug [ROLE_idp-NETWORK] - TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256
+     [java] Debug [ROLE_idp-NETWORK] - TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA384
+     [java] Debug [ROLE_idp-NETWORK] - TLS_ECDH_RSA_WITH_AES_256_CBC_SHA384
+     [java] Debug [ROLE_idp-NETWORK] - TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256
+     [java] Debug [ROLE_idp-NETWORK] - TLS_ECDH_RSA_WITH_AES_128_CBC_SHA256
+     [java] Debug [ROLE_idp-NETWORK] - TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA
+     [java] Debug [ROLE_idp-NETWORK] - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA
+     [java] Debug [ROLE_idp-NETWORK] - TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA
+     [java] Debug [ROLE_idp-NETWORK] - TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA
+     [java] Debug [ROLE_idp-NETWORK] - TLS_DHE_RSA_WITH_AES_256_CBC_SHA
+     [java] Debug [ROLE_idp-NETWORK] - TLS_DHE_DSS_WITH_AES_256_CBC_SHA
+     [java] Debug [ROLE_idp-NETWORK] - TLS_DHE_RSA_WITH_AES_128_CBC_SHA
+     [java] Debug [ROLE_idp-NETWORK] - TLS_DHE_DSS_WITH_AES_128_CBC_SHA
+     [java] Debug [ROLE_idp-NETWORK] - TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA
+     [java] Debug [ROLE_idp-NETWORK] - TLS_ECDH_RSA_WITH_AES_256_CBC_SHA
+     [java] Debug [ROLE_idp-NETWORK] - TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA
+     [java] Debug [ROLE_idp-NETWORK] - TLS_ECDH_RSA_WITH_AES_128_CBC_SHA
+     [java] Debug [ROLE_idp-NETWORK] - TLS_RSA_WITH_AES_256_GCM_SHA384
+     [java] Debug [ROLE_idp-NETWORK] - TLS_RSA_WITH_AES_128_GCM_SHA256
+     [java] Debug [ROLE_idp-NETWORK] - TLS_RSA_WITH_AES_256_CBC_SHA256
+     [java] Debug [ROLE_idp-NETWORK] - TLS_RSA_WITH_AES_128_CBC_SHA256
+     [java] Debug [ROLE_idp-NETWORK] - TLS_RSA_WITH_AES_256_CBC_SHA
+     [java] Debug [ROLE_idp-NETWORK] - TLS_RSA_WITH_AES_128_CBC_SHA
+     [java] Debug [ROLE_idp-NETWORK] - TLS_EMPTY_RENEGOTIATION_INFO_SCSV
+     [java] Debug [ROLE_idp-NETWORK] - ---------------------------
+     [java] Debug [ROLE_idp-NETWORK] - Client: Request from CN=alice,OU=Computer Science,O=Teesside University,L=Middlesbrough,ST=Tees Valley,C=United Kingdom
+     [java] Debug [ROLE_idp-NETWORK] - Using cipher suite: TLS_AES_256_GCM_SHA384
+     [java] Debug [ROLE_idp-NETWORK] - Request from Client received ...
+     [java] Debug [ROLE_idp-PROTOCOL] - Session started: 1/10
+     [java] Debug [ROLE_idp-PROTOCOL] - SSO - ROLE_idp - STEP_2
+     [java] Debug [ROLE_idp-PROTOCOL] - sso.SSO_ROLE_idp@23bb8443
+     [java] Debug [ROLE_idp-SESSION] - Receive
+     [java] Debug [ROLE_idp-LANGUAGE] - Receive
+     [java] Debug [ROLE_idp-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_idp-NETWORK] - [11:08:35:236]Received <- AnBx_Params [v=[alice, charlie, bob, Crypto_ByteArray [bytearray=[-90, 41, -27, 120, -37, -44, -99, -56, -35, -95, -47, -119, 26, -4, 14, -42, -26, 49, -26, -21, -125, -27, 21, 52, 121, 42, 15, 55, 54, 24, -96, -6, 20, -92, 61, 2, 84, -77, -5, -92, 106, 24, -48, 5, 49, -63, -87, 97, -100, -23, 76, -56, 76, -89, -59, 127, 122, 52, 5, 79, 104, 56, 65, 8, 80, -15, -84, 105, 54, -116, -32, -49, 21, -26, 78, 85, -62, 101, -125, -128, 73, -75, 80, 40, 107, 10, -22, -25, 61, 37, -121, -16, 124, -83, 4, 58, -52, 4, 32, 12, -50, 18, 110, 59, 89, -66, 26, 125, -40, 35, 36, 83, -46, 120, 117, 42, 74, -94, -88, 58, 15, 55, 106, -64, 13, -74, -95, -56, -32, -25, 34, 56, 60, -8, 123, 127, 117, -11, -122, 122, 61, -12, -15, -90, -119, 38, -46, 48, 21, 91, -29, 63, 73, 48, 69, 98, -114, 24, 100, -114, -75, 13, -81, -69, 28, -11, 46, -124, -80, 39, -39, -19, 8, -121, -104, -78, 115, -38, 86, 77, -60, -29, -124, 122, 58, -73, -125, -82, -35, 104, 30, 29, -85, 76, -24, 61, 87, -90, 9, 27, 62, 85, -60, 51, 88, -87, 126, 94, 26, -63, -22, 8, 123, -52, -38, 117, -86, 61, -117, -119, -40, -117, -68, -23, 114, -108, 29, 108, -32, 107, 20, -72, 84, 29, -90, 6, 110, 113, 116, 84, -107, 95, -99, 29, -100, -45, -29, -99, -95, 74, -56, -13, -61, 7, 65, -7]], Crypto_ByteArray [bytearray=[-15, 17, 93, 48, -79, -68, -72, 116, 109, -84, -118, 56, -4, 111, -29, 44, 14, -122, -47, -20, 85, -21, 11, -57, -87, 32, -55, -90, -13, 29, 72, 38, 118, -108, 8, -105, 85, 42, 32, -72, -93, 102, -127, -97, 101, 36, 125, -42, -119, -4, -116, 28, 67, 117, 45, -89, 11, -75, -82, 90, 80, -124, 37, 85, -119, 121, 16, -72, 11, -27, -30, -122, 32, -46, -108, 108, 50, 83, 23, 19, -70, 120, -17, 31, 115, -59, -48, 95, 66, 48, 52, 65, 103, -10, -21, 62, -102, -110, -61, -51, -56, -25, -116, -128, -51, 26, -31, 81, 110, -112, 84, 93, 8, -9, 82, 63, -71, -115, -35, -21, -18, -90, 72, -85, -78, 117, -121, -31, -5, -110, -121, 28, 18, 57, -128, 35, -61, -44, -88, -122, -44, 52, -49, -16, 125, 25, -90, -92, -58, 124, -11, 70, 76, -116, -4, -127, -14, -121, 22, 127, -82, 6, 100, -126, 112, 53, -40, 5, 124, -102, 0, -106, -12, 56, -72, -44, -11, -106, -67, -120, 125, 2, -75, -91, 126, -86, 106, -2, 19, 17, -53, 73, 88, 13, -86, 4, -7, -12, -110, -68, 109, 50, -87, -112, -34, 33, 92, 10, 122, 16, -71, 97, -4, -110, 29, 93, 85, -3, 49, 23, 10, 17, 29, -58, 122, 73, 25, -56, -115, 43, 119, -85, 6, 24, 72, 66, 48, -6, -27, 83, 106, 23, -71, 29, 77, 61, 99, -109, -56, -68, 32, -55, 69, 2, 15, -30]]]]
+     [java] Debug [ROLE_idp-PROTOCOL] - CHECK # 2.1
+     [java] Debug [ROLE_idp-PROTOCOL] - [11:08:35:239]EQ check PERFORMED on java.lang.String
+     [java] Debug [ROLE_idp-PROTOCOL] - [11:08:35:239]EQ check OK - java.lang.String.toString - alice = alice
+     [java] Debug [ROLE_idp-PROTOCOL] - [11:08:35:239]EQ check OK - java.lang.String.hashCode - 92903040 = 92903040
+     [java] Debug [ROLE_idp-PROTOCOL] - CHECK # 2.2
+     [java] Debug [ROLE_idp-PROTOCOL] - [11:08:35:255]EQ check PERFORMED on java.lang.String
+     [java] Debug [ROLE_idp-PROTOCOL] - [11:08:35:255]EQ check OK - java.lang.String.toString - charlie = charlie
+     [java] Debug [ROLE_idp-PROTOCOL] - [11:08:35:255]EQ check OK - java.lang.String.hashCode - 739067762 = 739067762
+     [java] Debug [ROLE_idp-PROTOCOL] - SSO - ROLE_idp - STEP_2
+     [java] Debug [ROLE_idp-PROTOCOL] - sso.SSO_ROLE_idp@23bb8443
+     [java] Debug [ROLE_idp-PROTOCOL] - SSO - ROLE_idp - STEP_3
+     [java] Debug [ROLE_idp-PROTOCOL] - sso.SSO_ROLE_idp@23bb8443
+     [java] Debug [ROLE_idp-LANGUAGE] - AnBx_Params - size: 2
+     [java] Debug [ROLE_idp-LANGUAGE] - AnBx_Params - hash: -675904302
+     [java] Debug [ROLE_idp-LANGUAGE] - [11:08:35:255]AnBx_Params - params: AnBx_Params [v=[alice, charlie]]
+     [java] Debug [ROLE_idp-ENCRYPTION] - PrivateKey retrieved: <charlie>
+     [java] Debug [ROLE_idp-ENCRYPTION] - Signed  [RSA/PKCS#8/9752] java.security.SignedObject@4bbf6d0e - Provider: SunRsaSign
+     [java] Debug [ROLE_idp-LANGUAGE] - AnBx_Params - size: 2
+     [java] Debug [ROLE_idp-LANGUAGE] - AnBx_Params - hash: -325711802
+     [java] Debug [ROLE_idp-LANGUAGE] - [11:08:35:361]AnBx_Params - params: AnBx_Params [v=[java.security.SignedObject@4bbf6d0e, Crypto_ByteArray [bytearray=[-15, 17, 93, 48, -79, -68, -72, 116, 109, -84, -118, 56, -4, 111, -29, 44, 14, -122, -47, -20, 85, -21, 11, -57, -87, 32, -55, -90, -13, 29, 72, 38, 118, -108, 8, -105, 85, 42, 32, -72, -93, 102, -127, -97, 101, 36, 125, -42, -119, -4, -116, 28, 67, 117, 45, -89, 11, -75, -82, 90, 80, -124, 37, 85, -119, 121, 16, -72, 11, -27, -30, -122, 32, -46, -108, 108, 50, 83, 23, 19, -70, 120, -17, 31, 115, -59, -48, 95, 66, 48, 52, 65, 103, -10, -21, 62, -102, -110, -61, -51, -56, -25, -116, -128, -51, 26, -31, 81, 110, -112, 84, 93, 8, -9, 82, 63, -71, -115, -35, -21, -18, -90, 72, -85, -78, 117, -121, -31, -5, -110, -121, 28, 18, 57, -128, 35, -61, -44, -88, -122, -44, 52, -49, -16, 125, 25, -90, -92, -58, 124, -11, 70, 76, -116, -4, -127, -14, -121, 22, 127, -82, 6, 100, -126, 112, 53, -40, 5, 124, -102, 0, -106, -12, 56, -72, -44, -11, -106, -67, -120, 125, 2, -75, -91, 126, -86, 106, -2, 19, 17, -53, 73, 88, 13, -86, 4, -7, -12, -110, -68, 109, 50, -87, -112, -34, 33, 92, 10, 122, 16, -71, 97, -4, -110, 29, 93, 85, -3, 49, 23, 10, 17, 29, -58, 122, 73, 25, -56, -115, 43, 119, -85, 6, 24, 72, 66, 48, -6, -27, 83, 106, 23, -71, 29, 77, 61, 99, -109, -56, -68, 32, -55, 69, 2, 15, -30]]]]
+     [java] Debug [ROLE_idp-LANGUAGE] - Send
+     [java] Debug [ROLE_idp-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_idp-NETWORK] - Sending -> AnBx_Params [v=[java.security.SignedObject@4bbf6d0e, Crypto_ByteArray [bytearray=[-15, 17, 93, 48, -79, -68, -72, 116, 109, -84, -118, 56, -4, 111, -29, 44, 14, -122, -47, -20, 85, -21, 11, -57, -87, 32, -55, -90, -13, 29, 72, 38, 118, -108, 8, -105, 85, 42, 32, -72, -93, 102, -127, -97, 101, 36, 125, -42, -119, -4, -116, 28, 67, 117, 45, -89, 11, -75, -82, 90, 80, -124, 37, 85, -119, 121, 16, -72, 11, -27, -30, -122, 32, -46, -108, 108, 50, 83, 23, 19, -70, 120, -17, 31, 115, -59, -48, 95, 66, 48, 52, 65, 103, -10, -21, 62, -102, -110, -61, -51, -56, -25, -116, -128, -51, 26, -31, 81, 110, -112, 84, 93, 8, -9, 82, 63, -71, -115, -35, -21, -18, -90, 72, -85, -78, 117, -121, -31, -5, -110, -121, 28, 18, 57, -128, 35, -61, -44, -88, -122, -44, 52, -49, -16, 125, 25, -90, -92, -58, 124, -11, 70, 76, -116, -4, -127, -14, -121, 22, 127, -82, 6, 100, -126, 112, 53, -40, 5, 124, -102, 0, -106, -12, 56, -72, -44, -11, -106, -67, -120, 125, 2, -75, -91, 126, -86, 106, -2, 19, 17, -53, 73, 88, 13, -86, 4, -7, -12, -110, -68, 109, 50, -87, -112, -34, 33, 92, 10, 122, 16, -71, 97, -4, -110, 29, 93, 85, -3, 49, 23, 10, 17, 29, -58, 122, 73, 25, -56, -115, 43, 119, -85, 6, 24, 72, 66, 48, -6, -27, 83, 106, 23, -71, 29, 77, 61, 99, -109, -56, -68, 32, -55, 69, 2, 15, -30]]]]
+     [java] Debug [ROLE_idp-NETWORK] - [11:08:35:385]Sent -> AnBx_Params [v=[java.security.SignedObject@4bbf6d0e, Crypto_ByteArray [bytearray=[-15, 17, 93, 48, -79, -68, -72, 116, 109, -84, -118, 56, -4, 111, -29, 44, 14, -122, -47, -20, 85, -21, 11, -57, -87, 32, -55, -90, -13, 29, 72, 38, 118, -108, 8, -105, 85, 42, 32, -72, -93, 102, -127, -97, 101, 36, 125, -42, -119, -4, -116, 28, 67, 117, 45, -89, 11, -75, -82, 90, 80, -124, 37, 85, -119, 121, 16, -72, 11, -27, -30, -122, 32, -46, -108, 108, 50, 83, 23, 19, -70, 120, -17, 31, 115, -59, -48, 95, 66, 48, 52, 65, 103, -10, -21, 62, -102, -110, -61, -51, -56, -25, -116, -128, -51, 26, -31, 81, 110, -112, 84, 93, 8, -9, 82, 63, -71, -115, -35, -21, -18, -90, 72, -85, -78, 117, -121, -31, -5, -110, -121, 28, 18, 57, -128, 35, -61, -44, -88, -122, -44, 52, -49, -16, 125, 25, -90, -92, -58, 124, -11, 70, 76, -116, -4, -127, -14, -121, 22, 127, -82, 6, 100, -126, 112, 53, -40, 5, 124, -102, 0, -106, -12, 56, -72, -44, -11, -106, -67, -120, 125, 2, -75, -91, 126, -86, 106, -2, 19, 17, -53, 73, 88, 13, -86, 4, -7, -12, -110, -68, 109, 50, -87, -112, -34, 33, 92, 10, 122, 16, -71, 97, -4, -110, 29, 93, 85, -3, 49, 23, 10, 17, 29, -58, 122, 73, 25, -56, -115, 43, 119, -85, 6, 24, 72, 66, 48, -6, -27, 83, 106, 23, -71, 29, 77, 61, 99, -109, -56, -68, 32, -55, 69, 2, 15, -30]]]]
+     [java] Debug [ROLE_idp-PROTOCOL] - SSO - ROLE_idp - STEP_3
+     [java] Debug [ROLE_idp-PROTOCOL] - sso.SSO_ROLE_idp@23bb8443
+     [java] Debug [ROLE_idp-PROTOCOL] - Session completed: 1/10
+     [java] Debug [ROLE_idp-PROTOCOL] - Session started: 2/10
+     [java] Debug [ROLE_idp-PROTOCOL] - SSO - ROLE_idp - STEP_2
+     [java] Debug [ROLE_idp-PROTOCOL] - sso.SSO_ROLE_idp@23bb8443
+     [java] Debug [ROLE_idp-SESSION] - Receive
+     [java] Debug [ROLE_idp-LANGUAGE] - Receive
+     [java] Debug [ROLE_idp-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_idp-NETWORK] - [11:08:35:753]Received <- AnBx_Params [v=[alice, charlie, bob, Crypto_ByteArray [bytearray=[-9, 15, -90, -120, 71, 66, -14, -63, 52, -122, 81, -122, -128, -98, 95, 115, 83, 21, -39, 80, 24, -9, -8, -36, -117, 74, 43, 115, -93, 103, 60, -111, 7, 27, -104, 26, -16, 59, -17, 11, -61, 1, -71, -88, 5, 77, -6, -68, -44, -7, 30, 34, 47, -78, 34, -25, 99, -109, -1, -69, 48, -119, 66, -35, -117, -68, -8, 36, -113, -98, 96, -15, -52, -31, -62, -73, -121, -33, 40, -83, 69, 69, 35, 39, -93, 108, -122, 48, 59, -68, 97, 123, 18, -38, -113, 82, -26, -88, -101, 120, -19, 125, -102, 100, 39, 109, -40, 116, -76, -113, 111, 63, -119, -27, -84, 119, -86, 113, 27, 47, -61, -112, 47, 98, -93, 102, 104, -24, -31, -53, -97, 107, -38, -110, 30, 108, 104, 24, 76, 14, -51, 23, -79, -70, -20, -80, -78, -105, 27, -89, -83, 52, 20, 60, -72, 43, 61, -73, 114, -7, -19, 28, -3, 127, 27, -42, -37, -46, -79, -81, -75, -35, 2, 23, 35, 38, -55, 51, -35, -101, -99, 86, -23, 125, -10, -123, -12, -94, 64, -67, -68, -46, -2, -48, -38, 115, -6, 27, 53, 45, -33, -70, 108, 58, -123, -86, -30, 28, -121, 47, 8, -88, 32, 37, -56, 100, 49, -20, 26, 39, 76, 105, 62, 14, 76, -23, 61, 124, 42, -117, -77, 108, 107, 66, -67, 6, 1, 96, -13, 77, 70, 116, -70, -31, -61, 17, -44, -79, 54, 10, 89, -55, -88, 114, 10, 96]], Crypto_ByteArray [bytearray=[23, 15, -8, -106, -72, 32, 24, 27, -56, -104, -27, -109, -92, -60, 78, -71, -104, -99, -29, -14, 45, -74, -14, 57, 103, -40, -108, 56, -17, -71, 37, 35, 36, 15, 97, -68, 88, -110, -94, 94, -86, -53, -10, 8, 4, 59, -83, 118, 120, 91, -122, -120, -2, -128, -96, 44, 103, 3, 6, -16, -35, -118, 89, 81, -94, 8, 54, 84, 48, 15, 95, -23, 87, -4, 117, 46, 37, -37, 35, -60, 114, -17, -97, -87, 32, -72, -74, 46, 75, -36, -28, -106, -67, -79, -32, -108, -83, 48, -109, -48, -8, 46, -71, 95, 100, 10, -125, -73, 97, 98, 9, 85, -16, -3, -55, 15, 58, 99, -64, -77, 126, 53, 17, -68, 12, 56, 86, 16, -127, -41, 31, -43, 123, -77, -40, 82, 74, -124, 7, 94, -7, -32, -33, -117, 126, 15, -16, -102, -7, -103, 34, -19, -117, -46, 52, 41, 71, -25, -93, 13, 120, 113, 124, -66, 112, 126, -13, -21, -82, -36, -47, 111, -65, -28, 105, 90, -72, 52, -116, 4, -56, 23, 99, 64, -113, -108, -113, -53, -125, -35, 58, -119, -44, -12, 90, -52, -126, -78, -11, 76, 72, -50, 108, -41, 58, -116, -99, -19, 2, 68, -116, -78, -84, 16, 77, -55, 17, 125, 43, 108, -15, -79, -29, -58, 53, 1, 90, 4, -76, 81, 109, -28, -2, -92, 103, -74, -6, 80, 36, 1, 72, 93, -63, -14, -40, -20, -88, 94, 44, -77, 44, -18, -128, 72, 76, -21]]]]
+     [java] Debug [ROLE_idp-PROTOCOL] - CHECK # 2.1
+     [java] Debug [ROLE_idp-PROTOCOL] - [11:08:35:754]EQ check PERFORMED on java.lang.String
+     [java] Debug [ROLE_idp-PROTOCOL] - [11:08:35:754]EQ check OK - java.lang.String.toString - alice = alice
+     [java] Debug [ROLE_idp-PROTOCOL] - [11:08:35:754]EQ check OK - java.lang.String.hashCode - 92903040 = 92903040
+     [java] Debug [ROLE_idp-PROTOCOL] - CHECK # 2.2
+     [java] Debug [ROLE_idp-PROTOCOL] - [11:08:35:754]EQ check PERFORMED on java.lang.String
+     [java] Debug [ROLE_idp-PROTOCOL] - [11:08:35:755]EQ check OK - java.lang.String.toString - charlie = charlie
+     [java] Debug [ROLE_idp-PROTOCOL] - [11:08:35:755]EQ check OK - java.lang.String.hashCode - 739067762 = 739067762
+     [java] Debug [ROLE_idp-PROTOCOL] - SSO - ROLE_idp - STEP_2
+     [java] Debug [ROLE_idp-PROTOCOL] - sso.SSO_ROLE_idp@23bb8443
+     [java] Debug [ROLE_idp-PROTOCOL] - SSO - ROLE_idp - STEP_3
+     [java] Debug [ROLE_idp-PROTOCOL] - sso.SSO_ROLE_idp@23bb8443
+     [java] Debug [ROLE_idp-LANGUAGE] - AnBx_Params - size: 2
+     [java] Debug [ROLE_idp-LANGUAGE] - AnBx_Params - hash: -675904302
+     [java] Debug [ROLE_idp-LANGUAGE] - [11:08:35:756]AnBx_Params - params: AnBx_Params [v=[alice, charlie]]
+     [java] Debug [ROLE_idp-ENCRYPTION] - PrivateKey retrieved: <charlie>
+     [java] Debug [ROLE_idp-ENCRYPTION] - Signed  [RSA/PKCS#8/9752] java.security.SignedObject@3fa247d1 - Provider: SunRsaSign
+     [java] Debug [ROLE_idp-LANGUAGE] - AnBx_Params - size: 2
+     [java] Debug [ROLE_idp-LANGUAGE] - AnBx_Params - hash: 989867926
+     [java] Debug [ROLE_idp-LANGUAGE] - [11:08:35:793]AnBx_Params - params: AnBx_Params [v=[java.security.SignedObject@3fa247d1, Crypto_ByteArray [bytearray=[23, 15, -8, -106, -72, 32, 24, 27, -56, -104, -27, -109, -92, -60, 78, -71, -104, -99, -29, -14, 45, -74, -14, 57, 103, -40, -108, 56, -17, -71, 37, 35, 36, 15, 97, -68, 88, -110, -94, 94, -86, -53, -10, 8, 4, 59, -83, 118, 120, 91, -122, -120, -2, -128, -96, 44, 103, 3, 6, -16, -35, -118, 89, 81, -94, 8, 54, 84, 48, 15, 95, -23, 87, -4, 117, 46, 37, -37, 35, -60, 114, -17, -97, -87, 32, -72, -74, 46, 75, -36, -28, -106, -67, -79, -32, -108, -83, 48, -109, -48, -8, 46, -71, 95, 100, 10, -125, -73, 97, 98, 9, 85, -16, -3, -55, 15, 58, 99, -64, -77, 126, 53, 17, -68, 12, 56, 86, 16, -127, -41, 31, -43, 123, -77, -40, 82, 74, -124, 7, 94, -7, -32, -33, -117, 126, 15, -16, -102, -7, -103, 34, -19, -117, -46, 52, 41, 71, -25, -93, 13, 120, 113, 124, -66, 112, 126, -13, -21, -82, -36, -47, 111, -65, -28, 105, 90, -72, 52, -116, 4, -56, 23, 99, 64, -113, -108, -113, -53, -125, -35, 58, -119, -44, -12, 90, -52, -126, -78, -11, 76, 72, -50, 108, -41, 58, -116, -99, -19, 2, 68, -116, -78, -84, 16, 77, -55, 17, 125, 43, 108, -15, -79, -29, -58, 53, 1, 90, 4, -76, 81, 109, -28, -2, -92, 103, -74, -6, 80, 36, 1, 72, 93, -63, -14, -40, -20, -88, 94, 44, -77, 44, -18, -128, 72, 76, -21]]]]
+     [java] Debug [ROLE_idp-LANGUAGE] - Send
+     [java] Debug [ROLE_idp-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_idp-NETWORK] - Sending -> AnBx_Params [v=[java.security.SignedObject@3fa247d1, Crypto_ByteArray [bytearray=[23, 15, -8, -106, -72, 32, 24, 27, -56, -104, -27, -109, -92, -60, 78, -71, -104, -99, -29, -14, 45, -74, -14, 57, 103, -40, -108, 56, -17, -71, 37, 35, 36, 15, 97, -68, 88, -110, -94, 94, -86, -53, -10, 8, 4, 59, -83, 118, 120, 91, -122, -120, -2, -128, -96, 44, 103, 3, 6, -16, -35, -118, 89, 81, -94, 8, 54, 84, 48, 15, 95, -23, 87, -4, 117, 46, 37, -37, 35, -60, 114, -17, -97, -87, 32, -72, -74, 46, 75, -36, -28, -106, -67, -79, -32, -108, -83, 48, -109, -48, -8, 46, -71, 95, 100, 10, -125, -73, 97, 98, 9, 85, -16, -3, -55, 15, 58, 99, -64, -77, 126, 53, 17, -68, 12, 56, 86, 16, -127, -41, 31, -43, 123, -77, -40, 82, 74, -124, 7, 94, -7, -32, -33, -117, 126, 15, -16, -102, -7, -103, 34, -19, -117, -46, 52, 41, 71, -25, -93, 13, 120, 113, 124, -66, 112, 126, -13, -21, -82, -36, -47, 111, -65, -28, 105, 90, -72, 52, -116, 4, -56, 23, 99, 64, -113, -108, -113, -53, -125, -35, 58, -119, -44, -12, 90, -52, -126, -78, -11, 76, 72, -50, 108, -41, 58, -116, -99, -19, 2, 68, -116, -78, -84, 16, 77, -55, 17, 125, 43, 108, -15, -79, -29, -58, 53, 1, 90, 4, -76, 81, 109, -28, -2, -92, 103, -74, -6, 80, 36, 1, 72, 93, -63, -14, -40, -20, -88, 94, 44, -77, 44, -18, -128, 72, 76, -21]]]]
+     [java] Debug [ROLE_idp-NETWORK] - [11:08:35:800]Sent -> AnBx_Params [v=[java.security.SignedObject@3fa247d1, Crypto_ByteArray [bytearray=[23, 15, -8, -106, -72, 32, 24, 27, -56, -104, -27, -109, -92, -60, 78, -71, -104, -99, -29, -14, 45, -74, -14, 57, 103, -40, -108, 56, -17, -71, 37, 35, 36, 15, 97, -68, 88, -110, -94, 94, -86, -53, -10, 8, 4, 59, -83, 118, 120, 91, -122, -120, -2, -128, -96, 44, 103, 3, 6, -16, -35, -118, 89, 81, -94, 8, 54, 84, 48, 15, 95, -23, 87, -4, 117, 46, 37, -37, 35, -60, 114, -17, -97, -87, 32, -72, -74, 46, 75, -36, -28, -106, -67, -79, -32, -108, -83, 48, -109, -48, -8, 46, -71, 95, 100, 10, -125, -73, 97, 98, 9, 85, -16, -3, -55, 15, 58, 99, -64, -77, 126, 53, 17, -68, 12, 56, 86, 16, -127, -41, 31, -43, 123, -77, -40, 82, 74, -124, 7, 94, -7, -32, -33, -117, 126, 15, -16, -102, -7, -103, 34, -19, -117, -46, 52, 41, 71, -25, -93, 13, 120, 113, 124, -66, 112, 126, -13, -21, -82, -36, -47, 111, -65, -28, 105, 90, -72, 52, -116, 4, -56, 23, 99, 64, -113, -108, -113, -53, -125, -35, 58, -119, -44, -12, 90, -52, -126, -78, -11, 76, 72, -50, 108, -41, 58, -116, -99, -19, 2, 68, -116, -78, -84, 16, 77, -55, 17, 125, 43, 108, -15, -79, -29, -58, 53, 1, 90, 4, -76, 81, 109, -28, -2, -92, 103, -74, -6, 80, 36, 1, 72, 93, -63, -14, -40, -20, -88, 94, 44, -77, 44, -18, -128, 72, 76, -21]]]]
+     [java] Debug [ROLE_idp-PROTOCOL] - SSO - ROLE_idp - STEP_3
+     [java] Debug [ROLE_idp-PROTOCOL] - sso.SSO_ROLE_idp@23bb8443
+     [java] Debug [ROLE_idp-PROTOCOL] - Session completed: 2/10
+     [java] Debug [ROLE_idp-PROTOCOL] - Session started: 3/10
+     [java] Debug [ROLE_idp-PROTOCOL] - SSO - ROLE_idp - STEP_2
+     [java] Debug [ROLE_idp-PROTOCOL] - sso.SSO_ROLE_idp@23bb8443
+     [java] Debug [ROLE_idp-SESSION] - Receive
+     [java] Debug [ROLE_idp-LANGUAGE] - Receive
+     [java] Debug [ROLE_idp-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_idp-NETWORK] - [11:08:36:143]Received <- AnBx_Params [v=[alice, charlie, bob, Crypto_ByteArray [bytearray=[81, 45, -76, 38, 4, -56, 66, 66, 48, -2, 91, 33, -96, -78, 68, 37, 66, -123, 16, -102, -49, -30, 106, 112, 107, 7, -58, 71, -61, 89, -65, 34, -63, 43, -122, -75, -39, 21, 82, 54, 17, -49, 98, 81, 44, -105, -36, -18, -28, 46, -54, 127, -90, -128, -106, -11, 73, 107, 105, 44, -127, -52, -66, -125, 124, -63, 10, 13, -55, -100, -19, 109, 67, -8, 9, 114, 30, -83, -82, 125, -126, -60, -70, -65, -68, 82, -99, 80, -116, -116, 90, 99, -35, -51, -86, -76, 81, 42, -87, -92, -42, 19, 78, 71, 9, 122, -52, 74, -94, -89, 71, -71, 55, -103, -93, -115, -120, 69, 95, 74, 40, -1, -31, -97, 68, 55, 61, 43, -73, -64, 33, 40, -6, 75, -113, 101, 77, -25, -1, 23, -46, -104, 69, 50, 81, -101, -6, -89, -115, -110, 116, -28, 124, -40, -55, 117, -60, -50, -38, 94, -15, 8, 15, 108, -56, 75, -61, 3, -30, -46, 47, -34, 53, -12, 111, -126, -19, 79, -67, 78, 73, 121, 7, 65, 31, 79, 84, -28, -83, 36, 117, 100, -56, 68, 63, 27, 58, -50, -53, 45, 28, 86, -43, -118, -12, 29, 124, -35, -97, 67, 25, -72, 12, -124, -3, -109, 106, -57, 96, -128, -52, 14, 61, 39, 116, 11, 58, -19, -104, -27, -124, -63, 83, 85, 34, 90, 90, -85, -86, 105, 38, -124, -95, 118, 56, -62, -39, -77, 30, 47, 8, 63, 77, -36, 110, 8]], Crypto_ByteArray [bytearray=[79, 86, -104, -68, 23, -87, -102, 115, -123, 113, 80, -72, -85, -20, -28, -127, -22, -83, -80, -74, 21, -52, 47, 7, 75, 81, -39, -18, -85, -21, 115, -103, -109, -70, -22, 103, -33, -51, 106, 2, 43, 125, -62, 56, -1, 62, 2, 103, -1, 57, -13, -19, 48, 75, 61, 83, -57, 8, -7, -44, 21, 29, 26, 80, -109, -73, -77, -84, 11, -62, 109, -22, 127, 23, -71, -42, 52, -73, 25, -15, -4, 31, 111, 94, 111, -3, 43, -109, 80, 69, -106, -50, 83, -109, -104, 8, -113, 50, 0, 50, 103, 88, 56, 94, 74, -32, -74, -45, 21, -124, -4, 29, -48, -115, 100, -37, -83, 66, -99, -106, 101, 63, 14, 8, -59, 87, -4, -39, 80, 124, 122, 109, -44, -115, 25, -70, -10, -42, 0, 46, -92, -127, 111, 27, 77, -9, -93, -11, 80, -62, 23, -125, -11, -87, 1, -46, 119, 61, 51, -59, 30, 90, 118, -86, 66, 126, 91, -64, 103, -101, 65, 53, -120, 114, 43, -119, -70, 59, 40, 57, 34, -112, -3, -67, 125, 44, -20, -25, -12, -106, -11, 14, 89, 20, 102, -99, -90, -27, 16, 83, 52, -112, 114, 2, -8, -83, 61, -24, -108, 111, -86, -2, -120, -4, 18, 27, 29, -39, 80, -118, 34, 115, 127, -61, -124, -126, 116, -18, 37, 99, -28, 0, -15, -14, -28, 100, 15, -101, -45, -44, 35, -85, -128, 0, -53, 80, -6, 51, 117, 19, -15, 120, 118, -68, -81, -128]]]]
+     [java] Debug [ROLE_idp-PROTOCOL] - CHECK # 2.1
+     [java] Debug [ROLE_idp-PROTOCOL] - [11:08:36:144]EQ check PERFORMED on java.lang.String
+     [java] Debug [ROLE_idp-PROTOCOL] - [11:08:36:144]EQ check OK - java.lang.String.toString - alice = alice
+     [java] Debug [ROLE_idp-PROTOCOL] - [11:08:36:144]EQ check OK - java.lang.String.hashCode - 92903040 = 92903040
+     [java] Debug [ROLE_idp-PROTOCOL] - CHECK # 2.2
+     [java] Debug [ROLE_idp-PROTOCOL] - [11:08:36:144]EQ check PERFORMED on java.lang.String
+     [java] Debug [ROLE_idp-PROTOCOL] - [11:08:36:144]EQ check OK - java.lang.String.toString - charlie = charlie
+     [java] Debug [ROLE_idp-PROTOCOL] - [11:08:36:144]EQ check OK - java.lang.String.hashCode - 739067762 = 739067762
+     [java] Debug [ROLE_idp-PROTOCOL] - SSO - ROLE_idp - STEP_2
+     [java] Debug [ROLE_idp-PROTOCOL] - sso.SSO_ROLE_idp@23bb8443
+     [java] Debug [ROLE_idp-PROTOCOL] - SSO - ROLE_idp - STEP_3
+     [java] Debug [ROLE_idp-PROTOCOL] - sso.SSO_ROLE_idp@23bb8443
+     [java] Debug [ROLE_idp-LANGUAGE] - AnBx_Params - size: 2
+     [java] Debug [ROLE_idp-LANGUAGE] - AnBx_Params - hash: -675904302
+     [java] Debug [ROLE_idp-LANGUAGE] - [11:08:36:145]AnBx_Params - params: AnBx_Params [v=[alice, charlie]]
+     [java] Debug [ROLE_idp-ENCRYPTION] - PrivateKey retrieved: <charlie>
+     [java] Debug [ROLE_idp-ENCRYPTION] - Signed  [RSA/PKCS#8/9752] java.security.SignedObject@4ef782af - Provider: SunRsaSign
+     [java] Debug [ROLE_idp-LANGUAGE] - AnBx_Params - size: 2
+     [java] Debug [ROLE_idp-LANGUAGE] - AnBx_Params - hash: -612151225
+     [java] Debug [ROLE_idp-LANGUAGE] - [11:08:36:170]AnBx_Params - params: AnBx_Params [v=[java.security.SignedObject@4ef782af, Crypto_ByteArray [bytearray=[79, 86, -104, -68, 23, -87, -102, 115, -123, 113, 80, -72, -85, -20, -28, -127, -22, -83, -80, -74, 21, -52, 47, 7, 75, 81, -39, -18, -85, -21, 115, -103, -109, -70, -22, 103, -33, -51, 106, 2, 43, 125, -62, 56, -1, 62, 2, 103, -1, 57, -13, -19, 48, 75, 61, 83, -57, 8, -7, -44, 21, 29, 26, 80, -109, -73, -77, -84, 11, -62, 109, -22, 127, 23, -71, -42, 52, -73, 25, -15, -4, 31, 111, 94, 111, -3, 43, -109, 80, 69, -106, -50, 83, -109, -104, 8, -113, 50, 0, 50, 103, 88, 56, 94, 74, -32, -74, -45, 21, -124, -4, 29, -48, -115, 100, -37, -83, 66, -99, -106, 101, 63, 14, 8, -59, 87, -4, -39, 80, 124, 122, 109, -44, -115, 25, -70, -10, -42, 0, 46, -92, -127, 111, 27, 77, -9, -93, -11, 80, -62, 23, -125, -11, -87, 1, -46, 119, 61, 51, -59, 30, 90, 118, -86, 66, 126, 91, -64, 103, -101, 65, 53, -120, 114, 43, -119, -70, 59, 40, 57, 34, -112, -3, -67, 125, 44, -20, -25, -12, -106, -11, 14, 89, 20, 102, -99, -90, -27, 16, 83, 52, -112, 114, 2, -8, -83, 61, -24, -108, 111, -86, -2, -120, -4, 18, 27, 29, -39, 80, -118, 34, 115, 127, -61, -124, -126, 116, -18, 37, 99, -28, 0, -15, -14, -28, 100, 15, -101, -45, -44, 35, -85, -128, 0, -53, 80, -6, 51, 117, 19, -15, 120, 118, -68, -81, -128]]]]
+     [java] Debug [ROLE_idp-LANGUAGE] - Send
+     [java] Debug [ROLE_idp-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_idp-NETWORK] - Sending -> AnBx_Params [v=[java.security.SignedObject@4ef782af, Crypto_ByteArray [bytearray=[79, 86, -104, -68, 23, -87, -102, 115, -123, 113, 80, -72, -85, -20, -28, -127, -22, -83, -80, -74, 21, -52, 47, 7, 75, 81, -39, -18, -85, -21, 115, -103, -109, -70, -22, 103, -33, -51, 106, 2, 43, 125, -62, 56, -1, 62, 2, 103, -1, 57, -13, -19, 48, 75, 61, 83, -57, 8, -7, -44, 21, 29, 26, 80, -109, -73, -77, -84, 11, -62, 109, -22, 127, 23, -71, -42, 52, -73, 25, -15, -4, 31, 111, 94, 111, -3, 43, -109, 80, 69, -106, -50, 83, -109, -104, 8, -113, 50, 0, 50, 103, 88, 56, 94, 74, -32, -74, -45, 21, -124, -4, 29, -48, -115, 100, -37, -83, 66, -99, -106, 101, 63, 14, 8, -59, 87, -4, -39, 80, 124, 122, 109, -44, -115, 25, -70, -10, -42, 0, 46, -92, -127, 111, 27, 77, -9, -93, -11, 80, -62, 23, -125, -11, -87, 1, -46, 119, 61, 51, -59, 30, 90, 118, -86, 66, 126, 91, -64, 103, -101, 65, 53, -120, 114, 43, -119, -70, 59, 40, 57, 34, -112, -3, -67, 125, 44, -20, -25, -12, -106, -11, 14, 89, 20, 102, -99, -90, -27, 16, 83, 52, -112, 114, 2, -8, -83, 61, -24, -108, 111, -86, -2, -120, -4, 18, 27, 29, -39, 80, -118, 34, 115, 127, -61, -124, -126, 116, -18, 37, 99, -28, 0, -15, -14, -28, 100, 15, -101, -45, -44, 35, -85, -128, 0, -53, 80, -6, 51, 117, 19, -15, 120, 118, -68, -81, -128]]]]
+     [java] Debug [ROLE_idp-NETWORK] - [11:08:36:178]Sent -> AnBx_Params [v=[java.security.SignedObject@4ef782af, Crypto_ByteArray [bytearray=[79, 86, -104, -68, 23, -87, -102, 115, -123, 113, 80, -72, -85, -20, -28, -127, -22, -83, -80, -74, 21, -52, 47, 7, 75, 81, -39, -18, -85, -21, 115, -103, -109, -70, -22, 103, -33, -51, 106, 2, 43, 125, -62, 56, -1, 62, 2, 103, -1, 57, -13, -19, 48, 75, 61, 83, -57, 8, -7, -44, 21, 29, 26, 80, -109, -73, -77, -84, 11, -62, 109, -22, 127, 23, -71, -42, 52, -73, 25, -15, -4, 31, 111, 94, 111, -3, 43, -109, 80, 69, -106, -50, 83, -109, -104, 8, -113, 50, 0, 50, 103, 88, 56, 94, 74, -32, -74, -45, 21, -124, -4, 29, -48, -115, 100, -37, -83, 66, -99, -106, 101, 63, 14, 8, -59, 87, -4, -39, 80, 124, 122, 109, -44, -115, 25, -70, -10, -42, 0, 46, -92, -127, 111, 27, 77, -9, -93, -11, 80, -62, 23, -125, -11, -87, 1, -46, 119, 61, 51, -59, 30, 90, 118, -86, 66, 126, 91, -64, 103, -101, 65, 53, -120, 114, 43, -119, -70, 59, 40, 57, 34, -112, -3, -67, 125, 44, -20, -25, -12, -106, -11, 14, 89, 20, 102, -99, -90, -27, 16, 83, 52, -112, 114, 2, -8, -83, 61, -24, -108, 111, -86, -2, -120, -4, 18, 27, 29, -39, 80, -118, 34, 115, 127, -61, -124, -126, 116, -18, 37, 99, -28, 0, -15, -14, -28, 100, 15, -101, -45, -44, 35, -85, -128, 0, -53, 80, -6, 51, 117, 19, -15, 120, 118, -68, -81, -128]]]]
+     [java] Debug [ROLE_idp-PROTOCOL] - SSO - ROLE_idp - STEP_3
+     [java] Debug [ROLE_idp-PROTOCOL] - sso.SSO_ROLE_idp@23bb8443
+     [java] Debug [ROLE_idp-PROTOCOL] - Session completed: 3/10
+     [java] Debug [ROLE_idp-PROTOCOL] - Session started: 4/10
+     [java] Debug [ROLE_idp-PROTOCOL] - SSO - ROLE_idp - STEP_2
+     [java] Debug [ROLE_idp-PROTOCOL] - sso.SSO_ROLE_idp@23bb8443
+     [java] Debug [ROLE_idp-SESSION] - Receive
+     [java] Debug [ROLE_idp-LANGUAGE] - Receive
+     [java] Debug [ROLE_idp-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_idp-NETWORK] - [11:08:36:506]Received <- AnBx_Params [v=[alice, charlie, bob, Crypto_ByteArray [bytearray=[21, 41, -27, -56, -58, 23, -55, 17, 19, 114, -34, -60, -24, 74, 35, -108, -88, 68, 122, 10, 99, 29, -9, 36, -70, 117, -16, -54, 81, -8, 17, -18, -15, 22, 25, -68, 35, -32, 65, -77, -63, -123, -122, -2, 114, 115, 101, 42, 95, 53, -110, -100, -88, -21, 32, 61, 60, 3, -80, 102, 40, 103, 108, 1, -101, 124, -58, 4, -109, -36, -80, -73, 58, 118, -63, -80, 103, -39, -118, -115, -125, 77, -94, 93, 118, 89, -24, 125, 47, -21, -25, 54, 44, 34, -3, -42, 74, 36, -43, 119, 3, 85, 94, -44, -53, -39, 83, 92, -11, 95, -54, 90, 78, -8, -91, -89, 83, 89, 50, -11, -106, -11, -67, 93, 26, -70, 61, 59, 103, 10, -3, -57, 3, 41, 69, 3, 15, -87, 103, 61, -36, -40, 68, 37, -86, 21, -124, 115, 60, -125, 2, -123, 120, 1, 67, -73, 68, 18, 7, -127, -33, 46, 97, 103, 103, -118, -97, 121, -42, 84, -38, 24, 119, 5, -23, 55, -75, -86, 126, 87, 125, -50, -22, 85, 20, -7, 50, -73, -103, 19, 14, -64, 122, 87, 96, -113, 17, 110, -27, -30, -103, -55, -115, 54, 84, 53, -68, -89, -71, 70, 24, -33, 111, -91, -110, -29, -35, -128, 48, 33, 2, 45, 6, -49, -108, 85, -98, -86, 111, -111, -14, 124, -76, 75, 111, -115, 35, -51, -9, 119, -109, 20, -66, -82, -107, 127, 113, 35, 36, 73, 38, 93, 57, -24, 125, -55]], Crypto_ByteArray [bytearray=[73, -65, -28, 69, 70, 102, -13, -95, 101, 55, 41, -109, 96, -78, 97, -46, -7, -86, -1, 28, -99, 98, 85, 19, 127, -90, -49, 106, 13, 20, -28, 37, -91, 22, 123, -100, 102, 122, 52, -8, -94, 12, -72, 37, -126, 112, -59, -14, -2, -87, 35, -13, -33, -122, 72, 92, 19, -125, 119, -120, -81, -8, -68, 13, 62, 120, 59, 125, 96, -44, -14, -91, -51, 74, -25, -63, 69, 101, -124, -85, 117, -118, -85, -104, 0, -98, -19, -11, -89, -94, 44, 60, -40, -108, -95, 106, 0, -66, 9, 58, -44, -17, 54, 2, 21, -80, -96, 88, 28, -90, 53, 47, -102, 92, 17, -101, 85, 61, 2, 115, -25, 127, -52, -46, -44, -32, -42, -84, -76, 68, -34, -53, 8, -3, 68, 44, 83, 97, -11, -66, 60, 23, -1, 16, -42, -66, 102, 80, -124, -39, 107, 95, 116, 48, 112, 30, 45, -61, -27, 80, 37, 19, -22, 121, -123, -88, -93, 54, 31, 49, -6, -112, 58, 40, 33, 92, 121, -90, 67, -72, 11, 81, 8, -68, -115, -64, -88, 36, 46, -127, 122, -71, 116, 35, 103, 77, -90, 105, -102, -4, 9, -54, -44, -91, 107, 31, 0, -36, 112, -53, 43, -123, -61, 124, 86, 107, -1, -123, 117, -16, 49, -97, 7, 34, 12, -127, 122, -77, 5, -119, 83, 3, -34, 101, 70, -94, -12, -102, 120, 10, 107, -51, -41, -40, -16, -20, 62, -99, -90, 70, -90, 88, -87, 63, 17, 68]]]]
+     [java] Debug [ROLE_idp-PROTOCOL] - CHECK # 2.1
+     [java] Debug [ROLE_idp-PROTOCOL] - [11:08:36:507]EQ check PERFORMED on java.lang.String
+     [java] Debug [ROLE_idp-PROTOCOL] - [11:08:36:507]EQ check OK - java.lang.String.toString - alice = alice
+     [java] Debug [ROLE_idp-PROTOCOL] - [11:08:36:507]EQ check OK - java.lang.String.hashCode - 92903040 = 92903040
+     [java] Debug [ROLE_idp-PROTOCOL] - CHECK # 2.2
+     [java] Debug [ROLE_idp-PROTOCOL] - [11:08:36:507]EQ check PERFORMED on java.lang.String
+     [java] Debug [ROLE_idp-PROTOCOL] - [11:08:36:507]EQ check OK - java.lang.String.toString - charlie = charlie
+     [java] Debug [ROLE_idp-PROTOCOL] - [11:08:36:507]EQ check OK - java.lang.String.hashCode - 739067762 = 739067762
+     [java] Debug [ROLE_idp-PROTOCOL] - SSO - ROLE_idp - STEP_2
+     [java] Debug [ROLE_idp-PROTOCOL] - sso.SSO_ROLE_idp@23bb8443
+     [java] Debug [ROLE_idp-PROTOCOL] - SSO - ROLE_idp - STEP_3
+     [java] Debug [ROLE_idp-PROTOCOL] - sso.SSO_ROLE_idp@23bb8443
+     [java] Debug [ROLE_idp-LANGUAGE] - AnBx_Params - size: 2
+     [java] Debug [ROLE_idp-LANGUAGE] - AnBx_Params - hash: -675904302
+     [java] Debug [ROLE_idp-LANGUAGE] - [11:08:36:508]AnBx_Params - params: AnBx_Params [v=[alice, charlie]]
+     [java] Debug [ROLE_idp-ENCRYPTION] - PrivateKey retrieved: <charlie>
+     [java] Debug [ROLE_idp-ENCRYPTION] - Signed  [RSA/PKCS#8/9752] java.security.SignedObject@79c97cb - Provider: SunRsaSign
+     [java] Debug [ROLE_idp-LANGUAGE] - AnBx_Params - size: 2
+     [java] Debug [ROLE_idp-LANGUAGE] - AnBx_Params - hash: -155889041
+     [java] Debug [ROLE_idp-LANGUAGE] - [11:08:36:532]AnBx_Params - params: AnBx_Params [v=[java.security.SignedObject@79c97cb, Crypto_ByteArray [bytearray=[73, -65, -28, 69, 70, 102, -13, -95, 101, 55, 41, -109, 96, -78, 97, -46, -7, -86, -1, 28, -99, 98, 85, 19, 127, -90, -49, 106, 13, 20, -28, 37, -91, 22, 123, -100, 102, 122, 52, -8, -94, 12, -72, 37, -126, 112, -59, -14, -2, -87, 35, -13, -33, -122, 72, 92, 19, -125, 119, -120, -81, -8, -68, 13, 62, 120, 59, 125, 96, -44, -14, -91, -51, 74, -25, -63, 69, 101, -124, -85, 117, -118, -85, -104, 0, -98, -19, -11, -89, -94, 44, 60, -40, -108, -95, 106, 0, -66, 9, 58, -44, -17, 54, 2, 21, -80, -96, 88, 28, -90, 53, 47, -102, 92, 17, -101, 85, 61, 2, 115, -25, 127, -52, -46, -44, -32, -42, -84, -76, 68, -34, -53, 8, -3, 68, 44, 83, 97, -11, -66, 60, 23, -1, 16, -42, -66, 102, 80, -124, -39, 107, 95, 116, 48, 112, 30, 45, -61, -27, 80, 37, 19, -22, 121, -123, -88, -93, 54, 31, 49, -6, -112, 58, 40, 33, 92, 121, -90, 67, -72, 11, 81, 8, -68, -115, -64, -88, 36, 46, -127, 122, -71, 116, 35, 103, 77, -90, 105, -102, -4, 9, -54, -44, -91, 107, 31, 0, -36, 112, -53, 43, -123, -61, 124, 86, 107, -1, -123, 117, -16, 49, -97, 7, 34, 12, -127, 122, -77, 5, -119, 83, 3, -34, 101, 70, -94, -12, -102, 120, 10, 107, -51, -41, -40, -16, -20, 62, -99, -90, 70, -90, 88, -87, 63, 17, 68]]]]
+     [java] Debug [ROLE_idp-LANGUAGE] - Send
+     [java] Debug [ROLE_idp-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_idp-NETWORK] - Sending -> AnBx_Params [v=[java.security.SignedObject@79c97cb, Crypto_ByteArray [bytearray=[73, -65, -28, 69, 70, 102, -13, -95, 101, 55, 41, -109, 96, -78, 97, -46, -7, -86, -1, 28, -99, 98, 85, 19, 127, -90, -49, 106, 13, 20, -28, 37, -91, 22, 123, -100, 102, 122, 52, -8, -94, 12, -72, 37, -126, 112, -59, -14, -2, -87, 35, -13, -33, -122, 72, 92, 19, -125, 119, -120, -81, -8, -68, 13, 62, 120, 59, 125, 96, -44, -14, -91, -51, 74, -25, -63, 69, 101, -124, -85, 117, -118, -85, -104, 0, -98, -19, -11, -89, -94, 44, 60, -40, -108, -95, 106, 0, -66, 9, 58, -44, -17, 54, 2, 21, -80, -96, 88, 28, -90, 53, 47, -102, 92, 17, -101, 85, 61, 2, 115, -25, 127, -52, -46, -44, -32, -42, -84, -76, 68, -34, -53, 8, -3, 68, 44, 83, 97, -11, -66, 60, 23, -1, 16, -42, -66, 102, 80, -124, -39, 107, 95, 116, 48, 112, 30, 45, -61, -27, 80, 37, 19, -22, 121, -123, -88, -93, 54, 31, 49, -6, -112, 58, 40, 33, 92, 121, -90, 67, -72, 11, 81, 8, -68, -115, -64, -88, 36, 46, -127, 122, -71, 116, 35, 103, 77, -90, 105, -102, -4, 9, -54, -44, -91, 107, 31, 0, -36, 112, -53, 43, -123, -61, 124, 86, 107, -1, -123, 117, -16, 49, -97, 7, 34, 12, -127, 122, -77, 5, -119, 83, 3, -34, 101, 70, -94, -12, -102, 120, 10, 107, -51, -41, -40, -16, -20, 62, -99, -90, 70, -90, 88, -87, 63, 17, 68]]]]
+     [java] Debug [ROLE_idp-NETWORK] - [11:08:36:540]Sent -> AnBx_Params [v=[java.security.SignedObject@79c97cb, Crypto_ByteArray [bytearray=[73, -65, -28, 69, 70, 102, -13, -95, 101, 55, 41, -109, 96, -78, 97, -46, -7, -86, -1, 28, -99, 98, 85, 19, 127, -90, -49, 106, 13, 20, -28, 37, -91, 22, 123, -100, 102, 122, 52, -8, -94, 12, -72, 37, -126, 112, -59, -14, -2, -87, 35, -13, -33, -122, 72, 92, 19, -125, 119, -120, -81, -8, -68, 13, 62, 120, 59, 125, 96, -44, -14, -91, -51, 74, -25, -63, 69, 101, -124, -85, 117, -118, -85, -104, 0, -98, -19, -11, -89, -94, 44, 60, -40, -108, -95, 106, 0, -66, 9, 58, -44, -17, 54, 2, 21, -80, -96, 88, 28, -90, 53, 47, -102, 92, 17, -101, 85, 61, 2, 115, -25, 127, -52, -46, -44, -32, -42, -84, -76, 68, -34, -53, 8, -3, 68, 44, 83, 97, -11, -66, 60, 23, -1, 16, -42, -66, 102, 80, -124, -39, 107, 95, 116, 48, 112, 30, 45, -61, -27, 80, 37, 19, -22, 121, -123, -88, -93, 54, 31, 49, -6, -112, 58, 40, 33, 92, 121, -90, 67, -72, 11, 81, 8, -68, -115, -64, -88, 36, 46, -127, 122, -71, 116, 35, 103, 77, -90, 105, -102, -4, 9, -54, -44, -91, 107, 31, 0, -36, 112, -53, 43, -123, -61, 124, 86, 107, -1, -123, 117, -16, 49, -97, 7, 34, 12, -127, 122, -77, 5, -119, 83, 3, -34, 101, 70, -94, -12, -102, 120, 10, 107, -51, -41, -40, -16, -20, 62, -99, -90, 70, -90, 88, -87, 63, 17, 68]]]]
+     [java] Debug [ROLE_idp-PROTOCOL] - SSO - ROLE_idp - STEP_3
+     [java] Debug [ROLE_idp-PROTOCOL] - sso.SSO_ROLE_idp@23bb8443
+     [java] Debug [ROLE_idp-PROTOCOL] - Session completed: 4/10
+     [java] Debug [ROLE_idp-PROTOCOL] - Session started: 5/10
+     [java] Debug [ROLE_idp-PROTOCOL] - SSO - ROLE_idp - STEP_2
+     [java] Debug [ROLE_idp-PROTOCOL] - sso.SSO_ROLE_idp@23bb8443
+     [java] Debug [ROLE_idp-SESSION] - Receive
+     [java] Debug [ROLE_idp-LANGUAGE] - Receive
+     [java] Debug [ROLE_idp-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_idp-NETWORK] - [11:08:36:874]Received <- AnBx_Params [v=[alice, charlie, bob, Crypto_ByteArray [bytearray=[69, 36, -107, -11, -112, -112, 8, -80, -70, -85, -21, 28, 8, -76, -21, -49, -20, 29, -53, -62, -9, 44, -1, -85, -127, -112, 113, -118, -92, 61, 77, -121, 40, -8, 13, 27, -111, 123, 23, -33, -32, -124, -69, 42, -29, 86, 44, 78, -2, -8, -18, 43, 77, 112, 4, 28, -118, -82, 60, 53, -102, -75, 56, 10, 6, 8, -82, -123, -44, 92, -113, -27, -45, 26, 61, 14, 61, 69, -96, -123, -114, -58, 77, 26, -53, 116, 93, -88, -51, 94, 40, 45, 114, -111, -34, 97, -125, -52, 4, -24, 107, 4, -118, -110, -32, -31, -52, 63, -7, 23, -80, -124, -74, -101, 74, 117, -64, -6, 50, -30, 46, -124, 111, 32, -34, 89, -6, -48, -124, 111, 21, 48, 108, 119, -81, -58, 104, -62, 13, -126, 84, -116, -57, -124, -109, -41, 48, -104, -61, 54, 48, 78, 15, -37, 25, 82, 21, 98, 5, 114, 109, 83, -57, 64, -42, -78, -5, -115, 100, 58, 111, 9, -92, -127, -56, -50, 23, -91, -61, 14, 35, -78, -56, -49, 29, 100, -93, -43, -46, -85, -122, -69, 58, -125, -46, 24, -98, -78, 74, 70, -58, 1, 109, 83, -85, 46, -80, 123, 8, -46, 58, -50, 0, 113, 49, -60, -65, -77, 50, -114, 7, -88, -15, -39, 10, 119, 34, -108, 11, -89, -55, 125, -16, 94, -84, 8, 77, -48, 60, 117, -74, 81, 92, -116, 13, 24, 59, -38, -108, 38, 41, -77, 87, -112, 98, 17]], Crypto_ByteArray [bytearray=[-106, -74, -28, 81, 96, 18, -101, 21, 76, -99, 20, 7, 125, -120, -25, 50, -21, -106, 104, -107, 60, 57, -87, 68, 5, -3, 21, 59, -123, -44, -26, -19, -56, -11, 84, -122, -4, -75, -65, 73, 7, 49, 29, 87, 38, 98, 99, -95, -87, -11, 51, -76, -80, 21, -77, -115, -64, 46, 66, -14, 41, 0, -42, 50, 57, 45, -82, 112, -82, 11, -105, 23, 69, 41, 97, -79, -102, 108, -48, 60, 34, -1, 77, 69, -100, 85, 78, 19, 26, 101, -32, -120, 14, -96, -64, 85, -110, -96, 102, -49, -42, 14, -26, 50, -120, 119, 98, 78, 33, 70, -71, 64, 106, -125, -42, -128, -58, 24, 7, -15, 101, -93, 86, 105, 67, -66, -5, -14, -88, 123, 71, 12, -37, 87, -87, 64, -83, 5, -3, 21, 70, 26, -65, 27, 99, -82, -15, 54, -26, 127, 101, 48, 121, -38, 105, 16, -80, 54, -71, -115, -48, -1, -109, -78, 107, -37, -67, 79, -103, -64, -105, -90, 51, -21, -66, 53, 20, -107, 26, -78, 125, 99, 44, 110, -120, 86, -22, 40, -106, -84, -22, 25, 71, -94, 88, -11, -2, 6, 36, -71, 63, -58, -13, 40, 10, 111, -101, 56, 125, 2, 14, -53, 58, -41, -78, -46, 64, 98, 19, 29, -44, 125, -27, -18, -100, 48, -52, -24, -20, 107, 100, 44, 87, -126, -34, 74, 102, 66, 16, 30, 39, 103, 43, 47, 22, 62, -2, -20, -25, 107, -120, 61, 4, -85, -100, 97]]]]
+     [java] Debug [ROLE_idp-PROTOCOL] - CHECK # 2.1
+     [java] Debug [ROLE_idp-PROTOCOL] - [11:08:36:875]EQ check PERFORMED on java.lang.String
+     [java] Debug [ROLE_idp-PROTOCOL] - [11:08:36:875]EQ check OK - java.lang.String.toString - alice = alice
+     [java] Debug [ROLE_idp-PROTOCOL] - [11:08:36:875]EQ check OK - java.lang.String.hashCode - 92903040 = 92903040
+     [java] Debug [ROLE_idp-PROTOCOL] - CHECK # 2.2
+     [java] Debug [ROLE_idp-PROTOCOL] - [11:08:36:875]EQ check PERFORMED on java.lang.String
+     [java] Debug [ROLE_idp-PROTOCOL] - [11:08:36:875]EQ check OK - java.lang.String.toString - charlie = charlie
+     [java] Debug [ROLE_idp-PROTOCOL] - [11:08:36:875]EQ check OK - java.lang.String.hashCode - 739067762 = 739067762
+     [java] Debug [ROLE_idp-PROTOCOL] - SSO - ROLE_idp - STEP_2
+     [java] Debug [ROLE_idp-PROTOCOL] - sso.SSO_ROLE_idp@23bb8443
+     [java] Debug [ROLE_idp-PROTOCOL] - SSO - ROLE_idp - STEP_3
+     [java] Debug [ROLE_idp-PROTOCOL] - sso.SSO_ROLE_idp@23bb8443
+     [java] Debug [ROLE_idp-LANGUAGE] - AnBx_Params - size: 2
+     [java] Debug [ROLE_idp-LANGUAGE] - AnBx_Params - hash: -675904302
+     [java] Debug [ROLE_idp-LANGUAGE] - [11:08:36:876]AnBx_Params - params: AnBx_Params [v=[alice, charlie]]
+     [java] Debug [ROLE_idp-ENCRYPTION] - PrivateKey retrieved: <charlie>
+     [java] Debug [ROLE_idp-ENCRYPTION] - Signed  [RSA/PKCS#8/9752] java.security.SignedObject@6e15fe2 - Provider: SunRsaSign
+     [java] Debug [ROLE_idp-LANGUAGE] - AnBx_Params - size: 2
+     [java] Debug [ROLE_idp-LANGUAGE] - AnBx_Params - hash: -715480297
+     [java] Debug [ROLE_idp-LANGUAGE] - [11:08:36:900]AnBx_Params - params: AnBx_Params [v=[java.security.SignedObject@6e15fe2, Crypto_ByteArray [bytearray=[-106, -74, -28, 81, 96, 18, -101, 21, 76, -99, 20, 7, 125, -120, -25, 50, -21, -106, 104, -107, 60, 57, -87, 68, 5, -3, 21, 59, -123, -44, -26, -19, -56, -11, 84, -122, -4, -75, -65, 73, 7, 49, 29, 87, 38, 98, 99, -95, -87, -11, 51, -76, -80, 21, -77, -115, -64, 46, 66, -14, 41, 0, -42, 50, 57, 45, -82, 112, -82, 11, -105, 23, 69, 41, 97, -79, -102, 108, -48, 60, 34, -1, 77, 69, -100, 85, 78, 19, 26, 101, -32, -120, 14, -96, -64, 85, -110, -96, 102, -49, -42, 14, -26, 50, -120, 119, 98, 78, 33, 70, -71, 64, 106, -125, -42, -128, -58, 24, 7, -15, 101, -93, 86, 105, 67, -66, -5, -14, -88, 123, 71, 12, -37, 87, -87, 64, -83, 5, -3, 21, 70, 26, -65, 27, 99, -82, -15, 54, -26, 127, 101, 48, 121, -38, 105, 16, -80, 54, -71, -115, -48, -1, -109, -78, 107, -37, -67, 79, -103, -64, -105, -90, 51, -21, -66, 53, 20, -107, 26, -78, 125, 99, 44, 110, -120, 86, -22, 40, -106, -84, -22, 25, 71, -94, 88, -11, -2, 6, 36, -71, 63, -58, -13, 40, 10, 111, -101, 56, 125, 2, 14, -53, 58, -41, -78, -46, 64, 98, 19, 29, -44, 125, -27, -18, -100, 48, -52, -24, -20, 107, 100, 44, 87, -126, -34, 74, 102, 66, 16, 30, 39, 103, 43, 47, 22, 62, -2, -20, -25, 107, -120, 61, 4, -85, -100, 97]]]]
+     [java] Debug [ROLE_idp-LANGUAGE] - Send
+     [java] Debug [ROLE_idp-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_idp-NETWORK] - Sending -> AnBx_Params [v=[java.security.SignedObject@6e15fe2, Crypto_ByteArray [bytearray=[-106, -74, -28, 81, 96, 18, -101, 21, 76, -99, 20, 7, 125, -120, -25, 50, -21, -106, 104, -107, 60, 57, -87, 68, 5, -3, 21, 59, -123, -44, -26, -19, -56, -11, 84, -122, -4, -75, -65, 73, 7, 49, 29, 87, 38, 98, 99, -95, -87, -11, 51, -76, -80, 21, -77, -115, -64, 46, 66, -14, 41, 0, -42, 50, 57, 45, -82, 112, -82, 11, -105, 23, 69, 41, 97, -79, -102, 108, -48, 60, 34, -1, 77, 69, -100, 85, 78, 19, 26, 101, -32, -120, 14, -96, -64, 85, -110, -96, 102, -49, -42, 14, -26, 50, -120, 119, 98, 78, 33, 70, -71, 64, 106, -125, -42, -128, -58, 24, 7, -15, 101, -93, 86, 105, 67, -66, -5, -14, -88, 123, 71, 12, -37, 87, -87, 64, -83, 5, -3, 21, 70, 26, -65, 27, 99, -82, -15, 54, -26, 127, 101, 48, 121, -38, 105, 16, -80, 54, -71, -115, -48, -1, -109, -78, 107, -37, -67, 79, -103, -64, -105, -90, 51, -21, -66, 53, 20, -107, 26, -78, 125, 99, 44, 110, -120, 86, -22, 40, -106, -84, -22, 25, 71, -94, 88, -11, -2, 6, 36, -71, 63, -58, -13, 40, 10, 111, -101, 56, 125, 2, 14, -53, 58, -41, -78, -46, 64, 98, 19, 29, -44, 125, -27, -18, -100, 48, -52, -24, -20, 107, 100, 44, 87, -126, -34, 74, 102, 66, 16, 30, 39, 103, 43, 47, 22, 62, -2, -20, -25, 107, -120, 61, 4, -85, -100, 97]]]]
+     [java] Debug [ROLE_idp-NETWORK] - [11:08:36:905]Sent -> AnBx_Params [v=[java.security.SignedObject@6e15fe2, Crypto_ByteArray [bytearray=[-106, -74, -28, 81, 96, 18, -101, 21, 76, -99, 20, 7, 125, -120, -25, 50, -21, -106, 104, -107, 60, 57, -87, 68, 5, -3, 21, 59, -123, -44, -26, -19, -56, -11, 84, -122, -4, -75, -65, 73, 7, 49, 29, 87, 38, 98, 99, -95, -87, -11, 51, -76, -80, 21, -77, -115, -64, 46, 66, -14, 41, 0, -42, 50, 57, 45, -82, 112, -82, 11, -105, 23, 69, 41, 97, -79, -102, 108, -48, 60, 34, -1, 77, 69, -100, 85, 78, 19, 26, 101, -32, -120, 14, -96, -64, 85, -110, -96, 102, -49, -42, 14, -26, 50, -120, 119, 98, 78, 33, 70, -71, 64, 106, -125, -42, -128, -58, 24, 7, -15, 101, -93, 86, 105, 67, -66, -5, -14, -88, 123, 71, 12, -37, 87, -87, 64, -83, 5, -3, 21, 70, 26, -65, 27, 99, -82, -15, 54, -26, 127, 101, 48, 121, -38, 105, 16, -80, 54, -71, -115, -48, -1, -109, -78, 107, -37, -67, 79, -103, -64, -105, -90, 51, -21, -66, 53, 20, -107, 26, -78, 125, 99, 44, 110, -120, 86, -22, 40, -106, -84, -22, 25, 71, -94, 88, -11, -2, 6, 36, -71, 63, -58, -13, 40, 10, 111, -101, 56, 125, 2, 14, -53, 58, -41, -78, -46, 64, 98, 19, 29, -44, 125, -27, -18, -100, 48, -52, -24, -20, 107, 100, 44, 87, -126, -34, 74, 102, 66, 16, 30, 39, 103, 43, 47, 22, 62, -2, -20, -25, 107, -120, 61, 4, -85, -100, 97]]]]
+     [java] Debug [ROLE_idp-PROTOCOL] - SSO - ROLE_idp - STEP_3
+     [java] Debug [ROLE_idp-PROTOCOL] - sso.SSO_ROLE_idp@23bb8443
+     [java] Debug [ROLE_idp-PROTOCOL] - Session completed: 5/10
+     [java] Debug [ROLE_idp-PROTOCOL] - Session started: 6/10
+     [java] Debug [ROLE_idp-PROTOCOL] - SSO - ROLE_idp - STEP_2
+     [java] Debug [ROLE_idp-PROTOCOL] - sso.SSO_ROLE_idp@23bb8443
+     [java] Debug [ROLE_idp-SESSION] - Receive
+     [java] Debug [ROLE_idp-LANGUAGE] - Receive
+     [java] Debug [ROLE_idp-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_idp-NETWORK] - [11:08:37:245]Received <- AnBx_Params [v=[alice, charlie, bob, Crypto_ByteArray [bytearray=[95, -45, 59, 45, 76, -39, 125, -57, -122, 53, 105, -117, 39, 105, -15, 16, -87, -114, -1, -41, -25, -98, -46, 37, 46, -2, 22, 25, -6, -43, 78, -64, -37, 122, 48, 61, -110, 5, 18, -94, -78, 6, -122, 79, 70, -30, -7, 123, -27, 100, -126, -3, -7, -67, 22, 106, 71, -13, -102, -65, -85, 99, 41, -81, -28, 85, 21, 10, 79, 56, 62, 50, -107, 115, -92, -40, -34, -115, -9, 11, -8, -66, -31, -3, 17, 8, -93, -26, 34, 44, 32, -76, 39, -92, -56, -126, 97, 8, 45, 77, -21, 61, 27, 9, -116, 17, -62, -48, -73, 26, -101, -2, 90, 38, -24, -15, -3, -11, -95, 96, 74, 28, 12, 21, 105, -3, 80, -23, -111, -7, -29, -113, 123, 35, 5, -27, -71, 60, 23, -62, 39, 14, 10, 60, 5, -65, 28, 96, 49, -103, 44, -45, -95, 13, 104, 10, 38, 30, -113, -46, -36, 48, 102, -50, -82, 54, -49, -69, 22, 9, -15, 63, 48, -125, 104, -77, -29, 118, -35, -18, 99, -121, -1, -90, 53, -74, 92, -71, -50, 73, -102, 26, 71, -11, 73, -89, 10, 95, 49, -45, 124, 93, -123, 80, 64, 79, -91, 43, 33, 123, 102, -25, -40, 73, 67, -111, -84, 16, -54, -37, -25, -50, 84, -95, -61, -7, 114, -14, -33, -105, -49, -123, 106, -47, 9, -25, 10, 50, -34, 89, -123, 46, -44, -119, 68, -34, -61, -128, -43, 49, -94, 72, -100, 111, 49, 47]], Crypto_ByteArray [bytearray=[-47, 49, 88, -80, 120, -71, -14, -28, -122, 116, 122, 77, 25, -114, -3, 104, -11, 50, -107, 74, -73, -50, -74, -121, -66, -106, -17, -6, 12, 46, -96, -91, 8, -63, -96, -109, -101, 77, -41, -123, 9, -32, 29, 20, 14, -105, -121, -75, 34, 22, 115, 121, -108, 63, 33, 85, -92, 92, 5, -45, -125, -51, -109, 52, 24, 50, -60, 18, 29, 2, -2, -54, -58, 118, 59, -10, 63, -107, -31, 35, -75, 28, 79, -20, -77, 62, -88, 71, 50, -82, -41, -23, -94, 95, 126, -102, -127, 109, -128, 120, -96, -10, -114, -89, 46, 69, 45, -71, -54, 28, 65, -75, 32, -84, -122, 30, -118, -56, -116, 4, -106, -87, -111, -123, -115, -104, 84, -75, -119, -102, -49, -79, 111, -19, -97, 27, 31, 37, 110, 28, 122, -6, -35, -2, -91, 91, -109, 15, 73, 91, 36, -12, 117, -28, 102, -72, -4, -114, 73, -92, -27, 42, -52, 76, 56, 19, -22, -111, 8, 50, 104, 8, 80, 32, 28, -55, 121, -29, -13, 72, 108, 52, 112, 3, 83, 89, -43, 75, -35, 97, 80, -49, 127, -70, 19, -75, 94, 104, -36, -44, -75, -121, -110, -77, 126, -12, -34, -71, -37, -84, 103, 124, -49, -57, -7, -72, 71, -38, 91, 18, -23, -123, 58, 121, 86, 13, -52, 28, -21, -49, 11, -99, -56, -15, 42, -105, -27, -118, -52, 9, 69, -68, 109, -125, 34, -117, 27, -123, 95, 19, 101, -60, 29, 60, -30, -89]]]]
+     [java] Debug [ROLE_idp-PROTOCOL] - CHECK # 2.1
+     [java] Debug [ROLE_idp-PROTOCOL] - [11:08:37:246]EQ check PERFORMED on java.lang.String
+     [java] Debug [ROLE_idp-PROTOCOL] - [11:08:37:247]EQ check OK - java.lang.String.toString - alice = alice
+     [java] Debug [ROLE_idp-PROTOCOL] - [11:08:37:247]EQ check OK - java.lang.String.hashCode - 92903040 = 92903040
+     [java] Debug [ROLE_idp-PROTOCOL] - CHECK # 2.2
+     [java] Debug [ROLE_idp-PROTOCOL] - [11:08:37:247]EQ check PERFORMED on java.lang.String
+     [java] Debug [ROLE_idp-PROTOCOL] - [11:08:37:247]EQ check OK - java.lang.String.toString - charlie = charlie
+     [java] Debug [ROLE_idp-PROTOCOL] - [11:08:37:247]EQ check OK - java.lang.String.hashCode - 739067762 = 739067762
+     [java] Debug [ROLE_idp-PROTOCOL] - SSO - ROLE_idp - STEP_2
+     [java] Debug [ROLE_idp-PROTOCOL] - sso.SSO_ROLE_idp@23bb8443
+     [java] Debug [ROLE_idp-PROTOCOL] - SSO - ROLE_idp - STEP_3
+     [java] Debug [ROLE_idp-PROTOCOL] - sso.SSO_ROLE_idp@23bb8443
+     [java] Debug [ROLE_idp-LANGUAGE] - AnBx_Params - size: 2
+     [java] Debug [ROLE_idp-LANGUAGE] - AnBx_Params - hash: -675904302
+     [java] Debug [ROLE_idp-LANGUAGE] - [11:08:37:248]AnBx_Params - params: AnBx_Params [v=[alice, charlie]]
+     [java] Debug [ROLE_idp-ENCRYPTION] - PrivateKey retrieved: <charlie>
+     [java] Debug [ROLE_idp-ENCRYPTION] - Signed  [RSA/PKCS#8/9752] java.security.SignedObject@1ae8bcbc - Provider: SunRsaSign
+     [java] Debug [ROLE_idp-LANGUAGE] - AnBx_Params - size: 2
+     [java] Debug [ROLE_idp-LANGUAGE] - AnBx_Params - hash: 1075301221
+     [java] Debug [ROLE_idp-LANGUAGE] - [11:08:37:271]AnBx_Params - params: AnBx_Params [v=[java.security.SignedObject@1ae8bcbc, Crypto_ByteArray [bytearray=[-47, 49, 88, -80, 120, -71, -14, -28, -122, 116, 122, 77, 25, -114, -3, 104, -11, 50, -107, 74, -73, -50, -74, -121, -66, -106, -17, -6, 12, 46, -96, -91, 8, -63, -96, -109, -101, 77, -41, -123, 9, -32, 29, 20, 14, -105, -121, -75, 34, 22, 115, 121, -108, 63, 33, 85, -92, 92, 5, -45, -125, -51, -109, 52, 24, 50, -60, 18, 29, 2, -2, -54, -58, 118, 59, -10, 63, -107, -31, 35, -75, 28, 79, -20, -77, 62, -88, 71, 50, -82, -41, -23, -94, 95, 126, -102, -127, 109, -128, 120, -96, -10, -114, -89, 46, 69, 45, -71, -54, 28, 65, -75, 32, -84, -122, 30, -118, -56, -116, 4, -106, -87, -111, -123, -115, -104, 84, -75, -119, -102, -49, -79, 111, -19, -97, 27, 31, 37, 110, 28, 122, -6, -35, -2, -91, 91, -109, 15, 73, 91, 36, -12, 117, -28, 102, -72, -4, -114, 73, -92, -27, 42, -52, 76, 56, 19, -22, -111, 8, 50, 104, 8, 80, 32, 28, -55, 121, -29, -13, 72, 108, 52, 112, 3, 83, 89, -43, 75, -35, 97, 80, -49, 127, -70, 19, -75, 94, 104, -36, -44, -75, -121, -110, -77, 126, -12, -34, -71, -37, -84, 103, 124, -49, -57, -7, -72, 71, -38, 91, 18, -23, -123, 58, 121, 86, 13, -52, 28, -21, -49, 11, -99, -56, -15, 42, -105, -27, -118, -52, 9, 69, -68, 109, -125, 34, -117, 27, -123, 95, 19, 101, -60, 29, 60, -30, -89]]]]
+     [java] Debug [ROLE_idp-LANGUAGE] - Send
+     [java] Debug [ROLE_idp-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_idp-NETWORK] - Sending -> AnBx_Params [v=[java.security.SignedObject@1ae8bcbc, Crypto_ByteArray [bytearray=[-47, 49, 88, -80, 120, -71, -14, -28, -122, 116, 122, 77, 25, -114, -3, 104, -11, 50, -107, 74, -73, -50, -74, -121, -66, -106, -17, -6, 12, 46, -96, -91, 8, -63, -96, -109, -101, 77, -41, -123, 9, -32, 29, 20, 14, -105, -121, -75, 34, 22, 115, 121, -108, 63, 33, 85, -92, 92, 5, -45, -125, -51, -109, 52, 24, 50, -60, 18, 29, 2, -2, -54, -58, 118, 59, -10, 63, -107, -31, 35, -75, 28, 79, -20, -77, 62, -88, 71, 50, -82, -41, -23, -94, 95, 126, -102, -127, 109, -128, 120, -96, -10, -114, -89, 46, 69, 45, -71, -54, 28, 65, -75, 32, -84, -122, 30, -118, -56, -116, 4, -106, -87, -111, -123, -115, -104, 84, -75, -119, -102, -49, -79, 111, -19, -97, 27, 31, 37, 110, 28, 122, -6, -35, -2, -91, 91, -109, 15, 73, 91, 36, -12, 117, -28, 102, -72, -4, -114, 73, -92, -27, 42, -52, 76, 56, 19, -22, -111, 8, 50, 104, 8, 80, 32, 28, -55, 121, -29, -13, 72, 108, 52, 112, 3, 83, 89, -43, 75, -35, 97, 80, -49, 127, -70, 19, -75, 94, 104, -36, -44, -75, -121, -110, -77, 126, -12, -34, -71, -37, -84, 103, 124, -49, -57, -7, -72, 71, -38, 91, 18, -23, -123, 58, 121, 86, 13, -52, 28, -21, -49, 11, -99, -56, -15, 42, -105, -27, -118, -52, 9, 69, -68, 109, -125, 34, -117, 27, -123, 95, 19, 101, -60, 29, 60, -30, -89]]]]
+     [java] Debug [ROLE_idp-NETWORK] - [11:08:37:277]Sent -> AnBx_Params [v=[java.security.SignedObject@1ae8bcbc, Crypto_ByteArray [bytearray=[-47, 49, 88, -80, 120, -71, -14, -28, -122, 116, 122, 77, 25, -114, -3, 104, -11, 50, -107, 74, -73, -50, -74, -121, -66, -106, -17, -6, 12, 46, -96, -91, 8, -63, -96, -109, -101, 77, -41, -123, 9, -32, 29, 20, 14, -105, -121, -75, 34, 22, 115, 121, -108, 63, 33, 85, -92, 92, 5, -45, -125, -51, -109, 52, 24, 50, -60, 18, 29, 2, -2, -54, -58, 118, 59, -10, 63, -107, -31, 35, -75, 28, 79, -20, -77, 62, -88, 71, 50, -82, -41, -23, -94, 95, 126, -102, -127, 109, -128, 120, -96, -10, -114, -89, 46, 69, 45, -71, -54, 28, 65, -75, 32, -84, -122, 30, -118, -56, -116, 4, -106, -87, -111, -123, -115, -104, 84, -75, -119, -102, -49, -79, 111, -19, -97, 27, 31, 37, 110, 28, 122, -6, -35, -2, -91, 91, -109, 15, 73, 91, 36, -12, 117, -28, 102, -72, -4, -114, 73, -92, -27, 42, -52, 76, 56, 19, -22, -111, 8, 50, 104, 8, 80, 32, 28, -55, 121, -29, -13, 72, 108, 52, 112, 3, 83, 89, -43, 75, -35, 97, 80, -49, 127, -70, 19, -75, 94, 104, -36, -44, -75, -121, -110, -77, 126, -12, -34, -71, -37, -84, 103, 124, -49, -57, -7, -72, 71, -38, 91, 18, -23, -123, 58, 121, 86, 13, -52, 28, -21, -49, 11, -99, -56, -15, 42, -105, -27, -118, -52, 9, 69, -68, 109, -125, 34, -117, 27, -123, 95, 19, 101, -60, 29, 60, -30, -89]]]]
+     [java] Debug [ROLE_idp-PROTOCOL] - SSO - ROLE_idp - STEP_3
+     [java] Debug [ROLE_idp-PROTOCOL] - sso.SSO_ROLE_idp@23bb8443
+     [java] Debug [ROLE_idp-PROTOCOL] - Session completed: 6/10
+     [java] Debug [ROLE_idp-PROTOCOL] - Session started: 7/10
+     [java] Debug [ROLE_idp-PROTOCOL] - SSO - ROLE_idp - STEP_2
+     [java] Debug [ROLE_idp-PROTOCOL] - sso.SSO_ROLE_idp@23bb8443
+     [java] Debug [ROLE_idp-SESSION] - Receive
+     [java] Debug [ROLE_idp-LANGUAGE] - Receive
+     [java] Debug [ROLE_idp-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_idp-NETWORK] - [11:08:37:604]Received <- AnBx_Params [v=[alice, charlie, bob, Crypto_ByteArray [bytearray=[-125, -67, -39, 30, -39, 24, -111, 120, 15, 25, 76, -101, -92, 102, -118, 72, -12, 51, -45, -67, -88, -23, -53, 113, 59, 31, 50, 89, -110, -46, 102, -94, -10, 76, -76, 72, -124, 64, 12, 97, -35, -102, 21, -36, 23, 127, 41, -14, 96, -36, -110, -127, 22, 57, 39, -9, -82, 49, 19, 109, -36, -78, -109, 59, -102, -75, 50, -69, 10, -63, -118, 27, -7, 10, -103, -94, -11, -18, 16, 98, 83, -24, -38, -83, -120, -122, 115, 11, -72, -87, 3, 7, -76, -38, 127, 118, -80, 35, -14, 8, -4, -48, -9, -122, 115, -102, 71, -98, -83, 14, -85, 126, 127, -54, -86, -74, -10, 75, 122, 111, 100, -15, 23, 79, -39, 84, 9, 43, -124, 49, -31, -24, 75, -119, -97, -21, -9, 73, -112, -73, 103, 4, 116, 60, 31, 46, -115, -33, -36, -106, -101, -105, -100, 60, 63, 1, -104, -17, 56, 55, -108, 0, 105, 111, 52, -108, 9, 14, -74, -118, 47, -122, 3, -87, -68, -76, -27, 73, 74, -13, -96, -126, 57, -85, 27, 88, 17, -28, -89, 117, 104, -8, -89, -88, 18, 82, 63, -58, 46, 86, -23, 34, 0, -73, -126, -10, 74, 71, -69, 76, 57, -37, -29, -8, -61, -115, -60, -105, 57, 36, 53, -105, -36, 108, -62, 29, 115, 14, -58, -15, -85, -10, 98, 64, 112, 85, 19, 6, 107, 59, -41, -10, 109, -23, -22, -96, 111, -28, 90, 99, -123, 114, -25, -5, 108, -21]], Crypto_ByteArray [bytearray=[40, 94, 43, 83, -68, 70, 84, 74, 91, 1, 124, 110, -44, 81, 9, -91, 37, 31, 113, 99, 22, 125, -42, 95, -19, 44, -93, -30, -113, -30, -93, 112, -41, 78, -123, -122, -107, 4, -114, -26, -115, 14, 28, 110, 71, -15, -106, 121, 88, -31, 8, -73, -43, 127, -21, -128, 28, 47, -49, 9, 40, -34, -10, -126, -49, -110, 87, 52, -81, 13, -73, 113, -93, -11, 38, -14, 6, 19, -69, 126, 41, -55, 85, -112, -87, 94, -123, -121, 43, -34, -23, -78, -52, 38, -97, -58, -56, 125, -8, 72, 29, 23, -8, -66, 116, -45, -91, 72, -71, 11, -54, -113, -18, 66, 61, 114, 103, -125, 112, 101, 40, 0, -92, 103, -11, 8, -5, 69, -110, 53, -54, -68, 91, -38, -102, -50, -103, -56, 26, 52, 85, -62, 106, -112, 29, 79, -87, 90, -113, -51, -17, 29, -35, -55, -78, 9, 98, 22, 41, -27, -16, -54, 2, 37, 91, 73, 60, 33, 40, -54, 72, -122, 73, -52, 109, 88, 53, 49, -40, 38, 122, -33, 4, 100, -96, 77, -9, 65, -113, 65, -62, 74, -56, 126, -121, -89, 81, 115, 87, -11, -5, -69, -92, -24, 11, 25, -102, 51, -122, 46, -77, -5, -97, -118, 50, 35, -98, 22, -91, -21, 97, 52, 54, 56, -69, 95, -101, 112, -124, 56, -117, 18, -66, 34, -43, 85, 20, 31, -49, -58, 109, 104, -68, 7, 109, -116, -109, -19, -64, 104, -53, 46, 104, 51, 72, 92]]]]
+     [java] Debug [ROLE_idp-PROTOCOL] - CHECK # 2.1
+     [java] Debug [ROLE_idp-PROTOCOL] - [11:08:37:605]EQ check PERFORMED on java.lang.String
+     [java] Debug [ROLE_idp-PROTOCOL] - [11:08:37:605]EQ check OK - java.lang.String.toString - alice = alice
+     [java] Debug [ROLE_idp-PROTOCOL] - [11:08:37:605]EQ check OK - java.lang.String.hashCode - 92903040 = 92903040
+     [java] Debug [ROLE_idp-PROTOCOL] - CHECK # 2.2
+     [java] Debug [ROLE_idp-PROTOCOL] - [11:08:37:606]EQ check PERFORMED on java.lang.String
+     [java] Debug [ROLE_idp-PROTOCOL] - [11:08:37:606]EQ check OK - java.lang.String.toString - charlie = charlie
+     [java] Debug [ROLE_idp-PROTOCOL] - [11:08:37:606]EQ check OK - java.lang.String.hashCode - 739067762 = 739067762
+     [java] Debug [ROLE_idp-PROTOCOL] - SSO - ROLE_idp - STEP_2
+     [java] Debug [ROLE_idp-PROTOCOL] - sso.SSO_ROLE_idp@23bb8443
+     [java] Debug [ROLE_idp-PROTOCOL] - SSO - ROLE_idp - STEP_3
+     [java] Debug [ROLE_idp-PROTOCOL] - sso.SSO_ROLE_idp@23bb8443
+     [java] Debug [ROLE_idp-LANGUAGE] - AnBx_Params - size: 2
+     [java] Debug [ROLE_idp-LANGUAGE] - AnBx_Params - hash: -675904302
+     [java] Debug [ROLE_idp-LANGUAGE] - [11:08:37:606]AnBx_Params - params: AnBx_Params [v=[alice, charlie]]
+     [java] Debug [ROLE_idp-ENCRYPTION] - PrivateKey retrieved: <charlie>
+     [java] Debug [ROLE_idp-ENCRYPTION] - Signed  [RSA/PKCS#8/9752] java.security.SignedObject@39d9314d - Provider: SunRsaSign
+     [java] Debug [ROLE_idp-LANGUAGE] - AnBx_Params - size: 2
+     [java] Debug [ROLE_idp-LANGUAGE] - AnBx_Params - hash: 1901926285
+     [java] Debug [ROLE_idp-LANGUAGE] - [11:08:37:627]AnBx_Params - params: AnBx_Params [v=[java.security.SignedObject@39d9314d, Crypto_ByteArray [bytearray=[40, 94, 43, 83, -68, 70, 84, 74, 91, 1, 124, 110, -44, 81, 9, -91, 37, 31, 113, 99, 22, 125, -42, 95, -19, 44, -93, -30, -113, -30, -93, 112, -41, 78, -123, -122, -107, 4, -114, -26, -115, 14, 28, 110, 71, -15, -106, 121, 88, -31, 8, -73, -43, 127, -21, -128, 28, 47, -49, 9, 40, -34, -10, -126, -49, -110, 87, 52, -81, 13, -73, 113, -93, -11, 38, -14, 6, 19, -69, 126, 41, -55, 85, -112, -87, 94, -123, -121, 43, -34, -23, -78, -52, 38, -97, -58, -56, 125, -8, 72, 29, 23, -8, -66, 116, -45, -91, 72, -71, 11, -54, -113, -18, 66, 61, 114, 103, -125, 112, 101, 40, 0, -92, 103, -11, 8, -5, 69, -110, 53, -54, -68, 91, -38, -102, -50, -103, -56, 26, 52, 85, -62, 106, -112, 29, 79, -87, 90, -113, -51, -17, 29, -35, -55, -78, 9, 98, 22, 41, -27, -16, -54, 2, 37, 91, 73, 60, 33, 40, -54, 72, -122, 73, -52, 109, 88, 53, 49, -40, 38, 122, -33, 4, 100, -96, 77, -9, 65, -113, 65, -62, 74, -56, 126, -121, -89, 81, 115, 87, -11, -5, -69, -92, -24, 11, 25, -102, 51, -122, 46, -77, -5, -97, -118, 50, 35, -98, 22, -91, -21, 97, 52, 54, 56, -69, 95, -101, 112, -124, 56, -117, 18, -66, 34, -43, 85, 20, 31, -49, -58, 109, 104, -68, 7, 109, -116, -109, -19, -64, 104, -53, 46, 104, 51, 72, 92]]]]
+     [java] Debug [ROLE_idp-LANGUAGE] - Send
+     [java] Debug [ROLE_idp-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_idp-NETWORK] - Sending -> AnBx_Params [v=[java.security.SignedObject@39d9314d, Crypto_ByteArray [bytearray=[40, 94, 43, 83, -68, 70, 84, 74, 91, 1, 124, 110, -44, 81, 9, -91, 37, 31, 113, 99, 22, 125, -42, 95, -19, 44, -93, -30, -113, -30, -93, 112, -41, 78, -123, -122, -107, 4, -114, -26, -115, 14, 28, 110, 71, -15, -106, 121, 88, -31, 8, -73, -43, 127, -21, -128, 28, 47, -49, 9, 40, -34, -10, -126, -49, -110, 87, 52, -81, 13, -73, 113, -93, -11, 38, -14, 6, 19, -69, 126, 41, -55, 85, -112, -87, 94, -123, -121, 43, -34, -23, -78, -52, 38, -97, -58, -56, 125, -8, 72, 29, 23, -8, -66, 116, -45, -91, 72, -71, 11, -54, -113, -18, 66, 61, 114, 103, -125, 112, 101, 40, 0, -92, 103, -11, 8, -5, 69, -110, 53, -54, -68, 91, -38, -102, -50, -103, -56, 26, 52, 85, -62, 106, -112, 29, 79, -87, 90, -113, -51, -17, 29, -35, -55, -78, 9, 98, 22, 41, -27, -16, -54, 2, 37, 91, 73, 60, 33, 40, -54, 72, -122, 73, -52, 109, 88, 53, 49, -40, 38, 122, -33, 4, 100, -96, 77, -9, 65, -113, 65, -62, 74, -56, 126, -121, -89, 81, 115, 87, -11, -5, -69, -92, -24, 11, 25, -102, 51, -122, 46, -77, -5, -97, -118, 50, 35, -98, 22, -91, -21, 97, 52, 54, 56, -69, 95, -101, 112, -124, 56, -117, 18, -66, 34, -43, 85, 20, 31, -49, -58, 109, 104, -68, 7, 109, -116, -109, -19, -64, 104, -53, 46, 104, 51, 72, 92]]]]
+     [java] Debug [ROLE_idp-NETWORK] - [11:08:37:631]Sent -> AnBx_Params [v=[java.security.SignedObject@39d9314d, Crypto_ByteArray [bytearray=[40, 94, 43, 83, -68, 70, 84, 74, 91, 1, 124, 110, -44, 81, 9, -91, 37, 31, 113, 99, 22, 125, -42, 95, -19, 44, -93, -30, -113, -30, -93, 112, -41, 78, -123, -122, -107, 4, -114, -26, -115, 14, 28, 110, 71, -15, -106, 121, 88, -31, 8, -73, -43, 127, -21, -128, 28, 47, -49, 9, 40, -34, -10, -126, -49, -110, 87, 52, -81, 13, -73, 113, -93, -11, 38, -14, 6, 19, -69, 126, 41, -55, 85, -112, -87, 94, -123, -121, 43, -34, -23, -78, -52, 38, -97, -58, -56, 125, -8, 72, 29, 23, -8, -66, 116, -45, -91, 72, -71, 11, -54, -113, -18, 66, 61, 114, 103, -125, 112, 101, 40, 0, -92, 103, -11, 8, -5, 69, -110, 53, -54, -68, 91, -38, -102, -50, -103, -56, 26, 52, 85, -62, 106, -112, 29, 79, -87, 90, -113, -51, -17, 29, -35, -55, -78, 9, 98, 22, 41, -27, -16, -54, 2, 37, 91, 73, 60, 33, 40, -54, 72, -122, 73, -52, 109, 88, 53, 49, -40, 38, 122, -33, 4, 100, -96, 77, -9, 65, -113, 65, -62, 74, -56, 126, -121, -89, 81, 115, 87, -11, -5, -69, -92, -24, 11, 25, -102, 51, -122, 46, -77, -5, -97, -118, 50, 35, -98, 22, -91, -21, 97, 52, 54, 56, -69, 95, -101, 112, -124, 56, -117, 18, -66, 34, -43, 85, 20, 31, -49, -58, 109, 104, -68, 7, 109, -116, -109, -19, -64, 104, -53, 46, 104, 51, 72, 92]]]]
+     [java] Debug [ROLE_idp-PROTOCOL] - SSO - ROLE_idp - STEP_3
+     [java] Debug [ROLE_idp-PROTOCOL] - sso.SSO_ROLE_idp@23bb8443
+     [java] Debug [ROLE_idp-PROTOCOL] - Session completed: 7/10
+     [java] Debug [ROLE_idp-PROTOCOL] - Session started: 8/10
+     [java] Debug [ROLE_idp-PROTOCOL] - SSO - ROLE_idp - STEP_2
+     [java] Debug [ROLE_idp-PROTOCOL] - sso.SSO_ROLE_idp@23bb8443
+     [java] Debug [ROLE_idp-SESSION] - Receive
+     [java] Debug [ROLE_idp-LANGUAGE] - Receive
+     [java] Debug [ROLE_idp-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_idp-NETWORK] - [11:08:37:967]Received <- AnBx_Params [v=[alice, charlie, bob, Crypto_ByteArray [bytearray=[-34, -67, 34, -21, 112, -13, -101, 125, -13, 72, 112, 103, -45, -92, -70, -99, -52, -75, 30, 11, 39, -15, -8, 20, -29, 32, -28, 100, 118, 83, -93, 54, 29, -90, 14, -71, 33, -61, 107, 125, 44, 120, 58, -112, 102, 115, -112, 77, 60, -85, 109, 68, -32, -68, -102, 80, -128, -79, -128, -104, -64, -10, -68, 89, -118, -49, 116, -6, -79, -118, 81, 103, -121, -69, 61, -57, 66, 111, 122, 108, 5, 99, -62, -115, 53, -29, -96, -124, 22, 50, -117, 125, -72, -76, -11, -54, -6, -106, 79, 24, 42, 27, 39, -95, 109, 94, 29, -74, -82, -105, -8, 64, -96, -105, -63, -46, -24, -21, -41, 22, 71, -123, 74, 104, -84, -111, -107, 73, 21, 60, -25, 79, 108, -72, 113, -61, -61, 93, -85, 110, -67, -25, 7, -57, 104, -89, -4, 90, 108, -5, -88, -117, -8, -95, -1, -60, -48, -70, 69, -80, -126, 37, -107, -48, 34, 98, -24, 51, 77, -86, 123, -62, -3, -95, -116, -73, -124, 87, 104, 71, 66, 107, 18, 24, 61, -61, -12, 104, -24, -101, -8, -39, 61, 43, 89, 93, 17, 98, -120, 40, -36, -105, -69, 27, -128, 28, -44, -85, 17, 86, -5, 22, -82, -118, 63, -78, 16, 33, 61, -112, 114, -55, 80, 5, 46, -50, -121, 46, 21, -81, -33, 34, 48, -119, 14, -57, 80, 108, -119, 105, -32, -28, -28, -73, -4, -55, 5, -12, -87, 35, -4, 2, 40, 42, -4, 8]], Crypto_ByteArray [bytearray=[18, -17, 28, 97, -16, -6, 75, -30, 4, 125, 74, 125, -14, -10, -13, 84, 57, 12, 54, 84, 87, 1, 125, -100, -44, -90, 126, 82, -87, -12, 20, 77, -99, 16, 95, 54, -80, -83, 72, -49, 30, -35, -24, 100, 76, 48, -107, 50, -15, 68, -121, -14, 30, -71, -5, 30, -99, -23, -126, -82, 22, -4, -5, -55, -95, 57, -94, -103, -26, -93, 4, 3, -44, 68, 83, -83, 47, -126, 29, 18, 90, -102, -54, 44, -46, -59, -87, 87, -9, -90, 6, 45, -7, -68, 15, -46, 114, -29, 3, -91, 38, 53, 54, 16, 33, -69, 16, -123, -25, 77, -99, 19, -44, 117, 109, 112, 103, 4, -94, 44, 40, -100, -71, -103, -60, -108, -85, 44, -99, 66, 126, 21, -125, 89, 74, -65, -111, -80, 73, -3, 41, 54, 48, -32, 35, 21, 47, -56, -122, -12, -61, 55, -90, -120, -41, 20, -113, -45, -70, 114, 78, -71, -108, 82, -90, 92, -35, 70, 38, -113, -12, -32, -38, 32, -65, -58, 27, -24, 78, 29, -91, 25, 69, -110, 42, -84, -25, 97, 14, -123, 77, -114, -55, -100, -115, 120, 53, -22, -85, -91, 10, -40, -51, 97, 116, -123, 50, 14, -113, -127, 32, 23, 110, 85, -126, 63, 116, -80, -66, -9, 68, -2, -53, -83, 90, 114, -79, -88, -59, -39, 108, -48, 91, -23, -82, -126, -29, 0, -60, 85, 72, 49, 85, 70, -109, -78, 96, 49, 88, 99, 80, -33, 2, 49, -13, 105]]]]
+     [java] Debug [ROLE_idp-PROTOCOL] - CHECK # 2.1
+     [java] Debug [ROLE_idp-PROTOCOL] - [11:08:37:968]EQ check PERFORMED on java.lang.String
+     [java] Debug [ROLE_idp-PROTOCOL] - [11:08:37:968]EQ check OK - java.lang.String.toString - alice = alice
+     [java] Debug [ROLE_idp-PROTOCOL] - [11:08:37:968]EQ check OK - java.lang.String.hashCode - 92903040 = 92903040
+     [java] Debug [ROLE_idp-PROTOCOL] - CHECK # 2.2
+     [java] Debug [ROLE_idp-PROTOCOL] - [11:08:37:968]EQ check PERFORMED on java.lang.String
+     [java] Debug [ROLE_idp-PROTOCOL] - [11:08:37:968]EQ check OK - java.lang.String.toString - charlie = charlie
+     [java] Debug [ROLE_idp-PROTOCOL] - [11:08:37:968]EQ check OK - java.lang.String.hashCode - 739067762 = 739067762
+     [java] Debug [ROLE_idp-PROTOCOL] - SSO - ROLE_idp - STEP_2
+     [java] Debug [ROLE_idp-PROTOCOL] - sso.SSO_ROLE_idp@23bb8443
+     [java] Debug [ROLE_idp-PROTOCOL] - SSO - ROLE_idp - STEP_3
+     [java] Debug [ROLE_idp-PROTOCOL] - sso.SSO_ROLE_idp@23bb8443
+     [java] Debug [ROLE_idp-LANGUAGE] - AnBx_Params - size: 2
+     [java] Debug [ROLE_idp-LANGUAGE] - AnBx_Params - hash: -675904302
+     [java] Debug [ROLE_idp-LANGUAGE] - [11:08:37:969]AnBx_Params - params: AnBx_Params [v=[alice, charlie]]
+     [java] Debug [ROLE_idp-ENCRYPTION] - PrivateKey retrieved: <charlie>
+     [java] Debug [ROLE_idp-ENCRYPTION] - Signed  [RSA/PKCS#8/9752] java.security.SignedObject@6c0d7c83 - Provider: SunRsaSign
+     [java] Debug [ROLE_idp-LANGUAGE] - AnBx_Params - size: 2
+     [java] Debug [ROLE_idp-LANGUAGE] - AnBx_Params - hash: 896370766
+     [java] Debug [ROLE_idp-LANGUAGE] - [11:08:37:987]AnBx_Params - params: AnBx_Params [v=[java.security.SignedObject@6c0d7c83, Crypto_ByteArray [bytearray=[18, -17, 28, 97, -16, -6, 75, -30, 4, 125, 74, 125, -14, -10, -13, 84, 57, 12, 54, 84, 87, 1, 125, -100, -44, -90, 126, 82, -87, -12, 20, 77, -99, 16, 95, 54, -80, -83, 72, -49, 30, -35, -24, 100, 76, 48, -107, 50, -15, 68, -121, -14, 30, -71, -5, 30, -99, -23, -126, -82, 22, -4, -5, -55, -95, 57, -94, -103, -26, -93, 4, 3, -44, 68, 83, -83, 47, -126, 29, 18, 90, -102, -54, 44, -46, -59, -87, 87, -9, -90, 6, 45, -7, -68, 15, -46, 114, -29, 3, -91, 38, 53, 54, 16, 33, -69, 16, -123, -25, 77, -99, 19, -44, 117, 109, 112, 103, 4, -94, 44, 40, -100, -71, -103, -60, -108, -85, 44, -99, 66, 126, 21, -125, 89, 74, -65, -111, -80, 73, -3, 41, 54, 48, -32, 35, 21, 47, -56, -122, -12, -61, 55, -90, -120, -41, 20, -113, -45, -70, 114, 78, -71, -108, 82, -90, 92, -35, 70, 38, -113, -12, -32, -38, 32, -65, -58, 27, -24, 78, 29, -91, 25, 69, -110, 42, -84, -25, 97, 14, -123, 77, -114, -55, -100, -115, 120, 53, -22, -85, -91, 10, -40, -51, 97, 116, -123, 50, 14, -113, -127, 32, 23, 110, 85, -126, 63, 116, -80, -66, -9, 68, -2, -53, -83, 90, 114, -79, -88, -59, -39, 108, -48, 91, -23, -82, -126, -29, 0, -60, 85, 72, 49, 85, 70, -109, -78, 96, 49, 88, 99, 80, -33, 2, 49, -13, 105]]]]
+     [java] Debug [ROLE_idp-LANGUAGE] - Send
+     [java] Debug [ROLE_idp-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_idp-NETWORK] - Sending -> AnBx_Params [v=[java.security.SignedObject@6c0d7c83, Crypto_ByteArray [bytearray=[18, -17, 28, 97, -16, -6, 75, -30, 4, 125, 74, 125, -14, -10, -13, 84, 57, 12, 54, 84, 87, 1, 125, -100, -44, -90, 126, 82, -87, -12, 20, 77, -99, 16, 95, 54, -80, -83, 72, -49, 30, -35, -24, 100, 76, 48, -107, 50, -15, 68, -121, -14, 30, -71, -5, 30, -99, -23, -126, -82, 22, -4, -5, -55, -95, 57, -94, -103, -26, -93, 4, 3, -44, 68, 83, -83, 47, -126, 29, 18, 90, -102, -54, 44, -46, -59, -87, 87, -9, -90, 6, 45, -7, -68, 15, -46, 114, -29, 3, -91, 38, 53, 54, 16, 33, -69, 16, -123, -25, 77, -99, 19, -44, 117, 109, 112, 103, 4, -94, 44, 40, -100, -71, -103, -60, -108, -85, 44, -99, 66, 126, 21, -125, 89, 74, -65, -111, -80, 73, -3, 41, 54, 48, -32, 35, 21, 47, -56, -122, -12, -61, 55, -90, -120, -41, 20, -113, -45, -70, 114, 78, -71, -108, 82, -90, 92, -35, 70, 38, -113, -12, -32, -38, 32, -65, -58, 27, -24, 78, 29, -91, 25, 69, -110, 42, -84, -25, 97, 14, -123, 77, -114, -55, -100, -115, 120, 53, -22, -85, -91, 10, -40, -51, 97, 116, -123, 50, 14, -113, -127, 32, 23, 110, 85, -126, 63, 116, -80, -66, -9, 68, -2, -53, -83, 90, 114, -79, -88, -59, -39, 108, -48, 91, -23, -82, -126, -29, 0, -60, 85, 72, 49, 85, 70, -109, -78, 96, 49, 88, 99, 80, -33, 2, 49, -13, 105]]]]
+     [java] Debug [ROLE_idp-NETWORK] - [11:08:37:993]Sent -> AnBx_Params [v=[java.security.SignedObject@6c0d7c83, Crypto_ByteArray [bytearray=[18, -17, 28, 97, -16, -6, 75, -30, 4, 125, 74, 125, -14, -10, -13, 84, 57, 12, 54, 84, 87, 1, 125, -100, -44, -90, 126, 82, -87, -12, 20, 77, -99, 16, 95, 54, -80, -83, 72, -49, 30, -35, -24, 100, 76, 48, -107, 50, -15, 68, -121, -14, 30, -71, -5, 30, -99, -23, -126, -82, 22, -4, -5, -55, -95, 57, -94, -103, -26, -93, 4, 3, -44, 68, 83, -83, 47, -126, 29, 18, 90, -102, -54, 44, -46, -59, -87, 87, -9, -90, 6, 45, -7, -68, 15, -46, 114, -29, 3, -91, 38, 53, 54, 16, 33, -69, 16, -123, -25, 77, -99, 19, -44, 117, 109, 112, 103, 4, -94, 44, 40, -100, -71, -103, -60, -108, -85, 44, -99, 66, 126, 21, -125, 89, 74, -65, -111, -80, 73, -3, 41, 54, 48, -32, 35, 21, 47, -56, -122, -12, -61, 55, -90, -120, -41, 20, -113, -45, -70, 114, 78, -71, -108, 82, -90, 92, -35, 70, 38, -113, -12, -32, -38, 32, -65, -58, 27, -24, 78, 29, -91, 25, 69, -110, 42, -84, -25, 97, 14, -123, 77, -114, -55, -100, -115, 120, 53, -22, -85, -91, 10, -40, -51, 97, 116, -123, 50, 14, -113, -127, 32, 23, 110, 85, -126, 63, 116, -80, -66, -9, 68, -2, -53, -83, 90, 114, -79, -88, -59, -39, 108, -48, 91, -23, -82, -126, -29, 0, -60, 85, 72, 49, 85, 70, -109, -78, 96, 49, 88, 99, 80, -33, 2, 49, -13, 105]]]]
+     [java] Debug [ROLE_idp-PROTOCOL] - SSO - ROLE_idp - STEP_3
+     [java] Debug [ROLE_idp-PROTOCOL] - sso.SSO_ROLE_idp@23bb8443
+     [java] Debug [ROLE_idp-PROTOCOL] - Session completed: 8/10
+     [java] Debug [ROLE_idp-PROTOCOL] - Session started: 9/10
+     [java] Debug [ROLE_idp-PROTOCOL] - SSO - ROLE_idp - STEP_2
+     [java] Debug [ROLE_idp-PROTOCOL] - sso.SSO_ROLE_idp@23bb8443
+     [java] Debug [ROLE_idp-SESSION] - Receive
+     [java] Debug [ROLE_idp-LANGUAGE] - Receive
+     [java] Debug [ROLE_idp-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_idp-NETWORK] - [11:08:38:314]Received <- AnBx_Params [v=[alice, charlie, bob, Crypto_ByteArray [bytearray=[-85, -58, 86, 99, 16, 9, 118, -125, -49, 46, -127, -38, 100, -75, 31, 43, -29, 1, 124, -94, -24, 89, -19, 115, -48, -93, 117, -6, -51, 71, 77, 123, 92, -5, 22, 86, -76, 121, 88, -41, -107, 96, 92, -62, -91, 46, 108, 23, -8, 0, 58, -52, 119, -119, 46, 89, -96, 12, -54, 126, -127, 50, 63, 106, -23, 55, 116, 5, -52, -111, -112, -48, 115, 10, 97, -60, 62, 68, 18, 102, 20, -68, 63, 81, 83, -54, -75, -24, -72, -9, -86, -20, 66, -101, 104, -20, -22, 27, -24, 59, 86, 109, -13, 18, 13, 75, 66, -69, -39, 127, 97, -24, 34, -113, -81, -51, -82, -61, 10, -8, -90, 83, -104, -10, -123, 90, -36, -11, -101, -12, -123, 15, -119, 45, -40, -43, 85, 16, -120, -22, 25, -62, -6, -79, 29, 107, 47, -105, 99, -50, -60, 103, -104, -49, -1, -84, 62, -44, 82, -52, 73, 86, 100, -86, 88, -78, -93, -53, 82, -40, -16, -95, 76, 126, 76, -38, -61, -102, 22, -104, 60, 41, 126, 14, 83, 86, -28, -70, 115, -74, -101, 12, -84, -111, -25, 24, -9, 23, -111, -94, 80, 16, -90, -124, -128, 54, -15, 40, 109, -15, -63, 34, -5, 4, 87, -39, -60, 95, -91, -122, -79, -10, 97, -111, -85, -74, 65, -70, 95, -81, 23, 36, -2, -124, 119, -97, -55, -22, 86, 37, 68, -12, -67, -98, -84, 123, -68, 51, 121, 99, -89, -66, -109, -100, -69, -117]], Crypto_ByteArray [bytearray=[-77, -46, 53, 76, -93, 81, -66, 5, 66, 52, -49, -56, 82, 101, 70, 15, 32, 61, 89, -62, 113, 12, 122, 2, 82, -105, -13, 68, 111, -75, 50, -111, 92, 79, 103, 8, 115, -73, -38, -62, -24, 15, 4, -86, 81, -118, 46, 105, -113, -61, -87, -5, -49, -74, -100, 22, -87, 82, -96, -66, 41, -93, 25, 124, -99, 127, 13, -37, 1, -71, -116, -52, -30, -84, 36, -96, -105, 27, -1, 78, -124, 6, 72, 108, -87, 47, -89, -79, -101, -126, 52, -43, 49, 59, 0, 97, 78, 16, -81, -105, 19, 41, -124, -35, 54, 57, -36, -83, 89, 58, 62, 0, -126, 125, 82, 40, 42, 55, -31, -103, -109, 119, 102, -7, 110, -82, -36, 48, -89, -102, 41, -71, 97, -92, -97, -96, 16, 84, 14, -83, 28, -98, -3, 86, -54, 65, 63, 57, 41, -62, 18, -59, -79, 56, 49, -54, -90, 3, -56, 50, 32, 48, 99, 9, 27, -19, -52, -128, 73, -51, -76, 12, 61, -48, -18, 33, 102, 34, -111, -41, -36, -101, 50, 44, 71, -65, 56, -33, -40, 74, -42, -10, 12, -117, -64, 123, 51, 127, -10, -100, 5, -126, -31, -77, 10, 34, -69, -82, 9, -101, 12, 113, -34, 48, -103, -75, -88, 4, 114, 69, -125, 93, -97, -89, -49, -31, -20, 83, 58, -38, 73, -77, 86, 102, 73, 56, -97, -35, -124, 109, -10, -27, 102, -55, -97, 64, -125, 50, 75, 108, 65, -48, 81, 1, 82, 93]]]]
+     [java] Debug [ROLE_idp-PROTOCOL] - CHECK # 2.1
+     [java] Debug [ROLE_idp-PROTOCOL] - [11:08:38:314]EQ check PERFORMED on java.lang.String
+     [java] Debug [ROLE_idp-PROTOCOL] - [11:08:38:314]EQ check OK - java.lang.String.toString - alice = alice
+     [java] Debug [ROLE_idp-PROTOCOL] - [11:08:38:314]EQ check OK - java.lang.String.hashCode - 92903040 = 92903040
+     [java] Debug [ROLE_idp-PROTOCOL] - CHECK # 2.2
+     [java] Debug [ROLE_idp-PROTOCOL] - [11:08:38:314]EQ check PERFORMED on java.lang.String
+     [java] Debug [ROLE_idp-PROTOCOL] - [11:08:38:314]EQ check OK - java.lang.String.toString - charlie = charlie
+     [java] Debug [ROLE_idp-PROTOCOL] - [11:08:38:314]EQ check OK - java.lang.String.hashCode - 739067762 = 739067762
+     [java] Debug [ROLE_idp-PROTOCOL] - SSO - ROLE_idp - STEP_2
+     [java] Debug [ROLE_idp-PROTOCOL] - sso.SSO_ROLE_idp@23bb8443
+     [java] Debug [ROLE_idp-PROTOCOL] - SSO - ROLE_idp - STEP_3
+     [java] Debug [ROLE_idp-PROTOCOL] - sso.SSO_ROLE_idp@23bb8443
+     [java] Debug [ROLE_idp-LANGUAGE] - AnBx_Params - size: 2
+     [java] Debug [ROLE_idp-LANGUAGE] - AnBx_Params - hash: -675904302
+     [java] Debug [ROLE_idp-LANGUAGE] - [11:08:38:314]AnBx_Params - params: AnBx_Params [v=[alice, charlie]]
+     [java] Debug [ROLE_idp-ENCRYPTION] - PrivateKey retrieved: <charlie>
+     [java] Debug [ROLE_idp-ENCRYPTION] - Signed  [RSA/PKCS#8/9752] java.security.SignedObject@5454d35e - Provider: SunRsaSign
+     [java] Debug [ROLE_idp-LANGUAGE] - AnBx_Params - size: 2
+     [java] Debug [ROLE_idp-LANGUAGE] - AnBx_Params - hash: -2053680156
+     [java] Debug [ROLE_idp-LANGUAGE] - [11:08:38:325]AnBx_Params - params: AnBx_Params [v=[java.security.SignedObject@5454d35e, Crypto_ByteArray [bytearray=[-77, -46, 53, 76, -93, 81, -66, 5, 66, 52, -49, -56, 82, 101, 70, 15, 32, 61, 89, -62, 113, 12, 122, 2, 82, -105, -13, 68, 111, -75, 50, -111, 92, 79, 103, 8, 115, -73, -38, -62, -24, 15, 4, -86, 81, -118, 46, 105, -113, -61, -87, -5, -49, -74, -100, 22, -87, 82, -96, -66, 41, -93, 25, 124, -99, 127, 13, -37, 1, -71, -116, -52, -30, -84, 36, -96, -105, 27, -1, 78, -124, 6, 72, 108, -87, 47, -89, -79, -101, -126, 52, -43, 49, 59, 0, 97, 78, 16, -81, -105, 19, 41, -124, -35, 54, 57, -36, -83, 89, 58, 62, 0, -126, 125, 82, 40, 42, 55, -31, -103, -109, 119, 102, -7, 110, -82, -36, 48, -89, -102, 41, -71, 97, -92, -97, -96, 16, 84, 14, -83, 28, -98, -3, 86, -54, 65, 63, 57, 41, -62, 18, -59, -79, 56, 49, -54, -90, 3, -56, 50, 32, 48, 99, 9, 27, -19, -52, -128, 73, -51, -76, 12, 61, -48, -18, 33, 102, 34, -111, -41, -36, -101, 50, 44, 71, -65, 56, -33, -40, 74, -42, -10, 12, -117, -64, 123, 51, 127, -10, -100, 5, -126, -31, -77, 10, 34, -69, -82, 9, -101, 12, 113, -34, 48, -103, -75, -88, 4, 114, 69, -125, 93, -97, -89, -49, -31, -20, 83, 58, -38, 73, -77, 86, 102, 73, 56, -97, -35, -124, 109, -10, -27, 102, -55, -97, 64, -125, 50, 75, 108, 65, -48, 81, 1, 82, 93]]]]
+     [java] Debug [ROLE_idp-LANGUAGE] - Send
+     [java] Debug [ROLE_idp-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_idp-NETWORK] - Sending -> AnBx_Params [v=[java.security.SignedObject@5454d35e, Crypto_ByteArray [bytearray=[-77, -46, 53, 76, -93, 81, -66, 5, 66, 52, -49, -56, 82, 101, 70, 15, 32, 61, 89, -62, 113, 12, 122, 2, 82, -105, -13, 68, 111, -75, 50, -111, 92, 79, 103, 8, 115, -73, -38, -62, -24, 15, 4, -86, 81, -118, 46, 105, -113, -61, -87, -5, -49, -74, -100, 22, -87, 82, -96, -66, 41, -93, 25, 124, -99, 127, 13, -37, 1, -71, -116, -52, -30, -84, 36, -96, -105, 27, -1, 78, -124, 6, 72, 108, -87, 47, -89, -79, -101, -126, 52, -43, 49, 59, 0, 97, 78, 16, -81, -105, 19, 41, -124, -35, 54, 57, -36, -83, 89, 58, 62, 0, -126, 125, 82, 40, 42, 55, -31, -103, -109, 119, 102, -7, 110, -82, -36, 48, -89, -102, 41, -71, 97, -92, -97, -96, 16, 84, 14, -83, 28, -98, -3, 86, -54, 65, 63, 57, 41, -62, 18, -59, -79, 56, 49, -54, -90, 3, -56, 50, 32, 48, 99, 9, 27, -19, -52, -128, 73, -51, -76, 12, 61, -48, -18, 33, 102, 34, -111, -41, -36, -101, 50, 44, 71, -65, 56, -33, -40, 74, -42, -10, 12, -117, -64, 123, 51, 127, -10, -100, 5, -126, -31, -77, 10, 34, -69, -82, 9, -101, 12, 113, -34, 48, -103, -75, -88, 4, 114, 69, -125, 93, -97, -89, -49, -31, -20, 83, 58, -38, 73, -77, 86, 102, 73, 56, -97, -35, -124, 109, -10, -27, 102, -55, -97, 64, -125, 50, 75, 108, 65, -48, 81, 1, 82, 93]]]]
+     [java] Debug [ROLE_idp-NETWORK] - [11:08:38:328]Sent -> AnBx_Params [v=[java.security.SignedObject@5454d35e, Crypto_ByteArray [bytearray=[-77, -46, 53, 76, -93, 81, -66, 5, 66, 52, -49, -56, 82, 101, 70, 15, 32, 61, 89, -62, 113, 12, 122, 2, 82, -105, -13, 68, 111, -75, 50, -111, 92, 79, 103, 8, 115, -73, -38, -62, -24, 15, 4, -86, 81, -118, 46, 105, -113, -61, -87, -5, -49, -74, -100, 22, -87, 82, -96, -66, 41, -93, 25, 124, -99, 127, 13, -37, 1, -71, -116, -52, -30, -84, 36, -96, -105, 27, -1, 78, -124, 6, 72, 108, -87, 47, -89, -79, -101, -126, 52, -43, 49, 59, 0, 97, 78, 16, -81, -105, 19, 41, -124, -35, 54, 57, -36, -83, 89, 58, 62, 0, -126, 125, 82, 40, 42, 55, -31, -103, -109, 119, 102, -7, 110, -82, -36, 48, -89, -102, 41, -71, 97, -92, -97, -96, 16, 84, 14, -83, 28, -98, -3, 86, -54, 65, 63, 57, 41, -62, 18, -59, -79, 56, 49, -54, -90, 3, -56, 50, 32, 48, 99, 9, 27, -19, -52, -128, 73, -51, -76, 12, 61, -48, -18, 33, 102, 34, -111, -41, -36, -101, 50, 44, 71, -65, 56, -33, -40, 74, -42, -10, 12, -117, -64, 123, 51, 127, -10, -100, 5, -126, -31, -77, 10, 34, -69, -82, 9, -101, 12, 113, -34, 48, -103, -75, -88, 4, 114, 69, -125, 93, -97, -89, -49, -31, -20, 83, 58, -38, 73, -77, 86, 102, 73, 56, -97, -35, -124, 109, -10, -27, 102, -55, -97, 64, -125, 50, 75, 108, 65, -48, 81, 1, 82, 93]]]]
+     [java] Debug [ROLE_idp-PROTOCOL] - SSO - ROLE_idp - STEP_3
+     [java] Debug [ROLE_idp-PROTOCOL] - sso.SSO_ROLE_idp@23bb8443
+     [java] Debug [ROLE_idp-PROTOCOL] - Session completed: 9/10
+     [java] Debug [ROLE_idp-PROTOCOL] - Session started: 10/10
+     [java] Debug [ROLE_idp-PROTOCOL] - SSO - ROLE_idp - STEP_2
+     [java] Debug [ROLE_idp-PROTOCOL] - sso.SSO_ROLE_idp@23bb8443
+     [java] Debug [ROLE_idp-SESSION] - Receive
+     [java] Debug [ROLE_idp-LANGUAGE] - Receive
+     [java] Debug [ROLE_idp-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_idp-NETWORK] - [11:08:38:659]Received <- AnBx_Params [v=[alice, charlie, bob, Crypto_ByteArray [bytearray=[21, -64, -109, 95, -86, 51, -65, -116, -7, 109, -44, 20, -105, -28, 37, -74, -40, 98, -86, -48, 96, 50, 8, 37, -13, -45, 118, 16, 36, -27, 5, 83, 45, -107, 101, -108, 22, -21, -43, -50, -27, -4, -88, -110, -105, 16, -94, -91, -92, -29, 21, 110, -17, 61, -123, 109, 35, 80, -26, -43, -91, 54, -37, -60, 2, 52, 104, -32, -28, -45, -95, 123, -78, -107, 21, -120, 109, -126, -19, -24, -75, 33, 36, 101, -9, -108, -88, 73, -67, -47, 78, 81, -20, -23, -81, 27, -103, 39, -113, -57, -44, -70, 74, 17, -95, 37, 77, -42, 72, 19, 108, -56, -82, 5, -13, 89, 43, 2, 42, -56, -121, -29, 38, -122, 102, -47, 62, 120, 122, 11, -5, -101, 100, -60, 57, -94, -123, -72, -102, 107, -107, -3, 70, -68, 27, 95, 100, -23, -8, 65, -53, -61, 81, -68, 99, -22, -127, 16, -18, -124, 44, -26, -46, -65, 88, 50, 14, 85, -107, 98, 37, -9, 41, 35, 80, -79, -58, 113, -106, 56, 92, -105, -4, 60, 101, 18, -42, 77, 26, 92, 49, -120, 31, -107, 74, -64, 114, 82, -4, -101, 119, -39, -119, -93, -59, 94, -126, -122, 50, -124, -112, 45, 106, 65, -69, 23, 72, -118, -106, -65, -67, 61, 85, -8, 89, 125, -114, -43, 71, -55, -9, 73, -20, -92, -18, -125, -58, -59, -103, -9, -125, 76, -39, 81, 30, -80, -109, -3, 3, -4, 2, 90, 17, -30, -107, -7]], Crypto_ByteArray [bytearray=[59, -98, -60, 44, -21, 53, -98, 39, 101, -107, -10, -25, 40, -44, 44, -43, -125, -94, 78, 52, 2, 57, -56, -96, 71, 30, -77, -109, -71, 70, 33, -78, 3, 116, 125, 99, -72, -102, -69, 127, -37, 59, 76, 38, -40, 56, -79, -41, -89, -7, 50, 37, 64, -11, 117, 95, -115, -59, 93, -27, -122, -37, 10, 16, -107, -21, 110, -56, -122, -16, 48, 82, -63, 34, 9, -56, 41, 37, 31, -103, -34, -96, -116, 8, -29, -98, 124, -29, 32, -59, -70, -93, 35, -88, 18, -92, 87, -64, 28, 47, 102, -80, 15, 18, 53, -97, -126, 67, 107, -102, 127, -27, -19, -22, -68, -90, -110, -9, 51, -56, -12, -112, -98, 17, -25, 13, 69, -65, 21, -120, 54, 69, -60, 115, 27, -69, 101, -21, 7, 116, 6, 88, 124, 34, -114, -68, 50, 92, -62, -127, -32, -65, -31, 97, 49, 45, -73, -76, -31, -82, 26, -96, 82, -109, -96, 16, -34, -78, 117, -35, 26, 124, -96, -10, 104, -30, 39, -104, 76, 10, 107, 39, -70, -127, -28, -48, -98, 95, -84, 11, -64, -9, -108, -125, 86, 60, -83, -125, -75, -40, 118, 45, -22, -99, 61, 14, 24, -60, -16, 86, -81, -117, 101, 32, -102, 127, 10, 43, 110, -74, -60, 34, 86, -67, -61, -58, 89, 109, -90, 108, -34, 84, 83, -114, -95, 88, -66, 63, 104, -127, -15, -100, -80, -24, 17, 30, -107, 113, -128, -99, 67, -104, 22, -128, 31, 78]]]]
+     [java] Debug [ROLE_idp-PROTOCOL] - CHECK # 2.1
+     [java] Debug [ROLE_idp-PROTOCOL] - [11:08:38:659]EQ check PERFORMED on java.lang.String
+     [java] Debug [ROLE_idp-PROTOCOL] - [11:08:38:659]EQ check OK - java.lang.String.toString - alice = alice
+     [java] Debug [ROLE_idp-PROTOCOL] - [11:08:38:659]EQ check OK - java.lang.String.hashCode - 92903040 = 92903040
+     [java] Debug [ROLE_idp-PROTOCOL] - CHECK # 2.2
+     [java] Debug [ROLE_idp-PROTOCOL] - [11:08:38:660]EQ check PERFORMED on java.lang.String
+     [java] Debug [ROLE_idp-PROTOCOL] - [11:08:38:660]EQ check OK - java.lang.String.toString - charlie = charlie
+     [java] Debug [ROLE_idp-PROTOCOL] - [11:08:38:660]EQ check OK - java.lang.String.hashCode - 739067762 = 739067762
+     [java] Debug [ROLE_idp-PROTOCOL] - SSO - ROLE_idp - STEP_2
+     [java] Debug [ROLE_idp-PROTOCOL] - sso.SSO_ROLE_idp@23bb8443
+     [java] Debug [ROLE_idp-PROTOCOL] - SSO - ROLE_idp - STEP_3
+     [java] Debug [ROLE_idp-PROTOCOL] - sso.SSO_ROLE_idp@23bb8443
+     [java] Debug [ROLE_idp-LANGUAGE] - AnBx_Params - size: 2
+     [java] Debug [ROLE_idp-LANGUAGE] - AnBx_Params - hash: -675904302
+     [java] Debug [ROLE_idp-LANGUAGE] - [11:08:38:660]AnBx_Params - params: AnBx_Params [v=[alice, charlie]]
+     [java] Debug [ROLE_idp-ENCRYPTION] - PrivateKey retrieved: <charlie>
+     [java] Debug [ROLE_idp-ENCRYPTION] - Signed  [RSA/PKCS#8/9752] java.security.SignedObject@345f69f3 - Provider: SunRsaSign
+     [java] Debug [ROLE_idp-LANGUAGE] - AnBx_Params - size: 2
+     [java] Debug [ROLE_idp-LANGUAGE] - AnBx_Params - hash: -1686742621
+     [java] Debug [ROLE_idp-LANGUAGE] - [11:08:38:678]AnBx_Params - params: AnBx_Params [v=[java.security.SignedObject@345f69f3, Crypto_ByteArray [bytearray=[59, -98, -60, 44, -21, 53, -98, 39, 101, -107, -10, -25, 40, -44, 44, -43, -125, -94, 78, 52, 2, 57, -56, -96, 71, 30, -77, -109, -71, 70, 33, -78, 3, 116, 125, 99, -72, -102, -69, 127, -37, 59, 76, 38, -40, 56, -79, -41, -89, -7, 50, 37, 64, -11, 117, 95, -115, -59, 93, -27, -122, -37, 10, 16, -107, -21, 110, -56, -122, -16, 48, 82, -63, 34, 9, -56, 41, 37, 31, -103, -34, -96, -116, 8, -29, -98, 124, -29, 32, -59, -70, -93, 35, -88, 18, -92, 87, -64, 28, 47, 102, -80, 15, 18, 53, -97, -126, 67, 107, -102, 127, -27, -19, -22, -68, -90, -110, -9, 51, -56, -12, -112, -98, 17, -25, 13, 69, -65, 21, -120, 54, 69, -60, 115, 27, -69, 101, -21, 7, 116, 6, 88, 124, 34, -114, -68, 50, 92, -62, -127, -32, -65, -31, 97, 49, 45, -73, -76, -31, -82, 26, -96, 82, -109, -96, 16, -34, -78, 117, -35, 26, 124, -96, -10, 104, -30, 39, -104, 76, 10, 107, 39, -70, -127, -28, -48, -98, 95, -84, 11, -64, -9, -108, -125, 86, 60, -83, -125, -75, -40, 118, 45, -22, -99, 61, 14, 24, -60, -16, 86, -81, -117, 101, 32, -102, 127, 10, 43, 110, -74, -60, 34, 86, -67, -61, -58, 89, 109, -90, 108, -34, 84, 83, -114, -95, 88, -66, 63, 104, -127, -15, -100, -80, -24, 17, 30, -107, 113, -128, -99, 67, -104, 22, -128, 31, 78]]]]
+     [java] Debug [ROLE_idp-LANGUAGE] - Send
+     [java] Debug [ROLE_idp-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_idp-NETWORK] - Sending -> AnBx_Params [v=[java.security.SignedObject@345f69f3, Crypto_ByteArray [bytearray=[59, -98, -60, 44, -21, 53, -98, 39, 101, -107, -10, -25, 40, -44, 44, -43, -125, -94, 78, 52, 2, 57, -56, -96, 71, 30, -77, -109, -71, 70, 33, -78, 3, 116, 125, 99, -72, -102, -69, 127, -37, 59, 76, 38, -40, 56, -79, -41, -89, -7, 50, 37, 64, -11, 117, 95, -115, -59, 93, -27, -122, -37, 10, 16, -107, -21, 110, -56, -122, -16, 48, 82, -63, 34, 9, -56, 41, 37, 31, -103, -34, -96, -116, 8, -29, -98, 124, -29, 32, -59, -70, -93, 35, -88, 18, -92, 87, -64, 28, 47, 102, -80, 15, 18, 53, -97, -126, 67, 107, -102, 127, -27, -19, -22, -68, -90, -110, -9, 51, -56, -12, -112, -98, 17, -25, 13, 69, -65, 21, -120, 54, 69, -60, 115, 27, -69, 101, -21, 7, 116, 6, 88, 124, 34, -114, -68, 50, 92, -62, -127, -32, -65, -31, 97, 49, 45, -73, -76, -31, -82, 26, -96, 82, -109, -96, 16, -34, -78, 117, -35, 26, 124, -96, -10, 104, -30, 39, -104, 76, 10, 107, 39, -70, -127, -28, -48, -98, 95, -84, 11, -64, -9, -108, -125, 86, 60, -83, -125, -75, -40, 118, 45, -22, -99, 61, 14, 24, -60, -16, 86, -81, -117, 101, 32, -102, 127, 10, 43, 110, -74, -60, 34, 86, -67, -61, -58, 89, 109, -90, 108, -34, 84, 83, -114, -95, 88, -66, 63, 104, -127, -15, -100, -80, -24, 17, 30, -107, 113, -128, -99, 67, -104, 22, -128, 31, 78]]]]
+     [java] Debug [ROLE_idp-NETWORK] - [11:08:38:681]Sent -> AnBx_Params [v=[java.security.SignedObject@345f69f3, Crypto_ByteArray [bytearray=[59, -98, -60, 44, -21, 53, -98, 39, 101, -107, -10, -25, 40, -44, 44, -43, -125, -94, 78, 52, 2, 57, -56, -96, 71, 30, -77, -109, -71, 70, 33, -78, 3, 116, 125, 99, -72, -102, -69, 127, -37, 59, 76, 38, -40, 56, -79, -41, -89, -7, 50, 37, 64, -11, 117, 95, -115, -59, 93, -27, -122, -37, 10, 16, -107, -21, 110, -56, -122, -16, 48, 82, -63, 34, 9, -56, 41, 37, 31, -103, -34, -96, -116, 8, -29, -98, 124, -29, 32, -59, -70, -93, 35, -88, 18, -92, 87, -64, 28, 47, 102, -80, 15, 18, 53, -97, -126, 67, 107, -102, 127, -27, -19, -22, -68, -90, -110, -9, 51, -56, -12, -112, -98, 17, -25, 13, 69, -65, 21, -120, 54, 69, -60, 115, 27, -69, 101, -21, 7, 116, 6, 88, 124, 34, -114, -68, 50, 92, -62, -127, -32, -65, -31, 97, 49, 45, -73, -76, -31, -82, 26, -96, 82, -109, -96, 16, -34, -78, 117, -35, 26, 124, -96, -10, 104, -30, 39, -104, 76, 10, 107, 39, -70, -127, -28, -48, -98, 95, -84, 11, -64, -9, -108, -125, 86, 60, -83, -125, -75, -40, 118, 45, -22, -99, 61, 14, 24, -60, -16, 86, -81, -117, 101, 32, -102, 127, 10, 43, 110, -74, -60, 34, 86, -67, -61, -58, 89, 109, -90, 108, -34, 84, 83, -114, -95, 88, -66, 63, 104, -127, -15, -100, -80, -24, 17, 30, -107, 113, -128, -99, 67, -104, 22, -128, 31, 78]]]]
+     [java] Debug [ROLE_idp-PROTOCOL] - SSO - ROLE_idp - STEP_3
+     [java] Debug [ROLE_idp-PROTOCOL] - sso.SSO_ROLE_idp@23bb8443
+     [java] Debug [ROLE_idp-PROTOCOL] - Session completed: 10/10
+     [java] Debug [ROLE_idp-NETWORK] - Connection closed
+     [java] Debug [ROLE_idp-SESSION] - Session closed
+     [java] SSO [ROLE_idp] - Execution time was 5251,171 ms.
+
+BUILD SUCCESSFUL
+Total time: 5 seconds

@@ -1,0 +1,756 @@
+Buildfile: /Users/usuario/anbx-ide-exe-mac/genAnBx/src/isopk2pmap_i1/build.xml
+
+ROLE_I:
+     [java] Debug [ISOPK2PMAP_I1-ALWAYS] - Verbose mode on
+     [java] Debug [ROLE_I-APPLICATION] - Reading config file: ISOPK2PMAP_I1.properties
+     [java] Debug [ROLE_I-ENCRYPTION] - -------------------- crypto config --------------------
+     [java] Debug [ROLE_I-ENCRYPTION] - cipherScheme = AES/CBC/PKCS5Padding
+     [java] Debug [ROLE_I-ENCRYPTION] - keySize = 256
+     [java] Debug [ROLE_I-ENCRYPTION] - keyGenerationScheme = AES
+     [java] Debug [ROLE_I-ENCRYPTION] - keyGenerationSize = 256
+     [java] Debug [ROLE_I-ENCRYPTION] - keyGenerationSchemePBE = PBKDF2WithHmacSHA512
+     [java] Debug [ROLE_I-ENCRYPTION] - keyPairGenerationScheme = RSA
+     [java] Debug [ROLE_I-ENCRYPTION] - keyPairGenerationSize = 2048
+     [java] Debug [ROLE_I-ENCRYPTION] - secureRandomAlgorithm = DRBG
+     [java] Debug [ROLE_I-ENCRYPTION] - hmacAlgorithm = HmacSHA256
+     [java] Debug [ROLE_I-ENCRYPTION] - messageDigestAlgorithm = SHA-256
+     [java] Debug [ROLE_I-ENCRYPTION] - messageDigestSignatureAlgorithm = SHA256
+     [java] Debug [ROLE_I-ENCRYPTION] - keyAgreementAlgorithm = DH
+     [java] Debug [ROLE_I-ENCRYPTION] - keyAgreementKeyPairGenerationScheme = DH
+     [java] Debug [ROLE_I-ENCRYPTION] - dhRndExpSize = 4096
+     [java] Debug [ROLE_I-ENCRYPTION] - ecGenParameterSpec = secp256r1
+     [java] Debug [ROLE_I-ENCRYPTION] - asymCipherSchemeBlock = RSA
+     [java] Debug [ROLE_I-ENCRYPTION] - sslContext = TLSv1.3
+     [java] Debug [ROLE_I-ENCRYPTION] - securityProvider = default
+     [java] Debug [ROLE_I-ENCRYPTION] - cipherSchemeProvider = default
+     [java] Debug [ROLE_I-ENCRYPTION] - keyGenerationSchemeProvider = default
+     [java] Debug [ROLE_I-ENCRYPTION] - keyGenerationSchemePBEProvider = default
+     [java] Debug [ROLE_I-ENCRYPTION] - keyPairGenerationSchemeProvider = default
+     [java] Debug [ROLE_I-ENCRYPTION] - secureRandomProvider = default
+     [java] Debug [ROLE_I-ENCRYPTION] - hmacProvider = default
+     [java] Debug [ROLE_I-ENCRYPTION] - messageDigestProvider = default
+     [java] Debug [ROLE_I-ENCRYPTION] - signatureProvider = default
+     [java] Debug [ROLE_I-ENCRYPTION] - asymEncProvider = default
+     [java] Debug [ROLE_I-ENCRYPTION] - keyAgreementProvider = default
+     [java] Debug [ROLE_I-ENCRYPTION] - sslContextProvider = default
+     [java] Debug [ROLE_I-ENCRYPTION] - -------------------- crypto config --------------------
+     [java] Debug [ROLE_I-APPLICATION] - Loading aliases
+     [java] Debug [ROLE_I-APPLICATION] - Role: ROLE_s - Alias: alice
+     [java] Debug [ROLE_I-APPLICATION] - Role: ROLE_I - Alias: bob
+     [java] Debug [ROLE_I-APPLICATION] - myAlias: bob
+     [java] Debug [ROLE_I-APPLICATION] - Role: ROLE_A - Alias: charlie
+     [java] Debug [ROLE_I-APPLICATION] - Role: ROLE_B - Alias: david
+     [java] Debug [ROLE_I-APPLICATION] - Host: localhost - Port: 55556
+     [java] Debug [ROLE_I-APPLICATION] - Channel Type: SSL_PLAIN - Role: SERVER
+     [java] Debug [ROLE_I-APPLICATION] - Channel: ROLE_I_channel_ROLE_s_Server_Insecure
+     [java] Debug [ROLE_I-APPLICATION] - Host: 127.0.0.1 - Port: 55557
+     [java] Debug [ROLE_I-APPLICATION] - Channel Type: SSL_PLAIN - Role: CLIENT
+     [java] Debug [ROLE_I-APPLICATION] - Channel: ROLE_I_channel_ROLE_A_Client_Insecure
+     [java] Debug [ROLE_I-APPLICATION] - Host: 127.0.0.1 - Port: 55562
+     [java] Debug [ROLE_I-APPLICATION] - Channel Type: SSL_PLAIN - Role: CLIENT
+     [java] Debug [ROLE_I-APPLICATION] - Channel: ROLE_I_channel_ROLE_B_Client_Insecure
+     [java] Debug [ROLE_I-APPLICATION] - myRole: ROLE_I
+     [java] Debug [ROLE_I-APPLICATION] - sessions: 10
+     [java] Debug [ROLE_I-ENCRYPTION] - Loading KeyStore: tls #0
+     [java] Debug [ROLE_I-ENCRYPTION] - Reading config file (KSS): ../../keystore/bob.pwd
+     [java] Debug [ROLE_I-ENCRYPTION] - tls - KeyStoreType: PKCS12
+     [java] Debug [ROLE_I-ENCRYPTION] - tls - LocalKeyStore: ../../keystore/bob_tls.private
+     [java] Debug [ROLE_I-ENCRYPTION] - tls - RemotelKeyStore: ../../keystore/bob_tls.public
+     [java] Debug [ROLE_I-ENCRYPTION] - My Alias: bob
+     [java] Debug [ROLE_I-ENCRYPTION] - RootCA: root
+     [java] Debug [ROLE_I-ENCRYPTION] - Loading KeyStore: enc #1
+     [java] Debug [ROLE_I-ENCRYPTION] - Reading config file (KSS): ../../keystore/bob.pwd
+     [java] Debug [ROLE_I-ENCRYPTION] - enc - KeyStoreType: PKCS12
+     [java] Debug [ROLE_I-ENCRYPTION] - enc - LocalKeyStore: ../../keystore/bob_enc.private
+     [java] Debug [ROLE_I-ENCRYPTION] - enc - RemotelKeyStore: ../../keystore/bob_enc.public
+     [java] Debug [ROLE_I-ENCRYPTION] - My Alias: bob
+     [java] Debug [ROLE_I-ENCRYPTION] - RootCA: root
+     [java] Debug [ROLE_I-ENCRYPTION] - Loading KeyStore: sig #2
+     [java] Debug [ROLE_I-ENCRYPTION] - Reading config file (KSS): ../../keystore/bob.pwd
+     [java] Debug [ROLE_I-ENCRYPTION] - sig - KeyStoreType: PKCS12
+     [java] Debug [ROLE_I-ENCRYPTION] - sig - LocalKeyStore: ../../keystore/bob_sig.private
+     [java] Debug [ROLE_I-ENCRYPTION] - sig - RemotelKeyStore: ../../keystore/bob_sig.public
+     [java] Debug [ROLE_I-ENCRYPTION] - My Alias: bob
+     [java] Debug [ROLE_I-ENCRYPTION] - RootCA: root
+     [java] Debug [ROLE_I-ENCRYPTION] - Loading KeyStore: hmc #3
+     [java] Debug [ROLE_I-ENCRYPTION] - Reading config file (KSS): ../../keystore/bob.pwd
+     [java] Debug [ROLE_I-ENCRYPTION] - hmc - KeyStoreType: PKCS12
+     [java] Debug [ROLE_I-ENCRYPTION] - hmc - LocalKeyStore: ../../keystore/bob_hmc.private
+     [java] Debug [ROLE_I-ENCRYPTION] - hmc - RemotelKeyStore: ../../keystore/bob_hmc.public
+     [java] Debug [ROLE_I-ENCRYPTION] - My Alias: bob
+     [java] Debug [ROLE_I-ENCRYPTION] - RootCA: root
+     [java] Debug [ROLE_I-ENCRYPTION] - Building KeyStore: tls #0
+     [java] Debug [ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_tls.private - Type: PKCS12
+     [java] Debug [ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_tls.public - Type: PKCS12
+     [java] Debug [ROLE_I-ENCRYPTION] - Building KeyStore: enc #1
+     [java] Debug [ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_enc.private - Type: PKCS12
+     [java] Debug [ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_enc.public - Type: PKCS12
+     [java] Debug [ROLE_I-ENCRYPTION] - Building KeyStore: sig #2
+     [java] Debug [ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_sig.private - Type: PKCS12
+     [java] Debug [ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_sig.public - Type: PKCS12
+     [java] Debug [ROLE_I-ENCRYPTION] - Building KeyStore: hmc #3
+     [java] Debug [ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_hmc.private - Type: PKCS12
+     [java] Debug [ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_hmc.public - Type: PKCS12
+     [java] Debug [ROLE_I-ENCRYPTION] - Certificate retrieved: <bob>
+     [java] Debug [ROLE_I-ENCRYPTION] - Certificate retrieved: <bob>
+     [java] Debug [ROLE_I-ENCRYPTION] - Certificate retrieved: <bob>
+     [java] Debug [ROLE_I-ENCRYPTION] - Certificate retrieved: <bob>
+     [java] Debug [ROLE_I-SESSION] - Initializing channel - cs: Channel Settings - Port: 55562 - Role: CLIENT - Type: SSL_PLAIN
+     [java] Debug [ROLE_I-SESSION] - Initializing channel - keystore: anbxj.Crypto_KeyStoreSettings@2d209079
+     [java] Debug [ROLE_I-ENCRYPTION] - Building KeyStore: tls #0
+     [java] Debug [ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_tls.private - Type: PKCS12
+     [java] Debug [ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_tls.public - Type: PKCS12
+     [java] Debug [ROLE_I-ENCRYPTION] - Building KeyStore: enc #1
+     [java] Debug [ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_enc.private - Type: PKCS12
+     [java] Debug [ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_enc.public - Type: PKCS12
+     [java] Debug [ROLE_I-ENCRYPTION] - Building KeyStore: sig #2
+     [java] Debug [ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_sig.private - Type: PKCS12
+     [java] Debug [ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_sig.public - Type: PKCS12
+     [java] Debug [ROLE_I-ENCRYPTION] - Building KeyStore: hmc #3
+     [java] Debug [ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_hmc.private - Type: PKCS12
+     [java] Debug [ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_hmc.public - Type: PKCS12
+     [java] Debug [ROLE_I-ENCRYPTION] - Certificate retrieved: <bob>
+     [java] Debug [ROLE_I-ENCRYPTION] - Certificate retrieved: <bob>
+     [java] Debug [ROLE_I-ENCRYPTION] - Certificate retrieved: <bob>
+     [java] Debug [ROLE_I-ENCRYPTION] - Certificate retrieved: <bob>
+     [java] Debug [ROLE_I-SESSION] - Initializing channel - cs: Channel Settings - Port: 55556 - Role: SERVER - Type: SSL_PLAIN
+     [java] Debug [ROLE_I-SESSION] - Initializing channel - keystore: anbxj.Crypto_KeyStoreSettings@2d209079
+     [java] Debug [ROLE_I-ENCRYPTION] - Building KeyStore: tls #0
+     [java] Debug [ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_tls.private - Type: PKCS12
+     [java] Debug [ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_tls.public - Type: PKCS12
+     [java] Debug [ROLE_I-ENCRYPTION] - Building KeyStore: enc #1
+     [java] Debug [ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_enc.private - Type: PKCS12
+     [java] Debug [ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_enc.public - Type: PKCS12
+     [java] Debug [ROLE_I-ENCRYPTION] - Building KeyStore: sig #2
+     [java] Debug [ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_sig.private - Type: PKCS12
+     [java] Debug [ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_sig.public - Type: PKCS12
+     [java] Debug [ROLE_I-ENCRYPTION] - Building KeyStore: hmc #3
+     [java] Debug [ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_hmc.private - Type: PKCS12
+     [java] Debug [ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_hmc.public - Type: PKCS12
+     [java] Debug [ROLE_I-ENCRYPTION] - Certificate retrieved: <bob>
+     [java] Debug [ROLE_I-ENCRYPTION] - Certificate retrieved: <bob>
+     [java] Debug [ROLE_I-ENCRYPTION] - Certificate retrieved: <bob>
+     [java] Debug [ROLE_I-ENCRYPTION] - Certificate retrieved: <bob>
+     [java] Debug [ROLE_I-SESSION] - Initializing channel - cs: Channel Settings - Port: 55557 - Role: CLIENT - Type: SSL_PLAIN
+     [java] Debug [ROLE_I-SESSION] - Initializing channel - keystore: anbxj.Crypto_KeyStoreSettings@2d209079
+     [java] Debug [ROLE_I-SESSION] - Opening session
+     [java] Debug [ROLE_I-NETWORK] - Starting server on port 55556 ...
+     [java] Debug [ROLE_I-ALWAYS] - Server started on port 55556
+     [java] Debug [ROLE_I-NETWORK] - Waiting for clients ...
+     [java] Debug [ROLE_I-NETWORK] - Request from Client received ...
+     [java] Debug [ROLE_I-SESSION] - Opening session
+     [java] Debug [ROLE_I-NETWORK] - Starting Client for 127.0.0.1:55557
+     [java] Debug [ROLE_I-ALWAYS] - Connected to Server 127.0.0.1:55557 - ChannelType: SSL_PLAIN
+     [java] Debug [ROLE_I-SESSION] - Opening session
+     [java] Debug [ROLE_I-NETWORK] - Starting Client for 127.0.0.1:55562
+     [java] Debug [ROLE_I-ALWAYS] - Connected to Server 127.0.0.1:55562 - ChannelType: SSL_PLAIN
+     [java] Debug [ROLE_I-PROTOCOL] - Session started: 1/10
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_0
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-SESSION] - Receive
+     [java] Debug [ROLE_I-LANGUAGE] - Receive
+     [java] Debug [ROLE_I-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_I-NETWORK] - [19:16:52:463]Received <- java.security.SignedObject@7ca48474
+     [java] Debug [ROLE_I-PROTOCOL] - CHECK # 0.1
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:52:463]INV check PERFORMED on java.security.SignedObject
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:52:464]INV check OK - java.security.SignedObject.toString - java.security.SignedObject@7ca48474
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:52:464]INV check OK - java.security.SignedObject.hashCode - 2091156596
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_0
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_1
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-LANGUAGE] - Send
+     [java] Debug [ROLE_I-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_I-NETWORK] - Sending -> java.security.SignedObject@7ca48474
+     [java] Debug [ROLE_I-NETWORK] - [19:16:52:477]Sent -> java.security.SignedObject@7ca48474
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_1
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_2
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-SESSION] - Receive
+     [java] Debug [ROLE_I-LANGUAGE] - Receive
+     [java] Debug [ROLE_I-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_I-NETWORK] - [19:16:52:657]Received <- Crypto_ByteArray [bytearray=[101, 109, 112, 116, 121]]
+     [java] Debug [ROLE_I-PROTOCOL] - CHECK # 2.1
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:52:658]INV check PERFORMED on anbxj.Crypto_ByteArray
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:52:658]INV check OK - anbxj.Crypto_ByteArray.toString - Crypto_ByteArray [bytearray=[101, 109, 112, 116, 121]]
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:52:658]INV check OK - anbxj.Crypto_ByteArray.hashCode - 125263371
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_2
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_3
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-LANGUAGE] - Send
+     [java] Debug [ROLE_I-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_I-NETWORK] - Sending -> Crypto_ByteArray [bytearray=[101, 109, 112, 116, 121]]
+     [java] Debug [ROLE_I-NETWORK] - [19:16:52:658]Sent -> Crypto_ByteArray [bytearray=[101, 109, 112, 116, 121]]
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_3
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_4
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-SESSION] - Receive
+     [java] Debug [ROLE_I-LANGUAGE] - Receive
+     [java] Debug [ROLE_I-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_I-NETWORK] - [19:16:52:919]Received <- AnBx_Params [v=[java.security.SignedObject@8bd1b6a, java.security.SignedObject@18be83e4]]
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_4
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_5
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-SESSION] - Receive
+     [java] Debug [ROLE_I-LANGUAGE] - Receive
+     [java] Debug [ROLE_I-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_I-NETWORK] - [19:16:52:964]Received <- java.security.SignedObject@cb5822
+     [java] Debug [ROLE_I-PROTOCOL] - CHECK # 5.1
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:52:964]INV check PERFORMED on java.security.SignedObject
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:52:964]INV check OK - java.security.SignedObject.toString - java.security.SignedObject@cb5822
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:52:964]INV check OK - java.security.SignedObject.hashCode - 13326370
+     [java] Debug [ROLE_I-PROTOCOL] - CHECK # 5.2
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:52:965]INV check PERFORMED on java.security.SignedObject
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:52:965]INV check OK - java.security.SignedObject.toString - java.security.SignedObject@18be83e4
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:52:965]INV check OK - java.security.SignedObject.hashCode - 415138788
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_5
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-PROTOCOL] - Session completed: 1/10
+     [java] Debug [ROLE_I-PROTOCOL] - Session started: 2/10
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_6
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-LANGUAGE] - Send
+     [java] Debug [ROLE_I-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_I-NETWORK] - Sending -> java.security.SignedObject@cb5822
+     [java] Debug [ROLE_I-NETWORK] - [19:16:52:968]Sent -> java.security.SignedObject@cb5822
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_6
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_7
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-SESSION] - Receive
+     [java] Debug [ROLE_I-LANGUAGE] - Receive
+     [java] Debug [ROLE_I-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_I-NETWORK] - [19:16:53:150]Received <- Crypto_ByteArray [bytearray=[101, 109, 112, 116, 121]]
+     [java] Debug [ROLE_I-PROTOCOL] - CHECK # 7.1
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:53:152]EQ check PERFORMED on anbxj.Crypto_ByteArray
+     [java] Debug [ROLE_I-ENCRYPTION] - Crypto_ByteArray check
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:53:153]EQ check OK - anbxj.Crypto_ByteArray.toString - Crypto_ByteArray [bytearray=[101, 109, 112, 116, 121]] = Crypto_ByteArray [bytearray=[101, 109, 112, 116, 121]]
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:53:153]EQ check OK - anbxj.Crypto_ByteArray.hashCode - 125263371 = 125263371
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_7
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_8
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-LANGUAGE] - Send
+     [java] Debug [ROLE_I-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_I-NETWORK] - Sending -> Crypto_ByteArray [bytearray=[101, 109, 112, 116, 121]]
+     [java] Debug [ROLE_I-NETWORK] - [19:16:53:173]Sent -> Crypto_ByteArray [bytearray=[101, 109, 112, 116, 121]]
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_8
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_9
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-SESSION] - Receive
+     [java] Debug [ROLE_I-LANGUAGE] - Receive
+     [java] Debug [ROLE_I-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_I-NETWORK] - [19:16:53:401]Received <- AnBx_Params [v=[java.security.SignedObject@7d9d1a19, java.security.SignedObject@39c0f4a]]
+     [java] Debug [ROLE_I-PROTOCOL] - CHECK # 9.1
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:53:402]INV check PERFORMED on anbxj.Crypto_ByteArray
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:53:402]INV check OK - anbxj.Crypto_ByteArray.toString - Crypto_ByteArray [bytearray=[101, 109, 112, 116, 121]]
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:53:402]INV check OK - anbxj.Crypto_ByteArray.hashCode - 125263371
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_9
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_10
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-LANGUAGE] - AnBx_Params - size: 2
+     [java] Debug [ROLE_I-LANGUAGE] - AnBx_Params - hash: 473677640
+     [java] Debug [ROLE_I-LANGUAGE] - [19:16:53:402]AnBx_Params - params: AnBx_Params [v=[java.security.SignedObject@cb5822, java.security.SignedObject@39c0f4a]]
+     [java] Debug [ROLE_I-LANGUAGE] - Send
+     [java] Debug [ROLE_I-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_I-NETWORK] - Sending -> AnBx_Params [v=[java.security.SignedObject@cb5822, java.security.SignedObject@39c0f4a]]
+     [java] Debug [ROLE_I-NETWORK] - [19:16:53:467]Sent -> AnBx_Params [v=[java.security.SignedObject@cb5822, java.security.SignedObject@39c0f4a]]
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_10
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-PROTOCOL] - Session completed: 2/10
+     [java] Debug [ROLE_I-PROTOCOL] - Session started: 3/10
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_0
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-SESSION] - Receive
+     [java] Debug [ROLE_I-LANGUAGE] - Receive
+     [java] Debug [ROLE_I-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_I-NETWORK] - [19:16:53:510]Received <- java.security.SignedObject@543588e6
+     [java] Debug [ROLE_I-PROTOCOL] - CHECK # 0.1
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:53:510]INV check PERFORMED on java.security.SignedObject
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:53:510]INV check OK - java.security.SignedObject.toString - java.security.SignedObject@543588e6
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:53:510]INV check OK - java.security.SignedObject.hashCode - 1412794598
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_0
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_1
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-LANGUAGE] - Send
+     [java] Debug [ROLE_I-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_I-NETWORK] - Sending -> java.security.SignedObject@543588e6
+     [java] Debug [ROLE_I-NETWORK] - [19:16:53:511]Sent -> java.security.SignedObject@543588e6
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_1
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_2
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-SESSION] - Receive
+     [java] Debug [ROLE_I-LANGUAGE] - Receive
+     [java] Debug [ROLE_I-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_I-NETWORK] - [19:16:53:626]Received <- Crypto_ByteArray [bytearray=[101, 109, 112, 116, 121]]
+     [java] Debug [ROLE_I-PROTOCOL] - CHECK # 2.1
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:53:626]INV check PERFORMED on anbxj.Crypto_ByteArray
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:53:627]INV check OK - anbxj.Crypto_ByteArray.toString - Crypto_ByteArray [bytearray=[101, 109, 112, 116, 121]]
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:53:627]INV check OK - anbxj.Crypto_ByteArray.hashCode - 125263371
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_2
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_3
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-LANGUAGE] - Send
+     [java] Debug [ROLE_I-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_I-NETWORK] - Sending -> Crypto_ByteArray [bytearray=[101, 109, 112, 116, 121]]
+     [java] Debug [ROLE_I-NETWORK] - [19:16:53:627]Sent -> Crypto_ByteArray [bytearray=[101, 109, 112, 116, 121]]
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_3
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_4
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-SESSION] - Receive
+     [java] Debug [ROLE_I-LANGUAGE] - Receive
+     [java] Debug [ROLE_I-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_I-NETWORK] - [19:16:53:751]Received <- AnBx_Params [v=[java.security.SignedObject@25fb8912, java.security.SignedObject@7c24b813]]
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_4
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_5
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-SESSION] - Receive
+     [java] Debug [ROLE_I-LANGUAGE] - Receive
+     [java] Debug [ROLE_I-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_I-NETWORK] - [19:16:53:796]Received <- java.security.SignedObject@2c35e847
+     [java] Debug [ROLE_I-PROTOCOL] - CHECK # 5.1
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:53:796]INV check PERFORMED on java.security.SignedObject
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:53:797]INV check OK - java.security.SignedObject.toString - java.security.SignedObject@2c35e847
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:53:797]INV check OK - java.security.SignedObject.hashCode - 741730375
+     [java] Debug [ROLE_I-PROTOCOL] - CHECK # 5.2
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:53:797]INV check PERFORMED on java.security.SignedObject
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:53:797]INV check OK - java.security.SignedObject.toString - java.security.SignedObject@7c24b813
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:53:797]INV check OK - java.security.SignedObject.hashCode - 2082781203
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_5
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-PROTOCOL] - Session completed: 3/10
+     [java] Debug [ROLE_I-PROTOCOL] - Session started: 4/10
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_6
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-LANGUAGE] - Send
+     [java] Debug [ROLE_I-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_I-NETWORK] - Sending -> java.security.SignedObject@2c35e847
+     [java] Debug [ROLE_I-NETWORK] - [19:16:53:799]Sent -> java.security.SignedObject@2c35e847
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_6
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_7
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-SESSION] - Receive
+     [java] Debug [ROLE_I-LANGUAGE] - Receive
+     [java] Debug [ROLE_I-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_I-NETWORK] - [19:16:53:922]Received <- Crypto_ByteArray [bytearray=[101, 109, 112, 116, 121]]
+     [java] Debug [ROLE_I-PROTOCOL] - CHECK # 7.1
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:53:922]EQ check PERFORMED on anbxj.Crypto_ByteArray
+     [java] Debug [ROLE_I-ENCRYPTION] - Crypto_ByteArray check
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:53:922]EQ check OK - anbxj.Crypto_ByteArray.toString - Crypto_ByteArray [bytearray=[101, 109, 112, 116, 121]] = Crypto_ByteArray [bytearray=[101, 109, 112, 116, 121]]
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:53:922]EQ check OK - anbxj.Crypto_ByteArray.hashCode - 125263371 = 125263371
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_7
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_8
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-LANGUAGE] - Send
+     [java] Debug [ROLE_I-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_I-NETWORK] - Sending -> Crypto_ByteArray [bytearray=[101, 109, 112, 116, 121]]
+     [java] Debug [ROLE_I-NETWORK] - [19:16:53:923]Sent -> Crypto_ByteArray [bytearray=[101, 109, 112, 116, 121]]
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_8
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_9
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-SESSION] - Receive
+     [java] Debug [ROLE_I-LANGUAGE] - Receive
+     [java] Debug [ROLE_I-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_I-NETWORK] - [19:16:54:045]Received <- AnBx_Params [v=[java.security.SignedObject@58d75e99, java.security.SignedObject@74751b3]]
+     [java] Debug [ROLE_I-PROTOCOL] - CHECK # 9.1
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:54:045]INV check PERFORMED on anbxj.Crypto_ByteArray
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:54:045]INV check OK - anbxj.Crypto_ByteArray.toString - Crypto_ByteArray [bytearray=[101, 109, 112, 116, 121]]
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:54:045]INV check OK - anbxj.Crypto_ByteArray.hashCode - 125263371
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_9
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_10
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-LANGUAGE] - AnBx_Params - size: 2
+     [java] Debug [ROLE_I-LANGUAGE] - AnBx_Params - hash: 1640920620
+     [java] Debug [ROLE_I-LANGUAGE] - [19:16:54:046]AnBx_Params - params: AnBx_Params [v=[java.security.SignedObject@2c35e847, java.security.SignedObject@74751b3]]
+     [java] Debug [ROLE_I-LANGUAGE] - Send
+     [java] Debug [ROLE_I-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_I-NETWORK] - Sending -> AnBx_Params [v=[java.security.SignedObject@2c35e847, java.security.SignedObject@74751b3]]
+     [java] Debug [ROLE_I-NETWORK] - [19:16:54:048]Sent -> AnBx_Params [v=[java.security.SignedObject@2c35e847, java.security.SignedObject@74751b3]]
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_10
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-PROTOCOL] - Session completed: 4/10
+     [java] Debug [ROLE_I-PROTOCOL] - Session started: 5/10
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_0
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-SESSION] - Receive
+     [java] Debug [ROLE_I-LANGUAGE] - Receive
+     [java] Debug [ROLE_I-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_I-NETWORK] - [19:16:54:093]Received <- java.security.SignedObject@5b03b9fe
+     [java] Debug [ROLE_I-PROTOCOL] - CHECK # 0.1
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:54:094]INV check PERFORMED on java.security.SignedObject
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:54:094]INV check OK - java.security.SignedObject.toString - java.security.SignedObject@5b03b9fe
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:54:094]INV check OK - java.security.SignedObject.hashCode - 1526970878
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_0
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_1
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-LANGUAGE] - Send
+     [java] Debug [ROLE_I-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_I-NETWORK] - Sending -> java.security.SignedObject@5b03b9fe
+     [java] Debug [ROLE_I-NETWORK] - [19:16:54:096]Sent -> java.security.SignedObject@5b03b9fe
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_1
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_2
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-SESSION] - Receive
+     [java] Debug [ROLE_I-LANGUAGE] - Receive
+     [java] Debug [ROLE_I-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_I-NETWORK] - [19:16:54:207]Received <- Crypto_ByteArray [bytearray=[101, 109, 112, 116, 121]]
+     [java] Debug [ROLE_I-PROTOCOL] - CHECK # 2.1
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:54:207]INV check PERFORMED on anbxj.Crypto_ByteArray
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:54:207]INV check OK - anbxj.Crypto_ByteArray.toString - Crypto_ByteArray [bytearray=[101, 109, 112, 116, 121]]
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:54:207]INV check OK - anbxj.Crypto_ByteArray.hashCode - 125263371
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_2
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_3
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-LANGUAGE] - Send
+     [java] Debug [ROLE_I-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_I-NETWORK] - Sending -> Crypto_ByteArray [bytearray=[101, 109, 112, 116, 121]]
+     [java] Debug [ROLE_I-NETWORK] - [19:16:54:208]Sent -> Crypto_ByteArray [bytearray=[101, 109, 112, 116, 121]]
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_3
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_4
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-SESSION] - Receive
+     [java] Debug [ROLE_I-LANGUAGE] - Receive
+     [java] Debug [ROLE_I-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_I-NETWORK] - [19:16:54:331]Received <- AnBx_Params [v=[java.security.SignedObject@2805d709, java.security.SignedObject@3ee37e5a]]
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_4
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_5
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-SESSION] - Receive
+     [java] Debug [ROLE_I-LANGUAGE] - Receive
+     [java] Debug [ROLE_I-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_I-NETWORK] - [19:16:54:375]Received <- java.security.SignedObject@3c7f66c4
+     [java] Debug [ROLE_I-PROTOCOL] - CHECK # 5.1
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:54:375]INV check PERFORMED on java.security.SignedObject
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:54:376]INV check OK - java.security.SignedObject.toString - java.security.SignedObject@3c7f66c4
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:54:376]INV check OK - java.security.SignedObject.hashCode - 1014982340
+     [java] Debug [ROLE_I-PROTOCOL] - CHECK # 5.2
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:54:376]INV check PERFORMED on java.security.SignedObject
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:54:376]INV check OK - java.security.SignedObject.toString - java.security.SignedObject@3ee37e5a
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:54:376]INV check OK - java.security.SignedObject.hashCode - 1055096410
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_5
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-PROTOCOL] - Session completed: 5/10
+     [java] Debug [ROLE_I-PROTOCOL] - Session started: 6/10
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_6
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-LANGUAGE] - Send
+     [java] Debug [ROLE_I-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_I-NETWORK] - Sending -> java.security.SignedObject@3c7f66c4
+     [java] Debug [ROLE_I-NETWORK] - [19:16:54:376]Sent -> java.security.SignedObject@3c7f66c4
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_6
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_7
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-SESSION] - Receive
+     [java] Debug [ROLE_I-LANGUAGE] - Receive
+     [java] Debug [ROLE_I-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_I-NETWORK] - [19:16:54:489]Received <- Crypto_ByteArray [bytearray=[101, 109, 112, 116, 121]]
+     [java] Debug [ROLE_I-PROTOCOL] - CHECK # 7.1
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:54:489]EQ check PERFORMED on anbxj.Crypto_ByteArray
+     [java] Debug [ROLE_I-ENCRYPTION] - Crypto_ByteArray check
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:54:489]EQ check OK - anbxj.Crypto_ByteArray.toString - Crypto_ByteArray [bytearray=[101, 109, 112, 116, 121]] = Crypto_ByteArray [bytearray=[101, 109, 112, 116, 121]]
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:54:489]EQ check OK - anbxj.Crypto_ByteArray.hashCode - 125263371 = 125263371
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_7
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_8
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-LANGUAGE] - Send
+     [java] Debug [ROLE_I-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_I-NETWORK] - Sending -> Crypto_ByteArray [bytearray=[101, 109, 112, 116, 121]]
+     [java] Debug [ROLE_I-NETWORK] - [19:16:54:490]Sent -> Crypto_ByteArray [bytearray=[101, 109, 112, 116, 121]]
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_8
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_9
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-SESSION] - Receive
+     [java] Debug [ROLE_I-LANGUAGE] - Receive
+     [java] Debug [ROLE_I-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_I-NETWORK] - [19:16:54:602]Received <- AnBx_Params [v=[java.security.SignedObject@4803b726, java.security.SignedObject@ffaa6af]]
+     [java] Debug [ROLE_I-PROTOCOL] - CHECK # 9.1
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:54:602]INV check PERFORMED on anbxj.Crypto_ByteArray
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:54:602]INV check OK - anbxj.Crypto_ByteArray.toString - Crypto_ByteArray [bytearray=[101, 109, 112, 116, 121]]
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:54:602]INV check OK - anbxj.Crypto_ByteArray.hashCode - 125263371
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_9
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_10
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-LANGUAGE] - AnBx_Params - size: 2
+     [java] Debug [ROLE_I-LANGUAGE] - AnBx_Params - hash: 1667767371
+     [java] Debug [ROLE_I-LANGUAGE] - [19:16:54:604]AnBx_Params - params: AnBx_Params [v=[java.security.SignedObject@3c7f66c4, java.security.SignedObject@ffaa6af]]
+     [java] Debug [ROLE_I-LANGUAGE] - Send
+     [java] Debug [ROLE_I-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_I-NETWORK] - Sending -> AnBx_Params [v=[java.security.SignedObject@3c7f66c4, java.security.SignedObject@ffaa6af]]
+     [java] Debug [ROLE_I-NETWORK] - [19:16:54:606]Sent -> AnBx_Params [v=[java.security.SignedObject@3c7f66c4, java.security.SignedObject@ffaa6af]]
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_10
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-PROTOCOL] - Session completed: 6/10
+     [java] Debug [ROLE_I-PROTOCOL] - Session started: 7/10
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_0
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-SESSION] - Receive
+     [java] Debug [ROLE_I-LANGUAGE] - Receive
+     [java] Debug [ROLE_I-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_I-NETWORK] - [19:16:54:651]Received <- java.security.SignedObject@6253c26
+     [java] Debug [ROLE_I-PROTOCOL] - CHECK # 0.1
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:54:652]INV check PERFORMED on java.security.SignedObject
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:54:652]INV check OK - java.security.SignedObject.toString - java.security.SignedObject@6253c26
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:54:652]INV check OK - java.security.SignedObject.hashCode - 103103526
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_0
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_1
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-LANGUAGE] - Send
+     [java] Debug [ROLE_I-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_I-NETWORK] - Sending -> java.security.SignedObject@6253c26
+     [java] Debug [ROLE_I-NETWORK] - [19:16:54:654]Sent -> java.security.SignedObject@6253c26
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_1
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_2
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-SESSION] - Receive
+     [java] Debug [ROLE_I-LANGUAGE] - Receive
+     [java] Debug [ROLE_I-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_I-NETWORK] - [19:16:54:759]Received <- Crypto_ByteArray [bytearray=[101, 109, 112, 116, 121]]
+     [java] Debug [ROLE_I-PROTOCOL] - CHECK # 2.1
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:54:760]INV check PERFORMED on anbxj.Crypto_ByteArray
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:54:760]INV check OK - anbxj.Crypto_ByteArray.toString - Crypto_ByteArray [bytearray=[101, 109, 112, 116, 121]]
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:54:760]INV check OK - anbxj.Crypto_ByteArray.hashCode - 125263371
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_2
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_3
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-LANGUAGE] - Send
+     [java] Debug [ROLE_I-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_I-NETWORK] - Sending -> Crypto_ByteArray [bytearray=[101, 109, 112, 116, 121]]
+     [java] Debug [ROLE_I-NETWORK] - [19:16:54:761]Sent -> Crypto_ByteArray [bytearray=[101, 109, 112, 116, 121]]
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_3
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_4
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-SESSION] - Receive
+     [java] Debug [ROLE_I-LANGUAGE] - Receive
+     [java] Debug [ROLE_I-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_I-NETWORK] - [19:16:54:900]Received <- AnBx_Params [v=[java.security.SignedObject@82de64a, java.security.SignedObject@659499f1]]
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_4
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_5
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-SESSION] - Receive
+     [java] Debug [ROLE_I-LANGUAGE] - Receive
+     [java] Debug [ROLE_I-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_I-NETWORK] - [19:16:54:943]Received <- java.security.SignedObject@51e69659
+     [java] Debug [ROLE_I-PROTOCOL] - CHECK # 5.1
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:54:943]INV check PERFORMED on java.security.SignedObject
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:54:943]INV check OK - java.security.SignedObject.toString - java.security.SignedObject@51e69659
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:54:943]INV check OK - java.security.SignedObject.hashCode - 1374066265
+     [java] Debug [ROLE_I-PROTOCOL] - CHECK # 5.2
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:54:943]INV check PERFORMED on java.security.SignedObject
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:54:943]INV check OK - java.security.SignedObject.toString - java.security.SignedObject@659499f1
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:54:943]INV check OK - java.security.SignedObject.hashCode - 1704237553
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_5
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-PROTOCOL] - Session completed: 7/10
+     [java] Debug [ROLE_I-PROTOCOL] - Session started: 8/10
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_6
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-LANGUAGE] - Send
+     [java] Debug [ROLE_I-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_I-NETWORK] - Sending -> java.security.SignedObject@51e69659
+     [java] Debug [ROLE_I-NETWORK] - [19:16:54:945]Sent -> java.security.SignedObject@51e69659
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_6
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_7
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-SESSION] - Receive
+     [java] Debug [ROLE_I-LANGUAGE] - Receive
+     [java] Debug [ROLE_I-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_I-NETWORK] - [19:16:55:055]Received <- Crypto_ByteArray [bytearray=[101, 109, 112, 116, 121]]
+     [java] Debug [ROLE_I-PROTOCOL] - CHECK # 7.1
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:55:055]EQ check PERFORMED on anbxj.Crypto_ByteArray
+     [java] Debug [ROLE_I-ENCRYPTION] - Crypto_ByteArray check
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:55:055]EQ check OK - anbxj.Crypto_ByteArray.toString - Crypto_ByteArray [bytearray=[101, 109, 112, 116, 121]] = Crypto_ByteArray [bytearray=[101, 109, 112, 116, 121]]
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:55:055]EQ check OK - anbxj.Crypto_ByteArray.hashCode - 125263371 = 125263371
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_7
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_8
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-LANGUAGE] - Send
+     [java] Debug [ROLE_I-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_I-NETWORK] - Sending -> Crypto_ByteArray [bytearray=[101, 109, 112, 116, 121]]
+     [java] Debug [ROLE_I-NETWORK] - [19:16:55:056]Sent -> Crypto_ByteArray [bytearray=[101, 109, 112, 116, 121]]
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_8
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_9
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-SESSION] - Receive
+     [java] Debug [ROLE_I-LANGUAGE] - Receive
+     [java] Debug [ROLE_I-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_I-NETWORK] - [19:16:55:180]Received <- AnBx_Params [v=[java.security.SignedObject@4310d43, java.security.SignedObject@54a7079e]]
+     [java] Debug [ROLE_I-PROTOCOL] - CHECK # 9.1
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:55:180]INV check PERFORMED on anbxj.Crypto_ByteArray
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:55:180]INV check OK - anbxj.Crypto_ByteArray.toString - Crypto_ByteArray [bytearray=[101, 109, 112, 116, 121]]
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:55:180]INV check OK - anbxj.Crypto_ByteArray.hashCode - 125263371
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_9
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_10
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-LANGUAGE] - AnBx_Params - size: 2
+     [java] Debug [ROLE_I-LANGUAGE] - AnBx_Params - hash: 1066614853
+     [java] Debug [ROLE_I-LANGUAGE] - [19:16:55:181]AnBx_Params - params: AnBx_Params [v=[java.security.SignedObject@51e69659, java.security.SignedObject@54a7079e]]
+     [java] Debug [ROLE_I-LANGUAGE] - Send
+     [java] Debug [ROLE_I-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_I-NETWORK] - Sending -> AnBx_Params [v=[java.security.SignedObject@51e69659, java.security.SignedObject@54a7079e]]
+     [java] Debug [ROLE_I-NETWORK] - [19:16:55:183]Sent -> AnBx_Params [v=[java.security.SignedObject@51e69659, java.security.SignedObject@54a7079e]]
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_10
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-PROTOCOL] - Session completed: 8/10
+     [java] Debug [ROLE_I-PROTOCOL] - Session started: 9/10
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_0
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-SESSION] - Receive
+     [java] Debug [ROLE_I-LANGUAGE] - Receive
+     [java] Debug [ROLE_I-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_I-NETWORK] - [19:16:55:224]Received <- java.security.SignedObject@72e5a8e
+     [java] Debug [ROLE_I-PROTOCOL] - CHECK # 0.1
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:55:224]INV check PERFORMED on java.security.SignedObject
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:55:224]INV check OK - java.security.SignedObject.toString - java.security.SignedObject@72e5a8e
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:55:224]INV check OK - java.security.SignedObject.hashCode - 120478350
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_0
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_1
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-LANGUAGE] - Send
+     [java] Debug [ROLE_I-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_I-NETWORK] - Sending -> java.security.SignedObject@72e5a8e
+     [java] Debug [ROLE_I-NETWORK] - [19:16:55:225]Sent -> java.security.SignedObject@72e5a8e
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_1
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_2
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-SESSION] - Receive
+     [java] Debug [ROLE_I-LANGUAGE] - Receive
+     [java] Debug [ROLE_I-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_I-NETWORK] - [19:16:55:332]Received <- Crypto_ByteArray [bytearray=[101, 109, 112, 116, 121]]
+     [java] Debug [ROLE_I-PROTOCOL] - CHECK # 2.1
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:55:332]INV check PERFORMED on anbxj.Crypto_ByteArray
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:55:332]INV check OK - anbxj.Crypto_ByteArray.toString - Crypto_ByteArray [bytearray=[101, 109, 112, 116, 121]]
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:55:332]INV check OK - anbxj.Crypto_ByteArray.hashCode - 125263371
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_2
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_3
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-LANGUAGE] - Send
+     [java] Debug [ROLE_I-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_I-NETWORK] - Sending -> Crypto_ByteArray [bytearray=[101, 109, 112, 116, 121]]
+     [java] Debug [ROLE_I-NETWORK] - [19:16:55:333]Sent -> Crypto_ByteArray [bytearray=[101, 109, 112, 116, 121]]
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_3
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_4
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-SESSION] - Receive
+     [java] Debug [ROLE_I-LANGUAGE] - Receive
+     [java] Debug [ROLE_I-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_I-NETWORK] - [19:16:55:471]Received <- AnBx_Params [v=[java.security.SignedObject@273e7444, java.security.SignedObject@7db12bb6]]
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_4
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_5
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-SESSION] - Receive
+     [java] Debug [ROLE_I-LANGUAGE] - Receive
+     [java] Debug [ROLE_I-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_I-NETWORK] - [19:16:55:512]Received <- java.security.SignedObject@783a467b
+     [java] Debug [ROLE_I-PROTOCOL] - CHECK # 5.1
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:55:512]INV check PERFORMED on java.security.SignedObject
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:55:512]INV check OK - java.security.SignedObject.toString - java.security.SignedObject@783a467b
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:55:512]INV check OK - java.security.SignedObject.hashCode - 2017085051
+     [java] Debug [ROLE_I-PROTOCOL] - CHECK # 5.2
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:55:513]INV check PERFORMED on java.security.SignedObject
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:55:513]INV check OK - java.security.SignedObject.toString - java.security.SignedObject@7db12bb6
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:55:513]INV check OK - java.security.SignedObject.hashCode - 2108763062
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_5
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-PROTOCOL] - Session completed: 9/10
+     [java] Debug [ROLE_I-PROTOCOL] - Session started: 10/10
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_6
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-LANGUAGE] - Send
+     [java] Debug [ROLE_I-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_I-NETWORK] - Sending -> java.security.SignedObject@783a467b
+     [java] Debug [ROLE_I-NETWORK] - [19:16:55:515]Sent -> java.security.SignedObject@783a467b
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_6
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_7
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-SESSION] - Receive
+     [java] Debug [ROLE_I-LANGUAGE] - Receive
+     [java] Debug [ROLE_I-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_I-NETWORK] - [19:16:55:627]Received <- Crypto_ByteArray [bytearray=[101, 109, 112, 116, 121]]
+     [java] Debug [ROLE_I-PROTOCOL] - CHECK # 7.1
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:55:628]EQ check PERFORMED on anbxj.Crypto_ByteArray
+     [java] Debug [ROLE_I-ENCRYPTION] - Crypto_ByteArray check
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:55:628]EQ check OK - anbxj.Crypto_ByteArray.toString - Crypto_ByteArray [bytearray=[101, 109, 112, 116, 121]] = Crypto_ByteArray [bytearray=[101, 109, 112, 116, 121]]
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:55:628]EQ check OK - anbxj.Crypto_ByteArray.hashCode - 125263371 = 125263371
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_7
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_8
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-LANGUAGE] - Send
+     [java] Debug [ROLE_I-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_I-NETWORK] - Sending -> Crypto_ByteArray [bytearray=[101, 109, 112, 116, 121]]
+     [java] Debug [ROLE_I-NETWORK] - [19:16:55:629]Sent -> Crypto_ByteArray [bytearray=[101, 109, 112, 116, 121]]
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_8
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_9
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-SESSION] - Receive
+     [java] Debug [ROLE_I-LANGUAGE] - Receive
+     [java] Debug [ROLE_I-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_I-NETWORK] - [19:16:55:745]Received <- AnBx_Params [v=[java.security.SignedObject@2d52216b, java.security.SignedObject@242b836]]
+     [java] Debug [ROLE_I-PROTOCOL] - CHECK # 9.1
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:55:746]INV check PERFORMED on anbxj.Crypto_ByteArray
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:55:746]INV check OK - anbxj.Crypto_ByteArray.toString - Crypto_ByteArray [bytearray=[101, 109, 112, 116, 121]]
+     [java] Debug [ROLE_I-PROTOCOL] - [19:16:55:746]INV check OK - anbxj.Crypto_ByteArray.hashCode - 125263371
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_9
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_10
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-LANGUAGE] - AnBx_Params - size: 2
+     [java] Debug [ROLE_I-LANGUAGE] - AnBx_Params - hash: -1856944901
+     [java] Debug [ROLE_I-LANGUAGE] - [19:16:55:746]AnBx_Params - params: AnBx_Params [v=[java.security.SignedObject@783a467b, java.security.SignedObject@242b836]]
+     [java] Debug [ROLE_I-LANGUAGE] - Send
+     [java] Debug [ROLE_I-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_I-NETWORK] - Sending -> AnBx_Params [v=[java.security.SignedObject@783a467b, java.security.SignedObject@242b836]]
+     [java] Debug [ROLE_I-NETWORK] - [19:16:55:748]Sent -> AnBx_Params [v=[java.security.SignedObject@783a467b, java.security.SignedObject@242b836]]
+     [java] Debug [ROLE_I-PROTOCOL] - ISOPK2PMAP_I1 - ROLE_I - STEP_10
+     [java] Debug [ROLE_I-PROTOCOL] - isopk2pmap_i1.ISOPK2PMAP_I1_ROLE_I@54a097cc
+     [java] Debug [ROLE_I-PROTOCOL] - Session completed: 10/10
+     [java] Debug [ROLE_I-NETWORK] - Connection closed
+     [java] Debug [ROLE_I-SESSION] - Session closed
+     [java] Debug [ROLE_I-NETWORK] - Connection closed
+     [java] Debug [ROLE_I-SESSION] - Session closed
+     [java] Debug [ROLE_I-NETWORK] - Connection closed
+     [java] Debug [ROLE_I-SESSION] - Session closed
+     [java] ISOPK2PMAP_I1 [ROLE_I] - Execution time was 4907,565 ms.
+
+BUILD SUCCESSFUL
+Total time: 5 seconds
