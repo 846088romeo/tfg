@@ -16,12 +16,12 @@
 <entry key="PATH_ProVerif">C:\UNI\TFG\anbx-ide-exe-win\ext-tools\proverif.exe</entry>
 <entry key="AnBxC_Last_-expandbullets"></entry>
 <entry key="MAX_THREADS">4</entry>
-<entry key="AnBxC_Last_-noprivatekeygoals"></entry>
-<entry key="AnBxC_Advanced__BOUNDS">378,163,781,490</entry>
 <entry key="OFMC_Last_--untyped"></entry>
+<entry key="AnBxC_Advanced__BOUNDS">378,163,781,490</entry>
+<entry key="AnBxC_Last_-noprivatekeygoals"></entry>
 <entry key="AnBx_IDE_Task_Manager_BOUNDS">5,5,700,400</entry>
-<entry key="AnBxC_Last_-nocfgmsg"></entry>
 <entry key="VALIDATION">false</entry>
+<entry key="AnBxC_Last_-nocfgmsg"></entry>
 <entry key="AnBxC_Last_-silent"></entry>
 <entry key="ProVerif_MUST_LOG">false</entry>
 <entry key="AnBxC_Last_AnBxIDEAdditionalArgs"></entry>
@@ -33,7 +33,7 @@
 <entry key="AnBxC_Last_-pvnomutual"></entry>
 <entry key="ProVerif_Advanced__BOUNDS">378,223,781,371</entry>
 <entry key="PATH_OFMC">C:\UNI\TFG\anbx-ide-exe-win\ext-tools\ofmc.exe</entry>
-<entry key="LAST_UPDATE_CHECK_DATE">2025-06-27</entry>
+<entry key="LAST_UPDATE_CHECK_DATE">2025-07-04</entry>
 <entry key="AnBxC_Last_-singlegoals">-singlegoals</entry>
 <entry key="PATH_AnBxC">C:\UNI\TFG\anbx-ide-exe-win\AnBx2\bin\anbxc.exe</entry>
 <entry key="AnBxC_Last_-silentcode"></entry>
