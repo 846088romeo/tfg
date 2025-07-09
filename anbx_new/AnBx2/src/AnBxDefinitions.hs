@@ -113,7 +113,8 @@ instance Defs AnBxShare where
         mkDef defs (shtype,idents,msgs) = (shtype,idents,mkDef defs msgs)
 
 instance Defs AnBxAction where
-        mkDef defs (ch,msg,msg2,msg3) = (ch,mkDef defs msg,msg2,msg3)
+        mkDef defs (ch,msgWrap,msg2,msg3) = 
+                (ch, mapMsgWrapper (mkDef defs) msgWrap, msg2, msg3)
 
 instance Defs [AnBxGoal] where
         mkDef defs xs = map (mkDef defs) xs

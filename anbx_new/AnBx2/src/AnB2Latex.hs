@@ -125,10 +125,14 @@ showChannelTypeLatex _ AnBxAst.Insecure = ""          -- no need to print insecu
 showChannelTypeLatex _ ch = showChannelType ch ++ ":"
 
 showLatexActions :: ProtType -> AnBxActions -> String
-showLatexActions pt = concatMap (\((a,ch,b),msg,_,_) -> case ch of 
-                                                            -- skip Comment and Sharing actions
-                                                            ActionComment _ _ -> ""
-                                                            Sharing _ -> ""
-                                                            _ -> "\\mess{" ++ showPeer a ++ "}{$" ++ showChannelTypeLatex pt ch ++ escapeLatex (show msg) ++ "$}{" ++ showPeer b ++ "}" ++ "\n")
+showLatexActions pt = concatMap $
+  \((a, ch, b), msgWrapper, _, _) ->
+    case ch of
+      -- skip Comment and Sharing actions
+      ActionComment _ _ -> ""
+      Sharing _         -> ""
+      _ ->
+        let (msg, _) = unwrapMsg msgWrapper
+        in "\\mess{" ++ showPeer a ++ "}{$" ++ showChannelTypeLatex pt ch ++ escapeLatex (show msg) ++ "$}{" ++ showPeer b ++ "}" ++ "\n"
 
 

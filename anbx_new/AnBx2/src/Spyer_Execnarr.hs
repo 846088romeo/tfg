@@ -48,7 +48,7 @@ import qualified Data.Set as Set
 import Data.Containers.ListUtils (nubOrd)
 import Data.Tuple.Utils (fst3,snd3,thd3)
 import AnBxMsg ( AnBxMsg (..))
-import AnBxAst ( AnBxGoal(..), AnBxChannelType (..), peer2Ident, getSender, getReceiver, ident2Peer, getActiveAgents, peer2Agent)
+import AnBxAst ( AnBxGoal(..), AnBxChannelType (..), peer2Ident, getSender, getReceiver, ident2Peer, getActiveAgents, peer2Agent, unwrapMsg, AnBxMsgWrapper(..))
 
 
 -- import AnBTypeSystem_Evaluator (typeofTS)
@@ -254,16 +254,18 @@ compileAnB2ExecnarrKnow (next_var,_,kappa,_) (ctx,types,sh,[],_,equations,[],[],
                                                                                                     _ -> if relaxGoalsOtherAgentKnow opt then execnarrComputed else error (errorGoalSynMsg g kappa mapgoals out)
 
 -- processing list of actions
-compileAnB2ExecnarrKnow context@(next_var,privnames,kappa,gennames) (ctx,types,sh,[],decl,equations,x@(((a,_,_),channeltype,(b,_,_)),msg,_,_):xs,goalsS,goalsR,seenSQN) mapgoals evn@(_,endEvnrAuth,endEvnrSecr) opt out
+compileAnB2ExecnarrKnow context@(next_var,privnames,kappa,gennames) (ctx,types,sh,[],decl,equations,x@(((a,_,_),channeltype,(b,_,_)),msgw,_,_):xs,goalsS,goalsR,seenSQN) mapgoals evn@(_,endEvnrAuth,endEvnrSecr) opt out
                         -- share actions (simply ignored as shares are processed in AnB and later in the compilation chain, except for ProVerif output)
                         | channeltype == Sharing SHShare || ((channeltype == Sharing SHAgree || channeltype == Sharing SHAgreeInsecurely) && not (isOutTypePV out)) = compileAnB2ExecnarrKnow context (ctx,types,sh,[],decl,equations,xs,goalsS,goalsR,seenSQN) mapgoals evn opt out
                         -- standard actions
                         | otherwise =
-                        if next_var==0 && msg == Atom syncMsg then
+                            let (msg,_) = unwrapMsg msgw
+                        in if next_var==0 && msg == Atom syncMsg then
                             -- skip first empty action if any
                             compileAnB2ExecnarrKnow context (ctx,types,sh,[],decl,equations,xs,goalsS,goalsR,seenSQN) mapgoals evn opt out
                         else
                             let
+                                (msg,_) = unwrapMsg msgw
                                 -- a (sender), b (receiver)
                                 m = trMsg msg ctx                  -- translate the AnB message to NExpression
                                 ka0 = getKappa kappa a ctx                  -- get knowledge for sender
@@ -663,7 +665,7 @@ alignTraceActionsWithPassive activeActs@(tract:tractxs) trActsIdx@(trIdx:trIdxs)
   if currIdx==trIdx then
     tract : alignTraceActionsWithPassive tractxs trIdxs (currIdx+1) intrName
   else
-    ((ident2Peer intrName,Insecure,ident2Peer intrName),Atom intrName,Nothing,Nothing)
+    ((ident2Peer intrName,Insecure,ident2Peer intrName),(PlainMsg (Atom intrName)),Nothing,Nothing)
      : alignTraceActionsWithPassive activeActs trActsIdx (currIdx+1) intrName -- add Intr->Intr:Intr fillers to ensure proper step numbering of the trace actions
 
 injectIntrActionsInPassiveExecNarr:: Execnarr -> Execnarr -> [Int] -> Set.Set Ident -> String -> Execnarr

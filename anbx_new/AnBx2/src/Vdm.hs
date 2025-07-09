@@ -33,7 +33,7 @@ import AnBxMsgCommon
 import Debug.Trace
 import AnBxMsg ( AnBxMsg (Comp,Atom),isAtype, patternMsgError)
 import qualified AnBxShow as AnB
-import AnBxAst (AnBxChannelType(..), AnBxType (..), TO (..), AnBxGoal (..), agentDefaultType, isAgentType, isFunctionType, peerIsPseudo, showSpecGoal)
+import AnBxAst (AnBxChannelType(..), AnBxType (..), TO (..), AnBxGoal (..), agentDefaultType, isAgentType, isFunctionType, peerIsPseudo, showSpecGoal, unwrapMsg)
 import AnBxShow (showType, showSimpleGoal)
 
 ----------------------- AnB Show ---------------------------
@@ -261,12 +261,14 @@ showAction mode ((peerFrom,channeltype,peerTo),msg,x1,x2) _ VDM = case channelty
                                                             Sharing SHShare -> ""
                                                             Sharing SHAgree -> Vdm.showAction mode ((peerFrom,FreshSecure,peerTo),msg,x1,x2) (defIndent mode) VDM
                                                             Sharing SHAgreeInsecurely -> Vdm.showAction mode ((peerFrom,Insecure,peerTo),msg,x1,x2) (defIndent mode) VDM
-                                                            _ -> "\t" ++ mkAction ++ "(" ++ Vdm.showPeer peerFrom ++ ",<" ++ show channeltype ++ ">," ++ Vdm.showPeer peerTo ++ "," ++ showMsg mode (defIndent mode) msg ++ ")"
+                                                            _ -> let (msg',_) = unwrapMsg msg 
+                                                                in "\t" ++ mkAction ++ "(" ++ Vdm.showPeer peerFrom ++ ",<" ++ show channeltype ++ ">," ++ Vdm.showPeer peerTo ++ "," ++ showMsg mode (defIndent mode) msg' ++ ")"
 showAction mode ((peerFrom,channeltype,peerTo),msg,x1,x2) n VDMDec = case channeltype of
                                                             Sharing SHShare -> ""
                                                             Sharing SHAgree -> Vdm.showAction mode ((peerFrom,FreshSecure,peerTo),msg,x1,x2) n VDMDec
                                                             Sharing SHAgreeInsecurely -> Vdm.showAction mode ((peerFrom,Insecure,peerTo),msg,x1,x2) n VDMDec
-                                                            _ -> "\t" ++ msgActPrefix ++ show n ++ ": Expr = " ++ showMsg mode (defIndent mode) msg 
+                                                            _ -> let (msg',_) = unwrapMsg msg
+                                                                 in "\t" ++ msgActPrefix ++ show n ++ ": Expr = " ++ showMsg mode (defIndent mode) msg' 
 showAction mode ((peerFrom,channeltype,peerTo),msg,x1,x2) n VDMAct = case channeltype of
                                                             Sharing SHShare -> ""
                                                             Sharing SHAgree -> Vdm.showAction mode ((peerFrom,FreshSecure,peerTo),msg,x1,x2) n VDMAct

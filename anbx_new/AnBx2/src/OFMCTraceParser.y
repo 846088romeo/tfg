@@ -28,7 +28,7 @@ module OFMCTraceParser where
 import AnBAst
 import AnBxMsgCommon
 import AnBxMsg ( AnBxMsg (Comp,Atom))
-import AnBxAst ( AnBxChannelType(Insecure))
+import AnBxAst (AnBxChannelType(Insecure), AnBxMsgWrapper(PlainMsg, ReplayMsg))
 import qualified OFMCTraceLexer as L
 }
 %name ofmctraceparser
@@ -63,7 +63,7 @@ actionslist :: {Actions}
   | action actionslist {($1:$2)}
 
 action :: {Action}
-  : channel ":" msg newline {($1,$3,Nothing,Nothing)}
+  : channel ":" msg newline {($1,(PlainMsg $3),Nothing,Nothing)}
 
 channel :: {Channel} 
   : peer "->" peer {($1,Insecure,$3)}

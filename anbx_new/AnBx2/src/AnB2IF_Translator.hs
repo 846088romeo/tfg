@@ -90,7 +90,7 @@ import Debug.Trace (trace)
 import AnBxShow (showEquation, showSimpleGoal)
 import AnBShow (showAnB, showAnBOutputHeader, AnBHeaderType(AnBHTIF))
 import AnBxMsg ( AnBxMsg (Comp,Atom), patternMsgError, isAtom, idents, vars, isntFunction)
-import AnBxAst (AnBxGoal (..), AnBxType (..), AnBxChannelType (..), isPublicKeyType, isSeqNumberType)
+import AnBxAst (AnBxGoal (..), AnBxType (..), AnBxChannelType (..), isPublicKeyType, isSeqNumberType, unwrapMsg)
 import qualified Data.Bifunctor
 
 --------- Facts, Rules, and the Translation State ---------------
@@ -325,7 +325,11 @@ gettype types id =
 fresh :: Protocol -> [Ident]
 fresh (_, types, _,  _, (knowl, _),_ , _, actions, _) =
   let longterm = nubOrd $ concatMap (concatMap idents . snd) knowl
-      all = nubOrd $ concatMap (\(_, m, _, _) -> idents m) actions
+      all = nubOrd $ concatMap 
+        (\(_, msgw, _, _) ->
+          let (m, _) = unwrapMsg msgw
+          in idents m)
+        actions
       --- here we don't count sender/receiver names (can't be fresh)
       fresh = nubOrd (all \\ longterm)
       longterm_fresh = filter (not . isAgent . gettype types) (filter isVariable longterm)
@@ -339,7 +343,9 @@ fresh (_, types, _,  _, (knowl, _),_ , _, actions, _) =
 
 toJust :: Maybe Action -> (Maybe Ident, ChannelType, Maybe Ident, Maybe (Peer, ChannelType, Peer, Msg, Maybe Msg), Maybe Msg, Maybe Msg)
 toJust Nothing = (Nothing, Secure, Nothing, Nothing, Nothing, Nothing)
-toJust (Just ((sp@(a, _, _), ct, rp@(b, _, _)), m, mp, zk)) = (Just a, Secure, Just b, Just (sp, ct, rp, m, mp), mp, zk)
+toJust (Just ((sp@(a, _, _), ct, rp@(b, _, _)), msgw, mp, zk)) = 
+  let (m, _) = unwrapMsg msgw
+  in (Just a, Secure, Just b, Just (sp, ct, rp, m, mp), mp, zk)
 
 ---------- Channel Transformation ---------
 chtrafo :: Bool -> Peer -> ChannelType -> Peer -> Msg -> Msg

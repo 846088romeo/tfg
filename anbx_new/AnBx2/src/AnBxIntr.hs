@@ -82,7 +82,7 @@ publishIntrK types (intr,msgs) _ = let
                                         pi = ident2AnBxPeer intr
                                         fids = functionsIDs types
                                         msgs1 = msgs \\ ids2Msgs fids
-                                        a1 = ((pi,Insecure,pi),msglist2msg msgs1,Nothing,Nothing)
+                                        a1 = ((pi,Insecure,pi), PlainMsg (msglist2msg msgs1),Nothing,Nothing)
                                    in [a1]
 
 mapAnBxIntrTypes :: AnBxTypes -> Ident -> Bool -> AnBxTypes

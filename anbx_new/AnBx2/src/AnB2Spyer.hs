@@ -42,7 +42,7 @@ import Java_TypeSystem_JType
 import Java_TypeSystem_Context
 import Java_TypeSystem_Evaluator (typeofTS)
 import Data.Maybe (fromJust)
-import AnBxAst (AnBxChannelType(..), AnBxType (..))
+import AnBxAst (AnBxChannelType(..), AnBxType (..), unwrapMsg)
 import AnBxShow (showChannel)
 
 -- AnB to Spyer protocol translation
@@ -66,7 +66,9 @@ trAnB2Spyer prot@((protname,_),types,_,equations,_,_,_,actions,_) options = let
 trAnBActions2Spyer :: Actions -> JContext -> AnBxOnP -> [Exchange]
 trAnBActions2Spyer [] _ _  = []
 trAnBActions2Spyer (((_,ActionComment _ s,_),_,_,_):xs) ctx opt = XComment s : trAnBActions2Spyer xs ctx opt
-trAnBActions2Spyer ((((a,_,_),Insecure,(b,_,_)),msg,_,_):xs) ctx opt = XSend (a,b,trMsg msg ctx) : trAnBActions2Spyer xs ctx opt
+trAnBActions2Spyer ((((a,_,_),Insecure,(b,_,_)),msgw,_,_):xs) ctx opt = 
+  let (msg, _) = unwrapMsg msgw
+  in XSend (a,b,trMsg msg ctx) : trAnBActions2Spyer xs ctx opt
 trAnBActions2Spyer (((_,Sharing _,_),_,_,_):xs) ctx opt = trAnBActions2Spyer xs ctx opt     -- skip sharing actions
 trAnBActions2Spyer ((ch,_,_,_):_) _ _ = error ("can not translate to Spyer channel " ++ showChannel ch)
 
@@ -98,17 +100,23 @@ trDeclarations t a k sh ctx opt = union (union (trShareActions a k sh ctx out) (
 trShareActions :: Actions -> Knowledge -> AnBShares -> JContext -> OutType -> [Declaration]
 trShareActions  [] _ _ _ _ = []
 -- handle shared knowledge (ignored if output is ProVerif)
-trShareActions  ((((a,_,_),Sharing _,(b,_,_)),Comp Cat (msg:ms),_,_):xs) k sh ctx out | not (isOutTypePV out) = let
+trShareActions  ((((a,_,_),Sharing _,(b,_,_)),msgw,_,_):xs) k sh ctx out | not (isOutTypePV out) = let
+                                                                                                                    (msg, _) = unwrapMsg msgw
                                                                                                                     na = agent2NEIdent a ctx
                                                                                                                     nb = agent2NEIdent b ctx
-                                                                                                                    d1 = trShareActionsFacts na nb msg sh ctx
-                                                                                                                    d2 = case ms of
+                                                                                                                    d1 = case msg of
+                                                                                                                      Comp Cat (m:ms) ->
+                                                                                                                        let
+                                                                                                                          d1 = trShareActionsFacts na nb m sh ctx
+                                                                                                                          d2 = case ms of
                                                                                                                             [] -> []
                                                                                                                             s -> concatMap (\x -> trShareActionsFacts na nb x sh ctx) s
-                                                                                                                    d3 = union d1 d2
-                                                                                                                in union d3 (trShareActions xs k sh ctx out)
-trShareActions  ((( (a,_,_),Sharing _,(b,_,_)),msg,_,_):xs) k sh ctx out | not (isOutTypePV out) = union (trShareActionsFacts na nb msg sh ctx) (trShareActions xs k sh ctx out)
+                                                                                                                        in union d1 d2
+                                                                                                                      _ -> trShareActionsFacts na nb msg sh ctx
+                                                                                                                in union d1 (trShareActions xs k sh ctx out)
+trShareActions  ((( (a,_,_),Sharing _,(b,_,_)),msgw,_,_):xs) k sh ctx out | not (isOutTypePV out) = union (trShareActionsFacts na nb msg sh ctx) (trShareActions xs k sh ctx out)
                                                                                                                  where 
+                                                                                                                    (msg, _) = unwrapMsg msgw
                                                                                                                     na = agent2NEIdent a ctx
                                                                                                                     nb = agent2NEIdent b ctx
 -- for authentic and (fresh-)secure channels we assume that agents knows their names (but no pseudonym are used)

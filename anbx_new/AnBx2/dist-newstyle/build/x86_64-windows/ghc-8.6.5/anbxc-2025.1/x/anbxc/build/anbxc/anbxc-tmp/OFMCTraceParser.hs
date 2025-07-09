@@ -40,7 +40,7 @@ module OFMCTraceParser where
 import AnBAst
 import AnBxMsgCommon
 import AnBxMsg ( AnBxMsg (Comp,Atom))
-import AnBxAst ( AnBxChannelType(Insecure))
+import AnBxAst (AnBxChannelType(Insecure), AnBxMsgWrapper(PlainMsg, ReplayMsg))
 import qualified OFMCTraceLexer as L
 import qualified Data.Function as Happy_Prelude
 import qualified Data.Bool as Happy_Prelude
@@ -233,7 +233,7 @@ happyReduction_4 (happy_x_4 `HappyStk`
          = case happyOut8 happy_x_1 of { (HappyWrap8 happy_var_1) -> 
         case happyOut10 happy_x_3 of { (HappyWrap10 happy_var_3) -> 
         happyIn7
-                 ((happy_var_1,happy_var_3,Nothing,Nothing)
+                 ((happy_var_1,(PlainMsg happy_var_3),Nothing,Nothing)
         ) `HappyStk` happyRest}}
 
 happyReduce_5 = happySpecReduce_3  3# happyReduction_5

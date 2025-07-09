@@ -88,7 +88,7 @@ plainChannel :: AnBxPeer -> AnBxPeer -> AnBxChannel
 plainChannel p1 p2  = (p1,Insecure,p2)
 
 syncAction :: AnBxPeer -> AnBxPeer -> AnBxAction
-syncAction p1 p2 = (plainChannel p1 p2, syncMsgAst,Nothing,Nothing)
+syncAction p1 p2 = (plainChannel p1 p2, PlainMsg syncMsgAst,Nothing,Nothing)
 
 syncActionSh :: ShareType -> AnBxPeer -> AnBxPeer -> AnBxAction
 syncActionSh sh p1 p2 = shareAction sh p1 p2 syncMsgAst
@@ -97,7 +97,7 @@ shareChannel :: ShareType -> AnBxPeer -> AnBxPeer -> AnBxChannel
 shareChannel sh p1 p2  = (p1,Sharing sh,p2)
 
 shareAction :: ShareType -> AnBxPeer -> AnBxPeer -> AnBxMsg -> AnBxAction
-shareAction sh p1 p2 msg = (shareChannel sh p1 p2, msg,Nothing,Nothing)
+shareAction sh p1 p2 msg = (shareChannel sh p1 p2, PlainMsg msg,Nothing,Nothing)
 
 peerErrorNoCert :: AnBxPeer -> AnBxChannel -> String
 peerErrorNoCert peer channel = "\n\n" ++ "Peer " ++ showPeer peer ++ " must be certified on channel\n\n" ++ showChannel channel ++ "\n\n"
@@ -197,7 +197,7 @@ ch2impl (peerFrom,channelType, peerTo) _ _ = error ("unhandled channel type " ++
 -- ch2impl (peerFrom,channelType, peerTo) _ _ = AnBStandard peerFrom peerTo channelType
 
 mkAnBxAction :: AnBxPeer -> AnBxChannelType -> AnBxPeer -> AnBxMsg -> [AnBxMsg] -> AnBxAction
-mkAnBxAction a ch b msg k = ((a,ch,b),appendDigestKeys msg k,Nothing,Nothing)
+mkAnBxAction a ch b msg k = ((a,ch,b),PlainMsg (appendDigestKeys msg k),Nothing,Nothing)
 
 --- find hmacs to apply in actions ----
                     -- (msg,key,orig,dest)
@@ -220,7 +220,8 @@ mkHmacs ::  AnBxActions -> [HmacMapping] ->  Int -> AnBxTypes ->  DigestType -> 
 -- mkHmacs _ maps int _ _ | trace ("mkHmacs\n\tint: " ++ show int ++ "\n\tmaps: " ++ show maps ++ "\n") False = undefined
 mkHmacs [] maps _ _ _ = maps
 mkHmacs (x:xs) maps int types dt = let
-                                        ((a,_,_),msg,_,_) = x
+                                        ((a,_,_),msgw,_,_) = x
+                                        (msg,_) = unwrapMsg msgw
                                         hs = findHmac msg types
                                         currhs = [ x | (x,_,_,_) <- maps]
                                         -- newhs  = newElem hs currhs
@@ -241,11 +242,11 @@ mkDigestActions :: AnBxActions  -> AnBxTypes -> [HmacMapping] -> DigestType -> A
 mkDigestActions xs types hmacmaps dt  = map (\x-> mkDigestAction x types hmacmaps dt) xs
 
 mkDigestAction :: AnBxAction -> AnBxTypes -> [HmacMapping] -> DigestType -> AnBxAction
-mkDigestAction (ch,msg1,msg2,msg3) types hmacmaps dt = let
-                                                          (m,k) = mkDigestMsgAction (ch,msg1,Nothing,Nothing) types hmacmaps False dt
+mkDigestAction (ch,msgw,msg2,msg3) types hmacmaps dt = let
+                                                          (m,k) = mkDigestMsgAction (ch,msgw,Nothing,Nothing) types hmacmaps False dt
                                                        in case k of
-                                                             [] -> (ch,m,msg2,msg3)
-                                                             _ -> (ch,Comp Cat [m, Comp Cat k],msg2,msg3)
+                                                             [] -> (ch,PlainMsg m,msg2,msg3)
+                                                             _ -> (ch,PlainMsg (Comp Cat [m, Comp Cat k]),msg2,msg3)
 
 mkDigestKnowledge :: AnBxKnowledgeAgents  -> AnBxTypes -> [HmacMapping] -> DigestType -> AnBxKnowledgeAgents
 mkDigestKnowledge xs types hmacmaps dt = map (\(x,msgs) -> (x,map (\m -> mkDigestMsg m types hmacmaps True dt) msgs)) xs
@@ -255,30 +256,66 @@ appendDigestKeys m [] = m
 appendDigestKeys m [k] = Comp Cat [m, k]
 appendDigestKeys m k = Comp Cat (m : k)
 
+-- mkDigestMsgAction ::  AnBxAction -> AnBxTypes -> [HmacMapping] -> Bool -> DigestType -> (AnBxMsg,[AnBxMsg])
+-- -- mkDigestMsgAction action types maps _ _ | trace ("mkDigestMsgAction\n\tmsg: " ++ show action ++ "\n\tmaps: " ++ show maps ++ "\n") False = undefined
+-- mkDigestMsgAction (_,Atom id,_,_) _ _ _ _ = (Atom id,[])
+-- mkDigestMsgAction (ch,Comp op xs,_,_) types maps inhash dt = let
+--                                                              m = map (\x -> mkDigestMsgAction (ch,x,Nothing,Nothing) types maps inhash dt) xs
+--                                                              msg = [fst x | x <- m]
+--                                                              keys = concat ([snd x | x <- m])
+--                                                           in fixCatPair (Comp op msg, nubOrd keys)
+-- mkDigestMsgAction (ch,DigestHash msg,_,_) types maps _ dt = let
+--                                                              (m,k) = mkDigestMsgAction (ch,msg,Nothing,Nothing) types maps True dt
+--                                                          in fixCatPair (Comp Apply [Atom (show AnBxHash),m],k)
+-- mkDigestMsgAction (ch,DigestHmac msg id,_,_) types maps inhash DTAbstract = let
+--                                                                               (msg1,_) = mkDigestMsgAction (ch,msg,Nothing,Nothing) types maps inhash DTAbstract
+--                                                                               hmacMsg = mkHmac msg1 id
+--                                                                           in fixCatPair (hmacMsg,[]) -- hmac(msg,A)
+-- mkDigestMsgAction (ch,m@(DigestHmac msg id),_,_) types maps inhash DTExpanded = let
+--                                                                                   ((_,_,_),h) = getKey m maps
+--                                                                                   (msg1,k) = mkDigestMsgAction (ch,msg,Nothing,Nothing) types maps inhash DTExpanded
+--                                                                                   key = Comp Apply [Atom (show pkHMacFun),Atom id]
+--                                                                                   encKey = Comp Crypt [key,Atom h]
+--                                                                                   hmacMsg = mkHmac msg1 h
+--                                                                                   stnd = (Comp Cat [hmacMsg,encKey], k)
+--                                                                           in fixCatPair (if inhash then (hmacMsg,k) else stnd)
+
 -- this adds the messages used to pass the hmac key to the recipient (it returns the expanded digest, plus optional messages)
 mkDigestMsgAction ::  AnBxAction -> AnBxTypes -> [HmacMapping] -> Bool -> DigestType -> (AnBxMsg,[AnBxMsg])
--- mkDigestMsgAction action types maps _ _ | trace ("mkDigestMsgAction\n\tmsg: " ++ show action ++ "\n\tmaps: " ++ show maps ++ "\n") False = undefined
-mkDigestMsgAction (_,Atom id,_,_) _ _ _ _ = (Atom id,[])
-mkDigestMsgAction (ch,Comp op xs,_,_) types maps inhash dt = let
-                                                             m = map (\x -> mkDigestMsgAction (ch,x,Nothing,Nothing) types maps inhash dt) xs
-                                                             msg = [fst x | x <- m]
-                                                             keys = concat ([snd x | x <- m])
-                                                          in fixCatPair (Comp op msg, nubOrd keys)
-mkDigestMsgAction (ch,DigestHash msg,_,_) types maps _ dt = let
-                                                             (m,k) = mkDigestMsgAction (ch,msg,Nothing,Nothing) types maps True dt
-                                                         in fixCatPair (Comp Apply [Atom (show AnBxHash),m],k)
-mkDigestMsgAction (ch,DigestHmac msg id,_,_) types maps inhash DTAbstract = let
-                                                                              (msg1,_) = mkDigestMsgAction (ch,msg,Nothing,Nothing) types maps inhash DTAbstract
-                                                                              hmacMsg = mkHmac msg1 id
-                                                                          in fixCatPair (hmacMsg,[]) -- hmac(msg,A)
-mkDigestMsgAction (ch,m@(DigestHmac msg id),_,_) types maps inhash DTExpanded = let
-                                                                                  ((_,_,_),h) = getKey m maps
-                                                                                  (msg1,k) = mkDigestMsgAction (ch,msg,Nothing,Nothing) types maps inhash DTExpanded
-                                                                                  key = Comp Apply [Atom (show pkHMacFun),Atom id]
-                                                                                  encKey = Comp Crypt [key,Atom h]
-                                                                                  hmacMsg = mkHmac msg1 h
-                                                                                  stnd = (Comp Cat [hmacMsg,encKey], k)
-                                                                          in fixCatPair (if inhash then (hmacMsg,k) else stnd)
+mkDigestMsgAction (_,msgw,_,_) types maps inhash dt = mkDigestMsgAction' msgw
+        where
+                mkDigestMsgAction' :: AnBxMsgWrapper -> (AnBxMsg, [AnBxMsg])
+                mkDigestMsgAction' (PlainMsg (Atom id)) = (Atom id, [])
+                mkDigestMsgAction' (PlainMsg (Comp op xs)) =
+                        let 
+                                m = map (\x -> mkDigestMsgAction' (PlainMsg x)) xs
+                                msg = [fst x | x <- m]
+                                keys = concat [snd x | x <- m]
+                        in fixCatPair (Comp op msg, nubOrd keys)
+                mkDigestMsgAction' (PlainMsg (DigestHash msg)) =
+                        let (m, k) = mkDigestMsgAction' (PlainMsg msg)
+                        in fixCatPair (Comp Apply [Atom (show AnBxHash), m], k)
+                mkDigestMsgAction' (PlainMsg (DigestHmac msg id)) =
+                        case dt of
+                                DTAbstract ->
+                                        let 
+                                                (msg1, _) = mkDigestMsgAction' (PlainMsg msg)
+                                                hmacMsg = mkHmac msg1 id
+                                        in fixCatPair (hmacMsg, []) -- hmac(msg,A)
+                                DTExpanded ->
+                                        let 
+                                                m@(DigestHmac _ id') = DigestHmac msg id
+                                                (_, h) = getKey m maps
+                                                (msg1, k) = mkDigestMsgAction' (PlainMsg msg)
+                                                key = Comp Apply [Atom (show pkHMacFun), Atom id']
+                                                encKey = Comp Crypt [key, Atom h]
+                                                hmacMsg = mkHmac msg1 h
+                                                stnd = (Comp Cat [hmacMsg, encKey], k)
+                                        in fixCatPair (if inhash then (hmacMsg, k) else stnd)
+                -- For other AnBxMsgWrapper constructors, handle them here
+                mkDigestMsgAction' (PlainMsg m) = (m, [])
+                mkDigestMsgAction' (ReplayMsg m) = mkDigestMsgAction' (PlainMsg m)
+                mkDigestMsgAction' other = error $ "mkDigestMsgAction: unsupported AnBxMsgWrapper: " ++ show other
 
 mkDigestMsg ::  AnBxMsg -> AnBxTypes -> [HmacMapping] -> Bool -> DigestType -> AnBxMsg
 -- mkDigestMsg msg types maps _ _ | trace ("mkDigestMsg\n\tmsg: " ++ show msg ++ "\n\tmaps: " ++ show maps ++ "\n") False = undefined
@@ -335,53 +372,57 @@ mkActions types knowledge (action:actions) status certified int impltype pkcfg u
                 (tt,kk,aa,ss,ns2) = mkActions t k actions s certified (int+1) impltype pkcfg usetags hmacmaps ns1 dt
        in (tt,kk,a++aa,ss,ns2)
 
+
 mkAction :: AnBxTypes -> AnBxKnowledgeAgents -> AnBxAction -> ActionStatus -> [Ident] -> Int -> ImplType -> AnBxPKeyFunCfg -> Bool -> [HmacMapping] -> NonceStore -> DigestType -> (AnBxTypes, AnBxKnowledgeAgents,AnBxActions,ActionStatus,NonceStore)
 mkAction types knowledge action@((_,BMChannelTypeTriple {},_),_,_,_) status@(_,prevmsg) certified int impltype pkcfg usetags hmacmaps ns dt =
-                        let
-                                (ch,msg,_,_) = action
-                                ci :: AnBxChImpl
-                                ci = ch2impl ch status certified
-                                msg1 = case ci of
-                                                ForwardBlind {} -> prevmsg
-                                                _ -> msg
-                                -- reference msg index, for forward mode
-                                -- previous message, should be generalised to match any previous message
-                                refint = int - 1
-                                (td,sk,sa,ns1) = protSpecification ch ci impltype pkcfg usetags msg1 int refint ns certified t hmacmaps dt
-                                st = [ x | (Number _,x) <- td ]
-                                sn = [ x | (SeqNumber _,x) <- td ]
-                                sp = [ x | (PublicKey _,x) <- td ]
-                                ss = [ x | (SymmetricKey _,x) <- td ]
-                                sf = [ x | (Function _,x) <- td ]
-                                t = initTypes (Number []) st eqTypesStrict elemTypes .
-                                    initTypes (SeqNumber []) sn eqTypesStrict elemTypes .
-                                    initTypes (PublicKey []) sp eqTypesStrict elemTypes .
-                                    initTypes (SymmetricKey []) ss eqTypesStrict elemTypes .
-                                    initTypes (Function []) sf eqTypesStrict elemTypes $ types
-                                agents = getActiveAgents sa
-                                -- add to each agent involved in the exchange the necessary knowledge
-                                k = if null sk then knowledge else initKnowledges agents (const (ids2Msgs sk)) knowledge
-                                -- apply hash/hmac (hmacs already applied) to actions
-                                sa1 = mkDigestActions sa t hmacmaps dt
-                                -- sa1 = sa
-                                -- extract last msg sent - for forward mode)
-                                -- should be generalised the get the refint message
-                                (_,m,_,_) = last sa1
-                                s = (ch,m)
-                                a0 = mkCommentAction action CTAnBx
-                                -- sa2 = mkCommentActions sa1 CTAnB
-                        -- in error ("m: " ++ show m)
-                        -- in error ("Agents: " ++ show agents)
-                        -- in (t,k,[a0]++sa2,s,ns1)
-                        in (t,k,a0 : sa1,s,ns1)
-mkAction types knowledge action status _ _ _ _ _ hmacmaps ns dt = let -- apply mkDigest
-                                                                    (ch,_,msg1,msg2) = action
-                                                                    (msg3,k) = mkDigestMsgAction action types hmacmaps False dt
-                                                                    msg4 = case k of
-                                                                            [] -> msg3
-                                                                            [x] -> Comp Cat [msg3,x]
-                                                                            _ -> Comp Cat (msg3 : k)
-                                                                in (types,knowledge,[(ch,msg4,msg1,msg2)],status,ns)
+        let
+                (ch,msgw,_,_) = action
+                ci :: AnBxChImpl
+                ci = ch2impl ch status certified
+                (msg,_) = unwrapMsg msgw
+                msg1 = case ci of
+                                        ForwardBlind {} -> prevmsg
+                                        _ -> msg
+                -- reference msg index, for forward mode
+                -- previous message, should be generalised to match any previous message
+                refint = int - 1
+                (td,sk,sa,ns1) = protSpecification ch ci impltype pkcfg usetags msg1 int refint ns certified t hmacmaps dt
+                st = [ x | (Number _,x) <- td ]
+                sn = [ x | (SeqNumber _,x) <- td ]
+                sp = [ x | (PublicKey _,x) <- td ]
+                ss = [ x | (SymmetricKey _,x) <- td ]
+                sf = [ x | (Function _,x) <- td ]
+                t = initTypes (Number []) st eqTypesStrict elemTypes .
+                        initTypes (SeqNumber []) sn eqTypesStrict elemTypes .
+                        initTypes (PublicKey []) sp eqTypesStrict elemTypes .
+                        initTypes (SymmetricKey []) ss eqTypesStrict elemTypes .
+                        initTypes (Function []) sf eqTypesStrict elemTypes $ types
+                agents = getActiveAgents sa
+                -- add to each agent involved in the exchange the necessary knowledge
+                k = if null sk then knowledge else initKnowledges agents (const (ids2Msgs sk)) knowledge
+                -- apply hash/hmac (hmacs already applied) to actions
+                sa1 = mkDigestActions sa t hmacmaps dt
+                -- sa1 = sa
+                -- extract last msg sent - for forward mode)
+                -- should be generalised the get the refint message
+                (_,m,_,_) = last sa1
+                (msgReal, _) = unwrapMsg m
+                s = (ch,msgReal)
+                a0 = mkCommentAction action CTAnBx
+                -- sa2 = mkCommentActions sa1 CTAnB
+        -- in error ("m: " ++ show m)
+        -- in error ("Agents: " ++ show agents)
+        -- in (t,k,[a0]++sa2,s,ns1)
+        in (t,k,a0 : sa1,s,ns1)
+mkAction types knowledge action status _ _ _ _ _ hmacmaps ns dt =
+        let -- apply mkDigest
+                (ch,msgw,msg1,msg2) = action
+                (msg3,k) = mkDigestMsgAction action types hmacmaps False dt
+                msg4 = case k of
+                                [] -> msg3
+                                [x] -> Comp Cat [msg3,x]
+                                _ -> Comp Cat (msg3 : k)
+        in (types,knowledge,[(ch,PlainMsg msg4,msg1,msg2)],status,ns)
 
 -- preserveCat = [show AnBxHmac]
 fixCat :: AnBxMsg -> AnBxMsg
@@ -486,10 +527,11 @@ ckAction action types = ckTypeAction action (types2idents types)
 ckTypeAction :: AnBxAction -> [Ident] ->  AnBxAction
 -- ckTypeAction action _ | trace ("ckTypeAction\n\taction: " ++ show action) False = undefined
 ckTypeAction action@((_,ActionComment _ _,_),_,_,_) _ = action
-ckTypeAction action@(ch@((p1,_,_),_,(p2,_,_)),msg,msg1,msg2) idents =
+ckTypeAction action@(ch@((p1,_,_),_,(p2,_,_)),msgw,msg1,msg2) idents =
         let
                 errormsg = "Action:\t" ++ showAction action
-                n_msg = if ckIdents (AnBxMsg.idents msg) idents errormsg then msg else error ("type error (ckTypeAction) msg: " ++ show msg ++ "\nchannel: " ++ show ch)
+                (msg, wrap) = unwrapMsg msgw
+                n_msg = if ckIdents (AnBxMsg.idents msg) idents errormsg then wrap msg else error ("type error (ckTypeAction) msg: " ++ show msg ++ "\nchannel: " ++ show ch)
                 n_ch = if ckIdent p1 idents errormsg && ckIdent p2 idents errormsg then ch else error ("type error (ckTypeAction) channel: " ++ show ch ++ "\nmsg: " ++ show msg)
         in (n_ch,n_msg,msg1,msg2)
 
@@ -588,7 +630,7 @@ protSpecification ch@(p1,_,p2) chImpl impltype pkcfg usetags msg0 int refint ns 
                   k = newNum prefixKey int
                   sqn = newNum prefixSQN int
                   cPos = step2Pos int
-                  (msg,hmks) = mkDigestMsgAction (ch,msg0,Nothing,Nothing) types hmacmaps False dt
+                  (msg,hmks) = mkDigestMsgAction (ch,PlainMsg msg0,Nothing,Nothing) types hmacmaps False dt
                   (_,chmode,_) = mkAnBxChannelCIF ch  -- remove forward as the implementation is the same for Std and Fresh modes, except for ForwardBlind. That is why ForwardBlind is tested first in AANB and CIF*
         in case impltype of
                 AANB -> case chImpl of

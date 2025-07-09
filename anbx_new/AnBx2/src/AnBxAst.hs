@@ -291,9 +291,23 @@ dropActionShares actions = [ a | a@((_,ct,_),_,_,_) <- actions, nonSharingAnBxCh
 data AnBxMsgWrapper
         = PlainMsg AnBxMsg
         | ReplayMsg AnBxMsg
+        deriving (Eq,Ord)
+
+instance Show AnBxMsgWrapper where
+  show (PlainMsg m)  = ppMsg m
+  show (ReplayMsg m) = "[REPLAY] " ++ ppMsg m
+
 
 type AnBxAction =  (AnBxChannel,AnBxMsgWrapper,Maybe AnBxMsg,Maybe AnBxMsg)
 type AnBxActions = [AnBxAction]
+
+mapMsgWrapper :: (AnBxMsg -> AnBxMsg) -> AnBxMsgWrapper -> AnBxMsgWrapper
+mapMsgWrapper f (PlainMsg m)  = PlainMsg (f m)
+mapMsgWrapper f (ReplayMsg m) = ReplayMsg (f m)
+
+unwrapMsg :: AnBxMsgWrapper -> (AnBxMsg, AnBxMsg -> AnBxMsgWrapper)
+unwrapMsg (PlainMsg m) = (m, PlainMsg)
+unwrapMsg (ReplayMsg m) = (m, ReplayMsg)
 
 type AnBxShare = (ShareType,[Ident],[AnBxMsg])
 type AnBxShares = [AnBxShare]

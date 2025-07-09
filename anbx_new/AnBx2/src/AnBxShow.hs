@@ -136,14 +136,14 @@ showAction :: AnBxAction -> String
 showAction ((_,ActionComment CTAnBx "",_),_,_,_) = ""
 showAction ((_,ActionComment CTAnBx str,_),_,_,_) = "\n\t" ++ "# " ++ str
 showAction ((_,ActionComment CTAnB _,_),_,_,_) = ""
-showAction (ch@(_,channeltype,_),msg,_,_) = "\t" ++
+showAction (ch@(_,channeltype,_),msgw,_,_) = "\t" ++
                                                             case channeltype of
                                                                 Sharing SHShare -> "#" ++ "\t"
                                                                 _ -> ""  
                                                             --
-                                                            ++ showChannel ch
-                                                            ++ show msg
-                                                            ++ case channeltype of
+                                                            ++ showChannel ch ++
+                                                            show msgw ++
+                                                            case channeltype of
                                                                 Sharing SHAgree -> "\t" ++ "# agree"
                                                                 Sharing SHAgreeInsecurely -> "\t" ++ "# insecurely agree"
                                                                 _ -> ""

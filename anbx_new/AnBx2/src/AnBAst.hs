@@ -50,7 +50,7 @@ import AnBxMsgCommon
 import AnBxOnP
 --import Debug.Trace
 import qualified Data.Map as Map
-import AnBxAst (AnBxType(..),TO (..), AnBxChannel, AnBxAction, AnBxChannelType (..), AnBxGoal (..), AnBxProtocol, AnBxEquation (Eqt), isAgentType, isFunctionType, inMsg, AnBxPeer, peerIsPseudo, AnBxKnowledge, AnBxKnowledgeAgents, AnBxKnowledgeWhere, AnBxTypes, AnBxAbstraction, AnBxShare, getActiveAgents)
+import AnBxAst (AnBxType(..),TO (..), AnBxChannel, AnBxAction, AnBxChannelType (..), AnBxGoal (..), AnBxProtocol, AnBxEquation (Eqt), isAgentType, isFunctionType, inMsg, AnBxPeer, peerIsPseudo, AnBxKnowledge, AnBxKnowledgeAgents, AnBxKnowledgeWhere, AnBxTypes, AnBxAbstraction, AnBxShare, getActiveAgents, unwrapMsg)
 import AnBxMsg (AnBxMsg(..), patternMsgError)
 import Data.Containers.ListUtils (nubOrd)
 
@@ -191,8 +191,12 @@ actionIsComment _ = False
 firstAgent :: Ident -> Actions -> OutType -> Maybe Ident
 --firstAgent id a | trace("firstAgent\n\tid: " ++ id ++ "\n\ta: " ++ show a) False = undefined
 firstAgent _ [] _ = Nothing
-firstAgent id ((( (_,_,_),Sharing sh,(_,_,_)),msg,_,_):xs) out | sh==SHShare || not (isOutTypePV out) = if inMsg msg id then Nothing else firstAgent id xs out
-firstAgent id ((( (a,_,_),_,(_,_,_)),msg,_,_):xs) out = if inMsg msg id then Just a else firstAgent id xs out
+firstAgent id ((( (_,_,_),Sharing sh,(_,_,_)),msg,_,_):xs) out | sh==SHShare || not (isOutTypePV out) = 
+    let (msgReal, _) = unwrapMsg msg
+    in if inMsg msgReal id then Nothing else firstAgent id xs out
+firstAgent id ((( (a,_,_),_,(_,_,_)),msg,_,_):xs) out =
+    let (msgReal, _) = unwrapMsg msg
+    in if inMsg msgReal id then Just a else firstAgent id xs out
 
 
 -- here we consider messages in preshared knowledge
@@ -285,7 +289,7 @@ computeCryptDepth (Comp Scrypt msgs) = 1 + maximum (map computeCryptDepth msgs)
 computeCryptDepth _ = 0
 
 actions2Msgs :: Actions -> [Msg]
-actions2Msgs = map (\(_,msg,_,_) -> msg)
+actions2Msgs = map (\(_,msgWrapper,_,_) -> fst (unwrapMsg msgWrapper))
 
 -- fields hearder for AnBStatsCSV
 csvFieldNames :: String

@@ -37,7 +37,7 @@ import AnBTypeSystem_Evaluator
 import AnBAst
 import Control.Monad.Writer
 import Debug.Trace
-import AnBxAst (AnBxChannelType (..), AnBxGoal (..), AnBxEquation (..))
+import AnBxAst (AnBxChannelType (..), AnBxGoal (..), AnBxEquation (..), unwrapMsg)
 import AnBxMsgCommon
 
 typeCheckProtocol :: Protocol -> ProtType -> Protocol
@@ -60,7 +60,9 @@ typeCheckMsg a msg ctx = do
 
 typeCheckAction :: AnBContext -> Action -> Action
 typeCheckAction _ a@((_,ActionComment _ _,_),_,_,_) = a
-typeCheckAction ctx a@(_,msg,_,_) = typeCheckMsg a msg ctx
+typeCheckAction ctx a@(_,msg,_,_) = 
+  let (msgReal, _) = unwrapMsg msg
+  in typeCheckMsg a msgReal ctx
 
 typeCheckEquation :: AnBContext -> AnBEquation  -> AnBEquation
 typeCheckEquation ctx (Eqt msg1 msg2) = Eqt (typeCheckMsg msg1 msg1 ctx) (typeCheckMsg msg2 msg2 ctx)

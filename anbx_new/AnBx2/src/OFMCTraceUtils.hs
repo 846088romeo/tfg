@@ -72,7 +72,9 @@ getTrace inputstr = let trace = case splitOn "ATTACK TRACE:\n" inputstr of
                                                           _ -> "Could not find a reached state in the ofmc attack trace"
                                   _ -> error "Unrecognised ofmc attack format: did not find 'ATTACK TRACE'"
                         (catUnfixed,rchSt) = ofmctraceparser . OFMCTraceLexer.alexScanTokens $ trace
-                        catFixed = map (\(ch,msg,patt,sendknow) -> (ch,fixCat msg, fixCatMaybe patt,fixCatMaybe sendknow)) catUnfixed
+                        catFixed = map (\(ch,msgw,patt,sendknow) -> 
+                          let (msg, wrap) = unwrapMsg msgw
+                          in (ch,wrap (fixCat msg), fixCatMaybe patt,fixCatMaybe sendknow)) catUnfixed
                     in (catFixed,rchSt)
 
 fixCatMaybe:: Maybe Msg -> Maybe Msg
@@ -168,7 +170,9 @@ subjectiveAliasesFromStateKnow (_:stxs) (ag,(Comp _ _):kxs) selfAliases = subjec
 subjectiveAliasesFromStateKnow _ (_,msg:_) _ = error $ patternMsgError msg "subjectiveAliasesFromStateKnow" 
 
 replaceActsVars:: M.Map Msg Msg -> Actions -> Actions
-replaceActsVars substs acts = map (\(ch,msg,patt,sendknow) -> (replaceChannelVar substs ch, replaceMsgs substs msg, patt, sendknow)) acts
+replaceActsVars substs acts = map (\(ch,msgw,patt,sendknow) -> 
+  let (msg, wrap) = unwrapMsg msgw
+  in (replaceChannelVar substs ch, wrap (replaceMsgs substs msg), patt, sendknow)) acts
 
 replaceChannelVar:: M.Map Msg Msg -> Channel -> Channel
 replaceChannelVar substs ch = let replsend = case M.lookup (Atom (getSender ch)) substs of
@@ -233,9 +237,13 @@ getForgeryInfos:: S.Set Ident -> (Actions,Actions) -> AnBContext -> String -> M.
 getForgeryInfos _ ([],_) _ _ = M.empty
 getForgeryInfos _ (_,[]) _ _ = M.empty
 getForgeryInfos declaredIds (pt,((_,ActionComment _ _,_),_,_,_):trxs) ctx intrName = getForgeryInfos declaredIds (pt,trxs) ctx intrName
-getForgeryInfos declaredIds ((_,ptmsg,_,_):ptxs,(_,trmsg,_,_):trxs) ctx intrName =
-  M.union (getForgeryInfos declaredIds (ptxs,trxs) ctx intrName) (M.mapWithKey (\alias orig -> getStructuredForgery (toUpper (head alias):tail alias) orig ctx intrName)
-                                                                      (getOrigsWhenForged declaredIds ptmsg trmsg))
+getForgeryInfos declaredIds ((_,ptmsgw,_,_):ptxs,(_,trmsgw,_,_):trxs) ctx intrName =
+  let
+    (ptmsg,_) = unwrapMsg ptmsgw
+    (trmsg,_) = unwrapMsg trmsgw
+    forgeryMap = getOrigsWhenForged declaredIds ptmsg trmsg
+    structured = M.mapWithKey (\alias orig -> getStructuredForgery (toUpper (head alias):tail alias) orig ctx intrName) forgeryMap
+  in M.union (getForgeryInfos declaredIds (ptxs,trxs) ctx intrName) structured
 
 -- restores the original structure when a non-Atom expression is replaced by a single alias. Useful for type and buffer-size fooling.
 -- if it replaces a ciphertext, then the cipher is given by ofmc as something that cannot be decrypted by the receiver. We generate dummy values then.
@@ -269,14 +277,16 @@ getStructuredForgery alias orig ctx intrName =
 
 -- channel type and pseudonyms are supposed to already be set as original protocol specification
 normalizeChannelMsg:: Action -> Action
-normalizeChannelMsg ((sender@(_,sisps,_),chtype,recv), msg,patt,sendknow) =
-      let trimmedMsg = if sisps && chtype /= Confidential then
+normalizeChannelMsg ((sender@(_,sisps,_),chtype,recv), msgw,patt,sendknow) =
+      let 
+        (msg, wrap) = unwrapMsg msgw
+        trimmedMsg = if sisps && chtype /= Confidential then
                          case msg of
                            Comp Cat [_,m] -> m
                            Comp Cat (_:ms) -> Comp Cat ms
                            _ -> error (show msg++"\nNon confidential pseudonymous channels are supposed to contain a pseudonym and then the actual message")
                        else msg
-      in ((sender,Insecure,recv), replaceMsgs intrKeysSubsts trimmedMsg,patt,sendknow)
+      in ((sender,Insecure,recv), wrap (replaceMsgs intrKeysSubsts trimmedMsg),patt,sendknow)
 
 -- Takes reversed actions: pattern matching starts from last possible trace action. Returns well-formatted reversed actions
 -- From the moment the trace begins, channels will be the ones found in the trace. Additional forwarding is discarded
@@ -299,7 +309,7 @@ declOfID:: Ident -> Types -> Maybe (Type,[Ident])
 declOfID ident types = find (\(_,decls) -> elem ident decls) types
 
 mkActComment :: Action -> Action
-mkActComment ac = ((ident2Peer nullPeerName,ActionComment CTAnBx (showAction ac),ident2Peer nullPeerName),Atom syncMsg,Nothing,Nothing)
+mkActComment ac = ((ident2Peer nullPeerName,ActionComment CTAnBx (showAction ac),ident2Peer nullPeerName),PlainMsg (Atom syncMsg),Nothing,Nothing)
 
 -- Protocol actions list will be split protocol actions for Dolev-Yao: A->B - A->Intr Intr->B
 -- returns actions in original protocol with a trace counterpart, trace additional types, subjective knowledge, actions, and trace action indexes wrt the passive acts
@@ -391,8 +401,11 @@ getOrigFromHonestAgPovActions:: Msg -> (Actions,Actions) -> (String,MapSK) -> NE
 getOrigFromHonestAgPovActions _ ([],[]) _ _ _ _  = Nothing
 getOrigFromHonestAgPovActions _ (ptact:_,[]) _ _ _ _ = error ("No trace action to match action: " ++ showAction ptact ++ " when trying to rewrite goals during ofmc trace reconstruction")
 getOrigFromHonestAgPovActions _ ([],tract:_) _ _ _ _ = error ("No action to match trace action: " ++ showAction tract ++ " when trying to rewrite goals during ofmc trace reconstruction")
-getOrigFromHonestAgPovActions targetmsg ((_,ptmsg,_,_):ptactsxs,(_,trmsg,_,_):tractsxs) kn neqs ctx opts =
-    case getOrigFromHonestAgPovActionMsg targetmsg ptmsg trmsg kn neqs ctx opts of
+getOrigFromHonestAgPovActions targetmsg ((_,ptmsgw,_,_):ptactsxs,(_,trmsgw,_,_):tractsxs) kn neqs ctx opts =
+  let
+    (ptmsg, _) = unwrapMsg ptmsgw
+    (trmsg, _) = unwrapMsg trmsgw
+  in case getOrigFromHonestAgPovActionMsg targetmsg ptmsg trmsg kn neqs ctx opts of
       Just msg -> Just msg
       Nothing -> getOrigFromHonestAgPovActions targetmsg (ptactsxs,tractsxs) kn neqs ctx opts
 
