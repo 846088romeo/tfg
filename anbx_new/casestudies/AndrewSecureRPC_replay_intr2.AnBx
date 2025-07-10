@@ -1,0 +1,39 @@
+Protocol: AndrewSecureRPC_replay_intr2 AnB
+
+Types:
+	Agent A,B;
+	Number NA,NB,NB2,tag;
+	Function [Agent,Agent ->* SymmetricKey] shk;
+	Function [Number -> Number] succ;
+	Agent intr;
+	Agent intr2;
+
+Knowledge:
+	A: A,B,succ,tag,shk(A,B);
+	B: B,A,succ,shk(A,B);
+	intr: intr,B,succ,tag,shk(intr,B),A,shk(A,intr);
+	intr2: intr2,B,succ,tag,shk(intr2,B),A,shk(A,intr2);
+	A,B share shk(A,B);
+	where A!=intr, B!=intr, A!=intr2, B!=intr2
+
+Actions:
+	A -> intr2: A,{|tag,NA|}shk(A,B)
+	intr2 -> intr: A,{|tag,NA|}shk(A,B)
+	intr -> intr2: A,{|tag,NA|}shk(A,B)
+	intr2 -> B: A,{|tag,NA|}shk(A,B)
+	B -> intr2: {|succ(NA),NB|}shk(A,B)
+	intr2 -> intr: {|succ(NA),NB|}shk(A,B)
+	intr -> intr2: {|succ(NA),NB|}shk(A,B)
+	intr2 -> A: {|succ(NA),NB|}shk(A,B)
+	A -> intr2: {|succ(NB)|}shk(A,B)
+	intr2 -> intr: {|succ(NB)|}shk(A,B)
+	intr -> intr2: {|succ(NB)|}shk(A,B)
+	intr2 -> B: {|succ(NB)|}shk(A,B)
+	B -> intr2: {|NB2|}shk(A,B)
+	intr2 -> intr: {|NB2|}shk(A,B)
+	intr -> intr2: ~{|NB2|}shk(A,B)
+	intr2 -> A: {|NB2|}shk(A,B)
+
+Goals:
+	B *->* A: NB2
+	A authenticates B on NB2

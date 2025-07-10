@@ -96,6 +96,7 @@ type JInactiveAgents = [NEIdent]
 data JAction = -- int=step string=agent
          JNew (Int,String,NEIdent)
        | JEmit (Int,String,JChannel,NExpression,NExpression)    -- expr, ground expression
+       | JEmitReplay (Int,String,JChannel,NExpression,NExpression)
        | JReceive (Int,String,JChannel,NExpression)
        | JCheck (Int,String,Atom,Int)                           -- step,agent,atom,substep
        | JAssign (Int,String,NEIdent,NExpression)
@@ -109,6 +110,7 @@ instance Show JAction where
     show :: JAction -> String
     show (JNew (step,a,k)) = a ++ "|" ++ show step ++": new " ++ show k
     show (JEmit (step,a,ch,e,f)) = a ++ "|" ++ show step ++": send(" ++ show e ++ "," ++ show f ++ ") \t # ch: " ++ show ch
+    show (JEmitReplay (step,a,ch,e,f)) = a ++ "|" ++ show step ++": sendReplay(" ++ show e ++ "," ++ show f ++ ") \t # ch: " ++ show ch
     show (JReceive (step,a,ch,x)) = a ++ "|" ++ show step ++": " ++ show x ++ " (" ++ show (typeofTS x newContext) ++ ")" ++  " = receive() \t # ch: " ++ show ch
     show (JCheck (step,a,phi,substep)) = a ++ "|" ++ show step ++ "." ++ show substep ++": " ++ show phi
     show (JAssign (step,a,x,e)) = a ++ "|" ++ show step ++": " ++ show x ++ " := " ++ show e
@@ -226,6 +228,7 @@ mapAction (NANew (step,a,n)) _ _ substep _ = (Just (JNew (step,a,n)),step,subste
 
 -- in the following two, Client/Server parameter are only used for "self" channels, by convention send -> Client, receive -> Server                                                      
 mapAction (NAEmit (step,a,ch,e1,e2)) _ chs _ _ = (Just (JEmit (step,a,getChannel ch chs Client,e1,e2)),step,0) -- (Just (JEmit (step,a,getChannel chType a (agentOfNExpression e1) chs ctx Client,e1,e2)),step,0)
+mapAction (NAEmitReplay (step,a,ch,e1,e2)) _ chs _ _ = (Just (JEmitReplay (step,a,getChannel ch chs Client,e1,e2)),step,0) -- (Just (JEmitReplay (step,a,getChannel chType a (agentOfNExpression e1) chs ctx Client,e1,e2)),step,0)
 mapAction (NAReceive (step,a,ch,v@(NEVar _ _))) _ chs _  _ = (Just (JReceive (step,a,getChannel ch chs Server,v)),step,0)
 
 mapAction a@(NAReceive (_,_,_,_)) _ _ _  _= error ("mapActiopn - the receive action is not well-formed: " ++ show a)

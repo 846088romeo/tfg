@@ -21,7 +21,7 @@ Actions:
 	A -> intr: {|succ(NB)|}shk(A,B)
 	intr -> B: {|succ(NB)|}shk(A,B)
 	B -> intr: {|NB2|}shk(A,B)
-	intr -> A: {|NB2|}shk(A,B)
+	intr -> A: ~{|NB2|}shk(A,B)
 
 Goals:
 	B *->* A: NB2

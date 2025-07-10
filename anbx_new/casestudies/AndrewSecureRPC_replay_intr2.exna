@@ -1,0 +1,121 @@
+(* Protocol: AndrewSecureRPC_replay_intr2 *)
+
+0| A: (*1*)
+noteq(A,intr)
+
+0| intr: (*1*)
+noteq(intr,A)
+
+0| B: (*1*)
+noteq(B,intr)
+
+0| intr: (*1*)
+noteq(intr,B)
+
+0| A: (*1*)
+noteq(A,intr2)
+
+0| intr2: (*1*)
+noteq(intr2,A)
+
+0| B: (*1*)
+noteq(B,intr2)
+
+0| intr2: (*1*)
+noteq(intr2,B)
+
+0| A: new NA
+0| B: new NB
+0| B: new NB2
+0| A: send(intr2;<A,encS(<tag,NA>,shk(<A,B>))>)	# A -> intr2
+0| intr2: R0 := receive()	# A -> intr2
+0| intr2: (*1*)
+eq(A,proj[1/2][R0])
+
+1| intr2: send(intr;<A,proj[2/2][R0]>)	# intr2 -> intr
+1| intr: R1 := receive()	# intr2 -> intr
+1| intr: (*1*)
+eq(A,proj[1/2][R1])
+
+2| intr: send(intr2;<A,proj[2/2][R1]>)	# intr -> intr2
+2| intr2: R2 := receive()	# intr -> intr2
+2| intr2: (*2*)
+eq(A,proj[1/2][R2])
+eq(proj[2/2][R2],proj[2/2][R0])
+
+3| intr2: send(B;<A,proj[2/2][R2]>)	# intr2 -> B
+3| B: R3 := receive()	# intr2 -> B
+3| B: (*2*)
+wff(proj[2/2][decS(proj[2/2][R3],shk(<A,B>))])
+eq(A,proj[1/2][R3])
+
+4(4)| B: witness(_chgoal_FreshSecure_NB2_AB,NB2,[(A,A),(B,B)]) # side condition: False
+4(4)| B: witness(_auth_NB2_AB,NB2,[(A,A),(B,B)]) # side condition: False
+4| B: send(intr2;encS(<succ(proj[2/2][decS(proj[2/2][R3],shk(<A,B>))]),NB>,shk(<A,B>)))	# B -> intr2
+4| intr2: R4 := receive()	# B -> intr2
+4| intr2: (*2*)
+wff(R4)
+wff(proj[2/2][R2])
+
+5| intr2: send(intr;R4)	# intr2 -> intr
+5| intr: R5 := receive()	# intr2 -> intr
+5| intr: (*2*)
+wff(R5)
+wff(proj[2/2][R1])
+
+6| intr: send(intr2;R5)	# intr -> intr2
+6| intr2: R6 := receive()	# intr -> intr2
+6| intr2: (*1*)
+eq(R6,R4)
+
+7| intr2: send(A;R6)	# intr2 -> A
+7| A: R7 := receive()	# intr2 -> A
+7| A: (*1*)
+eq(succ(NA),proj[1/2][decS(R7,shk(<A,B>))])
+
+8| A: send(intr2;encS(succ(proj[2/2][decS(R7,shk(<A,B>))]),shk(<A,B>)))	# A -> intr2
+8| intr2: R8 := receive()	# A -> intr2
+8| intr2: (*2*)
+wff(R8)
+wff(R6)
+
+9| intr2: send(intr;R8)	# intr2 -> intr
+9| intr: R9 := receive()	# intr2 -> intr
+9| intr: (*1*)
+wff(R9)
+
+10| intr: send(intr2;R9)	# intr -> intr2
+10| intr2: R10 := receive()	# intr -> intr2
+10| intr2: (*1*)
+eq(R8,R10)
+
+11| intr2: send(B;R8)	# intr2 -> B
+11| B: R11 := receive()	# intr2 -> B
+11| B: (*1*)
+eq(succ(NB),decS(R11,shk(<A,B>)))
+
+12| B: send(intr2;encS(NB2,shk(<A,B>)))	# B -> intr2
+12| intr2: R12 := receive()	# B -> intr2
+12| intr2: (*1*)
+wff(R12)
+
+13| intr2: send(intr;R12)	# intr2 -> intr
+13| intr: R13 := receive()	# intr2 -> intr
+13| intr: (*1*)
+wff(R13)
+
+14| intr: sendReplay(intr2;R13)	# intr -> intr2
+14| intr2: R14 := receive()	# intr -> intr2
+14| intr2: (*1*)
+eq(R14,R12)
+
+15| intr2: send(A;R14)	# intr2 -> A
+15| A: R15 := receive()	# intr2 -> A
+15| A: (*2*)
+wff(proj[2/2][decS(R7,shk(<A,B>))])
+wff(decS(R15,shk(<A,B>)))
+
+99(15)| A: request(_chgoal_FreshSecure_NB2_AB,decS(R15,shk(<A,B>)),[(A,A),(B,B)]) # side condition: True
+99(15)| A: request(_auth_NB2_AB,decS(R15,shk(<A,B>)),[(A,A),(B,B)]) # side condition: True
+99(4)| B: secret(chgoal_Confidential_NB2_BA,NB2,[(B,B),(A,A)]) # side condition: True
+

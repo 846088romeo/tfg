@@ -1,8 +1,8 @@
 # PowerShell script para compilar y mover el ejecutable de AnBx
 
 # Limpiar la build previa
-Write-Host "Limpiando con 'cabal clean'..."
-cabal clean
+# Write-Host "Limpiando con 'cabal clean'..."
+# cabal clean
 
 # Compilar el proyecto
 Write-Host "Compilando con 'cabal build'..."

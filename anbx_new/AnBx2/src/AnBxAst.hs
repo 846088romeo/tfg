@@ -295,7 +295,7 @@ data AnBxMsgWrapper
 
 instance Show AnBxMsgWrapper where
   show (PlainMsg m)  = ppMsg m
-  show (ReplayMsg m) = "[REPLAY] " ++ ppMsg m
+  show (ReplayMsg m) = "~" ++ ppMsg m
 
 
 type AnBxAction =  (AnBxChannel,AnBxMsgWrapper,Maybe AnBxMsg,Maybe AnBxMsg)

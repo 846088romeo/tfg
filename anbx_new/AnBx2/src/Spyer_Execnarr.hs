@@ -31,7 +31,7 @@
 {-# HLINT ignore "Use infix" #-}
 
 module Spyer_Execnarr where
-import           AnB2NExpression (Execnarr, Fact (GuessableSecretGoal, Request, SecretGoal, Seen, Witness, Wrequest), getIdent, MapSK, NAction (NACheck, NAComment, NAEmit, NAGoal, NANew, NAReceive), printMapSK, stepOfNAction, agentOfNAction,trMsg, agent2NExpression, trEquations, agent2NEIdent, id2NEIdent)
+import           AnB2NExpression (Execnarr, Fact (GuessableSecretGoal, Request, SecretGoal, Seen, Witness, Wrequest), getIdent, MapSK, NAction (NACheck, NAComment, NAEmit, NAEmitReplay, NAGoal, NANew, NAReceive), printMapSK, stepOfNAction, agentOfNAction,trMsg, agent2NExpression, trEquations, agent2NEIdent, id2NEIdent)
 import           AnB2Spyer       (trAnB2ExecnarrKnowledge)
 import           AnBAst          (Actions, AnBShares, Goals, Msg, Peer, Protocol, Types, OFMCAttackImpersonationsAndProt, Goal)
 import           AnBxShow        (showIdents, showAction,showSimpleGoal)
@@ -287,7 +287,13 @@ compileAnB2ExecnarrKnow context@(next_var,privnames,kappa,gennames) (ctx,types,s
                                                                                     acts_ee = concatMap (\x -> endEvents endEvnrAuth next_var newKappa x ctx equations mapgoals opt RelaxKnowAgentFalse) gR1 -- compute end events for applicable goals
                                                                                     na = agent2NEIdent a ctx
                                                                                     nb = agent2NEIdent b ctx
-                                                                                    acts1 =  NAEmit (next_var,a,(na,channeltype,nb),agent2NExpression b ctx,em) : [NAReceive (next_var,b,(nb,channeltype,na),NEVar (t,x) em)]            -- add send and receive actions
+                                                                                    acts1 = case msgw of
+                                                                                        PlainMsg _ ->
+                                                                                            [NAEmit (next_var, a, (na, channeltype, nb), agent2NExpression b ctx, em),
+                                                                                            NAReceive (next_var, b, (nb, channeltype, na), NEVar (t, x) em)]
+                                                                                        ReplayMsg _ ->
+                                                                                            [NAEmitReplay (next_var, a, (na, channeltype, nb), agent2NExpression b ctx, em),
+                                                                                            NAReceive (next_var, b, (nb, channeltype, na), NEVar (t, x) em)]           -- add send and receive actions
                                                                                     (acts2,seenSQN1) = seenEvents next_var b newKappa ctx equations seenSQN decl opt                                     -- generate seen events for sequence numbers   
                                                                                     acts3 = [NACheck (next_var,b,phi)]                                                                                   -- generate the checks on reception
                                                                                     (acts4,newKappa1,newMapGoals) = compileAnB2ExecnarrKnow (next_var + 1,privnames,newKappa,gennames) (ctx,types,sh,[],decl,equations,xs,gS2,gR2,seenSQN1) mapgoals1 evn opt out   -- compute the rest of the narration

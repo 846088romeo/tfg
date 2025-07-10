@@ -244,9 +244,11 @@ mkDigestActions xs types hmacmaps dt  = map (\x-> mkDigestAction x types hmacmap
 mkDigestAction :: AnBxAction -> AnBxTypes -> [HmacMapping] -> DigestType -> AnBxAction
 mkDigestAction (ch,msgw,msg2,msg3) types hmacmaps dt = let
                                                           (m,k) = mkDigestMsgAction (ch,msgw,Nothing,Nothing) types hmacmaps False dt
-                                                       in case k of
-                                                             [] -> (ch,PlainMsg m,msg2,msg3)
-                                                             _ -> (ch,PlainMsg (Comp Cat [m, Comp Cat k]),msg2,msg3)
+                                                          (_,wrap) = unwrapMsg msgw
+                                                          newMsg =  case k of
+                                                             [] -> m
+                                                             _ -> Comp Cat [m, Comp Cat k]
+                                                        in (ch,wrap newMsg,msg2,msg3)
 
 mkDigestKnowledge :: AnBxKnowledgeAgents  -> AnBxTypes -> [HmacMapping] -> DigestType -> AnBxKnowledgeAgents
 mkDigestKnowledge xs types hmacmaps dt = map (\(x,msgs) -> (x,map (\m -> mkDigestMsg m types hmacmaps True dt) msgs)) xs
@@ -379,7 +381,7 @@ mkAction types knowledge action@((_,BMChannelTypeTriple {},_),_,_,_) status@(_,p
                 (ch,msgw,_,_) = action
                 ci :: AnBxChImpl
                 ci = ch2impl ch status certified
-                (msg,_) = unwrapMsg msgw
+                (msg,wrap) = unwrapMsg msgw
                 msg1 = case ci of
                                         ForwardBlind {} -> prevmsg
                                         _ -> msg
@@ -403,9 +405,12 @@ mkAction types knowledge action@((_,BMChannelTypeTriple {},_),_,_,_) status@(_,p
                 -- apply hash/hmac (hmacs already applied) to actions
                 sa1 = mkDigestActions sa t hmacmaps dt
                 -- sa1 = sa
+
+                -- restauration of the wrapper
+                sa2 = map (\(ch',msgw,msg1,msg2) -> (ch',wrap (fst (unwrapMsg msgw)),msg1,msg2)) sa1
                 -- extract last msg sent - for forward mode)
                 -- should be generalised the get the refint message
-                (_,m,_,_) = last sa1
+                (_,m,_,_) = last sa2
                 (msgReal, _) = unwrapMsg m
                 s = (ch,msgReal)
                 a0 = mkCommentAction action CTAnBx
@@ -413,16 +418,17 @@ mkAction types knowledge action@((_,BMChannelTypeTriple {},_),_,_,_) status@(_,p
         -- in error ("m: " ++ show m)
         -- in error ("Agents: " ++ show agents)
         -- in (t,k,[a0]++sa2,s,ns1)
-        in (t,k,a0 : sa1,s,ns1)
+        in (t,k,a0 : sa2,s,ns1)
 mkAction types knowledge action status _ _ _ _ _ hmacmaps ns dt =
         let -- apply mkDigest
                 (ch,msgw,msg1,msg2) = action
+                (_,wrap) = unwrapMsg msgw
                 (msg3,k) = mkDigestMsgAction action types hmacmaps False dt
                 msg4 = case k of
                                 [] -> msg3
                                 [x] -> Comp Cat [msg3,x]
                                 _ -> Comp Cat (msg3 : k)
-        in (types,knowledge,[(ch,PlainMsg msg4,msg1,msg2)],status,ns)
+        in (types,knowledge,[(ch,wrap msg4,msg1,msg2)],status,ns)
 
 -- preserveCat = [show AnBxHmac]
 fixCat :: AnBxMsg -> AnBxMsg

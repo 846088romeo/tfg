@@ -686,13 +686,19 @@ main = do
                                            Just (trProt,trFileName,wPassiveIntr,impersonations,trActsIndexes,intrMsgToPrint) ->
                                              let trImpsAndProt = Just (impersonations,trProt,trActsIndexes,intrMsgToPrint)
                                              in if isOutTypeJava outtype then
+																									putStr "Entering Java code generation" >> hFlush stdout >>
                                                   codegen trFileName anbxonp wPassiveIntr trImpsAndProt cfg
-                                                else file2IntermediateFormats trFileName anbxonp outtype wPassiveIntr cfg trImpsAndProt
+                                                else
+																									putStr "Entering AnBx output generation" >> hFlush stdout >>
+																									file2IntermediateFormats trFileName anbxonp outtype wPassiveIntr cfg trImpsAndProt
                                            Nothing -> if isOutTypeJava outtype then
+																												putStr "Entering Java code generation (no traceInfo)" >> hFlush stdout >>
                                                         codegen filename anbxonp anbxprot Nothing cfg
                                                       else if outtype `elem` [AnBx,AnBIntr,AnBxIntr,AnBxLatex] then
+																												putStr "Entering AnBx output generation (no traceInfo)" >> hFlush stdout >>
                                                         getAnBxOut filename anbxonp anbxprot cfg
                                                       else
+																												putStr "Entering AnB output generation (no traceInfo)" >> hFlush stdout >>
                                                         file2IntermediateFormats filename anbxonp outtype anbxprot cfg Nothing
 
 mkAnBxIntr :: AnBxProtocol -> AnBxOnP -> AnBxProtocol
