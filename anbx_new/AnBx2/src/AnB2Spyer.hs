@@ -42,7 +42,7 @@ import Java_TypeSystem_JType
 import Java_TypeSystem_Context
 import Java_TypeSystem_Evaluator (typeofTS)
 import Data.Maybe (fromJust)
-import AnBxAst (AnBxChannelType(..), AnBxType (..), unwrapMsg)
+import AnBxAst (AnBxChannelType(..), AnBxType (..), unwrapMsg, AnBxMsgWrapper (PlainMsg, ReplayMsg))
 import AnBxShow (showChannel)
 
 -- AnB to Spyer protocol translation
@@ -67,8 +67,13 @@ trAnBActions2Spyer :: Actions -> JContext -> AnBxOnP -> [Exchange]
 trAnBActions2Spyer [] _ _  = []
 trAnBActions2Spyer (((_,ActionComment _ s,_),_,_,_):xs) ctx opt = XComment s : trAnBActions2Spyer xs ctx opt
 trAnBActions2Spyer ((((a,_,_),Insecure,(b,_,_)),msgw,_,_):xs) ctx opt = 
-  let (msg, _) = unwrapMsg msgw
-  in XSend (a,b,trMsg msg ctx) : trAnBActions2Spyer xs ctx opt
+  let
+    (msg, wrap) = unwrapMsg msgw
+    expr = trMsg msg ctx
+    x = case wrap msg of
+        PlainMsg msg -> XSend (a,b,expr)
+        ReplayMsg msg -> XSendReplay (a,b,expr)
+  in x : trAnBActions2Spyer xs ctx opt
 trAnBActions2Spyer (((_,Sharing _,_),_,_,_):xs) ctx opt = trAnBActions2Spyer xs ctx opt     -- skip sharing actions
 trAnBActions2Spyer ((ch,_,_,_):_) _ _ = error ("can not translate to Spyer channel " ++ showChannel ch)
 

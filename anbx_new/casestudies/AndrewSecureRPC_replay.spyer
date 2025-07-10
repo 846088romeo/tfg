@@ -1,0 +1,33 @@
+(* Protocol: AndrewSecureRPC_replay *)
+
+(* Declarations *)
+intr know intr
+intr know B
+intr know succ
+intr know tag
+intr know shk(<intr,B>)
+intr know A
+intr know shk(<A,intr>)
+B know B
+B know A
+B know succ
+B know shk(<A,B>)
+A know A
+A know B
+A know succ
+A know tag
+A know shk(<A,B>)
+private ShkAB     (* A,B share shk(<A,B>) *)
+A generates NA
+B generates NB
+B generates NB2
+
+(* Actions *)
+A -> intr : <A,encS(<tag,NA>,shk(<A,B>))>
+intr -> B : <A,encS(<tag,NA>,shk(<A,B>))>
+B -> intr : encS(<succ(NA),NB>,shk(<A,B>))
+intr -> A : encS(<succ(NA),NB>,shk(<A,B>))
+A -> intr : encS(succ(NB),shk(<A,B>))
+intr -> B : encS(succ(NB),shk(<A,B>))
+B -> intr : encS(NB2,shk(<A,B>))
+intr -> A : ~encS(NB2,shk(<A,B>))

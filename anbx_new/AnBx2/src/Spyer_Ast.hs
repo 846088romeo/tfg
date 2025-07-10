@@ -35,10 +35,11 @@ import Data.List ( intercalate, sort )
 import Java_TypeSystem_JType
 import Data.Containers.ListUtils (nubOrd)
 
-data Exchange = XSend (String,String,NExpression) | XComment String
+data Exchange = XSend (String,String,NExpression) | XSendReplay (String,String,NExpression) | XComment String
 instance Show Exchange where
     show :: Exchange -> String
     show (XSend(a,b,m)) = a ++ " -> " ++ b ++ " : " ++ show m
+    show (XSendReplay(a,b,m)) = a ++ " -> " ++ b ++ " : ~" ++ show m
     show (XComment s) = "(* " ++ s ++ " *)"
 
 type NEShare = (ShareType,NEIdent,NExpression,[NEIdent])       -- share type, ident, expression (relevant only for abstractions), agents
