@@ -96,7 +96,7 @@ type JInactiveAgents = [NEIdent]
 data JAction = -- int=step string=agent
          JNew (Int,String,NEIdent)
        | JEmit (Int,String,JChannel,NExpression,NExpression)    -- expr, ground expression
-       | JEmitReplay (Int,String,JChannel,NExpression,NExpression)
+       | JEmitReplay (Int,String,JChannel,NExpression,NExpression) -- expr, ground expression
        | JReceive (Int,String,JChannel,NExpression)
        | JCheck (Int,String,Atom,Int)                           -- step,agent,atom,substep
        | JAssign (Int,String,NEIdent,NExpression)
@@ -110,7 +110,7 @@ instance Show JAction where
     show :: JAction -> String
     show (JNew (step,a,k)) = a ++ "|" ++ show step ++": new " ++ show k
     show (JEmit (step,a,ch,e,f)) = a ++ "|" ++ show step ++": send(" ++ show e ++ "," ++ show f ++ ") \t # ch: " ++ show ch
-    show (JEmitReplay (step,a,ch,e,f)) = a ++ "|" ++ show step ++": sendReplay(" ++ show e ++ "," ++ show f ++ ") \t # ch: " ++ show ch
+    show (JEmitReplay (step,a,ch,_,NEVar (_,x) _)) = a ++ "|" ++ show step ++": sendReplay(" ++ show x ++ ") \t # ch: " ++ show ch
     show (JReceive (step,a,ch,x)) = a ++ "|" ++ show step ++": " ++ show x ++ " (" ++ show (typeofTS x newContext) ++ ")" ++  " = receive() \t # ch: " ++ show ch
     show (JCheck (step,a,phi,substep)) = a ++ "|" ++ show step ++ "." ++ show substep ++": " ++ show phi
     show (JAssign (step,a,x,e)) = a ++ "|" ++ show step ++": " ++ show x ++ " := " ++ show e

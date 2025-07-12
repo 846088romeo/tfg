@@ -143,7 +143,7 @@ genCode jprot@(protname,customtypes,_,shares,agree,_,roles,droles,inactiveagents
         let genRoles x = genFile prot dirpath templates outtype showStdOut x roleXPrefix (commonAttribs ++ [("role",St x),("serExt",St serExt),
                                                                                                                         ("sessname",St sessName),
                                                                                                                         ("fieldsstatic", VD (varDeclRolesStatic x fields)),
-                                                                                                                        ("fields", VD (varDeclRole x fields)),
+                                                                                                                        ("fields", VD (varDeclRole x fields ++ replayVarsForRole x actions1)),
                                                                                                                         ("fieldsinit", SH (varDeclRoleInit x sharedknowledge)),
                                                                                                                         ("rolemethods", RM (listRoleMethods x methods)),
                                                                                                                         ("channels", StLst mychannels),
@@ -256,6 +256,20 @@ varDeclRoleInit :: String -> JShares -> [ShareField]
 varDeclRoleInit role shares = let
                                  myShares = [ x | x@(_,_,_,roles) <- shares, elem role [ toRole y | (JAgent,y) <- roles]]
                               in map (varShareInit shares) myShares
+
+replayVarsForRole :: String -> [JAction] -> [RoleField]
+replayVarsForRole role actions =
+  [ RoleField {
+      rolename = varname,
+      typeofvar = SealedObject JNonce,
+      pars = "",
+      static = False,
+      know = False
+    }
+  | JEmitReplay (step, agent, _, _, _) <- actions,
+    toRole agent == role,
+    let varname = "VAR_" ++ map toUpper agent ++ "_REPLAY_R" ++ show step
+  ]
 
 packageName :: String -> String
 packageName [] = []
@@ -661,18 +675,6 @@ type2Class e = showJavaType (typeof e)++classSuffix
 id2sess :: String -> JType -> String
 id2sess id t = parsofVar id t ++ concatOp ++ parsofVar "_" t ++ concatOp ++ sessionID
 
-mkReplayBlock :: String -> String
-mkReplayBlock expr =
-  "if (VAR_attack == null  || !(new Random().nextInt(10) < 4)) {\n" ++
-  "\t\t\tAnBx_Debug.out(layer, \">>> NO ATTACK <<<\");\n" ++
-  "\t\t\tVAR_attack = " ++ expr ++ ";\n" ++
-  "\t\t\ts.Send(" ++ expr ++ ");\n" ++
-  "\t\t} else {\n" ++
-  "\t\t\tAnBx_Debug.out(layer, \">>> ATTACK <<<\");\n" ++
-  "\t\t\ts.Send(VAR_attack);\n" ++
-  "\t\t}"
-
-
 mkStepActionStr :: JAction -> JShares -> AnBxOnP -> String -> String
 mkStepActionStr (JComment (_,str)) _ _ _ = commentPrefix ++ str
 mkStepActionStr (JNew (_,_, jid@(t,id))) _ _ _ = let
@@ -687,9 +689,22 @@ mkStepActionStr (JReceive (step,_,_,NEVar (t,id) _)) _ options protname = id ++ 
 mkStepActionStr act@(JReceive _) _ _ _ = error ("malformed action: " ++ show act)                                                                                      
 mkStepActionStr (JAssign (_,_,(t,id),expr)) sh _ _ = id ++ " = " ++ castofTypeEx expr t ++ mkExpression expr sh ++ eoS ++ if writeActionComments then inlinecommentPrefix ++ show expr else ""
 mkStepActionStr (JEmit (_,_,_,_,expr)) sh _ _ = applyOp APISend (mkExpression expr sh) ++ eoS ++ if writeActionComments then inlinecommentPrefix ++ show expr else ""
-mkStepActionStr (JEmitReplay (_,_,_,_,expr)) sh _ _ =
-  mkReplayBlock (mkExpression expr sh) ++
-  (if writeActionComments then inlinecommentPrefix ++ show expr else "")
+mkStepActionStr (JEmitReplay (step,agent,_,_,expr)) sh _ _ =
+  let 
+    varname = "VAR_" ++ map toUpper agent ++ "_REPLAY_R" ++ show step
+    varname_replayed = case expr of
+                        NEVar (_, vname) _ -> "VAR_" ++ map toUpper agent ++ "_" ++ vname
+                        _ -> mkExpression expr sh
+  in
+    "if (" ++ varname ++ " == null  || !(new Random().nextInt(10) < 4)) {\n" ++
+    "\t\t\t\tAnBx_Debug.out(layer, \">>> NO ATTACK <<<\");\n" ++
+    "\t\t\t\t" ++ varname ++ " = " ++ varname_replayed ++ ";\n" ++
+    "\t\t\t\ts.Send(" ++ varname_replayed ++ ");\n" ++
+    "\t\t\t} else {\n" ++
+    "\t\t\t\tAnBx_Debug.out(layer, \">>> ATTACK <<<\");\n" ++
+    "\t\t\t\ts.Send(" ++ varname ++ ");\n" ++
+    "\t\t\t}" ++ eoS ++
+    (if writeActionComments then inlinecommentPrefix ++ show expr else "")
 mkStepActionStr (JCheck (step,_,chk,substep)) sh _ _ = mkStepActionCheckStr chk (mkCheckLabel step substep) sh
 mkStepActionStr (JCall (_,_, f)) sh _ _ = mkExpression f sh ++ eoS
 mkStepActionStr (JGoal (step,_,Seen,_,expr,_,_,_)) sh _ _ = applyOp APISeen (mkCheckLabel step 0 ++ mkExpression expr sh) ++ eoS ++ if writeActionComments then inlinecommentPrefix ++ show expr else ""
