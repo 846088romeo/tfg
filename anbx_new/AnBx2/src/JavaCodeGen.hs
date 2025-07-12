@@ -455,6 +455,8 @@ listChannelStepsRole :: String -> [JAction] -> [ChannelStep]
 listChannelStepsRole _ [] = []
 listChannelStepsRole role (JEmit (st,agent,ch,_,_):xs) = if toRole agent == role then nubOrd (ChannelStep {channel=channelName ch,step=toStep st} : listChannelStepsRole role xs) else listChannelStepsRole role xs
 listChannelStepsRole role (JReceive (st,agent,ch,_):xs) = if toRole agent == role then nubOrd (ChannelStep {channel=channelName ch,step=toStep st} : listChannelStepsRole role xs) else listChannelStepsRole role xs
+listChannelStepsRole role (JEmitReplay (st,agent,ch,_,_):xs) = if toRole agent == role then nubOrd (ChannelStep {channel=channelName ch,step=toStep st} : listChannelStepsRole role xs) else listChannelStepsRole role xs
+
 listChannelStepsRole role (_:xs) = listChannelStepsRole role xs
 
 listChannelStepsNum :: String -> [JAction] -> [Int]
@@ -462,6 +464,7 @@ listChannelStepsNum :: String -> [JAction] -> [Int]
 listChannelStepsNum _ [] = []
 listChannelStepsNum role (JEmit (st,agent,_,_,_):xs) = if toRole agent == role then nubOrd (st : listChannelStepsNum role xs) else listChannelStepsNum role xs
 listChannelStepsNum role (JReceive (st,agent,_,_):xs) = if toRole agent == role then nubOrd (st : listChannelStepsNum role xs) else listChannelStepsNum role xs
+listChannelStepsNum role (JEmitReplay (st,agent,_,_,_):xs) = if toRole agent == role then nubOrd (st : listChannelStepsNum role xs) else listChannelStepsNum role xs
 listChannelStepsNum role (_:xs) = listChannelStepsNum role xs
 
 getSteps :: [ChannelStep] -> [String]
@@ -493,6 +496,7 @@ filterStepActions :: String -> String -> [JAction] -> [JAction]
 filterStepActions _ _ [] = []
 filterStepActions step role (x@(JNew (st,agent,_)):xs) = if toRole agent == role && toStep st == step then x : filterStepActions step role xs else filterStepActions step role xs
 filterStepActions step role (x@(JEmit (st,agent,_,_,_)):xs) = if toRole agent == role && toStep st == step then x : filterStepActions step role xs else filterStepActions step role xs
+filterStepActions step role (x@(JEmitReplay (st,agent,_,_,_)) : xs) = if toRole agent == role && toStep st == step then x : filterStepActions step role xs else filterStepActions step role xs
 filterStepActions step role (x@(JReceive (st,agent,_,_)):xs) = if toRole agent == role && toStep st == step then x : filterStepActions step role xs else filterStepActions step role xs
 filterStepActions step role (x@(JCheck (st,agent,_,_)):xs) = if toRole agent == role && toStep st == step then x : filterStepActions step role xs else filterStepActions step role xs
 filterStepActions step role (x@(JAssign (st,agent,_,_)):xs) = if toRole agent == role && toStep st == step then x : filterStepActions step role xs else filterStepActions step role xs
@@ -657,6 +661,18 @@ type2Class e = showJavaType (typeof e)++classSuffix
 id2sess :: String -> JType -> String
 id2sess id t = parsofVar id t ++ concatOp ++ parsofVar "_" t ++ concatOp ++ sessionID
 
+mkReplayBlock :: String -> String
+mkReplayBlock expr =
+  "if (VAR_attack == null  || !(new Random().nextInt(10) < 4)) {\n" ++
+  "\t\t\tAnBx_Debug.out(layer, \">>> NO ATTACK <<<\");\n" ++
+  "\t\t\tVAR_attack = " ++ expr ++ ";\n" ++
+  "\t\t\ts.Send(" ++ expr ++ ");\n" ++
+  "\t\t} else {\n" ++
+  "\t\t\tAnBx_Debug.out(layer, \">>> ATTACK <<<\");\n" ++
+  "\t\t\ts.Send(VAR_attack);\n" ++
+  "\t\t}"
+
+
 mkStepActionStr :: JAction -> JShares -> AnBxOnP -> String -> String
 mkStepActionStr (JComment (_,str)) _ _ _ = commentPrefix ++ str
 mkStepActionStr (JNew (_,_, jid@(t,id))) _ _ _ = let
@@ -671,6 +687,9 @@ mkStepActionStr (JReceive (step,_,_,NEVar (t,id) _)) _ options protname = id ++ 
 mkStepActionStr act@(JReceive _) _ _ _ = error ("malformed action: " ++ show act)                                                                                      
 mkStepActionStr (JAssign (_,_,(t,id),expr)) sh _ _ = id ++ " = " ++ castofTypeEx expr t ++ mkExpression expr sh ++ eoS ++ if writeActionComments then inlinecommentPrefix ++ show expr else ""
 mkStepActionStr (JEmit (_,_,_,_,expr)) sh _ _ = applyOp APISend (mkExpression expr sh) ++ eoS ++ if writeActionComments then inlinecommentPrefix ++ show expr else ""
+mkStepActionStr (JEmitReplay (_,_,_,_,expr)) sh _ _ =
+  mkReplayBlock (mkExpression expr sh) ++
+  (if writeActionComments then inlinecommentPrefix ++ show expr else "")
 mkStepActionStr (JCheck (step,_,chk,substep)) sh _ _ = mkStepActionCheckStr chk (mkCheckLabel step substep) sh
 mkStepActionStr (JCall (_,_, f)) sh _ _ = mkExpression f sh ++ eoS
 mkStepActionStr (JGoal (step,_,Seen,_,expr,_,_,_)) sh _ _ = applyOp APISeen (mkCheckLabel step 0 ++ mkExpression expr sh) ++ eoS ++ if writeActionComments then inlinecommentPrefix ++ show expr else ""

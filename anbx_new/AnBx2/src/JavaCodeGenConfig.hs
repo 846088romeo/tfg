@@ -36,7 +36,7 @@ import AnBxAst (AnBxChannelType(..), AnBxType (..), showSpecType, agentDefaultTy
 import AnBxMsgCommon (ProtType (PTAnBx))
 import Data.Containers.ListUtils (nubOrd)
 
-data APIOp = APISend | APIReceive | APIEncrypt | APIEncryptS | APIDecrypt | APIDecryptS | APISign | APIVerify
+data APIOp = APISend | APISendReplay | APIReceive | APIEncrypt | APIEncryptS | APIDecrypt | APIDecryptS | APISign | APIVerify
                      | APIHash | APIHmac | APISQN | APINonce | APISymKey | APISymKeyPBE | APIHmacKey
                      | APIDHSecret | APIDHSecKey | APIDHPubKey | APIEqCheck | APIInvCheck | APIWffCheck | APINotEqCheck | APIWriteObject | APIReadObject
                      | APIKeyPair | APIKeyPairPublicKey | APIPublicKey | APIXor | APItoString | APIgetBytes | APIhashCode | APISeen
@@ -52,6 +52,7 @@ cryptomode = CM_Std
 -- must match the Java API
 getAPIOp :: APIOp -> String
 getAPIOp APISend = "Send"
+getAPIOp APISendReplay = "SendReplay"
 getAPIOp APIReceive = "Receive"
 getAPIOp APIEncrypt = "encrypt"
 getAPIOp APIEncryptS = "encrypt"

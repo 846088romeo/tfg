@@ -186,7 +186,7 @@ public final class AndrewSecureRPC_intr_ROLE_intr extends AnB_Protocol<AndrewSec
 			
 			// Attack simulation
 			
-			if (VAR_attack == null  || !shouldAttack()) {
+			if (VAR_attack == null  || !(new Random().nextInt(10) < 4)) {
 				AnBx_Debug.out(layer, ">>> NO ATTACK <<<");
 				VAR_attack = VAR_INTR_R6;
 				s.Send(VAR_INTR_R6);
@@ -210,13 +210,6 @@ public final class AndrewSecureRPC_intr_ROLE_intr extends AnB_Protocol<AndrewSec
 	private Crypto_ByteArray succ(AnB_Session s,Crypto_ByteArray par1) {
 		return AndrewSecureRPC_intr_Functions.succ(s,par1);
 	}
-	
-	private boolean shouldAttack() {
-	    return new Random().nextInt(10) < 4; // 40% probability
-	}
-	
-	
-
 	
 	
 
