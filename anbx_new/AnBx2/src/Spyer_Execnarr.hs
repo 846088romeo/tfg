@@ -292,8 +292,8 @@ compileAnB2ExecnarrKnow context@(next_var,privnames,kappa,gennames) (ctx,types,s
                                                                                             [NAEmit (next_var, a, (na, channeltype, nb), agent2NExpression b ctx, em),
                                                                                             NAReceive (next_var, b, (nb, channeltype, na), NEVar (t, x) em)]
                                                                                         ReplayMsg _ ->
-                                                                                            [NAEmitReplay (next_var, a, (na, channeltype, nb), agent2NExpression b ctx, NEVar (t, x) em),
-                                                                                            NAReceive (next_var, b, (nb, channeltype, na), NEVar (t, x) em)]           -- add send and receive actions
+                                                                                                [NAEmitReplay (next_var, a, (na, channeltype, nb), agent2NExpression b ctx, em, m),
+                                                                                                NAReceive (next_var, b, (nb, channeltype, na), NEVar (t, x) em)]           -- add send and receive actions
                                                                                     (acts2,seenSQN1) = seenEvents next_var b newKappa ctx equations seenSQN decl opt                                     -- generate seen events for sequence numbers   
                                                                                     acts3 = [NACheck (next_var,b,phi)]                                                                                   -- generate the checks on reception
                                                                                     (acts4,newKappa1,newMapGoals) = compileAnB2ExecnarrKnow (next_var + 1,privnames,newKappa,gennames) (ctx,types,sh,[],decl,equations,xs,gS2,gR2,seenSQN1) mapgoals1 evn opt out   -- compute the rest of the narration

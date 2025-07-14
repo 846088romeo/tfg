@@ -54,7 +54,7 @@ eq(succ(NB),decS(R5,shk(<A,B>)))
 6| intr: (*1*)
 wff(R6)
 
-7| intr: sendReplay(A;R6)	# intr -> A
+7| intr: sendReplay(A;R6;encS(NB2,shk(<A,B>)))	# intr -> A
 7| A: R7 := receive()	# intr -> A
 7| A: (*2*)
 wff(proj[2/2][decS(R3,shk(<A,B>))])

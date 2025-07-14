@@ -73,7 +73,7 @@ showNEChannel (a,ct,b) CDRec = showNEChannel (b,ct,a) CDSend
 data  NAction =
          NANew (Int,String,NEIdent)                               -- set,agent, typedidentifier
        | NAEmit (Int,String,NEChannel,NExpression,NExpression)   -- step,agent,channel,dest expression,message
-       | NAEmitReplay (Int,String,NEChannel,NExpression,NExpression) -- step,agent,channel,dest expression,message
+       | NAEmitReplay (Int,String,NEChannel,NExpression,NExpression,NExpression) -- step,agent,channel,dest expression,message,replay message
        | NAReceive (Int,String,NEChannel,NExpression)             -- step,agent,channel,expression
        | NACheck (Int,String,Formula)                             -- step,agent,formula
        | NAAssign (Int,String,String,NExpression)                 -- step.agent,varname,expression
@@ -85,7 +85,7 @@ instance Show NAction where
     show :: NAction -> String
     show (NANew (step,a,(_,k))) = showStepNA step Nothing  ++ a ++ ": " ++ "new " ++ k
     show (NAEmit (step,a,ch,e,f)) = showStepNA step Nothing  ++ a ++ ": send(" ++ show e ++ ";" ++ show f ++ ")" ++ "\t# " ++ showNEChannel ch CDSend
-    show (NAEmitReplay (step,a,ch,e,f)) = showStepNA step Nothing  ++ a ++ ": sendReplay(" ++ show e ++ ";" ++ show f ++ ")" ++ "\t# " ++ showNEChannel ch CDSend
+    show (NAEmitReplay (step,a,ch,e,f,rm)) = showStepNA step Nothing  ++ a ++ ": sendReplay(" ++ show e ++ ";" ++ show f ++ ";" ++ show rm ++ ")" ++ "\t# " ++ showNEChannel ch CDSend
     show (NAReceive (step,a,ch,x)) = showStepNA step Nothing ++ a ++ ": " ++ show x ++ " := receive()" ++ "\t# " ++ showNEChannel ch CDRec
     show (NACheck (step,a,phi)) = showStepNA step Nothing  ++ a ++ ": " ++ show phi
     show (NAAssign (step,a,x,e)) = showStepNA step Nothing  ++ a ++ ": " ++ x ++ " := " ++ show e
