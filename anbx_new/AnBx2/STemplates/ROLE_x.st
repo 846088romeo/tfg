@@ -47,6 +47,7 @@ import javax.crypto.SecretKey;
 import javax.crypto.spec.DHParameterSpec;
 
 import java.util.Map;
+import java.util.Random;
 
 public final class $prot$_$role$ extends AnB_Protocol<$prot$_Steps,$prot$_Roles> {
 

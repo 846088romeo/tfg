@@ -190,6 +190,7 @@ fixNewActions (x : xs) maps = case x of
   NANew _ -> fixNewActions xs maps
   NAGoal (step,_,_,_,_,_,_,_) -> ordNew step x xs maps
   NAEmit (step,_,_,_, _) -> ordNew step x xs maps
+  NAEmitReplay (step, _, _, _, _) -> ordNew step x xs maps
   _ -> x : fixNewActions xs maps
 
 
@@ -224,6 +225,7 @@ occursName _ [] _ = []
 occursName a@(NANew (_, agent, ident)) (a1 : xs) ctx = case a1 of -- use isSubExpr, not CSE version, as it must detect fresh names!
                                                         NAGoal (_, agent1, _, _, expr, _, _, _) | agent == agent1 && isSubExpr (NEName ident) expr -> [(a, a1)]
                                                         NAEmit (_,agent1,_, _, expr) | agent == agent1 && isSubExpr (NEName ident) expr -> [(a, a1)]
+                                                        NAEmitReplay (_,agent1,_, _, expr) | agent == agent1 && isSubExpr (NEName ident) expr -> [(a, a1)]
                                                         _ -> occursName a xs ctx
 occursName _ _ _ = []
 
@@ -232,6 +234,7 @@ occursName _ _ _ = []
 trVarsAction :: NAction -> Execnarr -> AnBxOnP -> JContext -> (Execnarr, Execnarr)
 -- trVarsAction a actions@(x:_) _ | trace ("trVarsAction\n\taction: " ++ show a ++ "\n\tactions[1]: " ++ show x) False = undefined
 trVarsAction a@(NAEmit (step, agent,_, _,expr)) xs options ctx = trVarsActionExpr a xs step agent [expr] options ctx -- emit checks for subexpressions in the sent messages
+trVarsAction a@(NAEmitReplay (step, agent,_, _,expr)) xs options ctx = trVarsActionExpr a xs step agent [expr] options ctx -- emit replay checks for subexpressions in the sent messages
 trVarsAction a@(NACheck (step, agent, FSingle (FEq (expr1, expr2, _)))) xs options ctx = trVarsActionExpr a xs step agent [expr1, expr2] options ctx
 trVarsAction a@(NACheck (step, agent, FSingle (FInv (expr1, expr2)))) xs options ctx = trVarsActionExpr a xs step agent [expr1, expr2] options ctx
 trVarsAction a@(NACheck (step, agent, FSingle (FNotEq (expr1, expr2)))) xs options ctx = trVarsActionExpr a xs step agent [expr1, expr2] options ctx
@@ -418,6 +421,7 @@ substVar :: Execnarr -> VarMapping -> JContext -> Execnarr
 substVar [] _ _ = []
 substVar (x : xs) mp@(_, agent, _, _) ctx = case x of
   NAEmit (step,ag,ch,be,e) -> (if ag == agent then [NAEmit (step, ag,ch,be,substExpr e mp ctx)] else [x]) ++ substVar xs mp ctx
+  NAEmitReplay (step,ag,ch,be,e) -> (if ag == agent then [NAEmitReplay (step, ag,ch,be,substExpr e mp ctx)] else [x]) ++ substVar xs mp ctx
   NAReceive (step,ag,ch,e) -> (if ag == agent then [NAReceive (step,ag,ch,substExpr e mp ctx)] else [x]) ++ substVar xs mp ctx
   NACheck (step, a, FSingle at) ->
     ( if a == agent
@@ -467,6 +471,7 @@ substVarOccurs :: Execnarr -> VarMapping -> CheckOptLevel -> Bool
 substVarOccurs [] _ _ = False
 substVarOccurs (x : xs) mp@(_, agent, _, expr) optlevel | optlevel == CheckOptLevel3 || optlevel == CheckOptLevel4 = case x of
   NAEmit (_,a,_, _, e) -> ((a == agent) && isSubExprCSE expr e) || substVarOccurs xs mp optlevel
+  NAEmitReplay (_,a,_, _, e) -> ((a == agent) && isSubExprCSE expr e) || substVarOccurs xs mp optlevel
   -- NAReceive (_,_,a,_,e) -> if (a==agent) && (isSubExprCSE expr e) then True  else substVarOccurs xs mp optlevel
   NACheck (_, a, FSingle at) ->
     ((a == agent)

@@ -56,6 +56,8 @@ import Java_TypeSystem_Context ( JContext, buildJContext, getIdentifiersByTypeSt
 import Java_TypeSystem_Evaluator ( typeofTS )
 import Java_TypeSystem_JType
 
+import Debug.Trace
+
 getKappa :: MapSK -> String -> JContext -> KnowledgeMap
 getKappa kappa a ctx = if not (Map.member a kappa) then Map.singleton (agent2NExpression a ctx) (Set.singleton (agent2NExpression a ctx)) else fromJust (Map.lookup a kappa)
 
@@ -292,8 +294,8 @@ compileAnB2ExecnarrKnow context@(next_var,privnames,kappa,gennames) (ctx,types,s
                                                                                             [NAEmit (next_var, a, (na, channeltype, nb), agent2NExpression b ctx, em),
                                                                                             NAReceive (next_var, b, (nb, channeltype, na), NEVar (t, x) em)]
                                                                                         ReplayMsg _ ->
-                                                                                                [NAEmitReplay (next_var, a, (na, channeltype, nb), agent2NExpression b ctx, em, m),
-                                                                                                NAReceive (next_var, b, (nb, channeltype, na), NEVar (t, x) em)]           -- add send and receive actions
+                                                                                            [NAEmitReplay (next_var, a, (na, channeltype, nb), agent2NExpression b ctx, em),
+                                                                                            NAReceive (next_var, b, (nb, channeltype, na), NEVar (t, x) em)]           -- add send and receive actions
                                                                                     (acts2,seenSQN1) = seenEvents next_var b newKappa ctx equations seenSQN decl opt                                     -- generate seen events for sequence numbers   
                                                                                     acts3 = [NACheck (next_var,b,phi)]                                                                                   -- generate the checks on reception
                                                                                     (acts4,newKappa1,newMapGoals) = compileAnB2ExecnarrKnow (next_var + 1,privnames,newKappa,gennames) (ctx,types,sh,[],decl,equations,xs,gS2,gR2,seenSQN1) mapgoals1 evn opt out   -- compute the rest of the narration
@@ -621,8 +623,10 @@ execnarrOfProt prot trImpsAndProt anbxopt =
   let
     origNarr = fst3 (execnarrKnowOfProt prot anbxopt)
   in case trImpsAndProt of
-       Just (_,trProt,trActsIdx,toprint) -> mergeHonestAndTraceExecNarrs origNarr trProt trActsIdx toprint anbxopt
-       Nothing -> origNarr
+       Just (_,trProt,trActsIdx,toprint) -> 
+        mergeHonestAndTraceExecNarrs origNarr trProt trActsIdx toprint anbxopt
+       Nothing -> 
+        origNarr
 
 -- compute knowledge map
 knowOfProt :: Protocol -> AnBxOnP -> MapSK

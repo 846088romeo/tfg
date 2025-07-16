@@ -1,0 +1,118 @@
+Protocol: AndrewSecureRPC_intr
+
+--- AnB Actions  ---
+	A -> intr: A,{|tag,NA|}shk(A,B)
+	intr -> B: A,{|tag,NA|}shk(A,B)
+	B -> intr: {|succ(NA),NB|}shk(A,B)
+	intr -> A: {|succ(NA),NB|}shk(A,B)
+	A -> intr: {|succ(NB)|}shk(A,B)
+	intr -> B: {|succ(NB)|}shk(A,B)
+	B -> intr: {|NB2|}shk(A,B)
+	intr -> A: {|NB2|}shk(A,B)
+
+--- CustomTypes  ---
+[]
+
+--- Constants  ---
+[(JConstant JNonce,"tag")]
+
+--- Shares ---
+[(share,(JSymmetricKey,"ShkAB"),shk(<A,B>),[(JAgent,"A"),(JAgent,"B")])]
+
+--- Agree ---
+[]
+
+--- Equations ---
+
+--- Methods ---
+((JAgent,"intr"),RoleMethod {mname = "succ", mpars = "AnB_Session s,Crypto_ByteArray par1", mparsnames = "s,par1", mcode = "", rettype = "Crypto_ByteArray", retvalue = "new Crypto_ByteArray(Integer.toString(par1.hashCode()).getBytes())"})
+((JAgent,"B"),RoleMethod {mname = "succ", mpars = "AnB_Session s,Crypto_ByteArray par1", mparsnames = "s,par1", mcode = "", rettype = "Crypto_ByteArray", retvalue = "new Crypto_ByteArray(Integer.toString(par1.hashCode()).getBytes())"})
+((JAgent,"A"),RoleMethod {mname = "succ", mpars = "AnB_Session s,Crypto_ByteArray par1", mparsnames = "s,par1", mcode = "", rettype = "Crypto_ByteArray", retvalue = "new Crypto_ByteArray(Integer.toString(par1.hashCode()).getBytes())"})
+
+--- Roles ---
+[(JAgent,"A"),(JAgent,"B"),(JAgent,"intr")]
+
+--- Docker Roles ---
+[((JAgent,"intr"),3,1,[55555],JDIntruder),((JAgent,"B"),2,2,[55556],JDHonest),((JAgent,"A"),1,3,[],JDHonest)]
+
+--- Inactive Agents ---
+[]
+
+--- Steps ---
+[0,1,2,3,4,5,6,7,8,99]
+
+--- Channels ---
+((JAgent,"intr"),Insecure,(JAgent,"A"),ipv4 0 0 0 0,55555,Server,"A -> intr - 169.254.124.239 -> 169.254.124.239:55555")
+((JAgent,"A"),Insecure,(JAgent,"intr"),ipv4 169 254 124 239,55555,Client,"intr -> A - 169.254.124.239:55555 -> 169.254.124.239")
+((JAgent,"B"),Insecure,(JAgent,"intr"),ipv4 0 0 0 0,55556,Server,"intr -> B - 169.254.124.239 -> 169.254.124.239:55556")
+((JAgent,"intr"),Insecure,(JAgent,"B"),ipv4 169 254 124 239,55556,Client,"B -> intr - 169.254.124.239:55556 -> 169.254.124.239")
+
+--- RoleFields ---
+((JAgent,"intr"),RoleField {rolename = "tag", typeofvar = JConstant JNonce, pars = "\"tag\"", static = True, know = True})
+((JAgent,"A"),RoleField {rolename = "tag", typeofvar = JConstant JNonce, pars = "\"tag\"", static = True, know = True})
+((JAgent,"A"),RoleField {rolename = "ShkAB", typeofvar = JSymmetricKey, pars = "", static = False, know = True})
+((JAgent,"B"),RoleField {rolename = "ShkAB", typeofvar = JSymmetricKey, pars = "", static = False, know = True})
+((JAgent,"A"),RoleField {rolename = "NA", typeofvar = JNonce, pars = "", static = False, know = False})
+((JAgent,"B"),RoleField {rolename = "NB", typeofvar = JNonce, pars = "", static = False, know = False})
+((JAgent,"B"),RoleField {rolename = "NB2", typeofvar = JNonce, pars = "", static = False, know = False})
+((JAgent,"A"),RoleField {rolename = "VAR_A_SHKAB", typeofvar = JSymmetricKey, pars = "", static = False, know = False})
+((JAgent,"intr"),RoleField {rolename = "VAR_INTR_R0", typeofvar = AnBxParams [JAgent,SealedObject (AnBxParams [JConstant JNonce,JNonce])], pars = "", static = False, know = False})
+((JAgent,"intr"),RoleField {rolename = "VAR_INTR_J22INTRR0", typeofvar = SealedObject (AnBxParams [JConstant JNonce,JNonce]), pars = "", static = False, know = False})
+((JAgent,"B"),RoleField {rolename = "VAR_B_R1", typeofvar = AnBxParams [JAgent,SealedObject (AnBxParams [JConstant JNonce,JNonce])], pars = "", static = False, know = False})
+((JAgent,"B"),RoleField {rolename = "VAR_B_SHKAB", typeofvar = JSymmetricKey, pars = "", static = False, know = False})
+((JAgent,"B"),RoleField {rolename = "VAR_B_J22DSJ22BR1SHKAB", typeofvar = JNonce, pars = "", static = False, know = False})
+((JAgent,"intr"),RoleField {rolename = "VAR_INTR_R2", typeofvar = SealedObject (AnBxParams [JNonce,JNonce]), pars = "", static = False, know = False})
+((JAgent,"A"),RoleField {rolename = "VAR_A_R3", typeofvar = SealedObject (AnBxParams [JNonce,JNonce]), pars = "", static = False, know = False})
+((JAgent,"A"),RoleField {rolename = "VAR_A_DSAR3ASHKAB", typeofvar = AnBxParams [JNonce,JNonce], pars = "", static = False, know = False})
+((JAgent,"A"),RoleField {rolename = "VAR_A_J22ADSAR3ASHKAB", typeofvar = JNonce, pars = "", static = False, know = False})
+((JAgent,"intr"),RoleField {rolename = "VAR_INTR_R4", typeofvar = SealedObject JNonce, pars = "", static = False, know = False})
+((JAgent,"B"),RoleField {rolename = "VAR_B_R5", typeofvar = SealedObject JNonce, pars = "", static = False, know = False})
+((JAgent,"intr"),RoleField {rolename = "VAR_INTR_R6", typeofvar = SealedObject JNonce, pars = "", static = False, know = False})
+((JAgent,"A"),RoleField {rolename = "VAR_A_R7", typeofvar = SealedObject JNonce, pars = "", static = False, know = False})
+
+--- Actions ---
+A|0.1: noteq(A,intr)
+intr|0.2: noteq(intr,A)
+B|0.3: noteq(B,intr)
+intr|0.4: noteq(intr,B)
+A|0: new (JNonce,"NA")
+A|0: (JSymmetricKey,"VAR_A_SHKAB") : JSymmetricKey
+A|0: send(JAgent,AnBxParams [JAgent,SealedObject (AnBxParams [JConstant JNonce,JNonce])]) 	 # ch: ((JAgent,"A"),Insecure,(JAgent,"intr"),ipv4 169 254 124 239,55555,Client,"intr -> A - 169.254.124.239:55555 -> 169.254.124.239")
+intr|0: VAR_INTR_R0 (AnBxParams [JAgent,SealedObject (AnBxParams [JConstant JNonce,JNonce])]) = receive() 	 # ch: ((JAgent,"intr"),Insecure,(JAgent,"A"),ipv4 0 0 0 0,55555,Server,"A -> intr - 169.254.124.239 -> 169.254.124.239:55555")
+intr|0.1: eq(A,proj[1/2][VAR_INTR_R0])
+intr|1: (SealedObject (AnBxParams [JConstant JNonce,JNonce]),"VAR_INTR_J22INTRR0") : SealedObject (AnBxParams [JConstant JNonce,JNonce])
+intr|1: send(JAgent,AnBxParams [JAgent,SealedObject (AnBxParams [JConstant JNonce,JNonce])]) 	 # ch: ((JAgent,"intr"),Insecure,(JAgent,"B"),ipv4 169 254 124 239,55556,Client,"B -> intr - 169.254.124.239:55556 -> 169.254.124.239")
+B|1: VAR_B_R1 (AnBxParams [JAgent,SealedObject (AnBxParams [JConstant JNonce,JNonce])]) = receive() 	 # ch: ((JAgent,"B"),Insecure,(JAgent,"intr"),ipv4 0 0 0 0,55556,Server,"intr -> B - 169.254.124.239 -> 169.254.124.239:55556")
+B|1: (JSymmetricKey,"VAR_B_SHKAB") : JSymmetricKey
+B|1: (JNonce,"VAR_B_J22DSJ22BR1SHKAB") : JNonce
+B|1.1: wff(VAR_B_J22DSJ22BR1SHKAB)
+B|1.2: eq(A,proj[1/2][VAR_B_R1])
+B|2: new (JNonce,"NB2")
+B|2(2): witness((JNonce,"_chgoal_FreshSecure_NB2_AB"),NB2,[((JAgent,"A"),A),((JAgent,"B"),B)])
+B|2(2): witness((JNonce,"_auth_NB2_AB"),NB2,[((JAgent,"A"),A),((JAgent,"B"),B)])
+B|2: new (JNonce,"NB")
+B|2: send(JAgent,SealedObject (AnBxParams [JNonce,JNonce])) 	 # ch: ((JAgent,"B"),Insecure,(JAgent,"intr"),ipv4 0 0 0 0,55556,Server,"intr -> B - 169.254.124.239 -> 169.254.124.239:55556")
+intr|2: VAR_INTR_R2 (SealedObject (AnBxParams [JNonce,JNonce])) = receive() 	 # ch: ((JAgent,"intr"),Insecure,(JAgent,"B"),ipv4 169 254 124 239,55556,Client,"B -> intr - 169.254.124.239:55556 -> 169.254.124.239")
+intr|2.1: wff(VAR_INTR_R2)
+intr|2.2: wff(VAR_INTR_J22INTRR0)
+intr|3: send(JAgent,SealedObject (AnBxParams [JNonce,JNonce])) 	 # ch: ((JAgent,"intr"),Insecure,(JAgent,"A"),ipv4 0 0 0 0,55555,Server,"A -> intr - 169.254.124.239 -> 169.254.124.239:55555")
+A|3: VAR_A_R3 (SealedObject (AnBxParams [JNonce,JNonce])) = receive() 	 # ch: ((JAgent,"A"),Insecure,(JAgent,"intr"),ipv4 169 254 124 239,55555,Client,"intr -> A - 169.254.124.239:55555 -> 169.254.124.239")
+A|3: (AnBxParams [JNonce,JNonce],"VAR_A_DSAR3ASHKAB") : AnBxParams [JNonce,JNonce]
+A|3.1: eq(succ(NA),proj[1/2][VAR_A_DSAR3ASHKAB])
+A|4: (JNonce,"VAR_A_J22ADSAR3ASHKAB") : JNonce
+A|4: send(JAgent,SealedObject JNonce) 	 # ch: ((JAgent,"A"),Insecure,(JAgent,"intr"),ipv4 169 254 124 239,55555,Client,"intr -> A - 169.254.124.239:55555 -> 169.254.124.239")
+intr|4: VAR_INTR_R4 (SealedObject JNonce) = receive() 	 # ch: ((JAgent,"intr"),Insecure,(JAgent,"A"),ipv4 0 0 0 0,55555,Server,"A -> intr - 169.254.124.239 -> 169.254.124.239:55555")
+intr|4.1: wff(VAR_INTR_R4)
+intr|5: send(JAgent,SealedObject JNonce) 	 # ch: ((JAgent,"intr"),Insecure,(JAgent,"B"),ipv4 169 254 124 239,55556,Client,"B -> intr - 169.254.124.239:55556 -> 169.254.124.239")
+B|5: VAR_B_R5 (SealedObject JNonce) = receive() 	 # ch: ((JAgent,"B"),Insecure,(JAgent,"intr"),ipv4 0 0 0 0,55556,Server,"intr -> B - 169.254.124.239 -> 169.254.124.239:55556")
+B|5.1: eq(succ(NB),decS(VAR_B_R5,VAR_B_SHKAB))
+B|6: send(JAgent,SealedObject JNonce) 	 # ch: ((JAgent,"B"),Insecure,(JAgent,"intr"),ipv4 0 0 0 0,55556,Server,"intr -> B - 169.254.124.239 -> 169.254.124.239:55556")
+intr|6: VAR_INTR_R6 (SealedObject JNonce) = receive() 	 # ch: ((JAgent,"intr"),Insecure,(JAgent,"B"),ipv4 169 254 124 239,55556,Client,"B -> intr - 169.254.124.239:55556 -> 169.254.124.239")
+intr|6.1: wff(VAR_INTR_R6)
+intr|7: send(JAgent,SealedObject JNonce) 	 # ch: ((JAgent,"intr"),Insecure,(JAgent,"A"),ipv4 0 0 0 0,55555,Server,"A -> intr - 169.254.124.239 -> 169.254.124.239:55555")
+A|7: VAR_A_R7 (SealedObject JNonce) = receive() 	 # ch: ((JAgent,"A"),Insecure,(JAgent,"intr"),ipv4 169 254 124 239,55555,Client,"intr -> A - 169.254.124.239:55555 -> 169.254.124.239")
+A|7.1: wff(VAR_A_J22ADSAR3ASHKAB)
+A|7.2: wff(decS(VAR_A_R7,VAR_A_SHKAB))
+A|99(7): request((JNonce,"_chgoal_FreshSecure_NB2_AB"),decS(VAR_A_R7,VAR_A_SHKAB),[((JAgent,"A"),A),((JAgent,"B"),B)])
+A|99(7): request((JNonce,"_auth_NB2_AB"),decS(VAR_A_R7,VAR_A_SHKAB),[((JAgent,"A"),A),((JAgent,"B"),B)])
+B|99(2): secret((JNonce,"chgoal_Confidential_NB2_BA"),NB2,[((JAgent,"B"),B),((JAgent,"A"),A)])

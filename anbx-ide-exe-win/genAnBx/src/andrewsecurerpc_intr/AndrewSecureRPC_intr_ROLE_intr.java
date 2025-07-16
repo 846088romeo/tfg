@@ -64,7 +64,7 @@ public final class AndrewSecureRPC_intr_ROLE_intr extends AnB_Protocol<AndrewSec
 	private SealedObject VAR_INTR_R4 = null;
 	private SealedObject VAR_INTR_R6 = null;
 	
-	private SealedObject VAR_attack = null;
+	private SealedObject VAR_INTR_REPLAY_R7 = null;
 	
 	public AndrewSecureRPC_intr_ROLE_intr(AndrewSecureRPC_intr_Roles role, String name, String sharepath) {
 		super();
@@ -186,14 +186,14 @@ public final class AndrewSecureRPC_intr_ROLE_intr extends AnB_Protocol<AndrewSec
 			
 			// Attack simulation
 			
-			if (VAR_attack == null  || !(new Random().nextInt(10) < 4)) {
+			if (VAR_INTR_REPLAY_R7 == null  || !(new Random().nextInt(10) < 4)) {
 				AnBx_Debug.out(layer, ">>> NO ATTACK <<<");
-				VAR_attack = VAR_INTR_R6;
+				VAR_INTR_REPLAY_R7 = VAR_INTR_R6;
 				s.Send(VAR_INTR_R6);
             } else {
                 // Simulate attack by sending previous message
             	AnBx_Debug.out(layer, ">>> ATTACK <<<");
-                s.Send(VAR_attack);
+                s.Send(VAR_INTR_REPLAY_R7);
 			}
 				
 			break;

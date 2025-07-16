@@ -266,7 +266,7 @@ replayVarsForRole role actions =
       static = False,
       know = False
     }
-  | JEmitReplay (step, agent, _, _, _, _) <- actions,
+  | JEmitReplay (step, agent, _, _, _) <- actions,
     toRole agent == role,
     let varname = "VAR_" ++ map toUpper agent ++ "_REPLAY_R" ++ show step
   ]
@@ -469,7 +469,7 @@ listChannelStepsRole :: String -> [JAction] -> [ChannelStep]
 listChannelStepsRole _ [] = []
 listChannelStepsRole role (JEmit (st,agent,ch,_,_):xs) = if toRole agent == role then nubOrd (ChannelStep {channel=channelName ch,step=toStep st} : listChannelStepsRole role xs) else listChannelStepsRole role xs
 listChannelStepsRole role (JReceive (st,agent,ch,_):xs) = if toRole agent == role then nubOrd (ChannelStep {channel=channelName ch,step=toStep st} : listChannelStepsRole role xs) else listChannelStepsRole role xs
-listChannelStepsRole role (JEmitReplay (st,agent,ch,_,_,_):xs) = if toRole agent == role then nubOrd (ChannelStep {channel=channelName ch,step=toStep st} : listChannelStepsRole role xs) else listChannelStepsRole role xs
+listChannelStepsRole role (JEmitReplay (st,agent,ch,_,_):xs) = if toRole agent == role then nubOrd (ChannelStep {channel=channelName ch,step=toStep st} : listChannelStepsRole role xs) else listChannelStepsRole role xs
 
 listChannelStepsRole role (_:xs) = listChannelStepsRole role xs
 
@@ -478,7 +478,7 @@ listChannelStepsNum :: String -> [JAction] -> [Int]
 listChannelStepsNum _ [] = []
 listChannelStepsNum role (JEmit (st,agent,_,_,_):xs) = if toRole agent == role then nubOrd (st : listChannelStepsNum role xs) else listChannelStepsNum role xs
 listChannelStepsNum role (JReceive (st,agent,_,_):xs) = if toRole agent == role then nubOrd (st : listChannelStepsNum role xs) else listChannelStepsNum role xs
-listChannelStepsNum role (JEmitReplay (st,agent,_,_,_,_):xs) = if toRole agent == role then nubOrd (st : listChannelStepsNum role xs) else listChannelStepsNum role xs
+listChannelStepsNum role (JEmitReplay (st,agent,_,_,_):xs) = if toRole agent == role then nubOrd (st : listChannelStepsNum role xs) else listChannelStepsNum role xs
 listChannelStepsNum role (_:xs) = listChannelStepsNum role xs
 
 getSteps :: [ChannelStep] -> [String]
@@ -510,7 +510,7 @@ filterStepActions :: String -> String -> [JAction] -> [JAction]
 filterStepActions _ _ [] = []
 filterStepActions step role (x@(JNew (st,agent,_)):xs) = if toRole agent == role && toStep st == step then x : filterStepActions step role xs else filterStepActions step role xs
 filterStepActions step role (x@(JEmit (st,agent,_,_,_)):xs) = if toRole agent == role && toStep st == step then x : filterStepActions step role xs else filterStepActions step role xs
-filterStepActions step role (x@(JEmitReplay (st,agent,_,_,_,_)) : xs) = if toRole agent == role && toStep st == step then x : filterStepActions step role xs else filterStepActions step role xs
+filterStepActions step role (x@(JEmitReplay (st,agent,_,_,_)) : xs) = if toRole agent == role && toStep st == step then x : filterStepActions step role xs else filterStepActions step role xs
 filterStepActions step role (x@(JReceive (st,agent,_,_)):xs) = if toRole agent == role && toStep st == step then x : filterStepActions step role xs else filterStepActions step role xs
 filterStepActions step role (x@(JCheck (st,agent,_,_)):xs) = if toRole agent == role && toStep st == step then x : filterStepActions step role xs else filterStepActions step role xs
 filterStepActions step role (x@(JAssign (st,agent,_,_)):xs) = if toRole agent == role && toStep st == step then x : filterStepActions step role xs else filterStepActions step role xs
@@ -689,17 +689,18 @@ mkStepActionStr (JReceive (step,_,_,NEVar (t,id) _)) _ options protname = id ++ 
 mkStepActionStr act@(JReceive _) _ _ _ = error ("malformed action: " ++ show act)                                                                                      
 mkStepActionStr (JAssign (_,_,(t,id),expr)) sh _ _ = id ++ " = " ++ castofTypeEx expr t ++ mkExpression expr sh ++ eoS ++ if writeActionComments then inlinecommentPrefix ++ show expr else ""
 mkStepActionStr (JEmit (_,_,_,_,expr)) sh _ _ = applyOp APISend (mkExpression expr sh) ++ eoS ++ if writeActionComments then inlinecommentPrefix ++ show expr else ""
-mkStepActionStr (JEmitReplay (_, _, _, destExpr, NEVar (_, origVar) _, NEVar (_, replayVar) _)) _ _ _ =
-  "if (" ++ replayVar ++ " == null  || !(new Random().nextInt(10) < 4)) {\n" ++
-  "    AnBx_Debug.out(layer, \">>> NO ATTACK <<<\");\n" ++
-  "    " ++ replayVar ++ " = " ++ origVar ++ ";\n" ++
-  "    " ++ mkExpression destExpr [] ++ ".Send(" ++ origVar ++ ");\n" ++
-  "} else {\n" ++
-  "    // Simulate attack by sending previous message\n" ++
-  "    AnBx_Debug.out(layer, \">>> ATTACK <<<\");\n" ++
-  "    " ++ mkExpression destExpr [] ++ ".Send(" ++ replayVar ++ ");\n" ++
-  "}"
-
+mkStepActionStr (JEmitReplay (step,agent,_,_,expr)) sh _ _ = 
+    let replayVar = "VAR_" ++ map toUpper agent ++ "_REPLAY_R" ++ show step
+        currentMsg = mkExpression expr sh
+    in "if (" ++ replayVar ++ " == null || !(new Random().nextInt(10) < 4)) {\n" ++
+       "\t\t\t\tAnBx_Debug.out(layer, \">>> NO ATTACK <<<\");\n" ++
+       "\t\t\t\t" ++ replayVar ++ " = " ++ currentMsg ++ ";\n" ++
+       "\t\t\t\t" ++ applyOp APISend currentMsg ++ eoS ++ "\n" ++
+       "\t\t\t} else {\n" ++
+       "\t\t\t\t// Simulate attack by sending previous message\n" ++
+       "\t\t\t\tAnBx_Debug.out(layer, \">>> ATTACK <<<\");\n" ++
+       "\t\t\t\t" ++ applyOp APISend replayVar ++ eoS ++ "\n" ++
+       "\t\t\t}" ++ if writeActionComments then inlinecommentPrefix ++ show expr else ""
 mkStepActionStr (JCheck (step,_,chk,substep)) sh _ _ = mkStepActionCheckStr chk (mkCheckLabel step substep) sh
 mkStepActionStr (JCall (_,_, f)) sh _ _ = mkExpression f sh ++ eoS
 mkStepActionStr (JGoal (step,_,Seen,_,expr,_,_,_)) sh _ _ = applyOp APISeen (mkCheckLabel step 0 ++ mkExpression expr sh) ++ eoS ++ if writeActionComments then inlinecommentPrefix ++ show expr else ""
