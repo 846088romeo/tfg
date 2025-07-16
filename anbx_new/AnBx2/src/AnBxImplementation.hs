@@ -36,7 +36,6 @@ import           AnBxShow
 import           Data.Char
 import Data.List ( (\\), union )
 import Data.Containers.ListUtils (nubOrd)
-import           Debug.Trace
 
 
 type AnBxStepImpl = ([(AnBxType,Ident)],[Ident],AnBxActions,NonceStore)
@@ -284,7 +283,7 @@ appendDigestKeys m k = Comp Cat (m : k)
 
 -- this adds the messages used to pass the hmac key to the recipient (it returns the expanded digest, plus optional messages)
 mkDigestMsgAction ::  AnBxAction -> AnBxTypes -> [HmacMapping] -> Bool -> DigestType -> (AnBxMsg,[AnBxMsg])
-mkDigestMsgAction (_,msgw,_,_) types maps inhash dt = mkDigestMsgAction' msgw
+mkDigestMsgAction (_,msgw,_,_) _ maps inhash dt = mkDigestMsgAction' msgw
         where
                 mkDigestMsgAction' :: AnBxMsgWrapper -> (AnBxMsg, [AnBxMsg])
                 mkDigestMsgAction' (PlainMsg (Atom id)) = (Atom id, [])

@@ -252,7 +252,7 @@ mkAnBxActionExpandBullet _ _ options a@((peer1,AnBxAst.Confidential,peer2),msg,m
 mkAnBxActionExpandBullet _ _ options a@((peer1,AnBxAst.Secure,peer2@(id,_,_)),msg,msg1,msg2) = if anbxexpandbullets options then  ((peer1,BMChannelTypeTriple Std peer1 [id] peer2,peer2),msg,msg1,msg2) else a              -- A -> B,(A|B|B)
 mkAnBxActionExpandBullet _ _ options a@((peer1,AnBxAst.FreshSecure,peer2@(id,_,_)),msg,msg1,msg2) = if anbxexpandbullets options then ((peer1,BMChannelTypeTriple Fresh peer1 [id] peer2,peer2),msg,msg1,msg2) else a        -- A -> B,@(A|B|B)
 
-mkAnBxActionExpandBullet ka certified options a@((peer1@(id1,_,_),AnBxAst.Sharing SHAgree,peer2@(id2,_,_)),msgw,msg1,msg2) = if anbxexpandagree options then -- expands agree action for attack trace reconstruction
+mkAnBxActionExpandBullet ka _ options a@((peer1@(id1,_,_),AnBxAst.Sharing SHAgree,peer2@(id2,_,_)),msgw,msg1,msg2) = if anbxexpandagree options then -- expands agree action for attack trace reconstruction
                                                                                                                                 let -- expansion with agreed sharing function
                                                                                                                                     ids = [id1,id2]
                                                                                                                                     (msg,wrap) = unwrapMsg msgw

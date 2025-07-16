@@ -1152,6 +1152,11 @@ translate varagents honagents privnames sysname (JEmit(_,ag,(a,ch,b,_,_,_,_),_,f
                                                                    defs1 = gUpdateDef ag (\p -> pa (POutput(a,(a,ch,b),f,p))) defs
                                                               in translate varagents honagents privnames sysname xs defs1 reachEvents
 
+translate varagents honagents privnames sysname (JEmitReplay(_,ag,(a,ch,b,_,_,_,_),_,f):xs) defs reachEvents = let
+                                                                 pa = getDef ag sysname defs
+                                                                 defs1 = gUpdateDef ag (\p -> pa (POutput(a,(a,ch,b),f,p))) defs
+                                                             in translate varagents honagents privnames sysname xs defs1 reachEvents
+
 translate varagents honagents privnames sysname (JReceive(_,ag,(a,ch,b,_,_,_,_),NEVar x _):xs) defs reachEvents = let
                                                                                 pa = getDef ag sysname defs
                                                                                 defs1 = gUpdateDef ag (\p -> pa (PInput((JAgent,ag),(a,ch,b),x,p))) defs
@@ -1470,6 +1475,7 @@ maxProjActs xs = foldr (max . maxProjAct) 1 xs
 maxProjAct :: JAction -> Int
 maxProjAct (JNew _) = 1
 maxProjAct (JEmit (_,_,_,e,f)) = max (maxProjExpr e) (maxProjExpr f)
+maxProjAct (JEmitReplay (_,_,_,e,f)) = max (maxProjExpr e) (maxProjExpr f)
 maxProjAct (JReceive _) = 1
 maxProjAct (JCheck (_,_,phi,_)) = maxProjAtom phi
 maxProjAct (JAssign (_,_,_,e)) = maxProjExpr e

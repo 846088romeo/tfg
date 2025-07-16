@@ -48,7 +48,6 @@ import Text.StringTemplate.Classes
 import System.FilePath (isRelative,takeFileName,takeExtension,(</>))
 import Data.Containers.ListUtils (nubOrd)
 import System.Directory
-import Debug.Trace
 import Java_TypeSystem_JType
 import JavaType
 import JavaCodeGenConfig
@@ -186,6 +185,7 @@ moveOddJAssign a = a
 moveStepsObjCheck :: JAction -> JAction
 moveStepsObjCheck (JNew (step,a,k)) = JNew (moveStepObjCheck step,a,k)
 moveStepsObjCheck (JEmit (step,a,ch,e,f)) = JEmit (moveStepObjCheck step,a,ch,e,f)
+moveStepsObjCheck (JEmitReplay (step,a,ch,e,f)) = JEmitReplay (moveStepObjCheck step,a,ch,e,f)
 moveStepsObjCheck (JReceive (step,a,ch,x)) = JReceive (moveStepObjCheck step,a,ch,x)
 moveStepsObjCheck (JCheck (step,a,phi,substep)) = JCheck (moveStepObjCheck step,a,phi,substep)
 moveStepsObjCheck (JAssign (step,a,x,e)) = JAssign (moveStepObjCheck step,a,x,e)

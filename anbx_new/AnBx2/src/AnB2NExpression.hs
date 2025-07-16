@@ -149,6 +149,7 @@ showNExecnarr ((name,ds,equations),xs) = "Protocol: " ++ name ++ "\n\n" ++
 stepOfNAction :: NAction -> Int
 stepOfNAction (NANew (step,_,_)) = step
 stepOfNAction (NAEmit (step,_,_,_,_)) = step
+stepOfNAction (NAEmitReplay (step,_,_,_,_)) = step
 stepOfNAction (NAReceive (step,_,_,_)) = step
 stepOfNAction (NACheck (step,_,_)) = step
 stepOfNAction (NAAssign (step,_,_,_)) = step
@@ -158,6 +159,7 @@ stepOfNAction (NAGoal (step,_,_,_,_,_,_,_)) = step
 agentOfNAction:: NAction -> Maybe String
 agentOfNAction (NANew (_,a,_)) = Just a
 agentOfNAction (NAEmit (_,a,_,_,_)) = Just a
+agentOfNAction (NAEmitReplay (_,a,_,_,_)) = Just a
 agentOfNAction (NAReceive (_,a,_,_)) = Just a
 agentOfNAction (NACheck (_,a,_)) = Just a
 agentOfNAction (NAAssign (_,a,_,_)) = Just a

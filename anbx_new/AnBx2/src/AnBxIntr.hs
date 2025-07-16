@@ -113,12 +113,12 @@ mapAnBxIntrActions actions intr = concatMap ( \x -> mapAnBxIntrAction x intr) ac
 
 mapAnBxIntrAction :: AnBxAction -> Ident -> AnBxActions
 mapAnBxIntrAction ((p1,ct@Insecure,p2),msgw,msg1,msg2) intr = 
-												let
-													pi = ident2AnBxPeer intr
-													a1 = ((p1,ct,pi),msgw,msg1,msg2)
-													msg' = case msgw of
-														ReplayMsg m -> PlainMsg m
-														_ -> msgw
-													a2 = ((pi,ct,p2),msg',msg1,msg2)
+                                                let
+                                                    pi = ident2AnBxPeer intr
+                                                    a1 = ((p1,ct,pi),msgw,msg1,msg2)
+                                                    msg' = case msgw of
+                                                        ReplayMsg m -> PlainMsg m
+                                                        _ -> msgw
+                                                    a2 = ((pi,ct,p2),msg',msg1,msg2)
                                                 in [a1,a2]
 mapAnBxIntrAction a _ = [a]

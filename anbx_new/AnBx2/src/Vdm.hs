@@ -30,7 +30,6 @@ import Data.List ( (\\), intercalate )
 import Data.Containers.ListUtils (nubOrd)
 import AnBAst
 import AnBxMsgCommon
-import Debug.Trace
 import AnBxMsg ( AnBxMsg (Comp,Atom),isAtype, patternMsgError)
 import qualified AnBxShow as AnB
 import AnBxAst (AnBxChannelType(..), AnBxType (..), TO (..), AnBxGoal (..), agentDefaultType, isAgentType, isFunctionType, peerIsPseudo, showSpecGoal, unwrapMsg)
@@ -442,19 +441,23 @@ showGoal _ (ChGoal (_,ActionComment _ _,_) _ _) _ _ = error "comment is not a ch
 showGoal _ g _ AnB = "\t-- " ++ showSimpleGoal g
 showGoal _ (ChGoal (_,ch@(Sharing SHShare),_) _ _) _ _ = error (show ch ++ " in not really an action, it should not be used explicitly")
 showGoal mode (ChGoal (peerFrom,channeltype,peerTo) msg _) n ot = "\t" ++ case ot of
+                                                                         AnB -> "-- " ++ showSimpleGoal (ChGoal (peerFrom,channeltype,peerTo) msg undefined)
                                                                          VDM -> mkAction ++"(" ++ Vdm.showPeer peerFrom ++ ",<" ++ show channeltype ++ ">," ++ Vdm.showPeer peerTo ++ "," ++ showMsg mode (defIndent mode) msg ++ ")"
                                                                          VDMDec -> msgGoalPrefix ++ show n ++ ": Expr = " ++ showMsg mode (defIndent mode) msg
                                                                          VDMAct -> mkAction ++"(" ++ Vdm.showPeer peerFrom ++ ",<" ++ show channeltype ++ ">," ++ Vdm.showPeer peerTo ++ "," ++ msgGoalPrefix ++ show n ++ ")"
 showGoal mode (Secret msg peers False _) n ot = "\t" ++ case ot of
+                                         AnB -> "-- " ++ showSimpleGoal (Secret msg peers False undefined)
                                          VDM -> mkSecretAgreement ++ "({" ++ Vdm.showPeers peers ++ "}," ++ showMsg mode (defIndent mode) msg ++ ")"
                                          VDMDec -> msgGoalPrefix ++ show n ++ ": Expr = " ++ showMsg mode (defIndent mode) msg
                                          VDMAct -> mkSecretAgreement ++ "({" ++ Vdm.showPeers peers ++ "}," ++ msgGoalPrefix ++ show n ++ ")"
 showGoal _ g@(Secret _ _ True _) _ _ = error ("goal not implemented yet: " ++ show g)
 showGoal mode g@(Authentication peerFrom peerTo msg _) n ot = "\t" ++ case ot of
+                                         AnB -> "-- " ++ showSimpleGoal g
                                          VDM -> mkGoalItem ++"(" ++ Vdm.showPeer peerFrom ++ ",<" ++ showSpecGoal g ++ ">," ++ Vdm.showPeer peerTo ++ "," ++ showMsg mode (defIndent mode) msg ++ ")"
                                          VDMDec -> msgGoalPrefix ++ show n ++ ": Expr = " ++ showMsg mode (defIndent mode) msg
                                          VDMAct -> mkGoalItem ++"(" ++ Vdm.showPeer peerFrom ++ ",<" ++ showSpecGoal g ++ ">," ++ Vdm.showPeer peerTo ++ "," ++ msgGoalPrefix ++ show n ++ ")"
 showGoal mode g@(WAuthentication peerFrom peerTo msg _) n ot = "\t" ++ case ot of
+                                         AnB -> "-- " ++ showSimpleGoal g
                                          VDM -> mkGoalItem ++"(" ++ Vdm.showPeer peerFrom ++ ",<" ++ showSpecGoal g ++ ">," ++ Vdm.showPeer peerTo ++ "," ++ showMsg mode (defIndent mode) msg ++ ")"
                                          VDMDec -> msgGoalPrefix ++ show n ++ ": Expr = " ++ showMsg mode (defIndent mode) msg
                                          VDMAct -> mkGoalItem ++"(" ++ Vdm.showPeer peerFrom ++ ",<" ++ showSpecGoal g ++ ">," ++ Vdm.showPeer peerTo ++ "," ++ msgGoalPrefix ++ show n ++ ")"

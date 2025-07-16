@@ -71,8 +71,8 @@ trAnBActions2Spyer ((((a,_,_),Insecure,(b,_,_)),msgw,_,_):xs) ctx opt =
     (msg, wrap) = unwrapMsg msgw
     expr = trMsg msg ctx
     x = case wrap msg of
-        PlainMsg msg -> XSend (a,b,expr)
-        ReplayMsg msg -> XSendReplay (a,b,expr)
+        (PlainMsg _) -> XSend (a,b,expr)
+        (ReplayMsg _) -> XSendReplay (a,b,expr)
   in x : trAnBActions2Spyer xs ctx opt
 trAnBActions2Spyer (((_,Sharing _,_),_,_,_):xs) ctx opt = trAnBActions2Spyer xs ctx opt     -- skip sharing actions
 trAnBActions2Spyer ((ch,_,_,_):_) _ _ = error ("can not translate to Spyer channel " ++ showChannel ch)

@@ -69,7 +69,6 @@ import Spyer_Spi (showSpiOfExecnarr)
 import AnBTypeChecking (typeCheckProtocol)
 
 
-import Debug.Trace
 import Java_TypeSystem_Context
 import Java_TypeSystem_JType
 import AnBAst
@@ -116,7 +115,7 @@ failingSubExpr e out ffc =
   let isCheckFailing = isOutTypeJava out || (ffc && not (isOutTypePV out)) -- checks are filtered for Java or if flag is explicit but not ProVerif
   -- isCheckFailing = isOutTypeJava out || ffc
    in case e of
-        (NEVar _ n) -> False -- failingSubExpr n out ffc   -- at this stage the only variables are the received messages
+        (NEVar _ _) -> False -- failingSubExpr n out ffc   -- at this stage the only variables are the received messages
         (NEName _) -> False
         (NEEnc m n) -> isCheckFailing || (failingSubExpr m out ffc || failingSubExpr n out ffc) -- encryption randomisation
         (NESign m n) -> isCheckFailing || (failingSubExpr m out ffc || failingSubExpr n out ffc) -- encryption randomisation
@@ -408,6 +407,7 @@ findVars step agent expr actions optlevel =
           (NEFun _ e2) -> findVars step agent e2 actions optlevel
           (NEXor e1 e2) -> findVars step agent e1 actions optlevel ++ findVars step agent e2 actions optlevel
           (NEProj _ _ e) -> findVars step agent e actions optlevel
+          _ -> [] -- no variables in the expression
 
 substVars :: Execnarr -> VarMappings ->  JContext -> Execnarr
 -- substVars (x:_) vars _ | trace ("substVars\n\tactions[1]: " ++ show x ++ "\n\tvars: " ++ show vars) False = undefined

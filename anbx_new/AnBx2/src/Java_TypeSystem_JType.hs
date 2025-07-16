@@ -37,7 +37,6 @@ module Java_TypeSystem_JType where
 import AnBxMsgCommon
 import Data.Typeable
 import Data.Data
-import Debug.Trace
 import qualified Data.Set as Set
 import Data.List (intercalate)
 type StringSet = Set.Set String
@@ -82,8 +81,8 @@ data NExpression =
 
 instance Show NExpression where
         show :: NExpression -> String
-        show (NEVar (t,name) _) = name -- ++ "[V:" ++ show t ++ "]" -- ++ "  [VAR: name:" ++name ++ " expr: " ++ show e ++"]  "
-        show (NEName (t,name)) = name -- ++ "[N:" ++ show t ++ "]" -- ++ "  [NAME] "
+        show (NEVar (_,name) _) = name -- ++ "[V:" ++ show t ++ "]" -- ++ "  [VAR: name:" ++name ++ " expr: " ++ show e ++"]  "
+        show (NEName (_,name)) = name -- ++ "[N:" ++ show t ++ "]" -- ++ "  [NAME] "
         show (NECat []) = ""
         show (NECat [x]) = show x
         show (NECat (x:xs)) = "<" ++ show x  ++ foldr (\x y -> "," ++ show x ++ y ) "" xs ++ ">"

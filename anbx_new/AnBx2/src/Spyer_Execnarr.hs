@@ -56,8 +56,6 @@ import Java_TypeSystem_Context ( JContext, buildJContext, getIdentifiersByTypeSt
 import Java_TypeSystem_Evaluator ( typeofTS )
 import Java_TypeSystem_JType
 
-import Debug.Trace
-
 getKappa :: MapSK -> String -> JContext -> KnowledgeMap
 getKappa kappa a ctx = if not (Map.member a kappa) then Map.singleton (agent2NExpression a ctx) (Set.singleton (agent2NExpression a ctx)) else fromJust (Map.lookup a kappa)
 
