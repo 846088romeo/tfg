@@ -81,7 +81,7 @@ data NExpression =
 
 instance Show NExpression where
         show :: NExpression -> String
-        show (NEVar (_,name) _) = name -- ++ "[V:" ++ show t ++ "]" -- ++ "  [VAR: name:" ++name ++ " expr: " ++ show e ++"]  "
+        show (NEVar (_,wname) _) = name -- ++ "[V:" ++ show t ++ "]" -- ++ "  [VAR: name:" ++name ++ " expr: " ++ show e ++"]  "
         show (NEName (_,name)) = name -- ++ "[N:" ++ show t ++ "]" -- ++ "  [NAME] "
         show (NECat []) = ""
         show (NECat [x]) = show x

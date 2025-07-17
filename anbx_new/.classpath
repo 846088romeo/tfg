@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="AnBxJ/src"/>
+	<classpathentry kind="src" path="genAnBx/src"/>
+	<classpathentry kind="lib" path="AnBxJ/AnBxJ.jar"/>
+	<classpathentry kind="lib" path="AnBxJ/bcprov-jdk18on-1.80.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

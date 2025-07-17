@@ -47,7 +47,7 @@
 	<target name="ROLE_intr"  >
 		                <java classname="${ant.project.name}.${main-class}" failonerror="true" fork="yes"> 
 		                    <arg line="-r ROLE_intr" />
-                            <arg line="-jsessions 1" />
+                            <arg line="-jsessions 5" />
 		                    <classpath refid="my_classpath"/>
                             
                         </java>
@@ -55,7 +55,7 @@
 	<target name="ROLE_B"  >
 		                <java classname="${ant.project.name}.${main-class}" failonerror="true" fork="yes"> 
 		                    <arg line="-r ROLE_B" />
-                            <arg line="-jsessions 1" />
+                            <arg line="-jsessions 5" />
 		                    <classpath refid="my_classpath"/>
                             
                         </java>
@@ -63,7 +63,7 @@
 	<target name="ROLE_A"  >
 		                <java classname="${ant.project.name}.${main-class}" failonerror="true" fork="yes"> 
 		                    <arg line="-r ROLE_A" />
-                            <arg line="-jsessions 1" />
+                            <arg line="-jsessions 5" />
 		                    <classpath refid="my_classpath"/>
                             
                         </java>
