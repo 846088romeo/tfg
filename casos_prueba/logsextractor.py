@@ -175,7 +175,7 @@ class Trace:
         self.file = filename
         self.prot = prot
         self.roles_alias = dict()
-        self.howamI = ''
+        self.whoamI = ''
         self.sessions = 0
         self.keywords = [['Nonce - DRBG - Value:','generateNumber'], ['AnBx_Params - params:','AnBx_Params'], \
                         ['Sent','sent'], ['Received','received'], #['Encrypted','encrypted'], ['Decrypted','decrypted'], \
