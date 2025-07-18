@@ -1,0 +1,5 @@
+_SET ?A 'alice'
+_SET ?B 'bob'
+_SET ?intr 'charlie'
+;GOAL auth:[?NB2],[?A,?B]
+_SET ?NB2 'X2','X7','X12'
