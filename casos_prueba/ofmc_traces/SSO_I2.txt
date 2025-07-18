@@ -1,0 +1,49 @@
+INPUT:
+   ../casestudies_library/SSO.AnB
+SUMMARY:
+  ATTACK_FOUND
+GOAL:
+  strong_auth (C authenticates SP on Data)
+BACKEND:
+  Open-Source Fixedpoint Model-Checker version 2022
+STATISTICS:
+  TIME 1878685 ms
+  parseTime 0 ms
+
+ATTACK TRACE:
+(x1501,1) -> i: pseudonym(x1501),{|x1501,x1502,URI(1)|}_(secChCr(pseudonym(x1501),x1502))
+(x1501,2) -> i: pseudonym(x1501),{|x1501,x1502,URI(2)|}_(secChCr(pseudonym(x1501),x1502))
+i -> (x1502,1): pseudonym(x1501),{|x1501,x1502,URI(2)|}_(secChCr(pseudonym(x1501),x1502))
+(x1502,1) -> i: {|x1501,idp,x1502,ID(3),URI(2)|}_(secChCr(x1502,pseudonym(x1501)))
+i -> (x1502,2): pseudonym(x1501),{|x1501,x1502,URI(1)|}_(secChCr(pseudonym(x1501),x1502))
+(x1502,2) -> i: {|x1501,idp,x1502,ID(4),URI(1)|}_(secChCr(x1502,pseudonym(x1501)))
+i -> (x1501,1): {|x1501,idp,x1502,ID(4),URI(1)|}_(secChCr(x1502,pseudonym(x1501)))
+(x1501,1) -> i: {|x1501,idp,x1502,ID(4),URI(1)|}_(secChCr(x1501,idp))
+i -> (idp,1): {|x1501,idp,x1502,ID(4),URI(1)|}_(secChCr(x1501,idp))
+(idp,1) -> i: {|{x1501,idp}_inv(sk(idp)),URI(1)|}_(secChCr(idp,x1501))
+i -> (x1501,1): {|{x1501,idp}_inv(sk(idp)),URI(1)|}_(secChCr(idp,x1501))
+(x1501,1) -> i: pseudonym(x1501),{|{x1501,idp}_inv(sk(idp)),URI(1)|}_(secChCr(pseudonym(x1501),x1502))
+i -> (x1501,2): {|x1501,idp,x1502,ID(3),URI(2)|}_(secChCr(x1502,pseudonym(x1501)))
+(x1501,2) -> i: {|x1501,idp,x1502,ID(3),URI(2)|}_(secChCr(x1501,idp))
+i -> (idp,2): {|x1501,idp,x1502,ID(3),URI(2)|}_(secChCr(x1501,idp))
+(idp,2) -> i: {|{x1501,idp}_inv(sk(idp)),URI(2)|}_(secChCr(idp,x1501))
+i -> (x1501,2): {|{x1501,idp}_inv(sk(idp)),URI(2)|}_(secChCr(idp,x1501))
+(x1501,2) -> i: pseudonym(x1501),{|{x1501,idp}_inv(sk(idp)),URI(2)|}_(secChCr(pseudonym(x1501),x1502))
+i -> (x1502,1): pseudonym(x1501),{|{x1501,idp}_inv(sk(idp)),URI(2)|}_(secChCr(pseudonym(x1501),x1502))
+(x1502,1) -> i: {|Data(11)|}_(secChCr(x1502,pseudonym(x1501)))
+i -> (x1501,1): {|Data(11)|}_(secChCr(x1502,pseudonym(x1501)))
+i -> (x1501,2): {|Data(11)|}_(secChCr(x1502,pseudonym(x1501)))
+
+
+% Reached State:
+% 
+% request(x1501,x1502,pCSPData,Data(11),2)
+% request(x1501,x1502,pCSPData,Data(11),1)
+% state_rC(x1501,4,sk(idp),hmac,hash,sk,hk,pk,empty,inv(sk(x1501)),inv(hk(x1501)),inv(pk(x1501)),x1502,idp,URI(2),x1501,x1502,URI(2),ID(3),x1501,idp,x1502,ID(3),URI(2),{x1501,idp}_inv(sk(idp)),{x1501,idp}_inv(sk(idp)),URI(2),Data(11),2)
+% state_ridp(idp,1,sk(idp),hmac,hash,sk,hk,pk,empty,inv(hk(idp)),inv(pk(idp)),inv(sk(idp)),x1501,URI(1),ID(4),x1502,x1501,idp,x1502,ID(4),URI(1),{x1501,idp}_inv(sk(idp)),URI(1),1)
+% state_rSP(x1502,2,hmac,hash,sk,hk,pk,empty,inv(sk(x1502)),inv(hk(x1502)),inv(pk(x1502)),sk(idp),idp,URI(2),x1501,x1501,x1502,URI(2),pseudonym(x1501),ID(3),x1501,idp,x1502,ID(3),URI(2),{x1501,idp}_inv(sk(idp)),{x1501,idp}_inv(sk(idp)),URI(2),Data(11),1)
+% state_rC(x1501,4,sk(idp),hmac,hash,sk,hk,pk,empty,inv(sk(x1501)),inv(hk(x1501)),inv(pk(x1501)),x1502,idp,URI(1),x1501,x1502,URI(1),ID(4),x1501,idp,x1502,ID(4),URI(1),{x1501,idp}_inv(sk(idp)),{x1501,idp}_inv(sk(idp)),URI(1),Data(11),1)
+% state_rSP(x1502,1,hmac,hash,sk,hk,pk,empty,inv(sk(x1502)),inv(hk(x1502)),inv(pk(x1502)),sk(idp),idp,URI(1),x1501,x1501,x1502,URI(1),pseudonym(x1501),ID(4),x1501,idp,x1502,ID(4),URI(1),2)
+% state_ridp(idp,1,sk(idp),hmac,hash,sk,hk,pk,empty,inv(hk(idp)),inv(pk(idp)),inv(sk(idp)),x1501,URI(2),ID(3),x1502,x1501,idp,x1502,ID(3),URI(2),{x1501,idp}_inv(sk(idp)),URI(2),2)
+% witness(x1502,x1501,pCSPData,Data(11))
+

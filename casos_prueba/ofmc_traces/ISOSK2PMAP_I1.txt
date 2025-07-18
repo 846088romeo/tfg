@@ -1,0 +1,32 @@
+INPUT:
+   ../casestudies_library/ISOsymKeyTwoPassMutualAuthProt.AnB
+SUMMARY:
+  ATTACK_FOUND
+GOAL:
+  strong_auth (B authenticates A on Text1)
+BACKEND:
+  Open-Source Fixedpoint Model-Checker version 2022
+STATISTICS:
+  TIME 137 ms
+  parseTime 0 ms
+  visitedNodes: 46 nodes
+  depth: 3 plies
+
+ATTACK TRACE:
+(x502,1) -> i: {|NA(1),x501,Text1(1)|}_(shk(x502,x501))
+i -> (x501,1): {|NA(1),x501,Text1(1)|}_(shk(x502,x501))
+(x501,1) -> i: {|NB(2),x502,Text3(2)|}_(shk(x502,x501))
+i -> (x501,2): {|NA(1),x501,Text1(1)|}_(shk(x502,x501))
+(x501,2) -> i: {|NB(3),x502,Text3(3)|}_(shk(x502,x501))
+
+
+% Reached State:
+% 
+% request(x501,x502,pBAText1,Text1(1),2)
+% request(x501,x502,pBAText1,Text1(1),1)
+% state_rB(x501,1,shk(x502,x501),x502,Text1(1),NA(1),{|NA(1),x501,Text1(1)|}_(shk(x502,x501)),NB(3),Text3(3),{|NB(3),x502,Text3(3)|}_(shk(x502,x501)),2)
+% state_rA(x502,1,shk(x502,x501),x501,NA(1),Text1(1),{|NA(1),x501,Text1(1)|}_(shk(x502,x501)),1)
+% state_rB(x501,1,shk(x502,x501),x502,Text1(1),NA(1),{|NA(1),x501,Text1(1)|}_(shk(x502,x501)),NB(2),Text3(2),{|NB(2),x502,Text3(2)|}_(shk(x502,x501)),1)
+% state_rA(x27,0,shk(x27,x29),x29,2)
+% witness(x502,x501,pBAText1,Text1(1))
+

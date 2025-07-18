@@ -1,0 +1,36 @@
+INPUT:
+   ../casestudies_library/SSO.AnB
+SUMMARY:
+  ATTACK_FOUND
+GOAL:
+  weak_auth (SP authenticates C on URI)
+BACKEND:
+  Open-Source Fixedpoint Model-Checker version 2022
+STATISTICS:
+  TIME 285 ms
+  parseTime 0 ms
+  visitedNodes: 120 nodes
+  depth: 6 plies
+
+ATTACK TRACE:
+(x802,1) -> i: pseudonym(x802),{|x802,i,URI(1)|}_(secChCr(pseudonym(x802),i))
+i -> (x801,1): i,{|x802,x801,x305|}_(secChCr(i,x801))
+(x801,1) -> i: {|x802,idp,x801,ID(2),x305|}_(secChCr(x801,i))
+i -> (x802,1): {|x802,idp,i,x504,URI(1)|}_(secChCr(i,pseudonym(x802)))
+(x802,1) -> i: {|x802,idp,i,x504,URI(1)|}_(secChCr(x802,idp))
+i -> (idp,1): {|x802,idp,i,x504,URI(1)|}_(secChCr(x802,idp))
+(idp,1) -> i: {|{x802,idp}_inv(sk(idp)),URI(1)|}_(secChCr(idp,x802))
+i -> (x802,1): {|{x802,idp}_inv(sk(idp)),URI(1)|}_(secChCr(idp,x802))
+(x802,1) -> i: pseudonym(x802),{|{x802,idp}_inv(sk(idp)),URI(1)|}_(secChCr(pseudonym(x802),i))
+i -> (x801,1): i,{|{x802,idp}_inv(sk(idp)),x305|}_(secChCr(i,x801))
+(x801,1) -> i: {|Data(6)|}_(secChCr(x801,i))
+
+
+% Reached State:
+% 
+% request(x801,x802,pSPCURI,x305,1)
+% state_rSP(x801,2,hmac,hash,sk,hk,pk,empty,inv(sk(x801)),inv(hk(x801)),inv(pk(x801)),sk(idp),idp,x305,x802,x802,x801,x305,i,ID(2),x802,idp,x801,ID(2),x305,{x802,idp}_inv(sk(idp)),{x802,idp}_inv(sk(idp)),x305,Data(6),1)
+% state_ridp(idp,1,sk(idp),hmac,hash,sk,hk,pk,empty,inv(hk(idp)),inv(pk(idp)),inv(sk(idp)),x802,URI(1),x504,i,x802,idp,i,x504,URI(1),{x802,idp}_inv(sk(idp)),URI(1),1)
+% state_rC(x802,3,sk(idp),hmac,hash,sk,hk,pk,empty,inv(sk(x802)),inv(hk(x802)),inv(pk(x802)),i,idp,URI(1),x802,i,URI(1),x504,x802,idp,i,x504,URI(1),{x802,idp}_inv(sk(idp)),{x802,idp}_inv(sk(idp)),URI(1),1)
+% witness(x802,i,pSPCURI,URI(1))
+
