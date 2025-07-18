@@ -49,7 +49,7 @@ import javax.crypto.spec.DHParameterSpec;
 import java.util.Map;
 import java.util.Random;
 
-public final class AndrewSecureRPC_replay_ROLE_intr extends AnB_Protocol<AndrewSecureRPC_replay_Steps,AndrewSecureRPC_replay_Roles> {
+public final class AndrewSecureRPC_replay_ROLE_A extends AnB_Protocol<AndrewSecureRPC_replay_Steps,AndrewSecureRPC_replay_Roles> {
 
 //	private static boolean loop = false;
 	private static long sessionID = 0;
@@ -58,15 +58,16 @@ public final class AndrewSecureRPC_replay_ROLE_intr extends AnB_Protocol<AndrewS
 	private static Crypto_ByteArray tag = new Crypto_ByteArray("tag".getBytes());
 	
 	// local vars
-	private AnBx_Params VAR_INTR_R0 = null;
-	private SealedObject VAR_INTR_J22INTRR0 = null;
-	private SealedObject VAR_INTR_R2 = null;
-	private SealedObject VAR_INTR_R4 = null;
-	private SealedObject VAR_INTR_R6 = null;
-	private SealedObject VAR_INTR_REPLAY_R7 = null;
+	private SecretKey ShkAB = null;
+	private Crypto_ByteArray NA = null;
+	private SecretKey VAR_A_SHKAB = null;
+	private SealedObject VAR_A_R3 = null;
+	private AnBx_Params VAR_A_DSAR3ASHKAB = null;
+	private Crypto_ByteArray VAR_A_J22ADSAR3ASHKAB = null;
+	private SealedObject VAR_A_R7 = null;
 	
 	
-	public AndrewSecureRPC_replay_ROLE_intr(AndrewSecureRPC_replay_Roles role, String name, String sharepath) {
+	public AndrewSecureRPC_replay_ROLE_A(AndrewSecureRPC_replay_Roles role, String name, String sharepath) {
 		super();
 		this.role = role;
 		this.name = name;   
@@ -80,35 +81,30 @@ public final class AndrewSecureRPC_replay_ROLE_intr extends AnB_Protocol<AndrewS
 		// set abortOnFail
 		setAbortOnFail(false);
         // init shared vars
-        };
+         ShkAB = (SecretKey) AnB_Session.readObject(sharepath+"shk_"+aliases.get("ROLE_A")+"_"+aliases.get("ROLE_B")+".ser");
+		};
 
 	public void run(Map<String, AnB_Session> lbs, Map<String, String> aliases, long sessions) {
 
 		this.aliases = aliases;
 		this.lbs = lbs;
-		AndrewSecureRPC_replay_ROLE_intr.sessions = sessions;
+		AndrewSecureRPC_replay_ROLE_A.sessions = sessions;
 		
-		AnB_Session ROLE_intr_channel_ROLE_A_Server_Insecure = lbs.get("ROLE_intr_channel_ROLE_A_Server_Insecure");
-        AnB_Session ROLE_intr_channel_ROLE_B_Client_Insecure = lbs.get("ROLE_intr_channel_ROLE_B_Client_Insecure");
+		AnB_Session ROLE_A_channel_ROLE_intr_Client_Insecure = lbs.get("ROLE_A_channel_ROLE_intr_Client_Insecure");
         
 		init();
 		
-        ROLE_intr_channel_ROLE_A_Server_Insecure.Open();
-		ROLE_intr_channel_ROLE_B_Client_Insecure.Open();
+        ROLE_A_channel_ROLE_intr_Client_Insecure.Open();
 		  
 		do {
 			AnBx_Debug.out(layer, "Session started: " + sessionID + "/" + sessions);
 
 			try {
 
-                    executeStep(ROLE_intr_channel_ROLE_A_Server_Insecure, AndrewSecureRPC_replay_Steps.STEP_0);
-					executeStep(ROLE_intr_channel_ROLE_B_Client_Insecure, AndrewSecureRPC_replay_Steps.STEP_1);
-					executeStep(ROLE_intr_channel_ROLE_B_Client_Insecure, AndrewSecureRPC_replay_Steps.STEP_2);
-					executeStep(ROLE_intr_channel_ROLE_A_Server_Insecure, AndrewSecureRPC_replay_Steps.STEP_3);
-					executeStep(ROLE_intr_channel_ROLE_A_Server_Insecure, AndrewSecureRPC_replay_Steps.STEP_4);
-					executeStep(ROLE_intr_channel_ROLE_B_Client_Insecure, AndrewSecureRPC_replay_Steps.STEP_5);
-					executeStep(ROLE_intr_channel_ROLE_B_Client_Insecure, AndrewSecureRPC_replay_Steps.STEP_6);
-					executeStep(ROLE_intr_channel_ROLE_A_Server_Insecure, AndrewSecureRPC_replay_Steps.STEP_7);
+                    executeStep(ROLE_A_channel_ROLE_intr_Client_Insecure, AndrewSecureRPC_replay_Steps.STEP_0);
+					executeStep(ROLE_A_channel_ROLE_intr_Client_Insecure, AndrewSecureRPC_replay_Steps.STEP_3);
+					executeStep(ROLE_A_channel_ROLE_intr_Client_Insecure, AndrewSecureRPC_replay_Steps.STEP_4);
+					executeStep(ROLE_A_channel_ROLE_intr_Client_Insecure, AndrewSecureRPC_replay_Steps.STEP_7);
 					
                     AnBx_Debug.out(layer, "Session completed: " + sessionID + "/" + sessions);
                     sessionID++;
@@ -121,8 +117,7 @@ public final class AndrewSecureRPC_replay_ROLE_intr extends AnB_Protocol<AndrewS
 				abort("Generic error",e,sessionID);
 			}
 		} while ((sessionID <= sessions && sessionID < Long.MAX_VALUE) || sessions < 0);
-        ROLE_intr_channel_ROLE_A_Server_Insecure.Close();
-		ROLE_intr_channel_ROLE_B_Client_Insecure.Close();
+        ROLE_A_channel_ROLE_intr_Client_Insecure.Close();
 		
 	};
 
@@ -134,65 +129,33 @@ public final class AndrewSecureRPC_replay_ROLE_intr extends AnB_Protocol<AndrewS
 		
 		case STEP_0:
 			
-			noteqCheck("0.2",aliases.get("ROLE_intr"),aliases.get("ROLE_A"));
-			noteqCheck("0.4",aliases.get("ROLE_intr"),aliases.get("ROLE_B"));
-			VAR_INTR_R0 = (AnBx_Params) s.Receive();
-			eqCheck("0.1",aliases.get("ROLE_A"),(String) VAR_INTR_R0.getValue(0));
-
-			break;
-		
-		case STEP_1:
-			
-			VAR_INTR_J22INTRR0 = (SealedObject) VAR_INTR_R0.getValue(1);
-			s.Send(new AnBx_Params(aliases.get("ROLE_A"),VAR_INTR_J22INTRR0));
-
-			break;
-		
-		case STEP_2:
-			
-			VAR_INTR_R2 = (SealedObject) s.Receive();
-			wffCheck("2.1",VAR_INTR_R2);
-			wffCheck("2.2",VAR_INTR_J22INTRR0);
+			noteqCheck("0.1",aliases.get("ROLE_A"),aliases.get("ROLE_intr"));
+			NA = s.getNonce();
+			VAR_A_SHKAB = ShkAB;
+			s.Send(new AnBx_Params(aliases.get("ROLE_A"),s.encrypt(new AnBx_Params(tag,NA),VAR_A_SHKAB)));
 
 			break;
 		
 		case STEP_3:
 			
-			s.Send(VAR_INTR_R2);
+			VAR_A_R3 = (SealedObject) s.Receive();
+			VAR_A_DSAR3ASHKAB = (AnBx_Params) s.decrypt(VAR_A_R3,VAR_A_SHKAB);
+			eqCheck("3.1",succ(s,NA),(Crypto_ByteArray) VAR_A_DSAR3ASHKAB.getValue(0));
 
 			break;
 		
 		case STEP_4:
 			
-			VAR_INTR_R4 = (SealedObject) s.Receive();
-			wffCheck("4.1",VAR_INTR_R4);
-
-			break;
-		
-		case STEP_5:
-			
-			s.Send(VAR_INTR_R4);
-
-			break;
-		
-		case STEP_6:
-			
-			VAR_INTR_R6 = (SealedObject) s.Receive();
-			wffCheck("6.1",VAR_INTR_R6);
+			VAR_A_J22ADSAR3ASHKAB = (Crypto_ByteArray) VAR_A_DSAR3ASHKAB.getValue(1);
+			s.Send(s.encrypt(succ(s,VAR_A_J22ADSAR3ASHKAB),VAR_A_SHKAB));
 
 			break;
 		
 		case STEP_7:
 			
-			if (VAR_INTR_REPLAY_R7 == null || !(new Random().nextInt(10) < 4)) {
-				// AnBx_Debug.out(layer, ">>> NO ATTACK <<<");
-				VAR_INTR_REPLAY_R7 = VAR_INTR_R6;
-				s.Send(VAR_INTR_R6);
-			} else {
-				// Simulate attack by sending previous message
-				// AnBx_Debug.out(layer, ">>> ATTACK <<<");
-				s.Send(VAR_INTR_REPLAY_R7);
-			}
+			VAR_A_R7 = (SealedObject) s.Receive();
+			wffCheck("7.1",VAR_A_J22ADSAR3ASHKAB);
+			wffCheck("7.2",(Crypto_ByteArray) s.decrypt(VAR_A_R7,VAR_A_SHKAB));
 
 			break;
 		
