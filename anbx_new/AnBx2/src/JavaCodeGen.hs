@@ -732,9 +732,14 @@ mkStepActionCheckStr (FInv (e,f)) label sh = if e==f then
                                                             applyOp APIInvCheck (label ++ mkExpression e sh ++ sepComma ++ mkExpression f sh) ++ eoS
                                                             ++ if writeActionComments then inlinecommentPrefix ++ show e ++ " == " ++ show f else ""
 
-mkStepActionCheckStr (FWff e) label sh = applyOp APIWffCheck (label ++ mkExpression e sh) ++ eoS ++ if writeActionComments then inlinecommentPrefix ++ show e else ""
+mkStepActionCheckStr (FWff e) label sh = applyOp APIWffCheck (label ++ mkExpressionForWff e sh) ++ eoS ++ if writeActionComments then inlinecommentPrefix ++ show e else ""
 mkStepActionCheckStr (FNotEq (e,f)) label sh = applyOp APINotEqCheck (label ++ mkExpression e sh ++ sepComma ++ mkExpression f sh) ++ eoS
                                                             ++ if writeActionComments then inlinecommentPrefix ++ show e ++ " != " ++ show f else ""
+
+-- special version of mkExpression that allows private keys for WFF checks
+mkExpressionForWff :: NExpression -> JShares -> String
+mkExpressionForWff expr@(NEPriv (NEFun _ _) (Just pkf)) _ | exprIsPrivateKeyAgentKnown expr = pki pkf  -- allow private keys in WFF checks
+mkExpressionForWff expr sh = mkExpression expr sh
 
 mkExpression :: NExpression -> JShares -> String
 -- mkExpression expr sh | trace ("mkExpression\n\texpr: " ++ show expr ++ "\n\tshares: " ++ show sh) False = undefined

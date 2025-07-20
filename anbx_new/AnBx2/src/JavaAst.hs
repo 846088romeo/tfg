@@ -232,16 +232,15 @@ mapAction (NANew (step,a,n)) _ _ substep _ = (Just (JNew (step,a,n)),step,subste
 
 -- in the following two, Client/Server parameter are only used for "self" channels, by convention send -> Client, receive -> Server                                                      
 mapAction (NAEmit (step,a,ch,e1,e2)) _ chs _ _ =
-    trace ("Emit: step=" ++ show step ++ ", e1=" ++ show e1 ++ ", e2=" ++ show e2)
     (Just (JEmit (step,a,getChannel ch chs Client,e1,e2)), step, 0)
 mapAction (NAEmitReplay (step,a,ch,e1,e2)) _ chs _ _ =
-    trace ("EmitReplay: step=" ++ show step ++ ", e1=" ++ show e1 ++ ", e2=" ++ show e2)
     (Just (JEmitReplay (step,a,getChannel ch chs Client,e1,e2)),step,0)
 mapAction (NAReceive (step,a,ch,v@(NEVar _ _))) _ chs _  _ = (Just (JReceive (step,a,getChannel ch chs Server,v)),step,0)
 mapAction a@(NAReceive (_,_,_,_)) _ _ _  _= error ("mapActiopn - the receive action is not well-formed: " ++ show a)
 mapAction (NACheck (step,agent,phi)) _ _ substep opt = let
                                                             phi1 = filterAtom (mapAtom phi) opt
-                                                       in case phi1 of
+                                                       in trace ("mapAction NACheck: step=" ++ show step ++ ", agent=" ++ agent ++ ", phi=" ++ show phi ++ ", phi1=" ++ show phi1) $
+                                                          case phi1 of
                                                             Nothing -> (Nothing,step,substep)
                                                             Just phi2 -> (Just (JCheck (step,agent,phi2,substep+1)),step+1,substep+1)
 

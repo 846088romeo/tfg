@@ -53,7 +53,7 @@ import Data.Containers.ListUtils (nubOrd)
 import AnB2NExpression (id2NExpression)
 import Java_TypeSystem_Context
 import Java_TypeSystem_JType
-import Data.List (foldl')
+import Data.List (foldl', isInfixOf)
 
 -- differents ways to synthetise a tuple
 -- default (fast): 1
@@ -349,6 +349,34 @@ atomImplWff :: NExpression -> Atom -> Bool
 atomImplWff (NEProj _ n e) at = any (\x -> isSubExprOfAtom (NEProj x n e) at) [1..n]            -- any projection allows to test the well-formedness of e
 atomImplWff e at  = isSubExprOfAtom e at
 
+-- determine if an expression needs WFF check even if it's a message
+needsWffCheck :: NExpression -> Bool
+needsWffCheck (NEPub _ _) = True      -- public keys need WFF checks
+needsWffCheck (NEPriv _ _) = True     -- private keys need WFF checks  
+needsWffCheck (NEProj _ _ _) = True    -- projections need WFF checks
+needsWffCheck (NEDec _ _) = True      -- decryptions need WFF checks
+needsWffCheck (NEDecS _ _) = True     -- symmetric decryptions need WFF checks
+needsWffCheck (NEVerify _ _) = True   -- verifications need WFF checks
+needsWffCheck (NEName (_,name)) = "sk(" `isInfixOf` name || "inv(" `isInfixOf` name  -- keys functions need WFF checks
+needsWffCheck (NEFun (_,fname) _) = "sk" == fname || "inv" == fname  -- key functions need WFF checks
+needsWffCheck e = containsCryptoOperation e  -- check for any cryptographic operation
+
+-- helper function to detect cryptographic operations that need WFF checks
+containsCryptoOperation :: NExpression -> Bool
+containsCryptoOperation (NEPub _ _) = True
+containsCryptoOperation (NEPriv _ _) = True
+containsCryptoOperation (NEProj _ _ e) = True || containsCryptoOperation e
+containsCryptoOperation (NEDec e1 e2) = True || containsCryptoOperation e1 || containsCryptoOperation e2
+containsCryptoOperation (NEDecS e1 e2) = True || containsCryptoOperation e1 || containsCryptoOperation e2
+containsCryptoOperation (NEVerify e1 e2) = True || containsCryptoOperation e1 || containsCryptoOperation e2
+containsCryptoOperation (NEEnc e1 e2) = containsCryptoOperation e1 || containsCryptoOperation e2
+containsCryptoOperation (NESign e1 e2) = containsCryptoOperation e1 || containsCryptoOperation e2
+containsCryptoOperation (NEEncS e1 e2) = containsCryptoOperation e1 || containsCryptoOperation e2
+containsCryptoOperation (NEName (_,name)) = "sk(" `isInfixOf` name || "inv(" `isInfixOf` name
+containsCryptoOperation (NEFun (_,fname) e) = ("sk" == fname || "inv" == fname) || containsCryptoOperation e
+containsCryptoOperation (NECat es) = any containsCryptoOperation es
+containsCryptoOperation _ = False
+
 {- simplifie les wff en ajoutant l'atome -}
 simplAdd :: Atom -> AtomSet -> AtomSet
 -- simplAdd at ats | trace ("simplAdd\n\tat: " ++ show at ++ "\n\tats: " ++ show ats) False = undefined
@@ -394,8 +422,8 @@ pairSimpl e f opp_e pair_e mf at ats =
 addAtom :: Atom -> AtomSet -> AtomSet
 -- addAtom at ats | trace ("addAtom\n\tat: " ++ show at ++ "\n\tats: " ++ show ats) False = undefined
 addAtom (FNotEq _) ats = ats
-addAtom at@(FWff e) ats | exprIsMessage e = ats
-                        | setExist (atomImplWff e) ats = ats
+addAtom at@(FWff e) ats | setExist (atomImplWff e) ats = ats
+                        | exprIsMessage e && not (needsWffCheck e) = ats
                         | otherwise = Set.insert at ats
 
 addAtom at@(FEq(e,f,mf)) ats =

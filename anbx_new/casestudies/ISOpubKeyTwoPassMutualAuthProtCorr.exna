@@ -1,0 +1,53 @@
+(* Protocol: ISOpubKeyTwoPassMutualAuthProtCorr *)
+
+0| A: new NxNA
+0| B: new NxNB
+0| A: new Text1
+0| B: new Text3
+0| s: send(A;sign(<A,sk(A)>,inv(sk(s))))	# s -> A
+0| A: R0 := receive()	# s -> A
+0| A: (*2*)
+eq(verify(R0,sk(s)),<A,sk(A)>)
+inv(inv(sk(A)),proj[2/2][verify(R0,sk(s))])
+
+1(1)| A: witness(_wauth_TEXT1_BA,Text1,[(B,B),(A,A)]) # side condition: False
+1| A: send(s;empty)	# A -> s
+1| s: R1 := receive()	# A -> s
+1| s: (*3*)
+eq(empty,R1)
+inv(sk(s),inv(sk(s)))
+inv(inv(sk(s)),sk(s))
+
+2| s: send(B;sign(<B,sk(B)>,inv(sk(s))))	# s -> B
+2| B: R2 := receive()	# s -> B
+2| B: (*2*)
+eq(verify(R2,sk(s)),<B,sk(B)>)
+inv(inv(sk(B)),proj[2/2][verify(R2,sk(s))])
+
+3(3)| B: witness(_wauth_TEXT3_AB,Text3,[(A,A),(B,B)]) # side condition: False
+3| B: send(A;empty)	# B -> A
+3| A: R3 := receive()	# B -> A
+3| A: (*1*)
+eq(empty,R3)
+
+4| A: send(B;<R0,sign(<NxNA,B,Text1,tag>,inv(sk(A)))>)	# A -> B
+4| B: R4 := receive()	# A -> B
+4| B: (*4*)
+wff(proj[2/2][verify(proj[1/2][R4],sk(s))])
+eq(B,proj[2/4][verify(proj[2/2][R4],sk(A))])
+eq(tag,proj[4/4][verify(proj[2/2][R4],sk(A))])
+eq(verify(proj[1/2][R4],sk(s)),<A,sk(A)>)
+
+5| B: send(A;<R2,sign(<NxNB,A,Text3>,inv(sk(B)))>)	# B -> A
+5| A: R5 := receive()	# B -> A
+5| A: (*3*)
+wff(proj[2/2][verify(proj[1/2][R5],sk(s))])
+eq(A,proj[2/3][verify(proj[2/2][R5],sk(B))])
+eq(verify(proj[1/2][R5],sk(s)),<B,sk(B)>)
+
+99(0)| s: secret(INVSS_s,inv(sk(s)),[(s,s)]) # side condition: False
+99(0)| B: secret(INVSB_B,inv(sk(B)),[(B,B)]) # side condition: False
+99(0)| A: secret(INVSA_A,inv(sk(A)),[(A,A)]) # side condition: False
+99(5)| A: wrequest(_wauth_TEXT3_AB,proj[3/3][verify(proj[2/2][R5],sk(B))],[(A,A),(B,B)]) # side condition: True
+99(4)| B: wrequest(_wauth_TEXT1_BA,proj[3/4][verify(proj[2/2][R4],sk(A))],[(B,B),(A,A)]) # side condition: True
+
