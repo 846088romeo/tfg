@@ -57,7 +57,7 @@ import System.IO
 import Text.Printf
 import Vdm
 import VdmTest
--- import Debug.Trace
+import Debug.Trace
 import AnB2PVT (printPvtOfExecnarr)
 import Data.List (sort,isPrefixOf)
 import Network.Info
@@ -482,7 +482,7 @@ parseArgs0 (x:xs) anbxonp
 	| x == cmdAnBxDebugType ++ "AnBEqTheory" = parseArgs0 xs (anbxonp { anbxdebugtype=DAnBEqTheory })
 	| x == cmdAnBxDebugType ++ "AnBIntrGoal" = parseArgs0 xs (anbxonp { anbxdebugtype=DAnBIntrGoal, nogoals=True })
 	| x == cmdAnBxDebugType ++ "AnBx" = parseArgs0 xs (anbxonp { anbxdebugtype=DAnBx })
-	| x == cmdAnBxDebugType ++ "Java" = parseArgs0 xs (anbxonp { anbxdebugtype=DJava, optimize=True, synthesistypeenc=(SynthesisTypeEnc {enc=True,encS=True})})            -- Java by default uses probabilistic encryption
+	| x == cmdAnBxDebugType ++ "Java" = parseArgs0 xs (anbxonp { anbxdebugtype=DJava, optimize=True, synthesistypeenc=(SynthesisTypeEnc {enc=False,encS=False})})            -- Java by default uses probabilistic encryption
 	| x == cmdAnBxDebugType ++ "JavaNoOpt" = parseArgs0 xs (anbxonp { anbxdebugtype=DJavaNoOpt, optimize=False, synthesistypeenc=(SynthesisTypeEnc {enc=True,encS=True})})
 	| x == cmdAnBxDebugType ++ "JavaCode" = parseArgs0 xs (anbxonp { anbxdebugtype=DJavaCode, optimize=True })
 	| x == cmdAnBxDebugType ++ "SpyerPN" = parseArgs0 xs (anbxonp { anbxdebugtype=DSpyer })
@@ -795,7 +795,8 @@ file2IntermediateFormats filename anbxonp outtype anbxprot cfg trProtData =
 															Nothing -> anb2IntermediateFormats prot basename0 anbxonp outtype cfg outfile trProtData
 															_ -> return "" -- skip generation of trace AnB/IF file with trace reconstruction
 								_   -> if isOutTypePV outtype then anb2IntermediateFormats prot basename0 anbxonp outtype cfg outfile trProtData
-									   else printProtocol prot outtype anbxonp cfg outfile trProtData
+									   else 
+										printProtocol prot outtype anbxonp cfg outfile trProtData
 
 -- option for base index for Goals: used by single goal generation
 data BaseGoalRange = BaseGoalZero | BaseGoalOne

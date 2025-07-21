@@ -36,12 +36,13 @@ import AnBAst
 import AnBxAst (AnBxType (..), getAgents)
 import AnBxOnP
     ( OutType(TypedOptExecnarrDocker, JavaDocker),
-      AnBxOnP(anbxouttype, synthesistypeenc, anbxmitm),
+      AnBxOnP(anbxouttype, synthesistypeenc, anbxmitm, optimize),
       isOutTypeJava,
       SynthesisTypeEnc(encS, enc) )
 import AnB2NExpression
 import AnB2NExecnarr
 import Spyer_Ast ( Declaration(..), NEShare )
+import Spyer_Message ( Formula(..), Atom(..) )
 import Spyer_Message
 import AnBxMsgCommon
 import Data.List ( (\\), elemIndex, intercalate, sort, union )
@@ -211,7 +212,6 @@ getChannel (a,chType,b) chs chRole = let
                                                 _ -> error ("too many channels available" ++ "\n" ++ "channels:\n" ++ showSep show lst)
 
 mapActions :: [NAction] -> JContext -> JChannels -> Int -> SynthesisTypeEnc -> (JActions,JSteps)
--- mapActions actions _ chs _ _ | trace ("mapActions\n\tactions: " ++ show actions ++ "\n\tchannels:" ++ show chs) False = undefined
 mapActions [] _ _ _ _ = ([],[])
 mapActions [x] ctx chs substep opt = let
                                             (act,step,_) = mapAction x ctx chs substep opt
@@ -227,7 +227,6 @@ mapActions (x:xs) ctx chs substep opt = let
                                             Nothing -> (acts,nubOrd (newstep : steps))
 
 mapAction :: NAction -> JContext -> JChannels -> Int -> SynthesisTypeEnc -> (Maybe JAction,Int,Int)
--- mapAction action _ chs _ _ | trace ("mapAction\n\taction: " ++ show action ++ "\n\tchannels:" ++ show chs) False = undefined
 mapAction (NANew (step,a,n)) _ _ substep _ = (Just (JNew (step,a,n)),step,substep) 
 
 -- in the following two, Client/Server parameter are only used for "self" channels, by convention send -> Client, receive -> Server                                                      
@@ -239,8 +238,7 @@ mapAction (NAReceive (step,a,ch,v@(NEVar _ _))) _ chs _  _ = (Just (JReceive (st
 mapAction a@(NAReceive (_,_,_,_)) _ _ _  _= error ("mapActiopn - the receive action is not well-formed: " ++ show a)
 mapAction (NACheck (step,agent,phi)) _ _ substep opt = let
                                                             phi1 = filterAtom (mapAtom phi) opt
-                                                       in trace ("mapAction NACheck: step=" ++ show step ++ ", agent=" ++ agent ++ ", phi=" ++ show phi ++ ", phi1=" ++ show phi1) $
-                                                          case phi1 of
+                                                        in case phi1 of
                                                             Nothing -> (Nothing,step,substep)
                                                             Just phi2 -> (Just (JCheck (step,agent,phi2,substep+1)),step+1,substep+1)
 
@@ -263,7 +261,6 @@ mapAtom (FSingle (FNotEq (e1,e2))) = FNotEq (e1,e2)
 mapAtom (FAnd f) = error $ "mapAtom - AND formula not supported at this stage of the compilation" ++ "\n" ++ show f
 
 filterAtomType :: Atom -> JType -> JType -> SynthesisTypeEnc -> Maybe Atom
--- filterAtomType a t1 t2 opt  | trace ("\n\tfilterAtomType - check: " ++ show a ++ "\n\tt1:" ++ show t1 ++ "\n\tt1:" ++ show t2 ++ "\n\topt: " ++ show opt) False = undefined   
 -- comparison of encrypted objects ----
 filterAtomType a@(FEq _) (SealedPair _) (SealedPair _) opt = if enc opt then Nothing else Just a
 filterAtomType a@(FEq _) (SignedObject _) (SignedObject _) opt = if enc opt then Nothing else Just a
@@ -315,7 +312,7 @@ mkProt2J prot@(_,ptypes,_,_,_,_,_,_,_) intrProtInfos options cfg = let
                                                                     agents = getAgents types
                                                                     jagents = map (\x-> id2NEIdent x ctx) agents
                                                                     inactiveagents =  jagents \\ roles
-                                                                    (jactions,jsteps0) = mapActions execnarr ctx channels 0 (synthesistypeenc options)
+                                                                    (jactions,jsteps0) = trace ("mkProt2J execnarr length: " ++ show (length execnarr) ++ "\nActions containing wff: " ++ show [act | act@(NACheck (_,_,phi)) <- execnarr, case phi of {FSingle (FWff _) -> True; _ -> False}] ++ "\nFirst 5 actions: " ++ show (take 5 execnarr)) $ mapActions execnarr ctx channels 0 (synthesistypeenc options)
                                                                     jsteps = sort jsteps0
                                                                     toIgnore = Set.union (mkToIgnore (identsOfProtocol types)) (shareFun (shares ++ agree))
                                                                     methods = nubOrd (mkRoleMethods declarations ctx toIgnore)
