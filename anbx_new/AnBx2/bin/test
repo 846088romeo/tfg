@@ -1,0 +1,15 @@
+.\anbxc_new.exe ..\..\casestudies\ISOpubKeyTwoPassMutualAuthProtCorr.AnBx -out:TypedOptExecnarr >> log
+setInterpretation anbxKnowledge from parser: ([("A",[A,B,s,sk(A),inv(sk(A)),sk(s),tag,empty]),("B",[B,A,s,sk(B),inv(sk(B)),sk(s),tag,empty]),("s",[A,B,s,sk(s),inv(sk(s)),sk(A),sk(B),empty])],[])
+=== buildAnB POST-mkAnB Knowledge (OutType: TypedOptExecnarr) ===
+Knowledge from mkAnB: ([("A",[A,B,s,sk(A),inv(sk(A)),tag,empty,sk(s)]),("B",[B,A,s,sk(B),inv(sk(B)),tag,empty,sk(s)]),("s",[A,B,s,sk(s),inv(sk(s)),sk(A),sk(B),empty])],[])
+=== buildAnB POST-trAnB Knowledge (OutType: TypedOptExecnarr) ===
+Knowledge after trAnB: ([("A",[A,B,s,sk(A),inv(sk(A)),tag,empty,sk(s)]),("B",[B,A,s,sk(B),inv(sk(B)),tag,empty,sk(s)]),("s",[A,B,s,sk(s),inv(sk(s)),sk(A),sk(B),empty])],[])
+
+
+
+.\anbxc_new.exe ..\..\casestudies\ISOpubKeyTwoPassMutualAuthProtCorr.AnBx -out:Java >> log
+setInterpretation anbxKnowledge from parser: ([("A",[A,B,s,sk(A),inv(sk(A)),sk(s),tag,empty]),("B",[B,A,s,sk(B),inv(sk(B)),sk(s),tag,empty]),("s",[A,B,s,sk(s),inv(sk(s)),sk(A),sk(B),empty])],[])
+=== buildAnB POST-mkAnB Knowledge (OutType: Java) ===
+Knowledge from mkAnB: ([("A",[A,B,s,sk(A),inv(sk(A)),tag,empty,sk(s)]),("B",[B,A,s,sk(B),inv(sk(B)),tag,empty,sk(s)]),("s",[A,B,s,sk(s),inv(sk(s)),sk(A),sk(B),empty])],[])
+=== buildAnB POST-trAnB Knowledge (OutType: Java) ===
+Knowledge after trAnB: ([("A",[A,B,s,sk(A),inv(sk(A)),tag,empty,sk(s)]),("B",[B,A,s,sk(B),inv(sk(B)),tag,empty,sk(s)]),("s",[A,B,s,sk(s),inv(sk(s)),sk(A),sk(B),empty])],[])

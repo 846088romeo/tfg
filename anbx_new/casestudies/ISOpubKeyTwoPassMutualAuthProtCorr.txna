@@ -46,10 +46,10 @@ Protocol: ISOpubKeyTwoPassMutualAuthProtCorr
 
 --- RoleFields ---
 ((JAgent,"s"),RoleField {rolename = "empty", typeofvar = JConstant JNonce, pars = "\"empty\"", static = True, know = True})
-((JAgent,"B"),RoleField {rolename = "tag", typeofvar = JConstant JNonce, pars = "\"tag\"", static = True, know = True})
 ((JAgent,"B"),RoleField {rolename = "empty", typeofvar = JConstant JNonce, pars = "\"empty\"", static = True, know = True})
-((JAgent,"A"),RoleField {rolename = "tag", typeofvar = JConstant JNonce, pars = "\"tag\"", static = True, know = True})
+((JAgent,"B"),RoleField {rolename = "tag", typeofvar = JConstant JNonce, pars = "\"tag\"", static = True, know = True})
 ((JAgent,"A"),RoleField {rolename = "empty", typeofvar = JConstant JNonce, pars = "\"empty\"", static = True, know = True})
+((JAgent,"A"),RoleField {rolename = "tag", typeofvar = JConstant JNonce, pars = "\"tag\"", static = True, know = True})
 ((JAgent,"A"),RoleField {rolename = "NxNA", typeofvar = JNonce, pars = "", static = False, know = False})
 ((JAgent,"B"),RoleField {rolename = "NxNB", typeofvar = JNonce, pars = "", static = False, know = False})
 ((JAgent,"A"),RoleField {rolename = "Text1", typeofvar = JNonce, pars = "", static = False, know = False})

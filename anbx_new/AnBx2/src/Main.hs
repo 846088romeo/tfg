@@ -782,6 +782,9 @@ file2IntermediateFormats :: String -> AnBxOnP -> OutType -> AnBxProtocol -> AnBx
 file2IntermediateFormats filename anbxonp outtype anbxprot cfg trProtData =
 						let
 							prot = compileAnBx filename anbxonp cfg anbxprot trProtData
+							traceMsg = "=== file2IntermediateFormats POST-compileAnBx Knowledge (OutType: " ++ show outtype ++ ") ===\n" ++
+									  "Knowledge from compileAnBx: " ++ show (let (_,_,_,_,knowledge,_,_,_,_) = prot in knowledge)
+							tracedProt = trace traceMsg prot
 							basename = dropExtension filename
 							basename0 = case outprotsuffix anbxonp of -- add suffix to file name is any is specified
 											Just s -> basename ++ s
@@ -792,11 +795,11 @@ file2IntermediateFormats filename anbxonp outtype anbxprot cfg trProtData =
 											_   -> outfile0
 						in do case outtype of
 								o | elem o [AnB,AnBIF] -> case trProtData of
-															Nothing -> anb2IntermediateFormats prot basename0 anbxonp outtype cfg outfile trProtData
+															Nothing -> anb2IntermediateFormats tracedProt basename0 anbxonp outtype cfg outfile trProtData
 															_ -> return "" -- skip generation of trace AnB/IF file with trace reconstruction
-								_   -> if isOutTypePV outtype then anb2IntermediateFormats prot basename0 anbxonp outtype cfg outfile trProtData
+								_   -> if isOutTypePV outtype then anb2IntermediateFormats tracedProt basename0 anbxonp outtype cfg outfile trProtData
 									   else 
-										printProtocol prot outtype anbxonp cfg outfile trProtData
+										printProtocol tracedProt outtype anbxonp cfg outfile trProtData
 
 -- option for base index for Goals: used by single goal generation
 data BaseGoalRange = BaseGoalZero | BaseGoalOne
@@ -927,7 +930,7 @@ compileAnBx filename options cfg anbxprot trProtData = let
 													Just s -> renameProtocol anbxprot1 (getProtName anbxprot1 ++ s)
 													Nothing -> anbxprot1
 									  -- if passiveIntruder option is enabled it compiles the AnBxIntr version of the AnBx protocol
-									  anbxprot3 = if passiveIntruder options then mkAnBxIntr anbxprot2 options else anbxprot
+									  anbxprot3 = if passiveIntruder options then mkAnBxIntr anbxprot2 options else anbxprot2
 									  prot = buildAnB anbxprot3 options
 								   in case anbxdebugtype options of
 												DNone -> if isExtAnB ext && (elem outtype [TypedOptExecnarr,TypedOptExecnarrDocker] || isOutTypePV outtype || isOutTypeJava outtype ) then
