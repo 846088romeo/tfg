@@ -353,29 +353,17 @@ atomImplWff e at  = isSubExprOfAtom e at
 needsWffCheck :: NExpression -> Bool
 needsWffCheck (NEPub _ _) = True      -- public keys need WFF checks
 needsWffCheck (NEPriv _ _) = True     -- private keys need WFF checks  
-needsWffCheck (NEProj _ _ _) = True    -- projections need WFF checks
-needsWffCheck (NEDec _ _) = True      -- decryptions need WFF checks
-needsWffCheck (NEDecS _ _) = True     -- symmetric decryptions need WFF checks
-needsWffCheck (NEVerify _ _) = True   -- verifications need WFF checks
-needsWffCheck (NEName (_,name)) = "sk(" `isInfixOf` name || "inv(" `isInfixOf` name  -- keys functions need WFF checks
-needsWffCheck (NEFun (_,fname) _) = "sk" == fname || "inv" == fname  -- key functions need WFF checks
-needsWffCheck e = containsCryptoOperation e  -- check for any cryptographic operation
-
--- helper function to detect cryptographic operations that need WFF checks
-containsCryptoOperation :: NExpression -> Bool
-containsCryptoOperation (NEPub _ _) = True
-containsCryptoOperation (NEPriv _ _) = True
-containsCryptoOperation (NEProj _ _ e) = True || containsCryptoOperation e
-containsCryptoOperation (NEDec e1 e2) = True || containsCryptoOperation e1 || containsCryptoOperation e2
-containsCryptoOperation (NEDecS e1 e2) = True || containsCryptoOperation e1 || containsCryptoOperation e2
-containsCryptoOperation (NEVerify e1 e2) = True || containsCryptoOperation e1 || containsCryptoOperation e2
-containsCryptoOperation (NEEnc e1 e2) = containsCryptoOperation e1 || containsCryptoOperation e2
-containsCryptoOperation (NESign e1 e2) = containsCryptoOperation e1 || containsCryptoOperation e2
-containsCryptoOperation (NEEncS e1 e2) = containsCryptoOperation e1 || containsCryptoOperation e2
-containsCryptoOperation (NEName (_,name)) = "sk(" `isInfixOf` name || "inv(" `isInfixOf` name
-containsCryptoOperation (NEFun (_,fname) e) = ("sk" == fname || "inv" == fname) || containsCryptoOperation e
-containsCryptoOperation (NECat es) = any containsCryptoOperation es
-containsCryptoOperation _ = False
+needsWffCheck (NEProj _ _ _) = True    -- projections always need WFF checks
+needsWffCheck (NEDec _ _) = True      -- decryptions always need WFF checks
+needsWffCheck (NEDecS _ _) = True     -- symmetric decryptions always need WFF checks
+needsWffCheck (NEVerify _ _) = True   -- verifications always need WFF checks
+needsWffCheck (NEEnc e1 e2) = needsWffCheck e1 || needsWffCheck e2  -- check subexpressions
+needsWffCheck (NESign e1 e2) = needsWffCheck e1 || needsWffCheck e2  -- check subexpressions
+needsWffCheck (NEEncS e1 e2) = needsWffCheck e1 || needsWffCheck e2  -- check subexpressions
+needsWffCheck (NEName (_,name)) = "sk(" `isInfixOf` name || "inv(" `isInfixOf` name  -- key functions need WFF checks
+needsWffCheck (NEFun (_,fname) e) = ("sk" == fname || "inv" == fname) || needsWffCheck e  -- key functions or check subexpressions
+needsWffCheck (NECat es) = any needsWffCheck es  -- check any subexpression
+needsWffCheck _ = False  -- other expressions don't need WFF checks
 
 {- simplifie les wff en ajoutant l'atome -}
 simplAdd :: Atom -> AtomSet -> AtomSet
@@ -423,11 +411,8 @@ addAtom :: Atom -> AtomSet -> AtomSet
 -- addAtom at ats | trace ("addAtom\n\tat: " ++ show at ++ "\n\tats: " ++ show ats) False = undefined
 addAtom (FNotEq _) ats = ats
 addAtom at@(FWff e) ats | setExist (atomImplWff e) ats = ats
-                        | exprIsMessage e && not (needsWffCheck e) = 
-                            trace ("addAtom FILTERING WFF: " ++ show at ++ " because exprIsMessage=" ++ show (exprIsMessage e) ++ " needsWffCheck=" ++ show (needsWffCheck e)) ats
-                        | otherwise = 
-                            trace ("addAtom ADDING WFF: " ++ show at ++ " because exprIsMessage=" ++ show (exprIsMessage e) ++ " needsWffCheck=" ++ show (needsWffCheck e)) $
-                            Set.insert at ats
+                        | exprIsMessage e && not (needsWffCheck e) = ats
+                        | otherwise = Set.insert at ats
 
 addAtom at@(FEq(e,f,mf)) ats =
         if e == f then addAtom (FWff e) ats

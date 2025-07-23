@@ -83,10 +83,7 @@ trNExecnarrActionsTuple xs options = concatMap (\x -> trNExecnarrActionTuple x o
 trNExecnarrActionTuple :: NAction -> AnBxOnP -> Execnarr
 -- trNExecnarrActionTuple a _ | trace ("trNExecnarrActionTuple\n\taction " ++ show a) False = undefined
 -- trNExecnarrActionTuple a@(NACheck (_, _, FSingle _)) _ = error ("no single check expected at this stage - action: " ++ show a)
-trNExecnarrActionTuple (NACheck (step, agent, FAnd phi)) options = 
-  let filtered = filterChecks phi options
-      result = map (\x -> NACheck (step, agent, FSingle x)) filtered
-  in trace ("trNExecnarrActionTuple " ++ show (anbxouttype options) ++ " step=" ++ show step ++ " agent=" ++ show agent ++ "\n  phi=" ++ show phi ++ "\n  filtered=" ++ show filtered ++ "\n  WFF in filtered=" ++ show [atom | atom@(FWff _) <- filtered]) result
+trNExecnarrActionTuple (NACheck (step, agent, FAnd phi)) options = map (\x -> NACheck (step, agent, FSingle x)) (filterChecks phi options) -- flatten the list of lists
 trNExecnarrActionTuple a _ = [a]
 
 mayFail :: [Atom] -> OutType -> Bool -> [Atom]
@@ -144,18 +141,16 @@ failingSubExpr e out ffc =
 -- filters checks based  on command line parameter
 filterChecks :: AtomSet -> AnBxOnP -> [Atom]
 -- filterChecks phi _ | trace ("filterChecks\n\tatoms: " ++ show phi) False = undefined
-filterChecks phi options = 
-  let result = case checkType options of
-        CheckAll -> chkList
-        CheckEq -> [x | x@(FEq _) <- chkList]
-        CheckOptFail -> cleanChecks chkList False
-        CheckOpt -> cleanChecks chkList True
-        CheckNone -> []
-      chkList = mayFail (Set.toList phi) out ffc
-      out = anbxouttype options
-      ffc = filterFailingChecks options
-      wffInResult = [atom | atom@(FWff _) <- result]
-  in trace ("filterChecks " ++ show out ++ " checkType=" ++ show (checkType options) ++ "\n  input atoms=" ++ show (Set.toList phi) ++ "\n  chkList=" ++ show chkList ++ "\n  result=" ++ show result ++ "\n  WFF in result=" ++ show wffInResult) result
+filterChecks phi options = case checkType options of
+  CheckAll -> chkList
+  CheckEq -> [x | x@(FEq _) <- chkList]
+  CheckOptFail -> cleanChecks chkList False
+  CheckOpt -> cleanChecks chkList True
+  CheckNone -> []
+  where
+    chkList = mayFail (Set.toList phi) out ffc
+    out = anbxouttype options
+    ffc = filterFailingChecks options
 
 -- pre-optimisation cleanup step
 
@@ -184,11 +179,7 @@ semplifyChecks _ = True
 trExecnarrNewActOpt :: Execnarr -> JContext -> Execnarr
 -- trExecnarrNewActOpt (x:_) |  trace ("trExecnarrNewActOpt\n\tactions[1]: " ++ show x) False = undefined
 trExecnarrNewActOpt [] _ = []
-trExecnarrNewActOpt acts ctx = 
-  let result = fixNewActions acts (mapnewEmit acts ctx)
-      inputWff = [act | act@(NACheck (_,_,FSingle (FWff _))) <- acts]
-      outputWff = [act | act@(NACheck (_,_,FSingle (FWff _))) <- result]
-  in trace ("trExecnarrNewActOpt WFF: " ++ show (length inputWff) ++ " -> " ++ show (length outputWff) ++ "\n  input WFF: " ++ show inputWff ++ "\n  output WFF: " ++ show outputWff) result
+trExecnarrNewActOpt acts ctx = fixNewActions acts (mapnewEmit acts ctx)
 
 fixNewActions :: Execnarr -> [(NAction, NAction)] -> Execnarr
 -- fixNewActions (x:_) maps | trace ("fixNewActions\n\tactions[1]: " ++ show x ++ "\n\tmaps: " ++ show maps) False = undefined
@@ -575,18 +566,18 @@ trProt2NExecnarr prot@((name,_), types, _,anbequations,_, shares, _, _, _) intrP
                                      narrWithIntrActions,trCtx)
                            Nothing -> (declsWithoutIntrValues, passiveIntrNarr,ctx)
 
-      ex1 = trace ("ex1 WFF AFTER trExecnarrNewActOpt: " ++ show [act | act@(NACheck (_,_,FSingle (FWff _))) <- trExecnarrNewActOpt ex ctx2] ++ "\nex WFF ORIGINAL: " ++ show [act | act@(NACheck (_,_,FSingle (FWff _))) <- ex]) $ trExecnarrNewActOpt ex ctx2
-      ex2 = trace ("ex2 WFF BEFORE optimization: " ++ show [act | act@(NACheck (_,_,FSingle (FWff _))) <- trNExecnarrActionsTuple ex1 options1]) $ trNExecnarrActionsTuple ex1 options1 -- Checks: FAnd -> FSingle 
+      ex1 = trExecnarrNewActOpt ex ctx2
+      ex2 = trNExecnarrActionsTuple ex1 options1 -- Checks: FAnd -> FSingle 
       execnarr =
         if do_opt options1
           then
-            let acts1 = trace ("OptPass1 WFF: " ++ show [act | act@(NACheck (_,_,FSingle (FWff _))) <- trNVExecnarrOptPass1 ex2 options1 ctx2]) $ trNVExecnarrOptPass1 ex2 options1 ctx2
-                acts2 = trace ("OptPass2 WFF: " ++ show [act | act@(NACheck (_,_,FSingle (FWff _))) <- trNVExecnarrOptPass2 acts1 ctx2]) $ trNVExecnarrOptPass2 acts1 ctx2
+            let acts1 = trNVExecnarrOptPass1 ex2 options1 ctx2
+                acts2 = trNVExecnarrOptPass2 acts1 ctx2
                 -- subst of successful eqcheck involving vars, if agent is not "basicopt"
-                acts3 = if basicopt options then trace ("basicopt=True, skipping OptPass3 for " ++ show (anbxouttype options)) acts2 else trace ("basicopt=False, applying OptPass3 for " ++ show (anbxouttype options) ++ "\nOptPass3 WFF: " ++ show [act | act@(NACheck (_,_,FSingle (FWff _))) <- trNVExecnarrOptPass3 acts2 ctx2]) $ trNVExecnarrOptPass3 acts2 ctx2
-                acts4 = trace ("semplifyChecks WFF: " ++ show [act | act@(NACheck (_,_,FSingle (FWff _))) <- filter semplifyChecks acts3]) $ filter semplifyChecks acts3 -- post optimisation check clean up
-             in trace ("trProt2NExecnarr OPTIMIZED " ++ show (anbxouttype options) ++ ": " ++ show (length ex2) ++ " -> " ++ show (length acts4) ++ " actions\nFinal WFF: " ++ show [act | act@(NACheck (_,_,FSingle (FWff _))) <- acts4]) acts4
-          else trace ("trProt2NExecnarr NON-OPTIMIZED path - " ++ show (anbxouttype options) ++ ": " ++ show (length ex2) ++ " actions\nWFF in ex2: " ++ show [act | act@(NACheck (_,_,FSingle (FWff _))) <- ex2]) ex2
+                acts3 = if basicopt options then acts2 else trNVExecnarrOptPass3 acts2 ctx2
+                acts4 = filter semplifyChecks acts3 -- post optimisation check clean up
+             in acts4
+          else ex2
    in ((name, decl, equations),execnarr)
 
 ------------------------------------------------------------------------------------------------------------------------------------------

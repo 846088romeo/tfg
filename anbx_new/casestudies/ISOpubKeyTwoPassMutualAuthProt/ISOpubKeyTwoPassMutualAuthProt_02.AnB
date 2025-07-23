@@ -1,0 +1,22 @@
+Protocol: ISOpubKeyTwoPassMutualAuthProt
+
+Types:
+	Agent A,B,s;
+	Number NxNA,NxNB,Text1,Text2,Text3,Text4,tag,empty;
+	Function sk;		# Agent -> PublicKey
+
+Knowledge:
+	A: A,B,s,sk(A),inv(sk(A)),tag,empty,sk(s);
+	B: B,A,s,sk(B),inv(sk(B)),tag,empty,sk(s);
+	s: A,B,s,sk(s),inv(sk(s)),sk(A),sk(B),empty
+
+Actions:
+	s -> A: {A,sk(A)}inv(sk(s))
+	A -> s: empty
+	s -> B: {B,sk(B)}inv(sk(s))
+	B -> A: empty
+	A -> B: {A,sk(A)}inv(sk(s)),{NxNA,B,Text1}inv(sk(A))
+	B -> A: {B,sk(B)}inv(sk(s)),{NxNB,A,Text3}inv(sk(B))
+
+Goals:
+	A weakly authenticates B on Text3
