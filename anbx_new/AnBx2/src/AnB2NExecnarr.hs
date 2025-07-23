@@ -86,7 +86,7 @@ trNExecnarrActionTuple :: NAction -> AnBxOnP -> Execnarr
 trNExecnarrActionTuple (NACheck (step, agent, FAnd phi)) options = 
   let filtered = filterChecks phi options
       result = map (\x -> NACheck (step, agent, FSingle x)) filtered
-  in result
+  in trace ("trNExecnarrActionTuple " ++ show (anbxouttype options) ++ " step=" ++ show step ++ " agent=" ++ show agent ++ "\n  phi=" ++ show phi ++ "\n  filtered=" ++ show filtered ++ "\n  WFF in filtered=" ++ show [atom | atom@(FWff _) <- filtered]) result
 trNExecnarrActionTuple a _ = [a]
 
 mayFail :: [Atom] -> OutType -> Bool -> [Atom]
@@ -154,7 +154,8 @@ filterChecks phi options =
       chkList = mayFail (Set.toList phi) out ffc
       out = anbxouttype options
       ffc = filterFailingChecks options
-  in result
+      wffInResult = [atom | atom@(FWff _) <- result]
+  in trace ("filterChecks " ++ show out ++ " checkType=" ++ show (checkType options) ++ "\n  input atoms=" ++ show (Set.toList phi) ++ "\n  chkList=" ++ show chkList ++ "\n  result=" ++ show result ++ "\n  WFF in result=" ++ show wffInResult) result
 
 -- pre-optimisation cleanup step
 
@@ -183,7 +184,11 @@ semplifyChecks _ = True
 trExecnarrNewActOpt :: Execnarr -> JContext -> Execnarr
 -- trExecnarrNewActOpt (x:_) |  trace ("trExecnarrNewActOpt\n\tactions[1]: " ++ show x) False = undefined
 trExecnarrNewActOpt [] _ = []
-trExecnarrNewActOpt acts ctx = fixNewActions acts (mapnewEmit acts ctx)
+trExecnarrNewActOpt acts ctx = 
+  let result = fixNewActions acts (mapnewEmit acts ctx)
+      inputWff = [act | act@(NACheck (_,_,FSingle (FWff _))) <- acts]
+      outputWff = [act | act@(NACheck (_,_,FSingle (FWff _))) <- result]
+  in trace ("trExecnarrNewActOpt WFF: " ++ show (length inputWff) ++ " -> " ++ show (length outputWff) ++ "\n  input WFF: " ++ show inputWff ++ "\n  output WFF: " ++ show outputWff) result
 
 fixNewActions :: Execnarr -> [(NAction, NAction)] -> Execnarr
 -- fixNewActions (x:_) maps | trace ("fixNewActions\n\tactions[1]: " ++ show x ++ "\n\tmaps: " ++ show maps) False = undefined

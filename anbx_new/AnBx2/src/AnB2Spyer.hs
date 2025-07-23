@@ -96,12 +96,7 @@ trAnB2ExecnarrKnowledge (_,types,_,_,knowledge,shares,_,actions,_) ctx opt = trD
 -- since share actions generate private fact they must be the first to be translated
 trDeclarations :: Types -> Actions -> Knowledge ->  AnBShares -> JContext -> AnBxOnP -> [Declaration]
 -- trDeclarations _ _ k sh _ | trace ("trDeclarations\n\tknowledge: " ++ show k ++ "\n\tshares: " ++ show sh) False = undefined
-trDeclarations t a k sh ctx opt = let
-                                    shareDecls = trShareActions a k sh ctx out
-                                    knowledgeDecls = trKnowledge k t sh ctx opt
-                                    typeDecls = trTypes t a out
-                                    result = union (union shareDecls knowledgeDecls) typeDecls
-                                  in trace ("trDeclarations OutType=" ++ show out ++ "\n  shareDecls=" ++ show (length shareDecls) ++ "\n  knowledgeDecls=" ++ show (length knowledgeDecls) ++ "\n  typeDecls=" ++ show (length typeDecls) ++ "\n  total=" ++ show (length result)) result
+trDeclarations t a k sh ctx opt = union (union (trShareActions a k sh ctx out) (trKnowledge k t sh ctx opt) ) (trTypes t a out)
                                     where out = anbxouttype opt
 
 -- create the DKnow facts from the declaration given AnB Types and Knowledge
@@ -219,31 +214,26 @@ trKnowledge :: Knowledge -> Types -> AnBShares -> JContext -> AnBxOnP -> [Declar
 trKnowledge ([],_) _ _ _  _ = []   -- where declarations are ignored
 trKnowledge (x@(id,msgs):xs,wk) t sh ctx opt = let
                                               a = knownAgents id msgs t
-                                              currentDecls = trKnow x t a sh ctx opt
-                                              restDecls = trKnowledge (xs,wk) t sh ctx opt
-                                           in trace ("trKnowledge processing agent=" ++ id ++ " msgs=" ++ show msgs ++ " OutType=" ++ show (anbxouttype opt) ++ " currentDecls=" ++ show (length currentDecls) ++ " restDecls=" ++ show (length restDecls)) (union currentDecls restDecls)
+                                           in union (trKnow x t a sh ctx opt) (trKnowledge (xs,wk) t sh ctx opt)
 
 trKnow :: (Ident,[Msg]) -> Types -> [Ident] -> AnBShares -> JContext -> AnBxOnP -> [Declaration]
 -- trKnow (id,msg) types knownagents shares _ _ | trace ("trKnow\n\tid: " ++ id ++ "\n\tmsg: " ++ show msg ++" \n\ttypes: " ++ show types ++ "\n\tknowagents: " ++ show knownagents ++ "\n\tshares: " ++ show shares ) False = undefined
 trKnow (_,[]) _ _ _ _ _ = []
-trKnow (id,(Atom a):ms) t knownagents sh ctx opt = let 
-                                                        result = case id2Type a t of
-                                                                  Agent _ _ _ NoCert -> trace ("trKnow Agent NoCert agent=" ++ id ++ " atom=" ++ a ++ " OutType=" ++ show (anbxouttype opt)) [DKnow (jid, agent2NExpression a ctx)]
-                                                                  Agent _ _ _ Cert -> trace ("trKnow Agent Cert agent=" ++ id ++ " atom=" ++ a ++ " OutType=" ++ show (anbxouttype opt)) (DKnow (jid, agent2NExpression a ctx) : map (\pk-> DKnow (jid, spKeyFunIDPub (Just pk) a ctx)) pkiFunList)
-                                                                  Function _ -> let
-                                                                                  knownpubkeys = if isPKFun a
-                                                                                                       then trace ("trKnow Function isPKFun agent=" ++ id ++ " atom=" ++ a ++ " OutType=" ++ show (anbxouttype opt) ++ " knownagents=" ++ show knownagents ++ " will generate pubkey knowledge") (map (\x -> DKnow (jid, spKeyFunIDPub pka x ctx)) knownagents)
-                                                                                                       else trace ("trKnow Function NOT isPKFun agent=" ++ id ++ " atom=" ++ a ++ " OutType=" ++ show (anbxouttype opt)) []
-                                                                                                in  trace ("trKnow Function branch agent=" ++ id ++ " atom=" ++ a ++ " OutType=" ++ show (anbxouttype opt) ++ " isPKFun=" ++ show (isPKFun a)) (DKnow (jid, id2NExpression a ctx) : knownpubkeys)
-                                                                  other -> trace ("trKnow OTHER branch agent=" ++ id ++ " atom=" ++ a ++ " OutType=" ++ show (anbxouttype opt) ++ " type=" ++ show other) [DKnow (jid, id2NExpression a ctx)]
-                                                        rest = trKnow (id,ms) t knownagents sh ctx opt
-                                                    in trace ("trKnow agent=" ++ id ++ " atom=" ++ a ++ " OutType=" ++ show (anbxouttype opt) ++ " isPKFun=" ++ show (isPKFun a) ++ " knownagents=" ++ show knownagents ++ " generating " ++ show (length result) ++ " declarations") (union result rest)
-                                                    where 
-                                                          jid = agent2NEIdent id ctx
-                                                          pka = Just (getKeyFun a)
+trKnow (id,(Atom a):ms) t knownagents sh ctx opt = union (trKnow (id,ms) t knownagents sh ctx opt) (case id2Type a t of
+                                                                                                      Agent _ _ _ NoCert -> [DKnow (jid, agent2NExpression a ctx)]
+                                                                                                      Agent _ _ _ Cert -> DKnow (jid, agent2NExpression a ctx) : map (\pk-> DKnow (jid, spKeyFunIDPub (Just pk) a ctx)) pkiFunList
+                                                                                                      Function _ -> let
+                                                                                                                      knownpubkeys = if isPKFun a
+                                                                                                                                           then map (\x -> DKnow (jid, spKeyFunIDPub pka x ctx)) knownagents
+                                                                                                                                           else []
+                                                                                                                    in  DKnow (jid, id2NExpression a ctx) : knownpubkeys
+                                                                                                      _ -> [DKnow (jid, id2NExpression a ctx)])
+                                                                                                      where 
+                                                                                                            jid = agent2NEIdent id ctx
+                                                                                                            pka = Just (getKeyFun a)
 
 -- application of functions
-trKnow (id,m@(Comp Apply [Atom f,_]):ms) t a sh ctx opt = trace ("trKnow Comp Apply agent=" ++ id ++ " msg=" ++ show m ++ " OutType=" ++ show (anbxouttype opt)) (union (trKnow (id,ms) t a sh ctx opt) dKnowFacts) -- make sure that ids are sorted (well-formedness)
+trKnow (id,m@(Comp Apply [Atom f,_]):ms) t a sh ctx opt = union (trKnow (id,ms) t a sh ctx opt) dKnowFacts -- make sure that ids are sorted (well-formedness)
                                                                                           where 
                                                                                                 jid = agent2NEIdent id ctx
                                                                                                 dKnowFacts = DKnow (jid,trMsg m ctx) : dPrivFact
@@ -256,7 +246,7 @@ trKnow (id,m@(Comp Apply [Atom f,_]):ms) t a sh ctx opt = trace ("trKnow Comp Ap
                                                                                                                     t1 = typeofTS expr ctx
                                                                                                                     expr = trMsg m ctx
 -- otherwise translate the messages
-trKnow (id,m:ms) t a sh ctx opt = trace ("trKnow OTHER MESSAGE agent=" ++ id ++ " msg=" ++ show m ++ " OutType=" ++ show (anbxouttype opt)) (union (trKnow (id,ms) t a sh ctx opt) [DKnow (jid,trMsg m ctx)])
+trKnow (id,m:ms) t a sh ctx opt = union (trKnow (id,ms) t a sh ctx opt) [DKnow (jid,trMsg m ctx)]
                                                                                         where 
                                                                                             jid = agent2NEIdent id ctx
 

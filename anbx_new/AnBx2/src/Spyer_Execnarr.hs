@@ -39,7 +39,6 @@ import           AnBxMsgCommon   (Ident, isVariable, syncMsg,ShareType (SHShare,
 import           AnBxOnP         (cmdRelaxGoalsOtherAgentKnow,isOutTypePV,AnBxOnP(relaxGoalsOtherAgentKnow, nogoals, anbxouttype),OutType (AnB, AnBIntr), cmdAnBExecCheck, anbxmitm)
 import           Data.Maybe      (fromJust, fromMaybe)
 import           Data.List       ((\\), find, foldl')
-import           Debug.Trace     (trace)
 import           Spyer_Ast       (Declaration (DGenerates, DKnow, DShare))
 import           Spyer_Knowledge (addKnowledge, irreducibles, rep,analysisStepEq,knAdd,inSynthesis)
 import           Spyer_Message   (KnowledgeMap, namesOfKnowlegde, NEquations, Formula (FAnd,FSingle), Atom (FNotEq,FWff), showKnowledgeMap)
@@ -201,7 +200,7 @@ compileAnB2ExecnarrKnow (next_var,privnames,kappa,gennames) (ctx,types,sh,DKnow 
                         if Set.null s then
                                 let
                                         ka1 = getKappa kappa a ctx
-                                        ka2 = trace ("DKnow processing for agent=" ++ a ++ " msg=" ++ show m ++ " OutType=" ++ show out ++ " anbxouttype=" ++ show (anbxouttype opt)) (knAdd m (Set.singleton m) ka1 equations ctx opt)
+                                        ka2 = knAdd m (Set.singleton m) ka1 equations ctx opt
                                         ka3 = rep (irreducibles ka2 equations ctx opt) equations ctx opt
                                         newKappa = updateKappa kappa a ka3
                                 in compileAnB2ExecnarrKnow (next_var,privnames,newKappa,gennames) (ctx,types,sh,ds,decl,equations,xs,goalsS,goalsR,seenSQN) mapgoals evn opt out
@@ -296,7 +295,7 @@ compileAnB2ExecnarrKnow context@(next_var,privnames,kappa,gennames) (ctx,types,s
                                                                                             [NAEmitReplay (next_var, a, (na, channeltype, nb), agent2NExpression b ctx, em),
                                                                                             NAReceive (next_var, b, (nb, channeltype, na), NEVar (t, x) em)]           -- add send and receive actions
                                                                                     (acts2,seenSQN1) = seenEvents next_var b newKappa ctx equations seenSQN decl opt                                     -- generate seen events for sequence numbers   
-                                                                                    acts3 = trace ("compileAnB2ExecnarrKnow creating NACheck for agent=" ++ b ++ " step=" ++ show next_var ++ " phi=" ++ show phi ++ " WFF in phi=" ++ show [atom | atom@(FWff _) <- case phi of FAnd atoms -> Set.toList atoms; FSingle atom -> [atom]]) [NACheck (next_var,b,phi)]                                                                                   -- generate the checks on reception
+                                                                                    acts3 = [NACheck (next_var,b,phi)]                                                                                   -- generate the checks on reception
                                                                                     (acts4,newKappa1,newMapGoals) = compileAnB2ExecnarrKnow (next_var + 1,privnames,newKappa,gennames) (ctx,types,sh,[],decl,equations,xs,gS2,gR2,seenSQN1) mapgoals1 evn opt out   -- compute the rest of the narration
                                                                                 in (acts_be ++ acts1 ++ acts2 ++ acts3 ++ acts4 ++ acts_ee,newKappa1,newMapGoals)       -- full narration computed with end events at the end
                                                                             -- in error (show em)

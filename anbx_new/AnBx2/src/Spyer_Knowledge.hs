@@ -79,7 +79,7 @@ synthesis knowledge msg equations ctx opt | not (exprIsMessage msg) = error (msg
                                                     Just e -> e
                                                     Nothing -> Set.empty
                                     encOption = synthesistypeenc opt
-                                    result = case msg of
+                                 in case msg of
                                         NEName _ -> base
                                         NECat [] -> base
                                         NECat [m] -> case optMCat of
@@ -155,7 +155,6 @@ synthesis knowledge msg equations ctx opt | not (exprIsMessage msg) = error (msg
                                                             syn_m2 = synthesis knowledge m2 equations ctx opt
                                                         in foldset (\e1 es1 -> foldset (\e2 es2 -> Set.insert (NEXor e1 e2) es2) es1 syn_m2) base syn_m1
                                         e -> error ("unexpected term as this stage: " ++ show e)
-                                 in result
 
 
 projOp :: ExpressionSet ->  [NExpression] -> [(NExpression, ExpressionSet)]
@@ -424,8 +423,11 @@ addAtom :: Atom -> AtomSet -> AtomSet
 -- addAtom at ats | trace ("addAtom\n\tat: " ++ show at ++ "\n\tats: " ++ show ats) False = undefined
 addAtom (FNotEq _) ats = ats
 addAtom at@(FWff e) ats | setExist (atomImplWff e) ats = ats
-                        | exprIsMessage e && not (needsWffCheck e) = ats
-                        | otherwise = Set.insert at ats
+                        | exprIsMessage e && not (needsWffCheck e) = 
+                            trace ("addAtom FILTERING WFF: " ++ show at ++ " because exprIsMessage=" ++ show (exprIsMessage e) ++ " needsWffCheck=" ++ show (needsWffCheck e)) ats
+                        | otherwise = 
+                            trace ("addAtom ADDING WFF: " ++ show at ++ " because exprIsMessage=" ++ show (exprIsMessage e) ++ " needsWffCheck=" ++ show (needsWffCheck e)) $
+                            Set.insert at ats
 
 addAtom at@(FEq(e,f,mf)) ats =
         if e == f then addAtom (FWff e) ats
@@ -485,7 +487,7 @@ addKnowledge (m,e) k equations ctx opt
                                 k1 = rep (irr ak equations ctx opt) equations ctx opt
                             -- in error(show ak)
                             -- in error (show phi)
-                        in trace ("addKnowledge OutType=" ++ show (anbxouttype opt) ++ "\n  input: " ++ show (m,e) ++ "\n  initial knowledge has keys: " ++ show (Map.keys k) ++ "\n  phi: " ++ show phi ++ "\n  WFF in phi: " ++ show [atom | atom@(FWff _) <- case phi of FAnd atoms -> Set.toList atoms; FSingle atom -> [atom]]) (k1,phi)
+                        in (k1,phi)
 
 formulas :: KnowledgeMap -> NEquations -> JContext -> AnBxOnP -> Formula
 -- formulas ak _ _ _ | trace ("formulas\n\tak: " ++ showKnowledgeMap ak) False = undefined
