@@ -135,6 +135,8 @@ public final class ISOSK2PMAP_I2_ROLE_A extends AnB_Protocol<ISOSK2PMAP_I2_Steps
 			
 			VAR_A_R3 = (SealedObject) s.Receive();
 			eqCheck("3.1",aliases.get("ROLE_A"),(String) new AnBx_Params((AnBx_Params) s.decrypt(VAR_A_R3,VAR_A_SHKAB)).getValue(1));
+			//SB: added to log the recovery of Text3
+			wffCheck("3.2",(Crypto_ByteArray) new AnBx_Params((AnBx_Params) s.decrypt(VAR_A_R3,VAR_A_SHKAB)).getValue(2));
 
 			break;
 		
