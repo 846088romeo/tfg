@@ -1,0 +1,124 @@
+.\anbxc_new.exe ..\..\casestudies\ISOsymKeyTwoPassMutualAuthProt.AnBx -out:Java >> log
+
+[execnarrKnowOfProt] compileAnB2ExecnarrKnow args:
+  ctx: JContext (fromList [("A",VarBind JAgent),("B",VarBind JAgent),("NA",VarBind JNonce),("NB",VarBind JNonce),("Text1",VarBind JNonce),("Text2",VarBind JNonce),("Text3",VarBind JNonce),("Text4",VarBind JNonce),("shk",VarBind (JFunction ->* (AnBxParams [JAgent,JAgent],JSymmetricKey))),("tag",VarBind (JConstant JNonce)),("zero",VarBind JNonce)])
+  types: [(Agent,["A","B"]),(Number,["NA","NB","Text1","Text2","Text3","Text4","tag"]),(Function [Agent,Agent ->* SymmetricKey],["shk"])]
+  shares: [(share,["A","B"],[shk(A,B)])]
+  decs: [B know B,B know A,B know tag,B know shk(<A,B>),A know A,A know B,A know tag,A know shk(<A,B>),private ShkAB     (* A,B share shk(<A,B>) *),A generates NA,B generates NB,A generates Text1,B generates Text3]
+  equations: []
+  actions: [((("A",False,Nothing),Insecure,("B",False,Nothing)),{|NA,B,Text1|}shk(A,B),Nothing,Nothing),((("B",False,Nothing),Insecure,("A",False,Nothing)),{|NB,A,Text3|}shk(A,B),Nothing,Nothing)]
+  goals2ver: [WAuthentication ("A",False,Nothing) ("B",False,Nothing) Text3 "",WAuthentication ("B",False,Nothing) ("A",False,Nothing) Text1 ""]
+  newmapgoals: fromList [(("A","_wauth_TEXT1_BA"),Nothing),(("A","_wauth_TEXT3_AB"),Nothing),(("B","_wauth_TEXT1_BA"),Nothing),(("B","_wauth_TEXT3_AB"),Nothing)]
+  evn: (0,99,99)
+  out: Java
+
+[compileAnB2ExecnarrKnow] Processing action: ((("A",False,Nothing),Insecure,("B",False,Nothing)),{|NA,B,Text1|}shk(A,B),Nothing,Nothing)
+next_var: 0
+a: "A" b: "B"
+msg: {|NA,B,Text1|}shk(A,B)
+[compileAnB2ExecnarrKnow] Knowledge for sender (A): fromList [(A,fromList [A]),(B,fromList [B]),(NA,fromList [NA]),(Text1,fromList [Text1]),(tag,fromList [tag]),(shk(<A,B>),fromList [shk(<A,B>)])]
+NExpression: encS(<NA,B,Text1>,shk(<A,B>))
+[addKnowledge] ak (analysis result):
+["(A:A)","(B:B,proj[2/3][decS(R0,shk(<A,B>))])","(NA:proj[1/3][decS(R0,shk(<A,B>))])","(NB:NB)","(Text1:proj[3/3][decS(R0,shk(<A,B>))])","(Text3:Text3)","(tag:tag)","(<NA,B,Text1>:decS(R0,shk(<A,B>)))","(encS(<NA,B,Text1>,shk(<A,B>)):R0)","(shk(<A,B>):shk(<A,B>))"]
+[addKnowledge] k1 (final knowledge):
+["(A:A)","(B:B)","(NA:proj[1/3][decS(R0,shk(<A,B>))])","(NB:NB)","(Text1:proj[3/3][decS(R0,shk(<A,B>))])","(Text3:Text3)","(tag:tag)","(shk(<A,B>):shk(<A,B>))"]
+[addKnowledge] phi (formulas result):
+(*2*)
+wff(Text3)
+eq(B,proj[2/3][decS(R0,shk(<A,B>))])
+
+[compileAnB2ExecnarrKnow] Processing action: ((("B",False,Nothing),Insecure,("A",False,Nothing)),{|NB,A,Text3|}shk(A,B),Nothing,Nothing)
+next_var: 1
+a: "B" b: "A"
+msg: {|NB,A,Text3|}shk(A,B)
+[compileAnB2ExecnarrKnow] Knowledge for sender (B): fromList [(A,fromList [A]),(B,fromList [B]),(NA,fromList [proj[1/3][decS(R0,shk(<A,B>))]]),(NB,fromList [NB]),(Text1,fromList [proj[3/3][decS(R0,shk(<A,B>))]]),(Text3,fromList [Text3]),(tag,fromList [tag]),(shk(<A,B>),fromList [shk(<A,B>)])]
+NExpression: encS(<NB,A,Text3>,shk(<A,B>))
+[addKnowledge] ak (analysis result):
+["(A:A,proj[2/3][decS(R1,shk(<A,B>))])","(B:B)","(NA:NA)","(NB:proj[1/3][decS(R1,shk(<A,B>))])","(Text1:Text1)","(Text3:proj[3/3][decS(R1,shk(<A,B>))])","(tag:tag)","(<NB,A,Text3>:decS(R1,shk(<A,B>)))","(encS(<NB,A,Text3>,shk(<A,B>)):R1)","(shk(<A,B>):shk(<A,B>))"]
+[addKnowledge] k1 (final knowledge):
+["(A:A)","(B:B)","(NA:NA)","(NB:proj[1/3][decS(R1,shk(<A,B>))])","(Text1:Text1)","(Text3:proj[3/3][decS(R1,shk(<A,B>))])","(tag:tag)","(shk(<A,B>):shk(<A,B>))"]
+[addKnowledge] phi (formulas result):
+(*1*)
+eq(A,proj[2/3][decS(R1,shk(<A,B>))])
+
+[LET BLOCK TRACE]
+kappa1: fromList [("A",fromList [(A,fromList [A]),(B,fromList [B]),(NA,fromList [NA]),(Text1,fromList [Text1]),(tag,fromList [tag]),(shk(<A,B>),fromList [shk(<A,B>)])]),("B",fromList [(A,fromList [A]),(B,fromList [B]),(NA,fromList [proj[1/3][decS(R0,shk(<A,B>))]]),(NB,fromList [NB]),(Text1,fromList [proj[3/3][decS(R0,shk(<A,B>))]]),(Text3,fromList [Text3]),(tag,fromList [tag]),(shk(<A,B>),fromList [shk(<A,B>)])])]
+t: SealedObject (AnBxParams [JNonce,JAgent,JNonce])
+kb: fromList [(A,fromList [A]),(B,fromList [B]),(NA,fromList [NA]),(NB,fromList [proj[1/3][decS(R1,shk(<A,B>))]]),(Text1,fromList [Text1]),(Text3,fromList [proj[3/3][decS(R1,shk(<A,B>))]]),(tag,fromList [tag]),(shk(<A,B>),fromList [shk(<A,B>)])]
+phi: (*1*)
+eq(A,proj[2/3][decS(R1,shk(<A,B>))])
+
+em: encS(<NB,A,Text3>,shk(<A,B>))
+newKappa: fromList [("A",fromList [(A,fromList [A]),(B,fromList [B]),(NA,fromList [NA]),(NB,fromList [proj[1/3][decS(R1,shk(<A,B>))]]),(Text1,fromList [Text1]),(Text3,fromList [proj[3/3][decS(R1,shk(<A,B>))]]),(tag,fromList [tag]),(shk(<A,B>),fromList [shk(<A,B>)])]),("B",fromList [(A,fromList [A]),(B,fromList [B]),(NA,fromList [proj[1/3][decS(R0,shk(<A,B>))]]),(NB,fromList [NB]),(Text1,fromList [proj[3/3][decS(R0,shk(<A,B>))]]),(Text3,fromList [Text3]),(tag,fromList [tag]),(shk(<A,B>),fromList [shk(<A,B>)])])]
+mapgoals1: fromList [(("A","_wauth_TEXT1_BA"),Just 0),(("A","_wauth_TEXT3_AB"),Just 1),(("B","_wauth_TEXT1_BA"),Just 0),(("B","_wauth_TEXT3_AB"),Just 0)]
+gS1: [WAuthentication ("A",False,Nothing) ("B",False,Nothing) Text3 ""]
+gS2: []
+gR1: [WAuthentication ("A",False,Nothing) ("B",False,Nothing) Text3 ""]
+gR2: []
+acts_be: [1(1)| B: witness(_wauth_TEXT3_AB,Text3,[(A,A),(B,B)]) # side condition: False]
+acts_ee: [99(1)| A: wrequest(_wauth_TEXT3_AB,proj[3/3][decS(R1,shk(<A,B>))],[(A,A),(B,B)]) # side condition: True]
+na: (JAgent,"B")
+nb: (JAgent,"A")
+acts1: [1| B: send(A;encS(<NB,A,Text3>,shk(<A,B>)))     # B -> A,1| A: R1 := receive()  # B -> A]
+acts2: []
+seenSQN1: []
+acts3: [1| A: (*1*)
+eq(A,proj[2/3][decS(R1,shk(<A,B>))])
+]
+acts4: []
+newKappa1: fromList [("A",fromList [(A,fromList [A]),(B,fromList [B]),(NA,fromList [NA]),(NB,fromList [proj[1/3][decS(R1,shk(<A,B>))]]),(Text1,fromList [Text1]),(Text3,fromList [proj[3/3][decS(R1,shk(<A,B>))]]),(tag,fromList [tag]),(shk(<A,B>),fromList [shk(<A,B>)])]),("B",fromList [(A,fromList [A]),(B,fromList [B]),(NA,fromList [proj[1/3][decS(R0,shk(<A,B>))]]),(NB,fromList [NB]),(Text1,fromList [proj[3/3][decS(R0,shk(<A,B>))]]),(Text3,fromList [Text3]),(tag,fromList [tag]),(shk(<A,B>),fromList [shk(<A,B>)])])]
+newMapGoals: fromList [(("A","_wauth_TEXT1_BA"),Just 0),(("A","_wauth_TEXT3_AB"),Just 1),(("B","_wauth_TEXT1_BA"),Just 0),(("B","_wauth_TEXT3_AB"),Just 0)]
+
+[LET BLOCK TRACE]
+kappa1: fromList [("A",fromList [(A,fromList [A]),(B,fromList [B]),(NA,fromList [NA]),(Text1,fromList [Text1]),(tag,fromList [tag]),(shk(<A,B>),fromList [shk(<A,B>)])]),("B",fromList [(A,fromList [A]),(B,fromList [B]),(NB,fromList [NB]),(Text3,fromList [Text3]),(tag,fromList [tag]),(shk(<A,B>),fromList [shk(<A,B>)])])]
+t: SealedObject (AnBxParams [JNonce,JAgent,JNonce])
+kb: fromList [(A,fromList [A]),(B,fromList [B]),(NA,fromList [proj[1/3][decS(R0,shk(<A,B>))]]),(NB,fromList [NB]),(Text1,fromList [proj[3/3][decS(R0,shk(<A,B>))]]),(Text3,fromList [Text3]),(tag,fromList [tag]),(shk(<A,B>),fromList [shk(<A,B>)])]
+phi: (*2*)
+wff(Text3)
+eq(B,proj[2/3][decS(R0,shk(<A,B>))])
+
+em: encS(<NA,B,Text1>,shk(<A,B>))
+newKappa: fromList [("A",fromList [(A,fromList [A]),(B,fromList [B]),(NA,fromList [NA]),(Text1,fromList [Text1]),(tag,fromList [tag]),(shk(<A,B>),fromList [shk(<A,B>)])]),("B",fromList [(A,fromList [A]),(B,fromList [B]),(NA,fromList [proj[1/3][decS(R0,shk(<A,B>))]]),(NB,fromList [NB]),(Text1,fromList [proj[3/3][decS(R0,shk(<A,B>))]]),(Text3,fromList [Text3]),(tag,fromList [tag]),(shk(<A,B>),fromList [shk(<A,B>)])])]
+mapgoals1: fromList [(("A","_wauth_TEXT1_BA"),Just 0),(("A","_wauth_TEXT3_AB"),Nothing),(("B","_wauth_TEXT1_BA"),Just 0),(("B","_wauth_TEXT3_AB"),Just 0)]
+gS1: [WAuthentication ("B",False,Nothing) ("A",False,Nothing) Text1 ""]
+gS2: [WAuthentication ("A",False,Nothing) ("B",False,Nothing) Text3 ""]
+gR1: [WAuthentication ("B",False,Nothing) ("A",False,Nothing) Text1 ""]
+gR2: [WAuthentication ("A",False,Nothing) ("B",False,Nothing) Text3 ""]
+acts_be: [0(0)| A: witness(_wauth_TEXT1_BA,Text1,[(B,B),(A,A)]) # side condition: False]
+acts_ee: [99(0)| B: wrequest(_wauth_TEXT1_BA,proj[3/3][decS(R0,shk(<A,B>))],[(B,B),(A,A)]) # side condition: True]
+na: (JAgent,"A")
+nb: (JAgent,"B")
+acts1: [0| A: send(B;encS(<NA,B,Text1>,shk(<A,B>)))     # A -> B,0| B: R0 := receive()  # A -> B]
+acts2: []
+seenSQN1: []
+acts3: [0| B: (*2*)
+wff(Text3)
+eq(B,proj[2/3][decS(R0,shk(<A,B>))])
+]
+acts4: [1(1)| B: witness(_wauth_TEXT3_AB,Text3,[(A,A),(B,B)]) # side condition: False,1| B: send(A;encS(<NB,A,Text3>,shk(<A,B>)))       # B -> A,1| A: R1 := receive()  # B -> A,1| A: (*1*)
+eq(A,proj[2/3][decS(R1,shk(<A,B>))])
+,99(1)| A: wrequest(_wauth_TEXT3_AB,proj[3/3][decS(R1,shk(<A,B>))],[(A,A),(B,B)]) # side condition: True]
+newKappa1: fromList [("A",fromList [(A,fromList [A]),(B,fromList [B]),(NA,fromList [NA]),(NB,fromList [proj[1/3][decS(R1,shk(<A,B>))]]),(Text1,fromList [Text1]),(Text3,fromList [proj[3/3][decS(R1,shk(<A,B>))]]),(tag,fromList [tag]),(shk(<A,B>),fromList [shk(<A,B>)])]),("B",fromList [(A,fromList [A]),(B,fromList [B]),(NA,fromList [proj[1/3][decS(R0,shk(<A,B>))]]),(NB,fromList [NB]),(Text1,fromList [proj[3/3][decS(R0,shk(<A,B>))]]),(Text3,fromList [Text3]),(tag,fromList [tag]),(shk(<A,B>),fromList [shk(<A,B>)])])]
+newMapGoals: fromList [(("A","_wauth_TEXT1_BA"),Just 0),(("A","_wauth_TEXT3_AB"),Just 1),(("B","_wauth_TEXT1_BA"),Just 0),(("B","_wauth_TEXT3_AB"),Just 0)]
+
+[mkProt2J] execnarr original:
+0| A: new Text1
+0(0)| A: witness(_wauth_TEXT1_BA,Text1,[(B,B),(A,A)]) # side condition: False
+0| A: new NA
+0| A: VAR_A_SHKAB := shk(<A,B>)
+0| A: send(B;encS(<NA,B,Text1>,VAR_A_SHKAB))    # A -> B
+0| B: VAR_B_R0 := receive()     # A -> B
+0| B: wff(Text3)
+0| B: VAR_B_SHKAB := shk(<A,B>)
+0| B: eq(B,proj[2/3][decS(VAR_B_R0,VAR_B_SHKAB)])
+1| B: new Text3
+1(1)| B: witness(_wauth_TEXT3_AB,Text3,[(A,A),(B,B)]) # side condition: False
+1| B: new NB
+1| B: send(A;encS(<NB,A,Text3>,VAR_B_SHKAB))    # B -> A
+1| A: VAR_A_R1 := receive()     # B -> A
+1| A: eq(A,proj[2/3][decS(VAR_A_R1,VAR_A_SHKAB)])
+99(1)| A: wrequest(_wauth_TEXT3_AB,proj[3/3][decS(VAR_A_R1,VAR_A_SHKAB)],[(A,A),(B,B)]) # side condition: True
+99(0)| B: wrequest(_wauth_TEXT1_BA,proj[3/3][decS(VAR_B_R0,VAR_B_SHKAB)],[(B,B),(A,A)]) # side condition: True
+
+[mapActions] jactions: [B|99(0): wrequest((JNonce,"_wauth_TEXT1_BA"),proj[3/3][decS(VAR_B_R0,VAR_B_SHKAB)],[((JAgent,"B"),B),((JAgent,"A"),A)])]
+jsteps0: [99]

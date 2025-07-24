@@ -50,6 +50,7 @@ import Data.Tuple.Utils (fst3,snd3,thd3)
 import AnBxMsg ( AnBxMsg (..))
 import AnBxAst ( AnBxGoal(..), AnBxChannelType (..), peer2Ident, getSender, getReceiver, ident2Peer, getActiveAgents, peer2Agent, unwrapMsg, AnBxMsgWrapper(..))
 
+import Debug.Trace (trace)
 
 -- import AnBTypeSystem_Evaluator (typeofTS)
 import Java_TypeSystem_Context ( JContext, buildJContext, getIdentifiersByTypeStrict )
@@ -256,49 +257,76 @@ compileAnB2ExecnarrKnow (next_var,_,kappa,_) (ctx,types,sh,[],_,equations,[],[],
 -- processing list of actions
 compileAnB2ExecnarrKnow context@(next_var,privnames,kappa,gennames) (ctx,types,sh,[],decl,equations,x@(((a,_,_),channeltype,(b,_,_)),msgw,_,_):xs,goalsS,goalsR,seenSQN) mapgoals evn@(_,endEvnrAuth,endEvnrSecr) opt out
                         -- share actions (simply ignored as shares are processed in AnB and later in the compilation chain, except for ProVerif output)
-                        | channeltype == Sharing SHShare || ((channeltype == Sharing SHAgree || channeltype == Sharing SHAgreeInsecurely) && not (isOutTypePV out)) = compileAnB2ExecnarrKnow context (ctx,types,sh,[],decl,equations,xs,goalsS,goalsR,seenSQN) mapgoals evn opt out
+                        | channeltype == Sharing SHShare || ((channeltype == Sharing SHAgree || channeltype == Sharing SHAgreeInsecurely) && not (isOutTypePV out)) =
+                            trace ("[compileAnB2ExecnarrKnow] Skipping share action: " ++ show x) $ compileAnB2ExecnarrKnow context (ctx,types,sh,[],decl,equations,xs,goalsS,goalsR,seenSQN) mapgoals evn opt out
                         -- standard actions
                         | otherwise =
-                            let (msg,_) = unwrapMsg msgw
-                        in if next_var==0 && msg == Atom syncMsg then
-                            -- skip first empty action if any
-                            compileAnB2ExecnarrKnow context (ctx,types,sh,[],decl,equations,xs,goalsS,goalsR,seenSQN) mapgoals evn opt out
-                        else
-                            let
-                                (msg,_) = unwrapMsg msgw
-                                -- a (sender), b (receiver)
-                                m = trMsg msg ctx                  -- translate the AnB message to NExpression
-                                ka0 = getKappa kappa a ctx                  -- get knowledge for sender
-                                ka = analysisStepEq ka0 equations ctx opt   -- run equation-based analysis step on the knowledge 
-                            in case (inSynthesis ka (agent2NExpression b ctx) equations, inSynthesis ka m equations ctx opt) of       -- check if sender can syntesise message m, check also the recipient name but it not really used at the moment
-                                            -- sender cannot synthesise message
-                                            (_,Nothing) -> error ("agent " ++ a ++  " cannot compile AnB to ExecNarr - in action: " ++ showAction x ++ "\n" ++ errorInSynthesis a m ka equations)
-                                            (_,Just em) -> let x = newVar next_var in
-                                                                                let -- compile the action
-                                                                                    kappa1 = updateKappa kappa a ka
-                                                                                    t = typeofTS m ctx    -- computes the type of the variable to be added to the knowledge
-                                                                                    -- update knowledge for a 
-                                                                                    (kb,phi) = addKnowledge (m,NEVar (t,x) em) (getKappa kappa1 b ctx) equations ctx opt -- add the received message to b's knowledge and updates the knowledge
-                                                                                    newKappa = updateKappa kappa1 b kb                                       -- update knowledge for b
-                                                                                    -- update the goals map
-                                                                                    mapgoals1 = updateMapGoalsList next_var newKappa mapgoals goalsS ctx equations opt
-                                                                                    ((gS1,gS2),(gR1,gR2)) = goals2filter a b goalsS goalsR newKappa ctx equations opt     -- process applicable (gS1,gR1) / non applicable goals (gS2,gR2) for sender/receiver
-                                                                                    acts_be = concatMap (\x -> beginEvents next_var endEvnrSecr newKappa x ctx equations mapgoals opt) gS1     -- compute begin events for applicable goals
-                                                                                    acts_ee = concatMap (\x -> endEvents endEvnrAuth next_var newKappa x ctx equations mapgoals opt RelaxKnowAgentFalse) gR1 -- compute end events for applicable goals
-                                                                                    na = agent2NEIdent a ctx
-                                                                                    nb = agent2NEIdent b ctx
-                                                                                    acts1 = case msgw of
-                                                                                        PlainMsg _ ->
-                                                                                            [NAEmit (next_var, a, (na, channeltype, nb), agent2NExpression b ctx, em),
-                                                                                            NAReceive (next_var, b, (nb, channeltype, na), NEVar (t, x) em)]
-                                                                                        ReplayMsg _ ->
-                                                                                            [NAEmitReplay (next_var, a, (na, channeltype, nb), agent2NExpression b ctx, em),
-                                                                                            NAReceive (next_var, b, (nb, channeltype, na), NEVar (t, x) em)]           -- add send and receive actions
-                                                                                    (acts2,seenSQN1) = seenEvents next_var b newKappa ctx equations seenSQN decl opt                                     -- generate seen events for sequence numbers   
-                                                                                    acts3 = [NACheck (next_var,b,phi)]                                                                                   -- generate the checks on reception
-                                                                                    (acts4,newKappa1,newMapGoals) = compileAnB2ExecnarrKnow (next_var + 1,privnames,newKappa,gennames) (ctx,types,sh,[],decl,equations,xs,gS2,gR2,seenSQN1) mapgoals1 evn opt out   -- compute the rest of the narration
-                                                                                in (acts_be ++ acts1 ++ acts2 ++ acts3 ++ acts4 ++ acts_ee,newKappa1,newMapGoals)       -- full narration computed with end events at the end
-                                                                            -- in error (show em)
+                            let (msg,_) = unwrapMsg msgw in
+                            trace ("[compileAnB2ExecnarrKnow] Processing action: " ++ show x ++ "\nnext_var: " ++ show next_var ++ "\na: " ++ show a ++ " b: " ++ show b ++ "\nmsg: " ++ show msg) $ 
+                            if next_var==0 && msg == Atom syncMsg then
+                                trace "[compileAnB2ExecnarrKnow] Skipping first empty action (syncMsg)" $ compileAnB2ExecnarrKnow context (ctx,types,sh,[],decl,equations,xs,goalsS,goalsR,seenSQN) mapgoals evn opt out
+                            else
+                                let
+                                    (msg,_) = unwrapMsg msgw
+                                    m = trMsg msg ctx                  -- translate the AnB message to NExpression
+                                    ka0 = getKappa kappa a ctx                  -- get knowledge for sender
+                                    ka = analysisStepEq ka0 equations ctx opt   -- run equation-based analysis step on the knowledge 
+                                    -- Compute goalExprs: all NExpressions that are dependencies of protocol goals
+                                    allGoals = goalsS ++ goalsR
+                                    goalExprs = map (trMsg . messageOfGoal) allGoals <*> [ctx]
+                                in trace ("[compileAnB2ExecnarrKnow] Knowledge for sender (" ++ a ++ "): " ++ show ka ++ "\nNExpression: " ++ show m) $
+                                case (inSynthesis ka (agent2NExpression b ctx) equations, inSynthesis ka m equations ctx opt) of       -- check if sender can syntesise message m, check also the recipient name but it not really used at the moment
+                                    -- sender cannot synthesise message
+                                    (_,Nothing) -> trace ("[compileAnB2ExecnarrKnow] ERROR: Sender " ++ a ++ " cannot synthesise message " ++ show m) $ error ("agent " ++ a ++  " cannot compile AnB to ExecNarr - in action: " ++ showAction x ++ "\n" ++ errorInSynthesis a m ka equations)
+                                    (_,Just em) -> let x = newVar next_var in
+                                        let 
+                                            kappa1 = updateKappa kappa a ka
+                                            t = typeofTS m ctx    -- computes the type of the variable to be added to the knowledge
+                                            (kb,phi) = addKnowledge goalExprs (m,NEVar (t,x) em) (getKappa kappa1 b ctx) equations ctx opt -- add the received message to b's knowledge and updates the knowledge
+                                            newKappa = updateKappa kappa1 b kb                                       -- update knowledge for b
+                                            mapgoals1 = updateMapGoalsList next_var newKappa mapgoals goalsS ctx equations opt
+                                            ((gS1,gS2),(gR1,gR2)) = goals2filter a b goalsS goalsR newKappa ctx equations opt     -- process applicable (gS1,gR1) / non applicable goals (gS2,gR2) for sender/receiver
+                                            acts_be = concatMap (\x -> beginEvents next_var endEvnrSecr newKappa x ctx equations mapgoals opt) gS1     -- compute begin events for applicable goals
+                                            acts_ee = concatMap (\x -> endEvents endEvnrAuth next_var newKappa x ctx equations mapgoals opt RelaxKnowAgentFalse) gR1 -- compute end events for applicable goals
+                                            na = agent2NEIdent a ctx
+                                            nb = agent2NEIdent b ctx
+                                            acts1 = case msgw of
+                                                    PlainMsg _ ->
+                                                        [NAEmit (next_var, a, (na, channeltype, nb), agent2NExpression b ctx, em),
+                                                        NAReceive (next_var, b, (nb, channeltype, na), NEVar (t, x) em)]
+                                                    ReplayMsg _ ->
+                                                        [NAEmitReplay (next_var, a, (na, channeltype, nb), agent2NExpression b ctx, em),
+                                                        NAReceive (next_var, b, (nb, channeltype, na), NEVar (t, x) em)]           -- add send and receive actions
+                                            (acts2,seenSQN1) = seenEvents next_var b newKappa ctx equations seenSQN decl opt                                     -- generate seen events for sequence numbers   
+                                            acts3 = [NACheck (next_var,b,phi)]                                                                                   -- generate the checks on reception
+                                            (acts4,newKappa1,newMapGoals) = compileAnB2ExecnarrKnow (next_var + 1,privnames,newKappa,gennames) (ctx,types,sh,[],decl,equations,xs,gS2,gR2,seenSQN1) mapgoals1 evn opt out   -- compute the rest of the narration
+                                            traceMsg = unlines [
+                                                "[LET BLOCK TRACE]",
+                                                "kappa1: " ++ show kappa1,
+                                                "t: " ++ show t,
+                                                "kb: " ++ show kb,
+                                                "phi: " ++ show phi,
+                                                "em: " ++ show em,
+                                                "newKappa: " ++ show newKappa,
+                                                "mapgoals1: " ++ show mapgoals1,
+                                                "gS1: " ++ show gS1,
+                                                "gS2: " ++ show gS2,
+                                                "gR1: " ++ show gR1,
+                                                "gR2: " ++ show gR2,
+                                                "acts_be: " ++ show acts_be,
+                                                "acts_ee: " ++ show acts_ee,
+                                                "na: " ++ show na,
+                                                "nb: " ++ show nb,
+                                                "acts1: " ++ show acts1,
+                                                "acts2: " ++ show acts2,
+                                                "seenSQN1: " ++ show seenSQN1,
+                                                "acts3: " ++ show acts3,
+                                                "acts4: " ++ show acts4,
+                                                "newKappa1: " ++ show newKappa1,
+                                                "newMapGoals: " ++ show newMapGoals
+                                                ]  
+                                        in trace traceMsg (acts_be ++ acts1 ++ acts2 ++ acts3 ++ acts4 ++ acts_ee,newKappa1,newMapGoals)       -- full narration computed with end events at the end
+                                    -- in error (show em)
 
 
 execnarrComp ::  Int -> MapSK -> (JContext,Types,AnBShares,NEquations,[Goal]) -> Goal -> Msg -> [String] -> MapGoals -> EVNumbers -> AnBxOnP -> OutType -> Bool -> ([NAction],MapSK,MapGoals)
@@ -603,16 +631,27 @@ execnarrKnowOfProt :: Protocol -> AnBxOnP -> (Execnarr,MapSK,MapGoals)
 execnarrKnowOfProt prot@(_,types,_,anbequations,(_,wh),shares,_,actions,goals) anbxopt = (xnarr,kappa,mapgoals)
                         where
                             ctx = buildJContext prot 
-                            xnarr = nubOrd . sortExecNarr . cleanExecNarr $ (wh_actions ctx ++ narr)
                             newmapgoals = initMapGoals goals ctx
                             goals2ver = if ng then [] else goals
                             evn = evnOfProt actions
-                            (narr,kappa,mapgoals) = compileAnB2ExecnarrKnow (0,Set.empty,Map.empty,Set.empty) (ctx,types,shares,decs,decs,equations,actions,goals2ver,goals2ver,[]) newmapgoals evn anbxopt out
-                            ng = nogoals anbxopt
-                            out = anbxouttype anbxopt
                             decs = trAnB2ExecnarrKnowledge prot ctx anbxopt
                             wh_actions = where2notEq wh
                             equations = trEquations anbequations types ctx
+                            out = anbxouttype anbxopt
+                            ng = nogoals anbxopt
+                            traceMsg = "[execnarrKnowOfProt] compileAnB2ExecnarrKnow args:\n" ++
+                                       "  ctx: " ++ show ctx ++ "\n" ++
+                                       "  types: " ++ show types ++ "\n" ++
+                                       "  shares: " ++ show shares ++ "\n" ++
+                                       "  decs: " ++ show decs ++ "\n" ++
+                                       "  equations: " ++ show equations ++ "\n" ++
+                                       "  actions: " ++ show actions ++ "\n" ++
+                                       "  goals2ver: " ++ show goals2ver ++ "\n" ++
+                                       "  newmapgoals: " ++ show newmapgoals ++ "\n" ++
+                                       "  evn: " ++ show evn ++ "\n" ++
+                                       "  out: " ++ show out ++ "\n"
+                            (narr,kappa,mapgoals) = trace traceMsg $ compileAnB2ExecnarrKnow (0,Set.empty,Map.empty,Set.empty) (ctx,types,shares,decs,decs,equations,actions,goals2ver,goals2ver,[]) newmapgoals evn anbxopt out
+                            xnarr = nubOrd . sortExecNarr . cleanExecNarr $ (wh_actions ctx ++ narr)
 
 -- compute execnarr
 execnarrOfProt :: Protocol -> OFMCAttackImpersonationsAndProt -> AnBxOnP -> Execnarr

@@ -215,9 +215,10 @@ mapActions :: [NAction] -> JContext -> JChannels -> Int -> SynthesisTypeEnc -> (
 mapActions [] _ _ _ _ = ([],[])
 mapActions [x] ctx chs substep opt = let
                                             (act,step,_) = mapAction x ctx chs substep opt
-                                     in case act of
+                                            res = case act of
                                                 Just a -> ([a],[step])
                                                 Nothing -> ([],[step])
+                                        in trace ("[mapActions] jactions: " ++ show (fst res) ++ "\njsteps0: " ++ show (snd res)) res
 -- skip new/private actions
 mapActions (x:xs) ctx chs substep opt = let
                                            (act,newstep,nextsubstep) = mapAction x ctx chs substep opt
@@ -312,7 +313,7 @@ mkProt2J prot@(_,ptypes,_,_,_,_,_,_,_) intrProtInfos options cfg = let
                                                                     agents = getAgents types
                                                                     jagents = map (\x-> id2NEIdent x ctx) agents
                                                                     inactiveagents =  jagents \\ roles
-                                                                    (jactions,jsteps0) = mapActions execnarr ctx channels 0 (synthesistypeenc options)
+                                                                    (jactions,jsteps0) = trace ("[mkProt2J] execnarr original:\n" ++ unlines (map show execnarr)) (mapActions execnarr ctx channels 0 (synthesistypeenc options))
                                                                     jsteps = sort jsteps0
                                                                     toIgnore = Set.union (mkToIgnore (identsOfProtocol types)) (shareFun (shares ++ agree))
                                                                     methods = nubOrd (mkRoleMethods declarations ctx toIgnore)

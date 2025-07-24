@@ -1,4 +1,4 @@
-Protocol: ISOsymKeyTwoPassMutualAuthProtCorr AnB # Verified & Certified
+Protocol: ISOsymKeyTwoPassMutualAuthProt AnB # Verified & Certified
 # The original protocol has a reflection attack that we correct here
 # by a tag in the first message.
 

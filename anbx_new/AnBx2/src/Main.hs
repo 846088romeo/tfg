@@ -747,8 +747,7 @@ printAnBx anbxprot filename anbxonp cfg = let
 -- code generation to Java and other targets
 codegen :: String -> AnBxOnP -> AnBxProtocol -> OFMCAttackImpersonationsAndProt -> AnBxCfg -> IO String
 codegen filename anbxonp anbxprot impsAndTrProt cfg = do
-							let protocol@(_,types,_,_,_,_,_,_,_) = compileAnBx filename (anbxonp {anbxdebugtype=DNone}) cfg anbxprot Nothing
-							let prot = trAnBAddPublicKeys protocol
+							let prot@(_,types,_,_,_,_,_,_,_) = compileAnBx filename (anbxonp {anbxdebugtype=DNone}) cfg anbxprot Nothing
 							let agents = getAgents types
 							let gencode = dbgJavaCode prot anbxonp cfg impsAndTrProt
 							let targetLanguage = outType2Str (anbxouttype anbxonp)
