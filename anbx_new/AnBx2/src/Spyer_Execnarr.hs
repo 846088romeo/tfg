@@ -271,9 +271,6 @@ compileAnB2ExecnarrKnow context@(next_var,privnames,kappa,gennames) (ctx,types,s
                                     m = trMsg msg ctx                  -- translate the AnB message to NExpression
                                     ka0 = getKappa kappa a ctx                  -- get knowledge for sender
                                     ka = analysisStepEq ka0 equations ctx opt   -- run equation-based analysis step on the knowledge 
-                                    -- Compute goalExprs: all NExpressions that are dependencies of protocol goals
-                                    allGoals = goalsS ++ goalsR
-                                    goalExprs = map (trMsg . messageOfGoal) allGoals <*> [ctx]
                                 in trace ("[compileAnB2ExecnarrKnow] Knowledge for sender (" ++ a ++ "): " ++ show ka ++ "\nNExpression: " ++ show m) $
                                 case (inSynthesis ka (agent2NExpression b ctx) equations, inSynthesis ka m equations ctx opt) of       -- check if sender can syntesise message m, check also the recipient name but it not really used at the moment
                                     -- sender cannot synthesise message
@@ -282,7 +279,7 @@ compileAnB2ExecnarrKnow context@(next_var,privnames,kappa,gennames) (ctx,types,s
                                         let 
                                             kappa1 = updateKappa kappa a ka
                                             t = typeofTS m ctx    -- computes the type of the variable to be added to the knowledge
-                                            (kb,phi) = addKnowledge goalExprs (m,NEVar (t,x) em) (getKappa kappa1 b ctx) equations ctx opt -- add the received message to b's knowledge and updates the knowledge
+                                            (kb,phi) = addKnowledge (m,NEVar (t,x) em) (getKappa kappa1 b ctx) equations ctx opt -- add the received message to b's knowledge and updates the knowledge
                                             newKappa = updateKappa kappa1 b kb                                       -- update knowledge for b
                                             mapgoals1 = updateMapGoalsList next_var newKappa mapgoals goalsS ctx equations opt
                                             ((gS1,gS2),(gR1,gR2)) = goals2filter a b goalsS goalsR newKappa ctx equations opt     -- process applicable (gS1,gR1) / non applicable goals (gS2,gR2) for sender/receiver
@@ -299,33 +296,34 @@ compileAnB2ExecnarrKnow context@(next_var,privnames,kappa,gennames) (ctx,types,s
                                                         NAReceive (next_var, b, (nb, channeltype, na), NEVar (t, x) em)]           -- add send and receive actions
                                             (acts2,seenSQN1) = seenEvents next_var b newKappa ctx equations seenSQN decl opt                                     -- generate seen events for sequence numbers   
                                             acts3 = [NACheck (next_var,b,phi)]                                                                                   -- generate the checks on reception
-                                            (acts4,newKappa1,newMapGoals) = compileAnB2ExecnarrKnow (next_var + 1,privnames,newKappa,gennames) (ctx,types,sh,[],decl,equations,xs,gS2,gR2,seenSQN1) mapgoals1 evn opt out   -- compute the rest of the narration
-                                            traceMsg = unlines [
-                                                "[LET BLOCK TRACE]",
-                                                "kappa1: " ++ show kappa1,
-                                                "t: " ++ show t,
-                                                "kb: " ++ show kb,
-                                                "phi: " ++ show phi,
-                                                "em: " ++ show em,
-                                                "newKappa: " ++ show newKappa,
-                                                "mapgoals1: " ++ show mapgoals1,
-                                                "gS1: " ++ show gS1,
-                                                "gS2: " ++ show gS2,
-                                                "gR1: " ++ show gR1,
-                                                "gR2: " ++ show gR2,
-                                                "acts_be: " ++ show acts_be,
-                                                "acts_ee: " ++ show acts_ee,
-                                                "na: " ++ show na,
-                                                "nb: " ++ show nb,
-                                                "acts1: " ++ show acts1,
-                                                "acts2: " ++ show acts2,
-                                                "seenSQN1: " ++ show seenSQN1,
-                                                "acts3: " ++ show acts3,
-                                                "acts4: " ++ show acts4,
-                                                "newKappa1: " ++ show newKappa1,
-                                                "newMapGoals: " ++ show newMapGoals
-                                                ]  
-                                        in trace traceMsg (acts_be ++ acts1 ++ acts2 ++ acts3 ++ acts4 ++ acts_ee,newKappa1,newMapGoals)       -- full narration computed with end events at the end
+                                            (acts4,newKappa1,newMapGoals) = compileAnB2ExecnarrKnow (next_var + 1,privnames,newKappa,gennames) (ctx,types,sh,[],decl,equations,xs,gS2,gR2,seenSQN1) mapgoals1 evn opt out   -- compute the rest of the narration 
+                                        -- traceMsg = unlines [
+                                        --     "[LET BLOCK TRACE]",
+                                        --     "kappa1: " ++ show kappa1,
+                                        --     "t: " ++ show t,
+                                        --     "kb: " ++ show kb,
+                                        --     "phi: " ++ show phi,
+                                        --     "em: " ++ show em,
+                                        --     "newKappa: " ++ show newKappa,
+                                        --     "mapgoals1: " ++ show mapgoals1,
+                                        --     "gS1: " ++ show gS1,
+                                        --     "gS2: " ++ show gS2,
+                                        --     "gR1: " ++ show gR1,
+                                        --     "gR2: " ++ show gR2,
+                                        --     "acts_be: " ++ show acts_be,
+                                        --     "acts_ee: " ++ show acts_ee,
+                                        --     "na: " ++ show na,
+                                        --     "nb: " ++ show nb,
+                                        --     "acts1: " ++ show acts1,
+                                        --     "acts2: " ++ show acts2,
+                                        --     "seenSQN1: " ++ show seenSQN1,
+                                        --     "acts3: " ++ show acts3,
+                                        --     "acts4: " ++ show acts4,
+                                        --     "newKappa1: " ++ show newKappa1,
+                                        --     "newMapGoals: " ++ show newMapGoals
+                                        --     ]
+                                        -- in trace traceMsg (...)
+                                        in (acts_be ++ acts1 ++ acts2 ++ acts3 ++ acts4 ++ acts_ee,newKappa1,newMapGoals)       -- full narration computed with end events at the end
                                     -- in error (show em)
 
 

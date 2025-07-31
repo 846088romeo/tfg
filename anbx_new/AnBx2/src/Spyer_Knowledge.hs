@@ -349,36 +349,14 @@ atomImplWff :: NExpression -> Atom -> Bool
 atomImplWff (NEProj _ n e) at = any (\x -> isSubExprOfAtom (NEProj x n e) at) [1..n]            -- any projection allows to test the well-formedness of e
 atomImplWff e at  = isSubExprOfAtom e at
 
--- determine if an expression needs WFF check even if it's a message
--- Generalized: apply WFF check to any value that appears in a goal
-needsWffCheck :: [NExpression] -> NExpression -> Bool
-needsWffCheck goalExprs e =
-    isGoalDep e goalExprs ||
-    case e of
-        NEPub _ _ -> True
-        NEPriv _ _ -> True
-        NEProj _ _ _ -> True
-        NEDec _ _ -> True
-        NEDecS _ _ -> True
-        NEVerify _ _ -> True
-        NEEnc e1 e2 -> needsWffCheck goalExprs e1 || needsWffCheck goalExprs e2
-        NESign e1 e2 -> needsWffCheck goalExprs e1 || needsWffCheck goalExprs e2
-        NEEncS e1 e2 -> needsWffCheck goalExprs e1 || needsWffCheck goalExprs e2
-        NEName (_,name) -> "sk(" `isInfixOf` name || "inv(" `isInfixOf` name
-        NEFun (_,fname) e' -> ("sk" == fname || "inv" == fname) || needsWffCheck goalExprs e'
-        NECat es -> any (needsWffCheck goalExprs) es
-        _ -> False
-
--- Helper: checks if the expression is one of the goal dependencies
-isGoalDep :: NExpression -> [NExpression] -> Bool
-isGoalDep e goalExprs = e `elem` goalExprs
-
 {- simplifie les wff en ajoutant l'atome -}
 simplAdd :: Atom -> AtomSet -> AtomSet
 -- simplAdd at ats | trace ("simplAdd\n\tat: " ++ show at ++ "\n\tats: " ++ show ats) False = undefined
-simplAdd at ats = Set.insert at (Set.filter (\x -> case x of
-                                                        FWff e -> not (atomImplWff e at)
-                                                        _ -> True ) ats)
+simplAdd at ats =
+  let filtered = Set.filter (\x -> case x of
+                                    FWff e -> not (atomImplWff e at)
+                                    _ -> True ) ats
+  in trace ("[simplAdd] Añadiendo " ++ show at ++ ", filtrados: " ++ show (Set.toList filtered)) (Set.insert at filtered)
 
 {- renvoie True si on est sur que l'expression inverse doit etre identique -}
 invIsSame :: NExpression -> Bool
@@ -397,118 +375,133 @@ expressionEqual ats e =
 
 {- on ajoute la simplification suivante: si on doit ajouter fst(e) = m et -}
 {- que snd(e) = n est deja teste alors on remplace par e = <m,n> (m et n etant des messages) -}
-pairSimpl :: [NExpression] -> NExpression -> NExpression -> NExpression -> (NExpression -> NExpression) -> Bool -> Atom -> AtomSet -> AtomSet
--- pairSimpl goalExprs e f _ _ _ _ _ | trace ("pairSimpl\n\te: " ++ show e ++ "\n\tf: " ++ show f) False = undefined
-pairSimpl goalExprs e f opp_e pair_e mf at ats =
-    if exprIsMessage f then
-        let (ats_e,ats1) = Set.partition (\e -> case e of
-                FEq(e1,e2,_) -> ((e1 == opp_e) && exprIsMessage e2) || ((e2 == opp_e) && exprIsMessage e1)
-                _ -> False) ats
-        in if Set.null ats_e then simplAdd at ats1
-        else
-            let
-                at_e = setChoose ats_e
-                g = case at_e of
-                    FEq(e1,e2,_) -> if e1 == opp_e then e2 else e1
-                    _ -> error ("pairSimpl - error in pair simplification:  " ++ show e ++ " " ++ show f)
-            in addAtom goalExprs (FEq(e,pair_e g,mf)) ats1
-    else simplAdd at ats
+pairSimpl :: KnowledgeMap -> NExpression -> NExpression -> NExpression -> (NExpression -> NExpression) -> Bool -> Atom -> AtomSet -> AtomSet
+-- pairSimpl _ e f _ _ _ _ _ | trace ("pairSimpl\n\te: " ++ show e ++ "\n\tf: " ++ show f) False = undefined
+pairSimpl km e f opp_e pair_e mf at ats =
+                if exprIsMessage f then
+                        let (ats_e,ats1) = Set.partition (\e -> case e of
+                                                                FEq(e1,e2,_) -> ((e1 == opp_e) && exprIsMessage e2) || ((e2 == opp_e) && exprIsMessage e1)
+                                                                _ -> False) ats
+                        in if Set.null ats_e then simplAdd at ats1
+                                        else
+                                                let
+                                                        at_e = setChoose ats_e
+                                                        g = case at_e of
+                                                                        FEq(e1,e2,_) -> if e1 == opp_e then e2 else e1
+                                                                        _ -> error ("pairSimpl - error in pair simplification:  " ++ show e ++ " " ++ show f)
+                                                in addAtom km (FEq(e,pair_e g,mf)) ats1
+              else simplAdd at ats
 
 --{- ajoute un atome et simplifie legerement la formule resultante -}
-addAtom :: [NExpression] -> Atom -> AtomSet -> AtomSet
--- addAtom goalExprs at ats | trace ("addAtom\n\tat: " ++ show at ++ "\n\tats: " ++ show ats) False = undefined
+addAtom :: KnowledgeMap -> Atom -> AtomSet -> AtomSet
+addAtom _ at ats | trace ("addAtom\n\tat: " ++ show at ++ "\n\tats: " ++ show ats) False = undefined
 addAtom _ (FNotEq _) ats = ats
-addAtom goalExprs at@(FWff e) ats
-    | setExist (atomImplWff e) ats = ats
-    | exprIsMessage e && not (needsWffCheck goalExprs e) = ats
-    | otherwise = Set.insert at ats
+addAtom km at@(FWff e) ats
+  | exprIsMessage e =
+      let present = any (\(k,v) -> k == e && Set.member e v) (Map.toList km)
+      in if present
+           then trace ("[addAtom] FWff " ++ show e ++ " ya está en KnowledgeMap, no se añade") ats
+           else trace ("[addAtom] Añadiendo FWff " ++ show e ++ " porque no está en KnowledgeMap") (Set.insert at ats)
+  | setExist (atomImplWff e) ats = trace ("[addAtom] FWff " ++ show e ++ " ya existe, no se añade") ats
+  | otherwise = trace ("[addAtom] Añadiendo FWff " ++ show e) (Set.insert at ats)
+addAtom km at@(FEq(e,f,mf)) ats =
+        if e == f then addAtom km (FWff e) ats
+        else
+        {- on ajoute la simplification suivante: si on doit ajouter fst(e) = m et -}
+        {- que snd(e) = n est deja teste alors on remplace par e = <m,n> (m et n etant des messages) -}
+            case (e,f) of
+                (NEProj  1 2 e,f) -> let
+                                        opp_e = NEProj 2 2 e
+                                        pair_e g = NECat [f,g]
+                                   in pairSimpl km e f opp_e pair_e mf at ats
+                (f,NEProj 1 2 e) -> let
+                                        opp_e = NEProj 2 2 e
+                                        pair_e g = NECat [f,g]
+                                   in pairSimpl km e f opp_e pair_e mf at ats
+                (NEProj 2 2 e,f)  -> let
+                                        opp_e = NEProj 1 2 e
+                                        pair_e g = NECat [g,f]
+                                     in pairSimpl km e f opp_e pair_e mf at ats
+                (f,NEProj 2 2 e) -> let
+                                        opp_e = NEProj 1 2 e
+                                        pair_e g = NECat [g,f]
+                                     in pairSimpl km e f opp_e pair_e mf at ats
+                _ -> simplAdd at ats
 
-addAtom goalExprs at@(FEq(e,f,mf)) ats =
-    if e == f then addAtom goalExprs (FWff e) ats
-    else
-        case (e,f) of
-            (NEProj  1 2 e',f') -> let
-                    opp_e = NEProj 2 2 e'
-                    pair_e g = NECat [f',g]
-                in pairSimpl goalExprs e f opp_e pair_e mf at ats
-            (f',NEProj 1 2 e') -> let
-                    opp_e = NEProj 2 2 e'
-                    pair_e g = NECat [f',g]
-                in pairSimpl goalExprs e f opp_e pair_e mf at ats
-            (NEProj 2 2 e',f')  -> let
-                    opp_e = NEProj 1 2 e'
-                    pair_e g = NECat [g,f']
-                in pairSimpl goalExprs e f opp_e pair_e mf at ats
-            (f',NEProj 2 2 e') -> let
-                    opp_e = NEProj 1 2 e'
-                    pair_e g = NECat [g,f']
-                in pairSimpl goalExprs e f opp_e pair_e mf at ats
-            _ -> simplAdd at ats
+addAtom km at@(FInv(e,f)) ats = if e == f then
+                                        if invIsSame e then addAtom km (mkEq e f False) ats
+                                                else simplAdd at ats
+                                   else
+                                        (case (e,f) of
+                                                (NEPub g a,h) -> if Set.member (NEPriv g a) (expressionEqual ats h) then addAtom km (FWff g) ats else simplAdd at ats
+                                                (h,NEPub g a) -> if Set.member (NEPriv g a) (expressionEqual ats h) then addAtom km (FWff g) ats else simplAdd at ats
+                                                (NEPriv g a,h) -> if Set.member (NEPub g a) (expressionEqual ats h) then addAtom km (FWff g) ats else simplAdd at ats
+                                                (h,NEPriv g a) -> if Set.member (NEPub g a) (expressionEqual ats h) then addAtom km (FWff g) ats else simplAdd at ats
+                                                _-> simplAdd at ats)
 
-addAtom goalExprs at@(FInv(e,f)) ats =
-    if e == f then
-        if invIsSame e then addAtom goalExprs (mkEq e f False) ats
-        else simplAdd at ats
-    else
-        case (e,f) of
-            (NEPub g a,h) -> if Set.member (NEPriv g a) (expressionEqual ats h) then addAtom goalExprs (FWff g) ats else simplAdd at ats
-            (h,NEPub g a) -> if Set.member (NEPriv g a) (expressionEqual ats h) then addAtom goalExprs (FWff g) ats else simplAdd at ats
-            (NEPriv g a,h) -> if Set.member (NEPub g a) (expressionEqual ats h) then addAtom goalExprs (FWff g) ats else simplAdd at ats
-            (h,NEPriv g a) -> if Set.member (NEPub g a) (expressionEqual ats h) then addAtom goalExprs (FWff g) ats else simplAdd at ats
-            _-> simplAdd at ats
-
-addAtomK :: [NExpression] -> NExpression -> Atom -> AtomSet -> AtomSet
--- addAtomK  goalExprs e at ats | trace ("addAtomK\n\te: " ++ show e ++ "\n\tat: " ++ show at ++ "\n\tats: " ++ show ats) False = undefined
-addAtomK goalExprs e at ats = if isSubExprOfAtom e at then addAtom goalExprs at ats else ats
+addAtomK :: KnowledgeMap -> NExpression -> Atom -> AtomSet -> AtomSet
+-- addAtomK _ e at ats | trace ("addAtomK\n\te: " ++ show e ++ "\n\tat: " ++ show at ++ "\n\tats: " ++ show ats) False = undefined
+addAtomK km e at ats =
+  if isSubExprOfAtom e at
+    then trace ("[addAtomK] " ++ show at ++ " contiene subexpresión " ++ show e ++ ", se añade.") (addAtom km at ats)
+    else trace ("[addAtomK] " ++ show at ++ " NO contiene subexpresión " ++ show e ++ ", no se añade.") ats
 
 {- ici, on implemente la formule du papier mais on ne garde que les atomes qui contiennent e -}
 {- on fait aussi un appel a reduce pour eviter les messages "inutiles" (paires, messages encryptes que l'on peut decrypter et reconstruire) -}
 {- ca marche parce qu'on ne reduit pas e lors du calcul de l'analyse -}
 
-addKnowledge :: [NExpression] -> (NExpression,NExpression) -> KnowledgeMap -> NEquations -> JContext -> AnBxOnP -> (KnowledgeMap,Formula)
--- addKnowledge goalExprs (m,e) k _ _ _ | trace ("addknowledge\n\t(m,e): " ++ show (m,e) ++ "\n\tknowledge: " ++ showKnowledgeMap k) False = undefined
-addKnowledge goalExprs (m,e) k equations ctx opt
-    = case Map.lookup m k of
-        Just ex | Set.member e ex -> (k,FAnd Set.empty)
-        _ -> let
-            ak = let v = analysis (knAdd m (Set.singleton e) k equations ctx opt) equations ctx opt in trace ("[addKnowledge] ak (analysis result):\n" ++ showKnowledgeMap v) v
-            phi = let v = formulas goalExprs ak equations ctx opt in trace ("[addKnowledge] phi (formulas result):\n" ++ show v) v
-            k1 = let v = rep (irr ak equations ctx opt) equations ctx opt in trace ("[addKnowledge] k1 (final knowledge):\n" ++ showKnowledgeMap v) v
-            in (k1,phi)
+addKnowledge :: (NExpression,NExpression) -> KnowledgeMap -> NEquations -> JContext -> AnBxOnP -> (KnowledgeMap,Formula)
+addKnowledge (m,e) k _ _ _ | trace ("addknowledge\n\t(m,e): " ++ show (m,e) ++ "\n\tknowledge: " ++ showKnowledgeMap k) False = undefined
+addKnowledge (m,e) k equations ctx opt =
+  case Map.lookup m k of
+    Just ex | Set.member e ex -> (k, FAnd Set.empty)  -- if expression already in knowledge no need to create new checks
+    _ ->
+      let ak = analysis (knAdd m (Set.singleton e) k equations ctx opt) equations ctx opt
+          k1 = rep (irr ak equations ctx opt) equations ctx opt
+          phi = formulas ak equations ctx opt
+          logStr = "[addKnowledge] m: " ++ show m ++ ", e: " ++ show e ++ ", phi: " ++ show phi
+      in trace logStr (k1, phi)
 
-formulas :: [NExpression] -> KnowledgeMap -> NEquations -> JContext -> AnBxOnP -> Formula
--- formulas goalExprs ak _ _ _ | trace ("formulas\n\tak: " ++ showKnowledgeMap ak) False = undefined
-formulas goalExprs ak equations ctx opt =
-    let ats = form goalExprs Set.empty (reduce ak equations ctx opt) ak equations ctx opt
-    in FAnd ats
+formulas :: KnowledgeMap -> NEquations -> JContext -> AnBxOnP -> Formula
+formulas ak _ _ _ | trace ("formulas\n\tak: " ++ showKnowledgeMap ak) False = undefined
+formulas ak equations ctx opt =
+  let reduced = reduce ak equations ctx opt
+      ats = form Set.empty reduced ak equations ctx opt
+      logStr = "[formulas] reduced knowledge: " ++ showKnowledgeMap reduced ++ "\n[formulas] atoms: " ++ show ats
+  in trace logStr (FAnd ats)
 
-form :: [NExpression] -> AtomSet -> KnowledgeMap -> KnowledgeMap -> NEquations -> JContext -> AnBxOnP -> AtomSet
--- form goalExprs ats k ak _ _ _ | trace ("form\n\tats: " ++ show ats ++ "\n\tknowledge: " ++ showKnowledgeMap k ++ "\n\tak: " ++ showKnowledgeMap ak) False = undefined
-form goalExprs ats k ak equations ctx opt =
-    if Map.null k then ats
-    else
-        let
-            ((m,ex),k1) = Map.deleteFindMin k
-            e = setChoose ex
-            es = synthesis ak m equations ctx opt
-            ats1 = foldset (\f ats' -> addAtomK goalExprs e (mkEq e f False) ats') ats es
-            ats2 = formsub goalExprs m es ats1 ak equations ctx opt
-        in form goalExprs ats2 k1 ak equations ctx opt
+form :: AtomSet -> KnowledgeMap -> KnowledgeMap -> NEquations -> JContext -> AnBxOnP -> AtomSet
+form ats k ak _ _ _ | trace ("form\n\tats: " ++ show ats ++ "\n\tknowledge: " ++ showKnowledgeMap k ++ "\n\tak: " ++ showKnowledgeMap ak) False = undefined
+form ats k ak equations ctx opt =
+  if Map.null k then ats
+  else
+    let ((m,ex),k1) = Map.deleteFindMin k
+        e = setChoose ex
+        es = synthesis ak m equations ctx opt
+        ats1 = foldset (\f ats' -> addAtomK ak e (mkEq e f False) ats') ats es
+        ats2 = formsub m es ats1 ak equations ctx opt
+        logStr = "[form] m: " ++ show m ++ ", e: " ++ show e ++ ", es: " ++ show es ++ "\n[form] ats1: " ++ show ats1 ++ "\n[form] ats2: " ++ show ats2
+    in trace logStr (form ats2 k1 ak equations ctx opt)
+                                -- in error (show  e ++ "\n" ++ show es ++ "\n" ++ show ats1 ++ "\n" ++ show ats2 ++ "\n" ++ show k1)
 
-formsub :: [NExpression] -> NExpression -> ExpressionSet -> AtomSet -> KnowledgeMap -> NEquations  -> JContext -> AnBxOnP -> AtomSet
--- formsub goalExprs m es ats ak _ _ _ | trace ("formsub\n\tmessage: " ++ show m ++ "\n\tes: " ++ showExpressionSet es ++ "\n\tats: " ++ show ats ++ "\n\tak: " ++ showKnowledgeMap ak) False = undefined
-formsub goalExprs m es ats ak equations ctx opt =
-    let invm = inverseNExpression m in
-    if m == invm then
-        if Set.null es then ats
-        else let e = chooseForInv es in addAtomK goalExprs e (mkInv e e) ats
-    else
-        let fs = synthesis ak invm equations ctx (opt {synthesistypeenc=(SynthesisTypeEnc {enc=False,encS=False})}) in
-        if Set.null fs || Set.null es then ats
-        else
-            let e = chooseForInv es
-                f = chooseForInv fs
-            in addAtomK goalExprs e (mkInv e f) ats
+formsub :: NExpression -> ExpressionSet -> AtomSet -> KnowledgeMap -> NEquations  -> JContext -> AnBxOnP -> AtomSet
+formsub m es ats ak _ _ _ | trace ("formsub\n\tmessage: " ++ show m ++ "\n\tes: " ++ showExpressionSet es ++ "\n\tats: " ++ show ats ++ "\n\tak: " ++ showKnowledgeMap ak) False = undefined
+formsub m es ats ak equations ctx opt =
+                        let invm = inverseNExpression m in
+                        if m == invm then
+                                        if Set.null es then ats         -- check if the set in null (knowledge may have been filtered)
+                                        else let
+                                                e = chooseForInv es
+                                             in addAtomK ak e (mkInv e e) ats
+                                     else
+                                        -- use the standard spyer mode when computing the inverse
+                                        let fs = synthesis ak invm equations ctx (opt {synthesistypeenc=(SynthesisTypeEnc {enc=False,encS=False})}) in
+                                            if Set.null fs || Set.null es then ats
+                                                else
+                                                    let
+                                                        e = chooseForInv es
+                                                        f = chooseForInv fs
+                                                    in addAtomK ak e (mkInv e f) ats
 
 chooseForInv :: ExpressionSet -> NExpression
 -- chooseForInv es | trace ("chooseForInv\n\tes: " ++ showExpressionSet es) False = undefined
@@ -1044,4 +1037,3 @@ normalizeKnowledge :: KnowledgeMap -> NEquations -> KnowledgeMap
 -- normalizeKnowledge knowledge equations | trace ("normalizeKnowledge\n\tknowledge: " ++ showKnowledgeMap knowledge  ++ "\n\tequations: " ++ show equations) False = undefined
 normalizeKnowledge knowledge [] = knowledge
 normalizeKnowledge knowledge equations = Map.foldrWithKey (\k v acc -> addNormalizedTerms k v acc equations) Map.empty knowledge
-
