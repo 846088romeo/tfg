@@ -1,4 +1,4 @@
-Protocol: ISOsymKeyTwoPassMutualAuthProt_intr AnB
+Protocol: ISOSK2PMAP_I1 AnB
 
 Types:
 	Agent A,B;
@@ -15,9 +15,9 @@ Knowledge:
 
 Actions:
 	A -> intr: {|NA,B,Text1|}shk(A,B)
-	intr -> B: {|NA,B,Text1|}shk(A,B)
+	intr -> B: ~{|NA,B,Text1|}shk(A,B)
 	B -> intr: {|NB,A,Text3|}shk(A,B)
-	intr -> A: ~{|NB,A,Text3|}shk(A,B)
+	intr -> A: {|NB,A,Text3|}shk(A,B)
 
 Goals:
 	A weakly authenticates B on Text3
