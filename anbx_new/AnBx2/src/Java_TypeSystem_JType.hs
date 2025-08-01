@@ -238,7 +238,7 @@ exprIsMessage (NEFun _ n) = exprIsMessage n
 exprIsMessage (NEXor m n) = exprIsMessage m && exprIsMessage n
 exprIsMessage (NECat []) = True
 exprIsMessage (NECat xs) = all exprIsMessage xs
-exprIsMessage (NEProj _ _ _) = True
+exprIsMessage (NEProj _ _ _) = True -- comment this line for original behaviour where proj expressions are well formed messages
 exprIsMessage _ = False    -- NEDec, verify or var expressions cannot be messages
 
 exprIsConstantMessage:: NExpression -> Bool
