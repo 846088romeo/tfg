@@ -1,4 +1,4 @@
-Protocol: ISOsymKeyTwoPassMutualAuthProtCorr_intr AnB
+Protocol: ISOsymKeyTwoPassMutualAuthProt_intr AnB
 
 Types:
 	Agent A,B;

@@ -692,7 +692,7 @@ mkStepActionStr (JEmit (_,_,_,_,expr)) sh _ _ = applyOp APISend (mkExpression ex
 mkStepActionStr (JEmitReplay (step,agent,_,_,expr)) sh _ _ = 
     let replayVar = "VAR_" ++ map toUpper agent ++ "_REPLAY_R" ++ show step
         currentMsg = mkExpression expr sh
-    in "if (" ++ replayVar ++ " == null || !(new Random().nextInt(10) < 4)) {\n" ++
+    in "if (" ++ replayVar ++ " == null || !(new Random().nextInt(10) < 5)) {\n" ++
        "\t\t\t\tAnBx_Debug.out(layer, \">>> NO ATTACK <<<\");\n" ++
        "\t\t\t\t" ++ replayVar ++ " = " ++ currentMsg ++ ";\n" ++
        "\t\t\t\t" ++ applyOp APISend currentMsg ++ eoS ++ "\n" ++
