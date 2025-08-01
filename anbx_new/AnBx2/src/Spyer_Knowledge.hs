@@ -53,6 +53,7 @@ import Data.Containers.ListUtils (nubOrd)
 import AnB2NExpression (id2NExpression)
 import Java_TypeSystem_Context
 import Java_TypeSystem_JType
+import JavaType
 import Data.List (foldl', isInfixOf)
 
 -- differents ways to synthetise a tuple
@@ -345,7 +346,7 @@ isSubExprOfAtom e (FInv (f1,f2)) = isSubExpr e f1 || isSubExpr e f2
 isSubExprOfAtom e (FNotEq (f1,f2)) = isSubExpr e f1 || isSubExpr e f2
 
 atomImplWff :: NExpression -> Atom -> Bool
--- atomImplWff e at | trace ("atomImplWff\n\te: " ++ show e ++ "\n\tat: " ++ show at) False = undefined
+atomImplWff e at | trace ("atomImplWff\n\te: " ++ show e ++ " (tipo: " ++ show (typeof e) ++ ")\n\tat: " ++ show at) False = undefined
 atomImplWff (NEProj _ n e) at = any (\x -> isSubExprOfAtom (NEProj x n e) at) [1..n]            -- any projection allows to test the well-formedness of e
 atomImplWff e at  = isSubExprOfAtom e at
 
@@ -398,7 +399,8 @@ addAtom _ at ats | trace ("addAtom\n\tat: " ++ show at ++ "\n\tats: " ++ show at
 addAtom _ (FNotEq _) ats = ats
 addAtom km at@(FWff e) ats
   | exprIsMessage e =
-      let present = any (\(k,v) -> k == e && Set.member e v) (Map.toList km)
+      let present = any (\(k,v) -> let result = k == e && Set.member e v
+                                   in trace ("[addAtom] Comparando e=" ++ show e ++ " con k=" ++ show k ++ ", v=" ++ show (Set.toList v) ++ ", resultado=" ++ show result) result) (Map.toList km)
       in if present
            then trace ("[addAtom] FWff " ++ show e ++ " ya está en KnowledgeMap, no se añade") ats
            else trace ("[addAtom] Añadiendo FWff " ++ show e ++ " porque no está en KnowledgeMap") (Set.insert at ats)
