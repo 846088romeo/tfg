@@ -1,0 +1,599 @@
+Buildfile: /Users/usuario/anbx-ide-exe-mac/genAnBx/src_library/isosk2pmap_i2/build.xml
+
+ROLE_intr:
+     [java] Debug [ISOSK2PMAP_I2-ALWAYS] - Verbose mode on
+     [java] Debug [ROLE_intr-APPLICATION] - Reading config file: ISOSK2PMAP_I2.properties
+     [java] Debug [ROLE_intr-ENCRYPTION] - -------------------- crypto config --------------------
+     [java] Debug [ROLE_intr-ENCRYPTION] - cipherScheme = AES/CBC/PKCS5Padding
+     [java] Debug [ROLE_intr-ENCRYPTION] - keySize = 256
+     [java] Debug [ROLE_intr-ENCRYPTION] - keyGenerationScheme = AES
+     [java] Debug [ROLE_intr-ENCRYPTION] - keyGenerationSize = 256
+     [java] Debug [ROLE_intr-ENCRYPTION] - keyGenerationSchemePBE = PBKDF2WithHmacSHA512
+     [java] Debug [ROLE_intr-ENCRYPTION] - keyPairGenerationScheme = RSA
+     [java] Debug [ROLE_intr-ENCRYPTION] - keyPairGenerationSize = 2048
+     [java] Debug [ROLE_intr-ENCRYPTION] - secureRandomAlgorithm = DRBG
+     [java] Debug [ROLE_intr-ENCRYPTION] - hmacAlgorithm = HmacSHA256
+     [java] Debug [ROLE_intr-ENCRYPTION] - messageDigestAlgorithm = SHA-256
+     [java] Debug [ROLE_intr-ENCRYPTION] - messageDigestSignatureAlgorithm = SHA256
+     [java] Debug [ROLE_intr-ENCRYPTION] - keyAgreementAlgorithm = DH
+     [java] Debug [ROLE_intr-ENCRYPTION] - keyAgreementKeyPairGenerationScheme = DH
+     [java] Debug [ROLE_intr-ENCRYPTION] - dhRndExpSize = 4096
+     [java] Debug [ROLE_intr-ENCRYPTION] - ecGenParameterSpec = secp256r1
+     [java] Debug [ROLE_intr-ENCRYPTION] - asymCipherSchemeBlock = RSA
+     [java] Debug [ROLE_intr-ENCRYPTION] - sslContext = TLSv1.3
+     [java] Debug [ROLE_intr-ENCRYPTION] - securityProvider = default
+     [java] Debug [ROLE_intr-ENCRYPTION] - cipherSchemeProvider = default
+     [java] Debug [ROLE_intr-ENCRYPTION] - keyGenerationSchemeProvider = default
+     [java] Debug [ROLE_intr-ENCRYPTION] - keyGenerationSchemePBEProvider = default
+     [java] Debug [ROLE_intr-ENCRYPTION] - keyPairGenerationSchemeProvider = default
+     [java] Debug [ROLE_intr-ENCRYPTION] - secureRandomProvider = default
+     [java] Debug [ROLE_intr-ENCRYPTION] - hmacProvider = default
+     [java] Debug [ROLE_intr-ENCRYPTION] - messageDigestProvider = default
+     [java] Debug [ROLE_intr-ENCRYPTION] - signatureProvider = default
+     [java] Debug [ROLE_intr-ENCRYPTION] - asymEncProvider = default
+     [java] Debug [ROLE_intr-ENCRYPTION] - keyAgreementProvider = default
+     [java] Debug [ROLE_intr-ENCRYPTION] - sslContextProvider = default
+     [java] Debug [ROLE_intr-ENCRYPTION] - -------------------- crypto config --------------------
+     [java] Debug [ROLE_intr-APPLICATION] - Loading aliases
+     [java] Debug [ROLE_intr-APPLICATION] - Role: ROLE_A - Alias: alice
+     [java] Debug [ROLE_intr-APPLICATION] - Role: ROLE_B - Alias: bob
+     [java] Debug [ROLE_intr-APPLICATION] - Role: ROLE_intr - Alias: charlie
+     [java] Debug [ROLE_intr-APPLICATION] - myAlias: charlie
+     [java] Debug [ROLE_intr-APPLICATION] - Host: localhost - Port: 55556
+     [java] Debug [ROLE_intr-APPLICATION] - Channel Type: SSL_PLAIN - Role: SERVER
+     [java] Debug [ROLE_intr-APPLICATION] - Channel: ROLE_intr_channel_ROLE_A_Server_Insecure
+     [java] Debug [ROLE_intr-APPLICATION] - Host: 127.0.0.1 - Port: 55557
+     [java] Debug [ROLE_intr-APPLICATION] - Channel Type: SSL_PLAIN - Role: CLIENT
+     [java] Debug [ROLE_intr-APPLICATION] - Channel: ROLE_intr_channel_ROLE_B_Client_Insecure
+     [java] Debug [ROLE_intr-APPLICATION] - myRole: ROLE_intr
+     [java] Debug [ROLE_intr-APPLICATION] - sessions: 10
+     [java] Debug [ROLE_intr-ENCRYPTION] - Loading KeyStore: tls #0
+     [java] Debug [ROLE_intr-ENCRYPTION] - Reading config file (KSS): ../../keystore/charlie.pwd
+     [java] Debug [ROLE_intr-ENCRYPTION] - tls - KeyStoreType: PKCS12
+     [java] Debug [ROLE_intr-ENCRYPTION] - tls - LocalKeyStore: ../../keystore/charlie_tls.private
+     [java] Debug [ROLE_intr-ENCRYPTION] - tls - RemotelKeyStore: ../../keystore/charlie_tls.public
+     [java] Debug [ROLE_intr-ENCRYPTION] - My Alias: charlie
+     [java] Debug [ROLE_intr-ENCRYPTION] - RootCA: root
+     [java] Debug [ROLE_intr-ENCRYPTION] - Loading KeyStore: enc #1
+     [java] Debug [ROLE_intr-ENCRYPTION] - Reading config file (KSS): ../../keystore/charlie.pwd
+     [java] Debug [ROLE_intr-ENCRYPTION] - enc - KeyStoreType: PKCS12
+     [java] Debug [ROLE_intr-ENCRYPTION] - enc - LocalKeyStore: ../../keystore/charlie_enc.private
+     [java] Debug [ROLE_intr-ENCRYPTION] - enc - RemotelKeyStore: ../../keystore/charlie_enc.public
+     [java] Debug [ROLE_intr-ENCRYPTION] - My Alias: charlie
+     [java] Debug [ROLE_intr-ENCRYPTION] - RootCA: root
+     [java] Debug [ROLE_intr-ENCRYPTION] - Loading KeyStore: sig #2
+     [java] Debug [ROLE_intr-ENCRYPTION] - Reading config file (KSS): ../../keystore/charlie.pwd
+     [java] Debug [ROLE_intr-ENCRYPTION] - sig - KeyStoreType: PKCS12
+     [java] Debug [ROLE_intr-ENCRYPTION] - sig - LocalKeyStore: ../../keystore/charlie_sig.private
+     [java] Debug [ROLE_intr-ENCRYPTION] - sig - RemotelKeyStore: ../../keystore/charlie_sig.public
+     [java] Debug [ROLE_intr-ENCRYPTION] - My Alias: charlie
+     [java] Debug [ROLE_intr-ENCRYPTION] - RootCA: root
+     [java] Debug [ROLE_intr-ENCRYPTION] - Loading KeyStore: hmc #3
+     [java] Debug [ROLE_intr-ENCRYPTION] - Reading config file (KSS): ../../keystore/charlie.pwd
+     [java] Debug [ROLE_intr-ENCRYPTION] - hmc - KeyStoreType: PKCS12
+     [java] Debug [ROLE_intr-ENCRYPTION] - hmc - LocalKeyStore: ../../keystore/charlie_hmc.private
+     [java] Debug [ROLE_intr-ENCRYPTION] - hmc - RemotelKeyStore: ../../keystore/charlie_hmc.public
+     [java] Debug [ROLE_intr-ENCRYPTION] - My Alias: charlie
+     [java] Debug [ROLE_intr-ENCRYPTION] - RootCA: root
+     [java] Debug [ROLE_intr-ENCRYPTION] - Building KeyStore: tls #0
+     [java] Debug [ROLE_intr-ENCRYPTION] - Loading KeyStore: ../../keystore/charlie_tls.private - Type: PKCS12
+     [java] Debug [ROLE_intr-ENCRYPTION] - Loading KeyStore: ../../keystore/charlie_tls.public - Type: PKCS12
+     [java] Debug [ROLE_intr-ENCRYPTION] - Building KeyStore: enc #1
+     [java] Debug [ROLE_intr-ENCRYPTION] - Loading KeyStore: ../../keystore/charlie_enc.private - Type: PKCS12
+     [java] Debug [ROLE_intr-ENCRYPTION] - Loading KeyStore: ../../keystore/charlie_enc.public - Type: PKCS12
+     [java] Debug [ROLE_intr-ENCRYPTION] - Building KeyStore: sig #2
+     [java] Debug [ROLE_intr-ENCRYPTION] - Loading KeyStore: ../../keystore/charlie_sig.private - Type: PKCS12
+     [java] Debug [ROLE_intr-ENCRYPTION] - Loading KeyStore: ../../keystore/charlie_sig.public - Type: PKCS12
+     [java] Debug [ROLE_intr-ENCRYPTION] - Building KeyStore: hmc #3
+     [java] Debug [ROLE_intr-ENCRYPTION] - Loading KeyStore: ../../keystore/charlie_hmc.private - Type: PKCS12
+     [java] Debug [ROLE_intr-ENCRYPTION] - Loading KeyStore: ../../keystore/charlie_hmc.public - Type: PKCS12
+     [java] Debug [ROLE_intr-ENCRYPTION] - Certificate retrieved: <charlie>
+     [java] Debug [ROLE_intr-ENCRYPTION] - Certificate retrieved: <charlie>
+     [java] Debug [ROLE_intr-ENCRYPTION] - Certificate retrieved: <charlie>
+     [java] Debug [ROLE_intr-ENCRYPTION] - Certificate retrieved: <charlie>
+     [java] Debug [ROLE_intr-SESSION] - Initializing channel - cs: Channel Settings - Port: 55556 - Role: SERVER - Type: SSL_PLAIN
+     [java] Debug [ROLE_intr-SESSION] - Initializing channel - keystore: anbxj.Crypto_KeyStoreSettings@7cf10a6f
+     [java] Debug [ROLE_intr-ENCRYPTION] - Building KeyStore: tls #0
+     [java] Debug [ROLE_intr-ENCRYPTION] - Loading KeyStore: ../../keystore/charlie_tls.private - Type: PKCS12
+     [java] Debug [ROLE_intr-ENCRYPTION] - Loading KeyStore: ../../keystore/charlie_tls.public - Type: PKCS12
+     [java] Debug [ROLE_intr-ENCRYPTION] - Building KeyStore: enc #1
+     [java] Debug [ROLE_intr-ENCRYPTION] - Loading KeyStore: ../../keystore/charlie_enc.private - Type: PKCS12
+     [java] Debug [ROLE_intr-ENCRYPTION] - Loading KeyStore: ../../keystore/charlie_enc.public - Type: PKCS12
+     [java] Debug [ROLE_intr-ENCRYPTION] - Building KeyStore: sig #2
+     [java] Debug [ROLE_intr-ENCRYPTION] - Loading KeyStore: ../../keystore/charlie_sig.private - Type: PKCS12
+     [java] Debug [ROLE_intr-ENCRYPTION] - Loading KeyStore: ../../keystore/charlie_sig.public - Type: PKCS12
+     [java] Debug [ROLE_intr-ENCRYPTION] - Building KeyStore: hmc #3
+     [java] Debug [ROLE_intr-ENCRYPTION] - Loading KeyStore: ../../keystore/charlie_hmc.private - Type: PKCS12
+     [java] Debug [ROLE_intr-ENCRYPTION] - Loading KeyStore: ../../keystore/charlie_hmc.public - Type: PKCS12
+     [java] Debug [ROLE_intr-ENCRYPTION] - Certificate retrieved: <charlie>
+     [java] Debug [ROLE_intr-ENCRYPTION] - Certificate retrieved: <charlie>
+     [java] Debug [ROLE_intr-ENCRYPTION] - Certificate retrieved: <charlie>
+     [java] Debug [ROLE_intr-ENCRYPTION] - Certificate retrieved: <charlie>
+     [java] Debug [ROLE_intr-SESSION] - Initializing channel - cs: Channel Settings - Port: 55557 - Role: CLIENT - Type: SSL_PLAIN
+     [java] Debug [ROLE_intr-SESSION] - Initializing channel - keystore: anbxj.Crypto_KeyStoreSettings@7cf10a6f
+     [java] Debug [ROLE_intr-SESSION] - Opening session
+     [java] Debug [ROLE_intr-NETWORK] - Starting server on port 55556 ...
+     [java] Debug [ROLE_intr-ALWAYS] - Server started on port 55556
+     [java] Debug [ROLE_intr-NETWORK] - Waiting for clients ...
+     [java] Debug [ROLE_intr-NETWORK] - Request from Client received ...
+     [java] Debug [ROLE_intr-SESSION] - Opening session
+     [java] Debug [ROLE_intr-NETWORK] - Starting Client for 127.0.0.1:55557
+     [java] Debug [ROLE_intr-ALWAYS] - Connected to Server 127.0.0.1:55557 - ChannelType: SSL_PLAIN
+     [java] Debug [ROLE_intr-PROTOCOL] - Session started: 1/10
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_0
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-PROTOCOL] - CHECK # 0.2
+     [java] Debug [ROLE_intr-PROTOCOL] - NOTEQ check OK - java.lang.String.toString - charlie != alice
+     [java] Debug [ROLE_intr-PROTOCOL] - NOTEQ check OK - java.lang.String.hashCode - 739067762 != 92903040
+     [java] Debug [ROLE_intr-PROTOCOL] - CHECK # 0.4
+     [java] Debug [ROLE_intr-PROTOCOL] - NOTEQ check OK - java.lang.String.toString - charlie != bob
+     [java] Debug [ROLE_intr-PROTOCOL] - NOTEQ check OK - java.lang.String.hashCode - 739067762 != 97717
+     [java] Debug [ROLE_intr-LANGUAGE] - Receive
+     [java] Debug [ROLE_intr-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_intr-NETWORK] - Received <- javax.crypto.SealedObject@5afa04c
+     [java] Debug [ROLE_intr-PROTOCOL] - CHECK # 0.1
+     [java] Debug [ROLE_intr-PROTOCOL] - INV check PERFORMED on javax.crypto.SealedObject
+     [java] Debug [ROLE_intr-PROTOCOL] - INV check OK - javax.crypto.SealedObject.toString - javax.crypto.SealedObject@5afa04c
+     [java] Debug [ROLE_intr-PROTOCOL] - INV check OK - javax.crypto.SealedObject.hashCode - 95395916
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_0
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_1
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-LANGUAGE] - Send
+     [java] Debug [ROLE_intr-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_intr-NETWORK] - Sending -> javax.crypto.SealedObject@5afa04c
+     [java] Debug [ROLE_intr-NETWORK] - Sent -> javax.crypto.SealedObject@5afa04c
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_1
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_2
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-LANGUAGE] - Receive
+     [java] Debug [ROLE_intr-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_intr-NETWORK] - Received <- javax.crypto.SealedObject@56f4468b
+     [java] Debug [ROLE_intr-PROTOCOL] - CHECK # 2.1
+     [java] Debug [ROLE_intr-PROTOCOL] - INV check PERFORMED on javax.crypto.SealedObject
+     [java] Debug [ROLE_intr-PROTOCOL] - INV check OK - javax.crypto.SealedObject.toString - javax.crypto.SealedObject@56f4468b
+     [java] Debug [ROLE_intr-PROTOCOL] - INV check OK - javax.crypto.SealedObject.hashCode - 1458849419
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_2
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_3
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-PROTOCOL] - >>> NO ATTACK <<<
+     [java] Debug [ROLE_intr-LANGUAGE] - Send
+     [java] Debug [ROLE_intr-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_intr-NETWORK] - Sending -> javax.crypto.SealedObject@56f4468b
+     [java] Debug [ROLE_intr-NETWORK] - Sent -> javax.crypto.SealedObject@56f4468b
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_3
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-PROTOCOL] - Session completed: 1/10
+     [java] Debug [ROLE_intr-PROTOCOL] - Session started: 2/10
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_0
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-PROTOCOL] - CHECK # 0.2
+     [java] Debug [ROLE_intr-PROTOCOL] - NOTEQ check OK - java.lang.String.toString - charlie != alice
+     [java] Debug [ROLE_intr-PROTOCOL] - NOTEQ check OK - java.lang.String.hashCode - 739067762 != 92903040
+     [java] Debug [ROLE_intr-PROTOCOL] - CHECK # 0.4
+     [java] Debug [ROLE_intr-PROTOCOL] - NOTEQ check OK - java.lang.String.toString - charlie != bob
+     [java] Debug [ROLE_intr-PROTOCOL] - NOTEQ check OK - java.lang.String.hashCode - 739067762 != 97717
+     [java] Debug [ROLE_intr-LANGUAGE] - Receive
+     [java] Debug [ROLE_intr-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_intr-NETWORK] - Received <- javax.crypto.SealedObject@2ef5e5e3
+     [java] Debug [ROLE_intr-PROTOCOL] - CHECK # 0.1
+     [java] Debug [ROLE_intr-PROTOCOL] - INV check PERFORMED on javax.crypto.SealedObject
+     [java] Debug [ROLE_intr-PROTOCOL] - INV check OK - javax.crypto.SealedObject.toString - javax.crypto.SealedObject@2ef5e5e3
+     [java] Debug [ROLE_intr-PROTOCOL] - INV check OK - javax.crypto.SealedObject.hashCode - 787867107
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_0
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_1
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-LANGUAGE] - Send
+     [java] Debug [ROLE_intr-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_intr-NETWORK] - Sending -> javax.crypto.SealedObject@2ef5e5e3
+     [java] Debug [ROLE_intr-NETWORK] - Sent -> javax.crypto.SealedObject@2ef5e5e3
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_1
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_2
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-LANGUAGE] - Receive
+     [java] Debug [ROLE_intr-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_intr-NETWORK] - Received <- javax.crypto.SealedObject@51efea79
+     [java] Debug [ROLE_intr-PROTOCOL] - CHECK # 2.1
+     [java] Debug [ROLE_intr-PROTOCOL] - INV check PERFORMED on javax.crypto.SealedObject
+     [java] Debug [ROLE_intr-PROTOCOL] - INV check OK - javax.crypto.SealedObject.toString - javax.crypto.SealedObject@51efea79
+     [java] Debug [ROLE_intr-PROTOCOL] - INV check OK - javax.crypto.SealedObject.hashCode - 1374677625
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_2
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_3
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-PROTOCOL] - >>> NO ATTACK <<<
+     [java] Debug [ROLE_intr-LANGUAGE] - Send
+     [java] Debug [ROLE_intr-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_intr-NETWORK] - Sending -> javax.crypto.SealedObject@51efea79
+     [java] Debug [ROLE_intr-NETWORK] - Sent -> javax.crypto.SealedObject@51efea79
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_3
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-PROTOCOL] - Session completed: 2/10
+     [java] Debug [ROLE_intr-PROTOCOL] - Session started: 3/10
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_0
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-PROTOCOL] - CHECK # 0.2
+     [java] Debug [ROLE_intr-PROTOCOL] - NOTEQ check OK - java.lang.String.toString - charlie != alice
+     [java] Debug [ROLE_intr-PROTOCOL] - NOTEQ check OK - java.lang.String.hashCode - 739067762 != 92903040
+     [java] Debug [ROLE_intr-PROTOCOL] - CHECK # 0.4
+     [java] Debug [ROLE_intr-PROTOCOL] - NOTEQ check OK - java.lang.String.toString - charlie != bob
+     [java] Debug [ROLE_intr-PROTOCOL] - NOTEQ check OK - java.lang.String.hashCode - 739067762 != 97717
+     [java] Debug [ROLE_intr-LANGUAGE] - Receive
+     [java] Debug [ROLE_intr-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_intr-NETWORK] - Received <- javax.crypto.SealedObject@51081592
+     [java] Debug [ROLE_intr-PROTOCOL] - CHECK # 0.1
+     [java] Debug [ROLE_intr-PROTOCOL] - INV check PERFORMED on javax.crypto.SealedObject
+     [java] Debug [ROLE_intr-PROTOCOL] - INV check OK - javax.crypto.SealedObject.toString - javax.crypto.SealedObject@51081592
+     [java] Debug [ROLE_intr-PROTOCOL] - INV check OK - javax.crypto.SealedObject.hashCode - 1359484306
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_0
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_1
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-LANGUAGE] - Send
+     [java] Debug [ROLE_intr-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_intr-NETWORK] - Sending -> javax.crypto.SealedObject@51081592
+     [java] Debug [ROLE_intr-NETWORK] - Sent -> javax.crypto.SealedObject@51081592
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_1
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_2
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-LANGUAGE] - Receive
+     [java] Debug [ROLE_intr-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_intr-NETWORK] - Received <- javax.crypto.SealedObject@62ee68d8
+     [java] Debug [ROLE_intr-PROTOCOL] - CHECK # 2.1
+     [java] Debug [ROLE_intr-PROTOCOL] - INV check PERFORMED on javax.crypto.SealedObject
+     [java] Debug [ROLE_intr-PROTOCOL] - INV check OK - javax.crypto.SealedObject.toString - javax.crypto.SealedObject@62ee68d8
+     [java] Debug [ROLE_intr-PROTOCOL] - INV check OK - javax.crypto.SealedObject.hashCode - 1659791576
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_2
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_3
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-PROTOCOL] - >>> ATTACK <<<
+     [java] Debug [ROLE_intr-LANGUAGE] - Send
+     [java] Debug [ROLE_intr-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_intr-NETWORK] - Sending -> javax.crypto.SealedObject@51efea79
+     [java] Debug [ROLE_intr-NETWORK] - Sent -> javax.crypto.SealedObject@51efea79
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_3
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-PROTOCOL] - Session completed: 3/10
+     [java] Debug [ROLE_intr-PROTOCOL] - Session started: 4/10
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_0
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-PROTOCOL] - CHECK # 0.2
+     [java] Debug [ROLE_intr-PROTOCOL] - NOTEQ check OK - java.lang.String.toString - charlie != alice
+     [java] Debug [ROLE_intr-PROTOCOL] - NOTEQ check OK - java.lang.String.hashCode - 739067762 != 92903040
+     [java] Debug [ROLE_intr-PROTOCOL] - CHECK # 0.4
+     [java] Debug [ROLE_intr-PROTOCOL] - NOTEQ check OK - java.lang.String.toString - charlie != bob
+     [java] Debug [ROLE_intr-PROTOCOL] - NOTEQ check OK - java.lang.String.hashCode - 739067762 != 97717
+     [java] Debug [ROLE_intr-LANGUAGE] - Receive
+     [java] Debug [ROLE_intr-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_intr-NETWORK] - Received <- javax.crypto.SealedObject@735b5592
+     [java] Debug [ROLE_intr-PROTOCOL] - CHECK # 0.1
+     [java] Debug [ROLE_intr-PROTOCOL] - INV check PERFORMED on javax.crypto.SealedObject
+     [java] Debug [ROLE_intr-PROTOCOL] - INV check OK - javax.crypto.SealedObject.toString - javax.crypto.SealedObject@735b5592
+     [java] Debug [ROLE_intr-PROTOCOL] - INV check OK - javax.crypto.SealedObject.hashCode - 1935365522
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_0
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_1
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-LANGUAGE] - Send
+     [java] Debug [ROLE_intr-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_intr-NETWORK] - Sending -> javax.crypto.SealedObject@735b5592
+     [java] Debug [ROLE_intr-NETWORK] - Sent -> javax.crypto.SealedObject@735b5592
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_1
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_2
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-LANGUAGE] - Receive
+     [java] Debug [ROLE_intr-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_intr-NETWORK] - Received <- javax.crypto.SealedObject@5419f379
+     [java] Debug [ROLE_intr-PROTOCOL] - CHECK # 2.1
+     [java] Debug [ROLE_intr-PROTOCOL] - INV check PERFORMED on javax.crypto.SealedObject
+     [java] Debug [ROLE_intr-PROTOCOL] - INV check OK - javax.crypto.SealedObject.toString - javax.crypto.SealedObject@5419f379
+     [java] Debug [ROLE_intr-PROTOCOL] - INV check OK - javax.crypto.SealedObject.hashCode - 1410986873
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_2
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_3
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-PROTOCOL] - >>> ATTACK <<<
+     [java] Debug [ROLE_intr-LANGUAGE] - Send
+     [java] Debug [ROLE_intr-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_intr-NETWORK] - Sending -> javax.crypto.SealedObject@51efea79
+     [java] Debug [ROLE_intr-NETWORK] - Sent -> javax.crypto.SealedObject@51efea79
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_3
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-PROTOCOL] - Session completed: 4/10
+     [java] Debug [ROLE_intr-PROTOCOL] - Session started: 5/10
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_0
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-PROTOCOL] - CHECK # 0.2
+     [java] Debug [ROLE_intr-PROTOCOL] - NOTEQ check OK - java.lang.String.toString - charlie != alice
+     [java] Debug [ROLE_intr-PROTOCOL] - NOTEQ check OK - java.lang.String.hashCode - 739067762 != 92903040
+     [java] Debug [ROLE_intr-PROTOCOL] - CHECK # 0.4
+     [java] Debug [ROLE_intr-PROTOCOL] - NOTEQ check OK - java.lang.String.toString - charlie != bob
+     [java] Debug [ROLE_intr-PROTOCOL] - NOTEQ check OK - java.lang.String.hashCode - 739067762 != 97717
+     [java] Debug [ROLE_intr-LANGUAGE] - Receive
+     [java] Debug [ROLE_intr-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_intr-NETWORK] - Received <- javax.crypto.SealedObject@7dc7cbad
+     [java] Debug [ROLE_intr-PROTOCOL] - CHECK # 0.1
+     [java] Debug [ROLE_intr-PROTOCOL] - INV check PERFORMED on javax.crypto.SealedObject
+     [java] Debug [ROLE_intr-PROTOCOL] - INV check OK - javax.crypto.SealedObject.toString - javax.crypto.SealedObject@7dc7cbad
+     [java] Debug [ROLE_intr-PROTOCOL] - INV check OK - javax.crypto.SealedObject.hashCode - 2110245805
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_0
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_1
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-LANGUAGE] - Send
+     [java] Debug [ROLE_intr-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_intr-NETWORK] - Sending -> javax.crypto.SealedObject@7dc7cbad
+     [java] Debug [ROLE_intr-NETWORK] - Sent -> javax.crypto.SealedObject@7dc7cbad
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_1
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_2
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-LANGUAGE] - Receive
+     [java] Debug [ROLE_intr-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_intr-NETWORK] - Received <- javax.crypto.SealedObject@548a9f61
+     [java] Debug [ROLE_intr-PROTOCOL] - CHECK # 2.1
+     [java] Debug [ROLE_intr-PROTOCOL] - INV check PERFORMED on javax.crypto.SealedObject
+     [java] Debug [ROLE_intr-PROTOCOL] - INV check OK - javax.crypto.SealedObject.toString - javax.crypto.SealedObject@548a9f61
+     [java] Debug [ROLE_intr-PROTOCOL] - INV check OK - javax.crypto.SealedObject.hashCode - 1418370913
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_2
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_3
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-PROTOCOL] - >>> ATTACK <<<
+     [java] Debug [ROLE_intr-LANGUAGE] - Send
+     [java] Debug [ROLE_intr-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_intr-NETWORK] - Sending -> javax.crypto.SealedObject@51efea79
+     [java] Debug [ROLE_intr-NETWORK] - Sent -> javax.crypto.SealedObject@51efea79
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_3
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-PROTOCOL] - Session completed: 5/10
+     [java] Debug [ROLE_intr-PROTOCOL] - Session started: 6/10
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_0
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-PROTOCOL] - CHECK # 0.2
+     [java] Debug [ROLE_intr-PROTOCOL] - NOTEQ check OK - java.lang.String.toString - charlie != alice
+     [java] Debug [ROLE_intr-PROTOCOL] - NOTEQ check OK - java.lang.String.hashCode - 739067762 != 92903040
+     [java] Debug [ROLE_intr-PROTOCOL] - CHECK # 0.4
+     [java] Debug [ROLE_intr-PROTOCOL] - NOTEQ check OK - java.lang.String.toString - charlie != bob
+     [java] Debug [ROLE_intr-PROTOCOL] - NOTEQ check OK - java.lang.String.hashCode - 739067762 != 97717
+     [java] Debug [ROLE_intr-LANGUAGE] - Receive
+     [java] Debug [ROLE_intr-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_intr-NETWORK] - Received <- javax.crypto.SealedObject@1753acfe
+     [java] Debug [ROLE_intr-PROTOCOL] - CHECK # 0.1
+     [java] Debug [ROLE_intr-PROTOCOL] - INV check PERFORMED on javax.crypto.SealedObject
+     [java] Debug [ROLE_intr-PROTOCOL] - INV check OK - javax.crypto.SealedObject.toString - javax.crypto.SealedObject@1753acfe
+     [java] Debug [ROLE_intr-PROTOCOL] - INV check OK - javax.crypto.SealedObject.hashCode - 391359742
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_0
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_1
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-LANGUAGE] - Send
+     [java] Debug [ROLE_intr-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_intr-NETWORK] - Sending -> javax.crypto.SealedObject@1753acfe
+     [java] Debug [ROLE_intr-NETWORK] - Sent -> javax.crypto.SealedObject@1753acfe
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_1
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_2
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-LANGUAGE] - Receive
+     [java] Debug [ROLE_intr-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_intr-NETWORK] - Received <- javax.crypto.SealedObject@2a5ca609
+     [java] Debug [ROLE_intr-PROTOCOL] - CHECK # 2.1
+     [java] Debug [ROLE_intr-PROTOCOL] - INV check PERFORMED on javax.crypto.SealedObject
+     [java] Debug [ROLE_intr-PROTOCOL] - INV check OK - javax.crypto.SealedObject.toString - javax.crypto.SealedObject@2a5ca609
+     [java] Debug [ROLE_intr-PROTOCOL] - INV check OK - javax.crypto.SealedObject.hashCode - 710714889
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_2
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_3
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-PROTOCOL] - >>> ATTACK <<<
+     [java] Debug [ROLE_intr-LANGUAGE] - Send
+     [java] Debug [ROLE_intr-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_intr-NETWORK] - Sending -> javax.crypto.SealedObject@51efea79
+     [java] Debug [ROLE_intr-NETWORK] - Sent -> javax.crypto.SealedObject@51efea79
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_3
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-PROTOCOL] - Session completed: 6/10
+     [java] Debug [ROLE_intr-PROTOCOL] - Session started: 7/10
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_0
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-PROTOCOL] - CHECK # 0.2
+     [java] Debug [ROLE_intr-PROTOCOL] - NOTEQ check OK - java.lang.String.toString - charlie != alice
+     [java] Debug [ROLE_intr-PROTOCOL] - NOTEQ check OK - java.lang.String.hashCode - 739067762 != 92903040
+     [java] Debug [ROLE_intr-PROTOCOL] - CHECK # 0.4
+     [java] Debug [ROLE_intr-PROTOCOL] - NOTEQ check OK - java.lang.String.toString - charlie != bob
+     [java] Debug [ROLE_intr-PROTOCOL] - NOTEQ check OK - java.lang.String.hashCode - 739067762 != 97717
+     [java] Debug [ROLE_intr-LANGUAGE] - Receive
+     [java] Debug [ROLE_intr-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_intr-NETWORK] - Received <- javax.crypto.SealedObject@20e2cbe0
+     [java] Debug [ROLE_intr-PROTOCOL] - CHECK # 0.1
+     [java] Debug [ROLE_intr-PROTOCOL] - INV check PERFORMED on javax.crypto.SealedObject
+     [java] Debug [ROLE_intr-PROTOCOL] - INV check OK - javax.crypto.SealedObject.toString - javax.crypto.SealedObject@20e2cbe0
+     [java] Debug [ROLE_intr-PROTOCOL] - INV check OK - javax.crypto.SealedObject.hashCode - 551734240
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_0
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_1
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-LANGUAGE] - Send
+     [java] Debug [ROLE_intr-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_intr-NETWORK] - Sending -> javax.crypto.SealedObject@20e2cbe0
+     [java] Debug [ROLE_intr-NETWORK] - Sent -> javax.crypto.SealedObject@20e2cbe0
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_1
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_2
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-LANGUAGE] - Receive
+     [java] Debug [ROLE_intr-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_intr-NETWORK] - Received <- javax.crypto.SealedObject@675d3402
+     [java] Debug [ROLE_intr-PROTOCOL] - CHECK # 2.1
+     [java] Debug [ROLE_intr-PROTOCOL] - INV check PERFORMED on javax.crypto.SealedObject
+     [java] Debug [ROLE_intr-PROTOCOL] - INV check OK - javax.crypto.SealedObject.toString - javax.crypto.SealedObject@675d3402
+     [java] Debug [ROLE_intr-PROTOCOL] - INV check OK - javax.crypto.SealedObject.hashCode - 1734161410
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_2
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_3
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-PROTOCOL] - >>> ATTACK <<<
+     [java] Debug [ROLE_intr-LANGUAGE] - Send
+     [java] Debug [ROLE_intr-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_intr-NETWORK] - Sending -> javax.crypto.SealedObject@51efea79
+     [java] Debug [ROLE_intr-NETWORK] - Sent -> javax.crypto.SealedObject@51efea79
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_3
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-PROTOCOL] - Session completed: 7/10
+     [java] Debug [ROLE_intr-PROTOCOL] - Session started: 8/10
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_0
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-PROTOCOL] - CHECK # 0.2
+     [java] Debug [ROLE_intr-PROTOCOL] - NOTEQ check OK - java.lang.String.toString - charlie != alice
+     [java] Debug [ROLE_intr-PROTOCOL] - NOTEQ check OK - java.lang.String.hashCode - 739067762 != 92903040
+     [java] Debug [ROLE_intr-PROTOCOL] - CHECK # 0.4
+     [java] Debug [ROLE_intr-PROTOCOL] - NOTEQ check OK - java.lang.String.toString - charlie != bob
+     [java] Debug [ROLE_intr-PROTOCOL] - NOTEQ check OK - java.lang.String.hashCode - 739067762 != 97717
+     [java] Debug [ROLE_intr-LANGUAGE] - Receive
+     [java] Debug [ROLE_intr-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_intr-NETWORK] - Received <- javax.crypto.SealedObject@51565ec2
+     [java] Debug [ROLE_intr-PROTOCOL] - CHECK # 0.1
+     [java] Debug [ROLE_intr-PROTOCOL] - INV check PERFORMED on javax.crypto.SealedObject
+     [java] Debug [ROLE_intr-PROTOCOL] - INV check OK - javax.crypto.SealedObject.toString - javax.crypto.SealedObject@51565ec2
+     [java] Debug [ROLE_intr-PROTOCOL] - INV check OK - javax.crypto.SealedObject.hashCode - 1364614850
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_0
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_1
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-LANGUAGE] - Send
+     [java] Debug [ROLE_intr-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_intr-NETWORK] - Sending -> javax.crypto.SealedObject@51565ec2
+     [java] Debug [ROLE_intr-NETWORK] - Sent -> javax.crypto.SealedObject@51565ec2
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_1
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_2
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-LANGUAGE] - Receive
+     [java] Debug [ROLE_intr-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_intr-NETWORK] - Received <- javax.crypto.SealedObject@4cc0edeb
+     [java] Debug [ROLE_intr-PROTOCOL] - CHECK # 2.1
+     [java] Debug [ROLE_intr-PROTOCOL] - INV check PERFORMED on javax.crypto.SealedObject
+     [java] Debug [ROLE_intr-PROTOCOL] - INV check OK - javax.crypto.SealedObject.toString - javax.crypto.SealedObject@4cc0edeb
+     [java] Debug [ROLE_intr-PROTOCOL] - INV check OK - javax.crypto.SealedObject.hashCode - 1287712235
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_2
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_3
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-PROTOCOL] - >>> NO ATTACK <<<
+     [java] Debug [ROLE_intr-LANGUAGE] - Send
+     [java] Debug [ROLE_intr-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_intr-NETWORK] - Sending -> javax.crypto.SealedObject@4cc0edeb
+     [java] Debug [ROLE_intr-NETWORK] - Sent -> javax.crypto.SealedObject@4cc0edeb
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_3
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-PROTOCOL] - Session completed: 8/10
+     [java] Debug [ROLE_intr-PROTOCOL] - Session started: 9/10
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_0
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-PROTOCOL] - CHECK # 0.2
+     [java] Debug [ROLE_intr-PROTOCOL] - NOTEQ check OK - java.lang.String.toString - charlie != alice
+     [java] Debug [ROLE_intr-PROTOCOL] - NOTEQ check OK - java.lang.String.hashCode - 739067762 != 92903040
+     [java] Debug [ROLE_intr-PROTOCOL] - CHECK # 0.4
+     [java] Debug [ROLE_intr-PROTOCOL] - NOTEQ check OK - java.lang.String.toString - charlie != bob
+     [java] Debug [ROLE_intr-PROTOCOL] - NOTEQ check OK - java.lang.String.hashCode - 739067762 != 97717
+     [java] Debug [ROLE_intr-LANGUAGE] - Receive
+     [java] Debug [ROLE_intr-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_intr-NETWORK] - Received <- javax.crypto.SealedObject@39aeed2f
+     [java] Debug [ROLE_intr-PROTOCOL] - CHECK # 0.1
+     [java] Debug [ROLE_intr-PROTOCOL] - INV check PERFORMED on javax.crypto.SealedObject
+     [java] Debug [ROLE_intr-PROTOCOL] - INV check OK - javax.crypto.SealedObject.toString - javax.crypto.SealedObject@39aeed2f
+     [java] Debug [ROLE_intr-PROTOCOL] - INV check OK - javax.crypto.SealedObject.hashCode - 967765295
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_0
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_1
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-LANGUAGE] - Send
+     [java] Debug [ROLE_intr-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_intr-NETWORK] - Sending -> javax.crypto.SealedObject@39aeed2f
+     [java] Debug [ROLE_intr-NETWORK] - Sent -> javax.crypto.SealedObject@39aeed2f
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_1
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_2
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-LANGUAGE] - Receive
+     [java] Debug [ROLE_intr-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_intr-NETWORK] - Received <- javax.crypto.SealedObject@6767c1fc
+     [java] Debug [ROLE_intr-PROTOCOL] - CHECK # 2.1
+     [java] Debug [ROLE_intr-PROTOCOL] - INV check PERFORMED on javax.crypto.SealedObject
+     [java] Debug [ROLE_intr-PROTOCOL] - INV check OK - javax.crypto.SealedObject.toString - javax.crypto.SealedObject@6767c1fc
+     [java] Debug [ROLE_intr-PROTOCOL] - INV check OK - javax.crypto.SealedObject.hashCode - 1734853116
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_2
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_3
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-PROTOCOL] - >>> ATTACK <<<
+     [java] Debug [ROLE_intr-LANGUAGE] - Send
+     [java] Debug [ROLE_intr-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_intr-NETWORK] - Sending -> javax.crypto.SealedObject@4cc0edeb
+     [java] Debug [ROLE_intr-NETWORK] - Sent -> javax.crypto.SealedObject@4cc0edeb
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_3
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-PROTOCOL] - Session completed: 9/10
+     [java] Debug [ROLE_intr-PROTOCOL] - Session started: 10/10
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_0
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-PROTOCOL] - CHECK # 0.2
+     [java] Debug [ROLE_intr-PROTOCOL] - NOTEQ check OK - java.lang.String.toString - charlie != alice
+     [java] Debug [ROLE_intr-PROTOCOL] - NOTEQ check OK - java.lang.String.hashCode - 739067762 != 92903040
+     [java] Debug [ROLE_intr-PROTOCOL] - CHECK # 0.4
+     [java] Debug [ROLE_intr-PROTOCOL] - NOTEQ check OK - java.lang.String.toString - charlie != bob
+     [java] Debug [ROLE_intr-PROTOCOL] - NOTEQ check OK - java.lang.String.hashCode - 739067762 != 97717
+     [java] Debug [ROLE_intr-LANGUAGE] - Receive
+     [java] Debug [ROLE_intr-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_intr-NETWORK] - Received <- javax.crypto.SealedObject@29ee9faa
+     [java] Debug [ROLE_intr-PROTOCOL] - CHECK # 0.1
+     [java] Debug [ROLE_intr-PROTOCOL] - INV check PERFORMED on javax.crypto.SealedObject
+     [java] Debug [ROLE_intr-PROTOCOL] - INV check OK - javax.crypto.SealedObject.toString - javax.crypto.SealedObject@29ee9faa
+     [java] Debug [ROLE_intr-PROTOCOL] - INV check OK - javax.crypto.SealedObject.hashCode - 703504298
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_0
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_1
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-LANGUAGE] - Send
+     [java] Debug [ROLE_intr-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_intr-NETWORK] - Sending -> javax.crypto.SealedObject@29ee9faa
+     [java] Debug [ROLE_intr-NETWORK] - Sent -> javax.crypto.SealedObject@29ee9faa
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_1
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_2
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-LANGUAGE] - Receive
+     [java] Debug [ROLE_intr-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_intr-NETWORK] - Received <- javax.crypto.SealedObject@55f3ddb1
+     [java] Debug [ROLE_intr-PROTOCOL] - CHECK # 2.1
+     [java] Debug [ROLE_intr-PROTOCOL] - INV check PERFORMED on javax.crypto.SealedObject
+     [java] Debug [ROLE_intr-PROTOCOL] - INV check OK - javax.crypto.SealedObject.toString - javax.crypto.SealedObject@55f3ddb1
+     [java] Debug [ROLE_intr-PROTOCOL] - INV check OK - javax.crypto.SealedObject.hashCode - 1442045361
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_2
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_3
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-PROTOCOL] - >>> ATTACK <<<
+     [java] Debug [ROLE_intr-LANGUAGE] - Send
+     [java] Debug [ROLE_intr-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_intr-NETWORK] - Sending -> javax.crypto.SealedObject@4cc0edeb
+     [java] Debug [ROLE_intr-NETWORK] - Sent -> javax.crypto.SealedObject@4cc0edeb
+     [java] Debug [ROLE_intr-PROTOCOL] - ISOSK2PMAP_I2 - ROLE_intr - STEP_3
+     [java] Debug [ROLE_intr-PROTOCOL] - isosk2pmap_i2.ISOSK2PMAP_I2_ROLE_intr@327471b5
+     [java] Debug [ROLE_intr-PROTOCOL] - Session completed: 10/10
+     [java] Debug [ROLE_intr-NETWORK] - Connection closed
+     [java] Debug [ROLE_intr-SESSION] - Session closed
+     [java] Debug [ROLE_intr-NETWORK] - Connection closed
+     [java] Debug [ROLE_intr-SESSION] - Session closed
+     [java] ISOSK2PMAP_I2 [ROLE_intr] - Execution time was 1548,177 ms.
+
+BUILD SUCCESSFUL
+Total time: 2 seconds
