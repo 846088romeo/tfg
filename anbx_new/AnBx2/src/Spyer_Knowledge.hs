@@ -346,7 +346,7 @@ isSubExprOfAtom e (FInv (f1,f2)) = isSubExpr e f1 || isSubExpr e f2
 isSubExprOfAtom e (FNotEq (f1,f2)) = isSubExpr e f1 || isSubExpr e f2
 
 atomImplWff :: NExpression -> Atom -> Bool
-atomImplWff e at | trace ("atomImplWff\n\te: " ++ show e ++ " (tipo: " ++ show (typeof e) ++ ")\n\tat: " ++ show at) False = undefined
+-- atomImplWff e at | trace ("atomImplWff\n\te: " ++ show e ++ " (tipo: " ++ show (typeof e) ++ ")\n\tat: " ++ show at) False = undefined
 atomImplWff (NEProj _ n e) at = any (\x -> isSubExprOfAtom (NEProj x n e) at) [1..n]            -- any projection allows to test the well-formedness of e
 atomImplWff e at  = isSubExprOfAtom e at
 
@@ -357,7 +357,7 @@ simplAdd at ats =
   let filtered = Set.filter (\x -> case x of
                                     FWff e -> not (atomImplWff e at)
                                     _ -> True ) ats
-  in trace ("[simplAdd] Añadiendo " ++ show at ++ ", filtrados: " ++ show (Set.toList filtered)) (Set.insert at filtered)
+  in (Set.insert at filtered)
 
 {- renvoie True si on est sur que l'expression inverse doit etre identique -}
 invIsSame :: NExpression -> Bool
@@ -395,17 +395,16 @@ pairSimpl km e f opp_e pair_e mf at ats =
 
 --{- ajoute un atome et simplifie legerement la formule resultante -}
 addAtom :: KnowledgeMap -> Atom -> AtomSet -> AtomSet
-addAtom _ at ats | trace ("addAtom\n\tat: " ++ show at ++ "\n\tats: " ++ show ats) False = undefined
+-- addAtom _ at ats | trace ("addAtom\n\tat: " ++ show at ++ "\n\tats: " ++ show ats) False = undefined
 addAtom _ (FNotEq _) ats = ats
 addAtom km at@(FWff e) ats
-  | exprIsMessage e =
-      let present = any (\(k,v) -> let result = k == e && Set.member e v
-                                   in trace ("[addAtom] Comparando e=" ++ show e ++ " con k=" ++ show k ++ ", v=" ++ show (Set.toList v) ++ ", resultado=" ++ show result) result) (Map.toList km)
-      in if present
-           then trace ("[addAtom] FWff " ++ show e ++ " ya está en KnowledgeMap, no se añade") ats
-           else trace ("[addAtom] Añadiendo FWff " ++ show e ++ " porque no está en KnowledgeMap") (Set.insert at ats)
-  | setExist (atomImplWff e) ats = trace ("[addAtom] FWff " ++ show e ++ " ya existe, no se añade") ats
-  | otherwise = trace ("[addAtom] Añadiendo FWff " ++ show e) (Set.insert at ats)
+    | exprIsMessage e =
+            let present = any (\(k,v) -> k == e && Set.member e v) (Map.toList km)
+            in if present
+                     then ats
+                     else Set.insert at ats
+    | setExist (atomImplWff e) ats = ats
+    | otherwise = Set.insert at ats
 addAtom km at@(FEq(e,f,mf)) ats =
         if e == f then addAtom km (FWff e) ats
         else
@@ -445,15 +444,15 @@ addAtomK :: KnowledgeMap -> NExpression -> Atom -> AtomSet -> AtomSet
 -- addAtomK _ e at ats | trace ("addAtomK\n\te: " ++ show e ++ "\n\tat: " ++ show at ++ "\n\tats: " ++ show ats) False = undefined
 addAtomK km e at ats =
   if isSubExprOfAtom e at
-    then trace ("[addAtomK] " ++ show at ++ " contiene subexpresión " ++ show e ++ ", se añade.") (addAtom km at ats)
-    else trace ("[addAtomK] " ++ show at ++ " NO contiene subexpresión " ++ show e ++ ", no se añade.") ats
+    then (addAtom km at ats)
+    else ats
 
 {- ici, on implemente la formule du papier mais on ne garde que les atomes qui contiennent e -}
 {- on fait aussi un appel a reduce pour eviter les messages "inutiles" (paires, messages encryptes que l'on peut decrypter et reconstruire) -}
 {- ca marche parce qu'on ne reduit pas e lors du calcul de l'analyse -}
 
 addKnowledge :: (NExpression,NExpression) -> KnowledgeMap -> NEquations -> JContext -> AnBxOnP -> (KnowledgeMap,Formula)
-addKnowledge (m,e) k _ _ _ | trace ("addknowledge\n\t(m,e): " ++ show (m,e) ++ "\n\tknowledge: " ++ showKnowledgeMap k) False = undefined
+-- addKnowledge (m,e) k _ _ _ | trace ("addknowledge\n\t(m,e): " ++ show (m,e) ++ "\n\tknowledge: " ++ showKnowledgeMap k) False = undefined
 addKnowledge (m,e) k equations ctx opt =
   case Map.lookup m k of
     Just ex | Set.member e ex -> (k, FAnd Set.empty)  -- if expression already in knowledge no need to create new checks
@@ -461,19 +460,17 @@ addKnowledge (m,e) k equations ctx opt =
       let ak = analysis (knAdd m (Set.singleton e) k equations ctx opt) equations ctx opt
           k1 = rep (irr ak equations ctx opt) equations ctx opt
           phi = formulas ak equations ctx opt
-          logStr = "[addKnowledge] m: " ++ show m ++ ", e: " ++ show e ++ ", phi: " ++ show phi
-      in trace logStr (k1, phi)
+      in (k1, phi)
 
 formulas :: KnowledgeMap -> NEquations -> JContext -> AnBxOnP -> Formula
-formulas ak _ _ _ | trace ("formulas\n\tak: " ++ showKnowledgeMap ak) False = undefined
+-- formulas ak _ _ _ | trace ("formulas\n\tak: " ++ showKnowledgeMap ak) False = undefined
 formulas ak equations ctx opt =
   let reduced = reduce ak equations ctx opt
       ats = form Set.empty reduced ak equations ctx opt
-      logStr = "[formulas] reduced knowledge: " ++ showKnowledgeMap reduced ++ "\n[formulas] atoms: " ++ show ats
-  in trace logStr (FAnd ats)
+  in (FAnd ats)
 
 form :: AtomSet -> KnowledgeMap -> KnowledgeMap -> NEquations -> JContext -> AnBxOnP -> AtomSet
-form ats k ak _ _ _ | trace ("form\n\tats: " ++ show ats ++ "\n\tknowledge: " ++ showKnowledgeMap k ++ "\n\tak: " ++ showKnowledgeMap ak) False = undefined
+-- form ats k ak _ _ _ | trace ("form\n\tats: " ++ show ats ++ "\n\tknowledge: " ++ showKnowledgeMap k ++ "\n\tak: " ++ showKnowledgeMap ak) False = undefined
 form ats k ak equations ctx opt =
   if Map.null k then ats
   else
@@ -482,12 +479,11 @@ form ats k ak equations ctx opt =
         es = synthesis ak m equations ctx opt
         ats1 = foldset (\f ats' -> addAtomK ak e (mkEq e f False) ats') ats es
         ats2 = formsub m es ats1 ak equations ctx opt
-        logStr = "[form] m: " ++ show m ++ ", e: " ++ show e ++ ", es: " ++ show es ++ "\n[form] ats1: " ++ show ats1 ++ "\n[form] ats2: " ++ show ats2
-    in trace logStr (form ats2 k1 ak equations ctx opt)
+    in (form ats2 k1 ak equations ctx opt)
                                 -- in error (show  e ++ "\n" ++ show es ++ "\n" ++ show ats1 ++ "\n" ++ show ats2 ++ "\n" ++ show k1)
 
 formsub :: NExpression -> ExpressionSet -> AtomSet -> KnowledgeMap -> NEquations  -> JContext -> AnBxOnP -> AtomSet
-formsub m es ats ak _ _ _ | trace ("formsub\n\tmessage: " ++ show m ++ "\n\tes: " ++ showExpressionSet es ++ "\n\tats: " ++ show ats ++ "\n\tak: " ++ showKnowledgeMap ak) False = undefined
+-- formsub m es ats ak _ _ _ | trace ("formsub\n\tmessage: " ++ show m ++ "\n\tes: " ++ showExpressionSet es ++ "\n\tats: " ++ show ats ++ "\n\tak: " ++ showKnowledgeMap ak) False = undefined
 formsub m es ats ak equations ctx opt =
                         let invm = inverseNExpression m in
                         if m == invm then
