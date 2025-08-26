@@ -2,5 +2,9 @@ _SET ?C 'alice'
 _SET ?I 'bob'
 _SET ?SP 'charlie'
 _SET ?idp 'david'
-;GOAL auth:[?Data],[?C,?SP]
+_SET agrees (generateNumber | inv_check | eq_check)
+_SET can_recover (inv_check | eq_check)
+_SET generates (generateNumber)
+_SET can_read (inv_check)
 _SET ?Data 'X1','X4','X7','X10','X13','X16','X19','X22','X25','X28'
+;GOAL auth:[?Data],[?C,?SP]

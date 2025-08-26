@@ -1,6 +1,5 @@
 _SET ?A 'alice'
 _SET ?B 'bob'
-_SET ?intr 'charlie'
 _SET agrees (generateNumber | inv_check | eq_check)
 _SET can_recover (inv_check | eq_check)
 _SET generates (generateNumber)

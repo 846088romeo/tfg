@@ -1,6 +1,6 @@
 '''
 Author: Simona Bernardi
-Date: 2-July-2025
+Date: 4-August-2025
 
 This module extracts information from a protocol AnBx specification and from 
 the execution traces produced by the corresponding AnBx-Java protocol simulator  and
@@ -165,7 +165,11 @@ class Event:
             self.act_part, ' ', self.pass_part, ' ', self.action, ' ', self.ev_content, ' ', self.ev_type)
 
     def get_event_items(self):
-        return  self.ts + ',' + str(self.session) + ',' + str(self.step) + ',' + \
+        #return  self.ts + ',' + str(self.session) + ',' + str(self.step) + ',' + \
+        #        self.act_part + ',' + self.pass_part + ',' + self.action + ',' + \
+        #        self.ev_content + ',' + self.ev_type + '\n'
+        #Events without timestamp
+        return  str(self.session) + ',' + str(self.step) + ',' + \
                 self.act_part + ',' + self.pass_part + ',' + self.action + ',' + \
                 self.ev_content + ',' + self.ev_type + '\n'
 
@@ -175,7 +179,7 @@ class Trace:
         self.file = filename
         self.prot = prot
         self.roles_alias = dict()
-        self.whoamI = ''
+        self.howamI = ''
         self.sessions = 0
         self.keywords = [['Nonce - DRBG - Value:','generateNumber'], ['AnBx_Params - params:','AnBx_Params'], \
                         ['Sent','sent'], ['Received','received'], #['Encrypted','encrypted'], ['Decrypted','decrypted'], \
@@ -267,9 +271,8 @@ class Trace:
                         timestamp = event_pattern_ts.groups()[0]
                     else:
                         timestamp = '00:00:00:000'
-                #print("Event content: ", ev_content)
                 self.events.append(Event(n_line,timestamp,session,step,act_part,pass_part,action,ev_content))  
-
+    
         return line
 
     def get_events(self):
@@ -422,30 +425,36 @@ class Log:
             #Role instantiation
             for key, value in self.roles_alias.items():
                 file.write(f"_SET ?{key} '{value}'\n") 
-            #Goal specification and asset instantiation          
+            #Keywords
+            file.write("_SET agrees (generateNumber | inv_check | eq_check)\n")
+            file.write("_SET can_recover (inv_check | eq_check)\n")
+            file.write("_SET generates (generateNumber)\n")
+            file.write("_SET can_read (inv_check)\n")
+            #Asset instantiation  
+            for key in self.assets:
+                file.write(f"_SET ?{key} ")
+                assets_instances = self.assets[key]
+                for i in range(len(assets_instances)-1):
+                    file.write(f"'{assets_instances[i][1]}',")
+                file.write(f"'{assets_instances[-1][1]}'\n")
+            #Goal specification  
             for goal in self.prot.get_goals():
                 file.write(";GOAL ")
                 #Goal: secret/auth
                 file.write(f"{goal[0]}:[")
                 #What? Assets
-                for asset in goal[1]:
-                    file.write(f"?{asset}")
-                file.write("],[")
+                for a in range(len(goal[1])-1):
+                    file.write(f"?{goal[1][a]},")
+                file.write(f"?{goal[1][-1]}],[")
                 #Who? Involved roles
-                for g in range(len(goal[2])-1):
-                    file.write(f"?{goal[2][g]},")
+                for w in range(len(goal[2])-1):
+                    file.write(f"?{goal[2][w]},")
                 file.write(f"?{goal[2][-1]}]\n")  
-                #Asset instantiation  
-                #Assumed only one asset, it needs to be revised in case of more assets!
-                assets_instances = self.assets[goal[1][0]]
-                file.write(f"_SET ?{goal[1][0]} ")
-                for i in range(len(assets_instances)-1):
-                    file.write(f"'{assets_instances[i][1]}',")
-                file.write(f"'{assets_instances[-1][1]}'\n")
 
     def save_log(self,filename):     
         with open(filename, 'w') as file:
-            file.write("#timestamp,session,step,active_part,passive_part,action,msg_content,msg_type\n")
+            #file.write("#timestamp,session,step,active_part,passive_part,action,msg_content,msg_type\n")
+            file.write("#session,step,active_part,passive_part,action,msg_content,msg_type\n")
             for ev in self.events:
                 file.write(f"{ev.get_event_items()}")
 
@@ -528,14 +537,13 @@ class Log:
             if sealed_obj:
                 match self.events[i].action:
                     case 'received' :
-                        self.events[i].ev_content = self.events[i-1].ev_content
+                        self.events[i].ev_content = sealed_sent
                     case 'sent':
-                        if self.events[i-1].action == 'AnBx_Params':
-                            self.events[i].ev_content = self.events[i-1].ev_content
-                    case 'AnBx_Params':
-                            if self.events[i-1].action == 'AnBx_Params':
+                        sealed_sent = self.events[i].ev_content
+                    #case 'AnBx_Params':
+                    #        if self.events[i-1].action == 'AnBx_Params':
                                 #self.events[i].ev_content = self.events[i].ev_content.replace(sealed_obj.groups()[0],'')
-                                self.events[i].ev_content += (';' + self.events[i-1].ev_content)
+                    #            self.events[i].ev_content += (';' + self.events[i-1].ev_content)
 
     def set_assets(self):
         #Mapping of the asset instances to the assets in the protocol spec

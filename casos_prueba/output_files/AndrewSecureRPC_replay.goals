@@ -1,5 +1,9 @@
 _SET ?A 'alice'
 _SET ?B 'bob'
 _SET ?intr 'charlie'
-;GOAL auth:[?NB2],[?A,?B]
+_SET agrees (generateNumber | inv_check | eq_check)
+_SET can_recover (inv_check | eq_check)
+_SET generates (generateNumber)
+_SET can_read (inv_check)
 _SET ?NB2 'X2','X7','X12','X17','X22','X27','X32','X37','X42','X47'
+;GOAL auth:[?NB2],[?A,?B]
