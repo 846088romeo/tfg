@@ -3,7 +3,7 @@
 <project name="sso_i2" basedir="." default="run">
 	<property name="main-class" value="SSO_I2"/>
 	<property name="src" value="."/>
-	<property name="AnBxJ.dir" value="../../../AnBxJ/modified"/>
+	<property name="AnBxJ.dir" value="../../../AnBxJ/original"/>
 	<property name="build" value="../../bin/"/>
     
 	<path id="my_classpath">

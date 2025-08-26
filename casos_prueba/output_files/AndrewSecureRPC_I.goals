@@ -1,5 +1,0 @@
-_SET ?A 'alice'
-_SET ?I 'bob'
-_SET ?B 'charlie'
-;GOAL auth:[?NB2],[?A,?B]
-_SET ?NB2 'X2','X7','X12','X17','X22','X27','X32','X37','X42','X47'

@@ -3,7 +3,7 @@
 <project name="andrewsecurerpc_replay" basedir="." default="run">
 	<property name="main-class" value="AndrewSecureRPC_replay"/>
 	<property name="src" value="."/>
-	<property name="AnBxJ.dir" value="../../../AnBxJ"/>
+	<property name="AnBxJ.dir" value="../../../AnBxJ/original/"/>
 	<property name="build" value="../../bin/"/>
     
 	<path id="my_classpath">
@@ -47,7 +47,7 @@
 	<target name="ROLE_intr"  >
 		                <java classname="${ant.project.name}.${main-class}" failonerror="true" fork="yes"> 
 		                    <arg line="-r ROLE_intr" />
-                            <arg line="-jsessions 3" />
+                            <arg line="-jsessions 10" />
 		                    <classpath refid="my_classpath"/>
                             
                         </java>
@@ -55,7 +55,7 @@
 	<target name="ROLE_B"  >
 		                <java classname="${ant.project.name}.${main-class}" failonerror="true" fork="yes"> 
 		                    <arg line="-r ROLE_B" />
-                            <arg line="-jsessions 3" />
+                            <arg line="-jsessions 10" />
 		                    <classpath refid="my_classpath"/>
                             
                         </java>
@@ -63,7 +63,7 @@
 	<target name="ROLE_A"  >
 		                <java classname="${ant.project.name}.${main-class}" failonerror="true" fork="yes"> 
 		                    <arg line="-r ROLE_A" />
-                            <arg line="-jsessions 3" />
+                            <arg line="-jsessions 10" />
 		                    <classpath refid="my_classpath"/>
                             
                         </java>
