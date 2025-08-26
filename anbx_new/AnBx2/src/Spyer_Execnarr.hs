@@ -258,23 +258,21 @@ compileAnB2ExecnarrKnow (next_var,_,kappa,_) (ctx,types,sh,[],_,equations,[],[],
 compileAnB2ExecnarrKnow context@(next_var,privnames,kappa,gennames) (ctx,types,sh,[],decl,equations,x@(((a,_,_),channeltype,(b,_,_)),msgw,_,_):xs,goalsS,goalsR,seenSQN) mapgoals evn@(_,endEvnrAuth,endEvnrSecr) opt out
                         -- share actions (simply ignored as shares are processed in AnB and later in the compilation chain, except for ProVerif output)
                         | channeltype == Sharing SHShare || ((channeltype == Sharing SHAgree || channeltype == Sharing SHAgreeInsecurely) && not (isOutTypePV out)) =
-                            trace ("[compileAnB2ExecnarrKnow] Skipping share action: " ++ show x) $ compileAnB2ExecnarrKnow context (ctx,types,sh,[],decl,equations,xs,goalsS,goalsR,seenSQN) mapgoals evn opt out
+                            compileAnB2ExecnarrKnow context (ctx,types,sh,[],decl,equations,xs,goalsS,goalsR,seenSQN) mapgoals evn opt out
                         -- standard actions
                         | otherwise =
-                            let (msg,_) = unwrapMsg msgw in
-                            trace ("[compileAnB2ExecnarrKnow] Processing action: " ++ show x ++ "\nnext_var: " ++ show next_var ++ "\na: " ++ show a ++ " b: " ++ show b ++ "\nmsg: " ++ show msg) $ 
-                            if next_var==0 && msg == Atom syncMsg then
-                                trace "[compileAnB2ExecnarrKnow] Skipping first empty action (syncMsg)" $ compileAnB2ExecnarrKnow context (ctx,types,sh,[],decl,equations,xs,goalsS,goalsR,seenSQN) mapgoals evn opt out
+                            let (msg,_) = unwrapMsg msgw
+                            in if next_var==0 && msg == Atom syncMsg then
+                                compileAnB2ExecnarrKnow context (ctx,types,sh,[],decl,equations,xs,goalsS,goalsR,seenSQN) mapgoals evn opt out
                             else
                                 let
                                     (msg,_) = unwrapMsg msgw
                                     m = trMsg msg ctx                  -- translate the AnB message to NExpression
                                     ka0 = getKappa kappa a ctx                  -- get knowledge for sender
-                                    ka = analysisStepEq ka0 equations ctx opt   -- run equation-based analysis step on the knowledge 
-                                in trace ("[compileAnB2ExecnarrKnow] Knowledge for sender (" ++ a ++ "): " ++ show ka ++ "\nNExpression: " ++ show m) $
-                                case (inSynthesis ka (agent2NExpression b ctx) equations, inSynthesis ka m equations ctx opt) of       -- check if sender can syntesise message m, check also the recipient name but it not really used at the moment
+                                    ka = analysisStepEq ka0 equations ctx opt   -- run equation-based analysis step on the knowledge
+                                in case (inSynthesis ka (agent2NExpression b ctx) equations, inSynthesis ka m equations ctx opt) of       -- check if sender can syntesise message m, check also the recipient name but it not really used at the moment
                                     -- sender cannot synthesise message
-                                    (_,Nothing) -> trace ("[compileAnB2ExecnarrKnow] ERROR: Sender " ++ a ++ " cannot synthesise message " ++ show m) $ error ("agent " ++ a ++  " cannot compile AnB to ExecNarr - in action: " ++ showAction x ++ "\n" ++ errorInSynthesis a m ka equations)
+                                    (_,Nothing) -> error ("agent " ++ a ++  " cannot compile AnB to ExecNarr - in action: " ++ showAction x ++ "\n" ++ errorInSynthesis a m ka equations)
                                     (_,Just em) -> let x = newVar next_var in
                                         let 
                                             kappa1 = updateKappa kappa a ka
@@ -637,18 +635,7 @@ execnarrKnowOfProt prot@(_,types,_,anbequations,(_,wh),shares,_,actions,goals) a
                             equations = trEquations anbequations types ctx
                             out = anbxouttype anbxopt
                             ng = nogoals anbxopt
-                            traceMsg = "[execnarrKnowOfProt] compileAnB2ExecnarrKnow args:\n" ++
-                                       "  ctx: " ++ show ctx ++ "\n" ++
-                                       "  types: " ++ show types ++ "\n" ++
-                                       "  shares: " ++ show shares ++ "\n" ++
-                                       "  decs: " ++ show decs ++ "\n" ++
-                                       "  equations: " ++ show equations ++ "\n" ++
-                                       "  actions: " ++ show actions ++ "\n" ++
-                                       "  goals2ver: " ++ show goals2ver ++ "\n" ++
-                                       "  newmapgoals: " ++ show newmapgoals ++ "\n" ++
-                                       "  evn: " ++ show evn ++ "\n" ++
-                                       "  out: " ++ show out ++ "\n"
-                            (narr,kappa,mapgoals) = trace traceMsg $ compileAnB2ExecnarrKnow (0,Set.empty,Map.empty,Set.empty) (ctx,types,shares,decs,decs,equations,actions,goals2ver,goals2ver,[]) newmapgoals evn anbxopt out
+                            (narr,kappa,mapgoals) = compileAnB2ExecnarrKnow (0,Set.empty,Map.empty,Set.empty) (ctx,types,shares,decs,decs,equations,actions,goals2ver,goals2ver,[]) newmapgoals evn anbxopt out
                             xnarr = nubOrd . sortExecNarr . cleanExecNarr $ (wh_actions ctx ++ narr)
 
 -- compute execnarr
