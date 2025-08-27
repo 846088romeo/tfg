@@ -1,0 +1,72 @@
+Protocol: SSO_replay AnBx
+# the flawed version of Google's SSO from before 2008 [Armando et al.]
+# in comments the standard specification (which is safe)
+# Counterexample from ofmc: it is a replay attack (the last message)
+
+Types: 
+	Agent C,idp,SP,I;
+	Certified C,idp,SP,I;
+	Number URI,ID,Data;
+	Function [Agent -> PublicKey] sk;
+	Function [Agent -> PublicKey] pk;		
+
+Knowledge: 
+	C: C,idp,SP,inv(sk(C)),inv(pk(C)),pk,sk,sk(idp);
+	idp: C,idp,sk,pk,inv(pk(idp)),sk(idp),inv(sk(idp));
+	SP: idp,SP,sk,pk,inv(pk(SP)),inv(sk(SP)),sk(idp),sk(C);
+	I: C,idp,SP,pk,sk
+
+Actions:
+
+	#(x1501,1) -> i: pseudonym(x1501),{|x1501,x1502,URI(1)|}_(secChCr(pseudonym(x1501),x1502))
+	[C] -> I : {{C,SP,URI}inv(sk(C))}pk(SP)
+
+	#(x1501,2) -> i: pseudonym(x1501),{|x1501,x1502,URI(2)|}_(secChCr(pseudonym(x1501),x1502))
+	#i -> (x1502,1): pseudonym(x1501),{|x1501,x1502,URI(2)|}_(secChCr(pseudonym(x1501),x1502))
+	I -> SP : {{C,SP,URI}inv(sk(C))}pk(SP)
+
+	#(x1502,1) -> i: {|x1501,idp,x1502,ID(3),URI(2)|}_(secChCr(x1502,pseudonym(x1501)))
+	SP -> I : {{C,idp,SP,ID,URI}inv(sk(SP))}pk(C)
+
+	#i -> (x1502,2): pseudonym(x1501),{|x1501,x1502,URI(1)|}_(secChCr(pseudonym(x1501),x1502))
+	#(x1502,2) -> i: {|x1501,idp,x1502,ID(4),URI(1)|}_(secChCr(x1502,pseudonym(x1501)))
+
+	#i -> (x1501,1): {|x1501,idp,x1502,ID(4),URI(1)|}_(secChCr(x1502,pseudonym(x1501)))
+	I -> [C] : {{C,idp,SP,ID,URI}inv(sk(SP))}pk(C)
+	
+	#(x1501,1) -> i: {|x1501,idp,x1502,ID(4),URI(1)|}_(secChCr(x1501,idp))
+	C -> I : {{C,idp,SP,ID,URI}inv(sk(C))}pk(idp)
+
+	#i -> (idp,1): {|x1501,idp,x1502,ID(4),URI(1)|}_(secChCr(x1501,idp))
+	I -> idp : {{C,idp,SP,ID,URI}inv(sk(C))}pk(idp)
+	
+	#(idp,1) -> i: {|{x1501,idp}_inv(sk(idp)),URI(1)|}_(secChCr(idp,x1501))
+	idp -> I : {{{C,idp}inv(sk(idp)),URI}inv(sk(idp))}pk(C)
+	
+	#i -> (x1501,1): {|{x1501,idp}_inv(sk(idp)),URI(1)|}_(secChCr(idp,x1501))
+	I -> C : {{{C,idp}inv(sk(idp)),URI}inv(sk(idp))}pk(C)
+
+	#(x1501,1) -> i: pseudonym(x1501),{|{x1501,idp}_inv(sk(idp)),URI(1)|}_(secChCr(pseudonym(x1501),x1502))
+	[C] -> I : {{{C,idp}inv(sk(idp)),URI}inv(sk(C))}pk(SP)
+
+	#i -> (x1501,2): {|x1501,idp,x1502,ID(3),URI(2)|}_(secChCr(x1502,pseudonym(x1501)))
+	#(x1501,2) -> i: {|x1501,idp,x1502,ID(3),URI(2)|}_(secChCr(x1501,idp))
+	#i -> (idp,2): {|x1501,idp,x1502,ID(3),URI(2)|}_(secChCr(x1501,idp))
+	#(idp,2) -> i: {|{x1501,idp}_inv(sk(idp)),URI(2)|}_(secChCr(idp,x1501))
+	#i -> (x1501,2): {|{x1501,idp}_inv(sk(idp)),URI(2)|}_(secChCr(idp,x1501))
+	#(x1501,2) -> i: pseudonym(x1501),{|{x1501,idp}_inv(sk(idp)),URI(2)|}_(secChCr(pseudonym(x1501),x1502))
+
+	#i -> (x1502,1): pseudonym(x1501),{|{x1501,idp}_inv(sk(idp)),URI(2)|}_(secChCr(pseudonym(x1501),x1502))
+	I -> SP : {{{C,idp}inv(sk(idp)),URI}inv(sk(C))}pk(SP)
+
+	#(x1502,1) -> i: {|Data(11)|}_(secChCr(x1502,pseudonym(x1501)))
+	SP -> I : {{Data}inv(sk(SP))}pk(C)
+
+	#i -> (x1501,1): {|Data(11)|}_(secChCr(x1502,pseudonym(x1501))) #This message is replayed
+	I -> C : ~{{Data}inv(sk(SP))}pk(C)
+
+	#i -> (x1501,2): {|Data(11)|}_(secChCr(x1502,pseudonym(x1501)))
+
+Goals:
+	
+	C authenticates SP on Data

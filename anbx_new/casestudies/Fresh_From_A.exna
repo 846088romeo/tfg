@@ -11,8 +11,7 @@ eq(sk(A),sk(R0))
 
 1| B: send(A;enc(<Nonce,B>,pk(R0)))	# B -> A
 1| A: R1 := receive()	# B -> A
-1| A: (*4*)
-wff(proj[1/2][dec(R1,inv(pk(A)))])
+1| A: (*3*)
 eq(B,proj[2/2][dec(R1,inv(pk(A)))])
 inv(pk(A),inv(pk(A)))
 inv(sk(A),inv(sk(A)))

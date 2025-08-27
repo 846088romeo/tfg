@@ -58,17 +58,23 @@ import Net.IPv4 (IPv4)
 import Data.Maybe (isNothing)
 import AnBxMain (getExt)
 import Spyer_Message (Atom (FEq, FInv, FWff, FNotEq))
-import Java_TypeSystem_Context (newContext)
-import Java_TypeSystem_Evaluator (pkFunOfNExpression)
+import Java_TypeSystem_Context (newContext, types2context, JContext)
+import Java_TypeSystem_Evaluator (pkFunOfNExpression, typeofTS)
 import Main_Common (version)
 
 outFilePrefix :: FilePath -> String -> String
 outFilePrefix fp prot = fp ++ prot
 
-genCode :: JProtocol -> AnBxOnP -> AnBxCfg -> SubjectiveImpersonations -> IO String
-genCode jprot@(protname,customtypes,_,shares,agree,_,roles,droles,inactiveagents,steps,channels,fields,methods,actions) options cfg imps = do
+genCode :: JProtocol -> AnBxOnP -> AnBxCfg -> SubjectiveImpersonations -> Protocol -> OFMCAttackImpersonationsAndProt -> IO String
+genCode jprot@(protname,customtypes,_,shares,agree,_,roles,droles,inactiveagents,steps,channels,fields,methods,actions) options cfg imps origProt impsAndTrProt = do
         let sharedknowledge = shares ++ agree -- this variable determines how pre-shared knowledge is considered in the code generation. 
                                               -- also check isAbstraction
+        -- Recreate context from original protocol
+        let (_,ptypes,_,_,_,_,_,_,_) = origProt
+        let types = case impsAndTrProt of
+                      Just (_,(_,trtypes,_,_,_,_,_,_,_),_,_) -> trtypes
+                      Nothing -> ptypes
+        let ctx = types2context newContext types
         let outtype = anbxouttype options
         let outExt = sepDot ++ getExt outtype
         let isObjCheck = objcheck options
@@ -142,7 +148,7 @@ genCode jprot@(protname,customtypes,_,shares,agree,_,roles,droles,inactiveagents
         let genRoles x = genFile prot dirpath templates outtype showStdOut x roleXPrefix (commonAttribs ++ [("role",St x),("serExt",St serExt),
                                                                                                                         ("sessname",St sessName),
                                                                                                                         ("fieldsstatic", VD (varDeclRolesStatic x fields)),
-                                                                                                                        ("fields", VD (varDeclRole x fields ++ replayVarsForRole x actions1)),
+                                                                                                                        ("fields", VD (varDeclRole x fields ++ replayVarsForRole x actions1 ctx)),
                                                                                                                         ("fieldsinit", SH (varDeclRoleInit x sharedknowledge)),
                                                                                                                         ("rolemethods", RM (listRoleMethods x methods)),
                                                                                                                         ("channels", StLst mychannels),
@@ -257,19 +263,23 @@ varDeclRoleInit role shares = let
                                  myShares = [ x | x@(_,_,_,roles) <- shares, elem role [ toRole y | (JAgent,y) <- roles]]
                               in map (varShareInit shares) myShares
 
-replayVarsForRole :: String -> [JAction] -> [RoleField]
-replayVarsForRole role actions =
+replayVarsForRole :: String -> [JAction] -> JContext -> [RoleField]
+replayVarsForRole role actions ctx =
   [ RoleField {
       rolename = varname,
-      typeofvar = SealedObject JNonce,
+      typeofvar = getReplayVarType expr ctx,
       pars = "",
       static = False,
       know = False
     }
-  | JEmitReplay (step, agent, _, _, _) <- actions,
+  | JEmitReplay (step, agent, _, _, expr) <- actions,
     toRole agent == role,
     let varname = "VAR_" ++ map toUpper agent ++ "_REPLAY_R" ++ show step
   ]
+
+-- Helper function to determine the type of replay variable based on the expression
+getReplayVarType :: NExpression -> JContext -> JType
+getReplayVarType expr ctx = typeofTS expr ctx
 
 packageName :: String -> String
 packageName [] = []
@@ -359,7 +369,7 @@ dbgJavaCode prot options cfg impsAndTrProt =
   let impersonations = case impsAndTrProt of
                          Just (imps,_,_,_) -> imps
                          Nothing -> Map.empty
-  in genCode (mkProt2J prot impsAndTrProt options cfg) options cfg impersonations
+  in genCode (mkProt2J prot impsAndTrProt options cfg) options cfg impersonations prot impsAndTrProt
 
 listRoles :: JRoles -> [String]
 listRoles = map (\(_,r) -> toRole r)
