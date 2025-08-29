@@ -1,0 +1,741 @@
+Buildfile: /Users/usuario/anbx-ide-exe-mac/genAnBx/src/sso_replay/build.xml
+
+ROLE_I:
+     [java] Debug [SSO_replay-ALWAYS] - Verbose mode on
+     [java] Debug [ROLE_I-APPLICATION] - Reading config file: SSO_replay.properties
+     [java] Debug [ROLE_I-ENCRYPTION] - -------------------- crypto config --------------------
+     [java] Debug [ROLE_I-ENCRYPTION] - cipherScheme = AES/CBC/PKCS5Padding
+     [java] Debug [ROLE_I-ENCRYPTION] - keySize = 256
+     [java] Debug [ROLE_I-ENCRYPTION] - keyGenerationScheme = AES
+     [java] Debug [ROLE_I-ENCRYPTION] - keyGenerationSize = 256
+     [java] Debug [ROLE_I-ENCRYPTION] - keyGenerationSchemePBE = PBKDF2WithHmacSHA512
+     [java] Debug [ROLE_I-ENCRYPTION] - keyPairGenerationScheme = RSA
+     [java] Debug [ROLE_I-ENCRYPTION] - keyPairGenerationSize = 2048
+     [java] Debug [ROLE_I-ENCRYPTION] - secureRandomAlgorithm = DRBG
+     [java] Debug [ROLE_I-ENCRYPTION] - hmacAlgorithm = HmacSHA256
+     [java] Debug [ROLE_I-ENCRYPTION] - messageDigestAlgorithm = SHA-256
+     [java] Debug [ROLE_I-ENCRYPTION] - messageDigestSignatureAlgorithm = SHA256
+     [java] Debug [ROLE_I-ENCRYPTION] - keyAgreementAlgorithm = DH
+     [java] Debug [ROLE_I-ENCRYPTION] - keyAgreementKeyPairGenerationScheme = DH
+     [java] Debug [ROLE_I-ENCRYPTION] - dhRndExpSize = 4096
+     [java] Debug [ROLE_I-ENCRYPTION] - ecGenParameterSpec = secp256r1
+     [java] Debug [ROLE_I-ENCRYPTION] - asymCipherSchemeBlock = RSA
+     [java] Debug [ROLE_I-ENCRYPTION] - sslContext = TLSv1.3
+     [java] Debug [ROLE_I-ENCRYPTION] - securityProvider = default
+     [java] Debug [ROLE_I-ENCRYPTION] - cipherSchemeProvider = default
+     [java] Debug [ROLE_I-ENCRYPTION] - keyGenerationSchemeProvider = default
+     [java] Debug [ROLE_I-ENCRYPTION] - keyGenerationSchemePBEProvider = default
+     [java] Debug [ROLE_I-ENCRYPTION] - keyPairGenerationSchemeProvider = default
+     [java] Debug [ROLE_I-ENCRYPTION] - secureRandomProvider = default
+     [java] Debug [ROLE_I-ENCRYPTION] - hmacProvider = default
+     [java] Debug [ROLE_I-ENCRYPTION] - messageDigestProvider = default
+     [java] Debug [ROLE_I-ENCRYPTION] - signatureProvider = default
+     [java] Debug [ROLE_I-ENCRYPTION] - asymEncProvider = default
+     [java] Debug [ROLE_I-ENCRYPTION] - keyAgreementProvider = default
+     [java] Debug [ROLE_I-ENCRYPTION] - sslContextProvider = default
+     [java] Debug [ROLE_I-ENCRYPTION] - -------------------- crypto config --------------------
+     [java] Debug [ROLE_I-APPLICATION] - Loading aliases
+     [java] Debug [ROLE_I-APPLICATION] - Role: ROLE_C - Alias: alice
+     [java] Debug [ROLE_I-APPLICATION] - Role: ROLE_I - Alias: bob
+     [java] Debug [ROLE_I-APPLICATION] - myAlias: bob
+     [java] Debug [ROLE_I-APPLICATION] - Role: ROLE_SP - Alias: charlie
+     [java] Debug [ROLE_I-APPLICATION] - Role: ROLE_idp - Alias: david
+     [java] Debug [ROLE_I-APPLICATION] - Host: localhost - Port: 55556
+     [java] Debug [ROLE_I-APPLICATION] - Channel Type: SSL_PLAIN - Role: SERVER
+     [java] Debug [ROLE_I-APPLICATION] - Channel: ROLE_I_channel_ROLE_C_Server_Insecure
+     [java] Debug [ROLE_I-APPLICATION] - Host: localhost - Port: 55557
+     [java] Debug [ROLE_I-APPLICATION] - Channel Type: SSL_PLAIN - Role: CLIENT
+     [java] Debug [ROLE_I-APPLICATION] - Channel: ROLE_I_channel_ROLE_SP_Client_Insecure
+     [java] Debug [ROLE_I-APPLICATION] - Host: localhost - Port: 55560
+     [java] Debug [ROLE_I-APPLICATION] - Channel Type: SSL_PLAIN - Role: CLIENT
+     [java] Debug [ROLE_I-APPLICATION] - Channel: ROLE_I_channel_ROLE_idp_Client_Insecure
+     [java] Debug [ROLE_I-APPLICATION] - myRole: ROLE_I
+     [java] Debug [ROLE_I-APPLICATION] - sessions: 5
+     [java] Debug [ROLE_I-ENCRYPTION] - Loading KeyStore: tls #0
+     [java] Debug [ROLE_I-ENCRYPTION] - Reading config file (KSS): ../../keystore/bob.pwd
+     [java] Debug [ROLE_I-ENCRYPTION] - tls - KeyStoreType: PKCS12
+     [java] Debug [ROLE_I-ENCRYPTION] - tls - LocalKeyStore: ../../keystore/bob_tls.private
+     [java] Debug [ROLE_I-ENCRYPTION] - tls - RemotelKeyStore: ../../keystore/bob_tls.public
+     [java] Debug [ROLE_I-ENCRYPTION] - My Alias: bob
+     [java] Debug [ROLE_I-ENCRYPTION] - RootCA: root
+     [java] Debug [ROLE_I-ENCRYPTION] - Loading KeyStore: enc #1
+     [java] Debug [ROLE_I-ENCRYPTION] - Reading config file (KSS): ../../keystore/bob.pwd
+     [java] Debug [ROLE_I-ENCRYPTION] - enc - KeyStoreType: PKCS12
+     [java] Debug [ROLE_I-ENCRYPTION] - enc - LocalKeyStore: ../../keystore/bob_enc.private
+     [java] Debug [ROLE_I-ENCRYPTION] - enc - RemotelKeyStore: ../../keystore/bob_enc.public
+     [java] Debug [ROLE_I-ENCRYPTION] - My Alias: bob
+     [java] Debug [ROLE_I-ENCRYPTION] - RootCA: root
+     [java] Debug [ROLE_I-ENCRYPTION] - Loading KeyStore: sig #2
+     [java] Debug [ROLE_I-ENCRYPTION] - Reading config file (KSS): ../../keystore/bob.pwd
+     [java] Debug [ROLE_I-ENCRYPTION] - sig - KeyStoreType: PKCS12
+     [java] Debug [ROLE_I-ENCRYPTION] - sig - LocalKeyStore: ../../keystore/bob_sig.private
+     [java] Debug [ROLE_I-ENCRYPTION] - sig - RemotelKeyStore: ../../keystore/bob_sig.public
+     [java] Debug [ROLE_I-ENCRYPTION] - My Alias: bob
+     [java] Debug [ROLE_I-ENCRYPTION] - RootCA: root
+     [java] Debug [ROLE_I-ENCRYPTION] - Loading KeyStore: hmc #3
+     [java] Debug [ROLE_I-ENCRYPTION] - Reading config file (KSS): ../../keystore/bob.pwd
+     [java] Debug [ROLE_I-ENCRYPTION] - hmc - KeyStoreType: PKCS12
+     [java] Debug [ROLE_I-ENCRYPTION] - hmc - LocalKeyStore: ../../keystore/bob_hmc.private
+     [java] Debug [ROLE_I-ENCRYPTION] - hmc - RemotelKeyStore: ../../keystore/bob_hmc.public
+     [java] Debug [ROLE_I-ENCRYPTION] - My Alias: bob
+     [java] Debug [ROLE_I-ENCRYPTION] - RootCA: root
+     [java] Debug [ROLE_I-ENCRYPTION] - Building KeyStore: tls #0
+     [java] Debug [ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_tls.private - Type: PKCS12
+     [java] Debug [ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_tls.public - Type: PKCS12
+     [java] Debug [ROLE_I-ENCRYPTION] - Building KeyStore: enc #1
+     [java] Debug [ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_enc.private - Type: PKCS12
+     [java] Debug [ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_enc.public - Type: PKCS12
+     [java] Debug [ROLE_I-ENCRYPTION] - Building KeyStore: sig #2
+     [java] Debug [ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_sig.private - Type: PKCS12
+     [java] Debug [ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_sig.public - Type: PKCS12
+     [java] Debug [ROLE_I-ENCRYPTION] - Building KeyStore: hmc #3
+     [java] Debug [ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_hmc.private - Type: PKCS12
+     [java] Debug [ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_hmc.public - Type: PKCS12
+     [java] Debug [ROLE_I-ENCRYPTION] - Certificate retrieved: <bob>
+     [java] Debug [ROLE_I-ENCRYPTION] - Certificate retrieved: <bob>
+     [java] Debug [ROLE_I-ENCRYPTION] - Certificate retrieved: <bob>
+     [java] Debug [ROLE_I-ENCRYPTION] - Certificate retrieved: <bob>
+     [java] Debug [ROLE_I-SESSION] - Initializing channel - cs: Channel Settings - Port: 55557 - Role: CLIENT - Type: SSL_PLAIN
+     [java] Debug [ROLE_I-SESSION] - Initializing channel - keystore: anbxj.Crypto_KeyStoreSettings@7cf10a6f
+     [java] Debug [ROLE_I-ENCRYPTION] - Building KeyStore: tls #0
+     [java] Debug [ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_tls.private - Type: PKCS12
+     [java] Debug [ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_tls.public - Type: PKCS12
+     [java] Debug [ROLE_I-ENCRYPTION] - Building KeyStore: enc #1
+     [java] Debug [ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_enc.private - Type: PKCS12
+     [java] Debug [ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_enc.public - Type: PKCS12
+     [java] Debug [ROLE_I-ENCRYPTION] - Building KeyStore: sig #2
+     [java] Debug [ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_sig.private - Type: PKCS12
+     [java] Debug [ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_sig.public - Type: PKCS12
+     [java] Debug [ROLE_I-ENCRYPTION] - Building KeyStore: hmc #3
+     [java] Debug [ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_hmc.private - Type: PKCS12
+     [java] Debug [ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_hmc.public - Type: PKCS12
+     [java] Debug [ROLE_I-ENCRYPTION] - Certificate retrieved: <bob>
+     [java] Debug [ROLE_I-ENCRYPTION] - Certificate retrieved: <bob>
+     [java] Debug [ROLE_I-ENCRYPTION] - Certificate retrieved: <bob>
+     [java] Debug [ROLE_I-ENCRYPTION] - Certificate retrieved: <bob>
+     [java] Debug [ROLE_I-SESSION] - Initializing channel - cs: Channel Settings - Port: 55556 - Role: SERVER - Type: SSL_PLAIN
+     [java] Debug [ROLE_I-SESSION] - Initializing channel - keystore: anbxj.Crypto_KeyStoreSettings@7cf10a6f
+     [java] Debug [ROLE_I-ENCRYPTION] - Building KeyStore: tls #0
+     [java] Debug [ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_tls.private - Type: PKCS12
+     [java] Debug [ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_tls.public - Type: PKCS12
+     [java] Debug [ROLE_I-ENCRYPTION] - Building KeyStore: enc #1
+     [java] Debug [ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_enc.private - Type: PKCS12
+     [java] Debug [ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_enc.public - Type: PKCS12
+     [java] Debug [ROLE_I-ENCRYPTION] - Building KeyStore: sig #2
+     [java] Debug [ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_sig.private - Type: PKCS12
+     [java] Debug [ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_sig.public - Type: PKCS12
+     [java] Debug [ROLE_I-ENCRYPTION] - Building KeyStore: hmc #3
+     [java] Debug [ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_hmc.private - Type: PKCS12
+     [java] Debug [ROLE_I-ENCRYPTION] - Loading KeyStore: ../../keystore/bob_hmc.public - Type: PKCS12
+     [java] Debug [ROLE_I-ENCRYPTION] - Certificate retrieved: <bob>
+     [java] Debug [ROLE_I-ENCRYPTION] - Certificate retrieved: <bob>
+     [java] Debug [ROLE_I-ENCRYPTION] - Certificate retrieved: <bob>
+     [java] Debug [ROLE_I-ENCRYPTION] - Certificate retrieved: <bob>
+     [java] Debug [ROLE_I-SESSION] - Initializing channel - cs: Channel Settings - Port: 55560 - Role: CLIENT - Type: SSL_PLAIN
+     [java] Debug [ROLE_I-SESSION] - Initializing channel - keystore: anbxj.Crypto_KeyStoreSettings@7cf10a6f
+     [java] Debug [ROLE_I-SESSION] - Opening session
+     [java] Debug [ROLE_I-NETWORK] - Starting server on port 55556 ...
+     [java] Debug [ROLE_I-ALWAYS] - Server started on port 55556
+     [java] Debug [ROLE_I-NETWORK] - Waiting for clients ...
+     [java] Debug [ROLE_I-NETWORK] - Request from Client received ...
+     [java] Debug [ROLE_I-SESSION] - Opening session
+     [java] Debug [ROLE_I-NETWORK] - Starting Client for localhost:55557
+     [java] Debug [ROLE_I-ALWAYS] - Connected to Server localhost:55557 - ChannelType: SSL_PLAIN
+     [java] Debug [ROLE_I-SESSION] - Opening session
+     [java] Debug [ROLE_I-NETWORK] - Starting Client for localhost:55560
+     [java] Debug [ROLE_I-ALWAYS] - Connected to Server localhost:55560 - ChannelType: SSL_PLAIN
+     [java] Debug [ROLE_I-PROTOCOL] - Session started: 1/5
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_0
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-LANGUAGE] - Receive
+     [java] Debug [ROLE_I-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_I-NETWORK] - Received <- Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@7f560810, sealedMessage=javax.crypto.SealedObject@69d9c55, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - CHECK # 0.1
+     [java] Debug [ROLE_I-PROTOCOL] - INV check PERFORMED on anbxj.Crypto_SealedPair
+     [java] Debug [ROLE_I-PROTOCOL] - INV check OK - anbxj.Crypto_SealedPair.toString - Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@7f560810, sealedMessage=javax.crypto.SealedObject@69d9c55, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - INV check OK - anbxj.Crypto_SealedPair.hashCode - -453787977
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_0
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_1
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-LANGUAGE] - Send
+     [java] Debug [ROLE_I-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_I-NETWORK] - Sending -> Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@7f560810, sealedMessage=javax.crypto.SealedObject@69d9c55, cipherScheme='AES'}
+     [java] Debug [ROLE_I-NETWORK] - Sent -> Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@7f560810, sealedMessage=javax.crypto.SealedObject@69d9c55, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_1
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_2
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-LANGUAGE] - Receive
+     [java] Debug [ROLE_I-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_I-NETWORK] - Received <- Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@6d78f375, sealedMessage=javax.crypto.SealedObject@50c87b21, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - CHECK # 2.1
+     [java] Debug [ROLE_I-PROTOCOL] - INV check PERFORMED on anbxj.Crypto_SealedPair
+     [java] Debug [ROLE_I-PROTOCOL] - INV check OK - anbxj.Crypto_SealedPair.toString - Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@6d78f375, sealedMessage=javax.crypto.SealedObject@50c87b21, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - INV check OK - anbxj.Crypto_SealedPair.hashCode - 89726654
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_2
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_3
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-LANGUAGE] - Send
+     [java] Debug [ROLE_I-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_I-NETWORK] - Sending -> Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@6d78f375, sealedMessage=javax.crypto.SealedObject@50c87b21, cipherScheme='AES'}
+     [java] Debug [ROLE_I-NETWORK] - Sent -> Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@6d78f375, sealedMessage=javax.crypto.SealedObject@50c87b21, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_3
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_4
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-LANGUAGE] - Receive
+     [java] Debug [ROLE_I-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_I-NETWORK] - Received <- Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@5d5eef3d, sealedMessage=javax.crypto.SealedObject@56f4468b, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - CHECK # 4.1
+     [java] Debug [ROLE_I-PROTOCOL] - INV check PERFORMED on anbxj.Crypto_SealedPair
+     [java] Debug [ROLE_I-PROTOCOL] - INV check OK - anbxj.Crypto_SealedPair.toString - Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@5d5eef3d, sealedMessage=javax.crypto.SealedObject@56f4468b, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - INV check OK - anbxj.Crypto_SealedPair.hashCode - 408840032
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_4
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_5
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-LANGUAGE] - Send
+     [java] Debug [ROLE_I-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_I-NETWORK] - Sending -> Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@5d5eef3d, sealedMessage=javax.crypto.SealedObject@56f4468b, cipherScheme='AES'}
+     [java] Debug [ROLE_I-NETWORK] - Sent -> Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@5d5eef3d, sealedMessage=javax.crypto.SealedObject@56f4468b, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_5
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_6
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-LANGUAGE] - Receive
+     [java] Debug [ROLE_I-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_I-NETWORK] - Received <- Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@2ef5e5e3, sealedMessage=javax.crypto.SealedObject@36d4b5c, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - CHECK # 6.1
+     [java] Debug [ROLE_I-PROTOCOL] - INV check PERFORMED on anbxj.Crypto_SealedPair
+     [java] Debug [ROLE_I-PROTOCOL] - INV check OK - anbxj.Crypto_SealedPair.toString - Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@2ef5e5e3, sealedMessage=javax.crypto.SealedObject@36d4b5c, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - INV check OK - anbxj.Crypto_SealedPair.hashCode - 639584843
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_6
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_7
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-LANGUAGE] - Send
+     [java] Debug [ROLE_I-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_I-NETWORK] - Sending -> Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@2ef5e5e3, sealedMessage=javax.crypto.SealedObject@36d4b5c, cipherScheme='AES'}
+     [java] Debug [ROLE_I-NETWORK] - Sent -> Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@2ef5e5e3, sealedMessage=javax.crypto.SealedObject@36d4b5c, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_7
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_8
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-LANGUAGE] - Receive
+     [java] Debug [ROLE_I-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_I-NETWORK] - Received <- Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@62ee68d8, sealedMessage=javax.crypto.SealedObject@735b5592, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - CHECK # 8.1
+     [java] Debug [ROLE_I-PROTOCOL] - INV check PERFORMED on anbxj.Crypto_SealedPair
+     [java] Debug [ROLE_I-PROTOCOL] - INV check OK - anbxj.Crypto_SealedPair.toString - Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@62ee68d8, sealedMessage=javax.crypto.SealedObject@735b5592, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - INV check OK - anbxj.Crypto_SealedPair.hashCode - -517656532
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_8
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_9
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-LANGUAGE] - Send
+     [java] Debug [ROLE_I-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_I-NETWORK] - Sending -> Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@62ee68d8, sealedMessage=javax.crypto.SealedObject@735b5592, cipherScheme='AES'}
+     [java] Debug [ROLE_I-NETWORK] - Sent -> Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@62ee68d8, sealedMessage=javax.crypto.SealedObject@735b5592, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_9
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_10
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-LANGUAGE] - Receive
+     [java] Debug [ROLE_I-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_I-NETWORK] - Received <- Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@d2cc05a, sealedMessage=javax.crypto.SealedObject@4f933fd1, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - CHECK # 10.1
+     [java] Debug [ROLE_I-PROTOCOL] - INV check PERFORMED on anbxj.Crypto_SealedPair
+     [java] Debug [ROLE_I-PROTOCOL] - INV check OK - anbxj.Crypto_SealedPair.toString - Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@d2cc05a, sealedMessage=javax.crypto.SealedObject@4f933fd1, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - INV check OK - anbxj.Crypto_SealedPair.hashCode - 1525265193
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_10
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_11
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-PROTOCOL] - >>> NO ATTACK <<<
+     [java] Debug [ROLE_I-LANGUAGE] - Send
+     [java] Debug [ROLE_I-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_I-NETWORK] - Sending -> Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@d2cc05a, sealedMessage=javax.crypto.SealedObject@4f933fd1, cipherScheme='AES'}
+     [java] Debug [ROLE_I-NETWORK] - Sent -> Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@d2cc05a, sealedMessage=javax.crypto.SealedObject@4f933fd1, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_11
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-PROTOCOL] - Session completed: 1/5
+     [java] Debug [ROLE_I-PROTOCOL] - Session started: 2/5
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_0
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-LANGUAGE] - Receive
+     [java] Debug [ROLE_I-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_I-NETWORK] - Received <- Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@2a5ca609, sealedMessage=javax.crypto.SealedObject@20e2cbe0, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - CHECK # 0.1
+     [java] Debug [ROLE_I-PROTOCOL] - INV check PERFORMED on anbxj.Crypto_SealedPair
+     [java] Debug [ROLE_I-PROTOCOL] - INV check OK - anbxj.Crypto_SealedPair.toString - Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@2a5ca609, sealedMessage=javax.crypto.SealedObject@20e2cbe0, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - INV check OK - anbxj.Crypto_SealedPair.hashCode - -1257894039
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_0
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_1
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-LANGUAGE] - Send
+     [java] Debug [ROLE_I-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_I-NETWORK] - Sending -> Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@2a5ca609, sealedMessage=javax.crypto.SealedObject@20e2cbe0, cipherScheme='AES'}
+     [java] Debug [ROLE_I-NETWORK] - Sent -> Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@2a5ca609, sealedMessage=javax.crypto.SealedObject@20e2cbe0, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_1
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_2
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-LANGUAGE] - Receive
+     [java] Debug [ROLE_I-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_I-NETWORK] - Received <- Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@1b604f19, sealedMessage=javax.crypto.SealedObject@7823a2f9, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - CHECK # 2.1
+     [java] Debug [ROLE_I-PROTOCOL] - INV check PERFORMED on anbxj.Crypto_SealedPair
+     [java] Debug [ROLE_I-PROTOCOL] - INV check OK - anbxj.Crypto_SealedPair.toString - Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@1b604f19, sealedMessage=javax.crypto.SealedObject@7823a2f9, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - INV check OK - anbxj.Crypto_SealedPair.hashCode - 1001938802
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_2
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_3
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-LANGUAGE] - Send
+     [java] Debug [ROLE_I-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_I-NETWORK] - Sending -> Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@1b604f19, sealedMessage=javax.crypto.SealedObject@7823a2f9, cipherScheme='AES'}
+     [java] Debug [ROLE_I-NETWORK] - Sent -> Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@1b604f19, sealedMessage=javax.crypto.SealedObject@7823a2f9, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_3
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_4
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-LANGUAGE] - Receive
+     [java] Debug [ROLE_I-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_I-NETWORK] - Received <- Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@724af044, sealedMessage=javax.crypto.SealedObject@4678c730, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - CHECK # 4.1
+     [java] Debug [ROLE_I-PROTOCOL] - INV check PERFORMED on anbxj.Crypto_SealedPair
+     [java] Debug [ROLE_I-PROTOCOL] - INV check OK - anbxj.Crypto_SealedPair.toString - Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@724af044, sealedMessage=javax.crypto.SealedObject@4678c730, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - INV check OK - anbxj.Crypto_SealedPair.hashCode - -1871247394
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_4
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_5
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-LANGUAGE] - Send
+     [java] Debug [ROLE_I-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_I-NETWORK] - Sending -> Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@724af044, sealedMessage=javax.crypto.SealedObject@4678c730, cipherScheme='AES'}
+     [java] Debug [ROLE_I-NETWORK] - Sent -> Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@724af044, sealedMessage=javax.crypto.SealedObject@4678c730, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_5
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_6
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-LANGUAGE] - Receive
+     [java] Debug [ROLE_I-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_I-NETWORK] - Received <- Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@55f3ddb1, sealedMessage=javax.crypto.SealedObject@8bd1b6a, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - CHECK # 6.1
+     [java] Debug [ROLE_I-PROTOCOL] - INV check PERFORMED on anbxj.Crypto_SealedPair
+     [java] Debug [ROLE_I-PROTOCOL] - INV check OK - anbxj.Crypto_SealedPair.toString - Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@55f3ddb1, sealedMessage=javax.crypto.SealedObject@8bd1b6a, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - INV check OK - anbxj.Crypto_SealedPair.hashCode - -466609077
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_6
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_7
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-LANGUAGE] - Send
+     [java] Debug [ROLE_I-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_I-NETWORK] - Sending -> Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@55f3ddb1, sealedMessage=javax.crypto.SealedObject@8bd1b6a, cipherScheme='AES'}
+     [java] Debug [ROLE_I-NETWORK] - Sent -> Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@55f3ddb1, sealedMessage=javax.crypto.SealedObject@8bd1b6a, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_7
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_8
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-LANGUAGE] - Receive
+     [java] Debug [ROLE_I-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_I-NETWORK] - Received <- Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@475530b9, sealedMessage=javax.crypto.SealedObject@1d057a39, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - CHECK # 8.1
+     [java] Debug [ROLE_I-PROTOCOL] - INV check PERFORMED on anbxj.Crypto_SealedPair
+     [java] Debug [ROLE_I-PROTOCOL] - INV check OK - anbxj.Crypto_SealedPair.toString - Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@475530b9, sealedMessage=javax.crypto.SealedObject@1d057a39, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - INV check OK - anbxj.Crypto_SealedPair.hashCode - 859932946
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_8
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_9
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-LANGUAGE] - Send
+     [java] Debug [ROLE_I-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_I-NETWORK] - Sending -> Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@475530b9, sealedMessage=javax.crypto.SealedObject@1d057a39, cipherScheme='AES'}
+     [java] Debug [ROLE_I-NETWORK] - Sent -> Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@475530b9, sealedMessage=javax.crypto.SealedObject@1d057a39, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_9
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_10
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-LANGUAGE] - Receive
+     [java] Debug [ROLE_I-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_I-NETWORK] - Received <- Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@46d56d67, sealedMessage=javax.crypto.SealedObject@d8355a8, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - CHECK # 10.1
+     [java] Debug [ROLE_I-PROTOCOL] - INV check PERFORMED on anbxj.Crypto_SealedPair
+     [java] Debug [ROLE_I-PROTOCOL] - INV check OK - anbxj.Crypto_SealedPair.toString - Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@46d56d67, sealedMessage=javax.crypto.SealedObject@d8355a8, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - INV check OK - anbxj.Crypto_SealedPair.hashCode - 340180371
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_10
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_11
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-PROTOCOL] - >>> ATTACK <<<
+     [java] Debug [ROLE_I-LANGUAGE] - Send
+     [java] Debug [ROLE_I-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_I-NETWORK] - Sending -> Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@d2cc05a, sealedMessage=javax.crypto.SealedObject@4f933fd1, cipherScheme='AES'}
+     [java] Debug [ROLE_I-NETWORK] - Sent -> Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@d2cc05a, sealedMessage=javax.crypto.SealedObject@4f933fd1, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_11
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-PROTOCOL] - Session completed: 2/5
+     [java] Debug [ROLE_I-PROTOCOL] - Session started: 3/5
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_0
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-LANGUAGE] - Receive
+     [java] Debug [ROLE_I-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_I-NETWORK] - Received <- Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@59fa1d9b, sealedMessage=javax.crypto.SealedObject@28d25987, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - CHECK # 0.1
+     [java] Debug [ROLE_I-PROTOCOL] - INV check PERFORMED on anbxj.Crypto_SealedPair
+     [java] Debug [ROLE_I-PROTOCOL] - INV check OK - anbxj.Crypto_SealedPair.toString - Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@59fa1d9b, sealedMessage=javax.crypto.SealedObject@28d25987, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - INV check OK - anbxj.Crypto_SealedPair.hashCode - -2130241602
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_0
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_1
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-LANGUAGE] - Send
+     [java] Debug [ROLE_I-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_I-NETWORK] - Sending -> Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@59fa1d9b, sealedMessage=javax.crypto.SealedObject@28d25987, cipherScheme='AES'}
+     [java] Debug [ROLE_I-NETWORK] - Sent -> Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@59fa1d9b, sealedMessage=javax.crypto.SealedObject@28d25987, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_1
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_2
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-LANGUAGE] - Receive
+     [java] Debug [ROLE_I-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_I-NETWORK] - Received <- Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@29774679, sealedMessage=javax.crypto.SealedObject@3ffc5af1, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - CHECK # 2.1
+     [java] Debug [ROLE_I-PROTOCOL] - INV check PERFORMED on anbxj.Crypto_SealedPair
+     [java] Debug [ROLE_I-PROTOCOL] - INV check OK - anbxj.Crypto_SealedPair.toString - Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@29774679, sealedMessage=javax.crypto.SealedObject@3ffc5af1, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - INV check OK - anbxj.Crypto_SealedPair.hashCode - -1202123766
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_2
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_3
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-LANGUAGE] - Send
+     [java] Debug [ROLE_I-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_I-NETWORK] - Sending -> Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@29774679, sealedMessage=javax.crypto.SealedObject@3ffc5af1, cipherScheme='AES'}
+     [java] Debug [ROLE_I-NETWORK] - Sent -> Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@29774679, sealedMessage=javax.crypto.SealedObject@3ffc5af1, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_3
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_4
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-LANGUAGE] - Receive
+     [java] Debug [ROLE_I-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_I-NETWORK] - Received <- Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@ae45eb6, sealedMessage=javax.crypto.SealedObject@59f99ea, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - CHECK # 4.1
+     [java] Debug [ROLE_I-PROTOCOL] - INV check PERFORMED on anbxj.Crypto_SealedPair
+     [java] Debug [ROLE_I-PROTOCOL] - INV check OK - anbxj.Crypto_SealedPair.toString - Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@ae45eb6, sealedMessage=javax.crypto.SealedObject@59f99ea, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - INV check OK - anbxj.Crypto_SealedPair.hashCode - -902677914
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_4
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_5
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-LANGUAGE] - Send
+     [java] Debug [ROLE_I-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_I-NETWORK] - Sending -> Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@ae45eb6, sealedMessage=javax.crypto.SealedObject@59f99ea, cipherScheme='AES'}
+     [java] Debug [ROLE_I-NETWORK] - Sent -> Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@ae45eb6, sealedMessage=javax.crypto.SealedObject@59f99ea, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_5
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_6
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-LANGUAGE] - Receive
+     [java] Debug [ROLE_I-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_I-NETWORK] - Received <- Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@66a3ffec, sealedMessage=javax.crypto.SealedObject@77caeb3e, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - CHECK # 6.1
+     [java] Debug [ROLE_I-PROTOCOL] - INV check PERFORMED on anbxj.Crypto_SealedPair
+     [java] Debug [ROLE_I-PROTOCOL] - INV check OK - anbxj.Crypto_SealedPair.toString - Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@66a3ffec, sealedMessage=javax.crypto.SealedObject@77caeb3e, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - INV check OK - anbxj.Crypto_SealedPair.hashCode - 1485967684
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_6
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_7
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-LANGUAGE] - Send
+     [java] Debug [ROLE_I-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_I-NETWORK] - Sending -> Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@66a3ffec, sealedMessage=javax.crypto.SealedObject@77caeb3e, cipherScheme='AES'}
+     [java] Debug [ROLE_I-NETWORK] - Sent -> Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@66a3ffec, sealedMessage=javax.crypto.SealedObject@77caeb3e, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_7
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_8
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-LANGUAGE] - Receive
+     [java] Debug [ROLE_I-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_I-NETWORK] - Received <- Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@5e3a8624, sealedMessage=javax.crypto.SealedObject@5c3bd550, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - CHECK # 8.1
+     [java] Debug [ROLE_I-PROTOCOL] - INV check PERFORMED on anbxj.Crypto_SealedPair
+     [java] Debug [ROLE_I-PROTOCOL] - INV check OK - anbxj.Crypto_SealedPair.toString - Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@5e3a8624, sealedMessage=javax.crypto.SealedObject@5c3bd550, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - INV check OK - anbxj.Crypto_SealedPair.hashCode - 943537182
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_8
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_9
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-LANGUAGE] - Send
+     [java] Debug [ROLE_I-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_I-NETWORK] - Sending -> Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@5e3a8624, sealedMessage=javax.crypto.SealedObject@5c3bd550, cipherScheme='AES'}
+     [java] Debug [ROLE_I-NETWORK] - Sent -> Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@5e3a8624, sealedMessage=javax.crypto.SealedObject@5c3bd550, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_9
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_10
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-LANGUAGE] - Receive
+     [java] Debug [ROLE_I-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_I-NETWORK] - Received <- Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@6a41eaa2, sealedMessage=javax.crypto.SealedObject@7cd62f43, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - CHECK # 10.1
+     [java] Debug [ROLE_I-PROTOCOL] - INV check PERFORMED on anbxj.Crypto_SealedPair
+     [java] Debug [ROLE_I-PROTOCOL] - INV check OK - anbxj.Crypto_SealedPair.toString - Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@6a41eaa2, sealedMessage=javax.crypto.SealedObject@7cd62f43, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - INV check OK - anbxj.Crypto_SealedPair.hashCode - -843267757
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_10
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_11
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-PROTOCOL] - >>> NO ATTACK <<<
+     [java] Debug [ROLE_I-LANGUAGE] - Send
+     [java] Debug [ROLE_I-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_I-NETWORK] - Sending -> Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@6a41eaa2, sealedMessage=javax.crypto.SealedObject@7cd62f43, cipherScheme='AES'}
+     [java] Debug [ROLE_I-NETWORK] - Sent -> Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@6a41eaa2, sealedMessage=javax.crypto.SealedObject@7cd62f43, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_11
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-PROTOCOL] - Session completed: 3/5
+     [java] Debug [ROLE_I-PROTOCOL] - Session started: 4/5
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_0
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-LANGUAGE] - Receive
+     [java] Debug [ROLE_I-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_I-NETWORK] - Received <- Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@7d9d1a19, sealedMessage=javax.crypto.SealedObject@39c0f4a, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - CHECK # 0.1
+     [java] Debug [ROLE_I-PROTOCOL] - INV check PERFORMED on anbxj.Crypto_SealedPair
+     [java] Debug [ROLE_I-PROTOCOL] - INV check OK - anbxj.Crypto_SealedPair.toString - Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@7d9d1a19, sealedMessage=javax.crypto.SealedObject@39c0f4a, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - INV check OK - anbxj.Crypto_SealedPair.hashCode - -1400020797
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_0
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_1
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-LANGUAGE] - Send
+     [java] Debug [ROLE_I-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_I-NETWORK] - Sending -> Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@7d9d1a19, sealedMessage=javax.crypto.SealedObject@39c0f4a, cipherScheme='AES'}
+     [java] Debug [ROLE_I-NETWORK] - Sent -> Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@7d9d1a19, sealedMessage=javax.crypto.SealedObject@39c0f4a, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_1
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_2
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-LANGUAGE] - Receive
+     [java] Debug [ROLE_I-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_I-NETWORK] - Received <- Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@53b32d7, sealedMessage=javax.crypto.SealedObject@5442a311, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - CHECK # 2.1
+     [java] Debug [ROLE_I-PROTOCOL] - INV check PERFORMED on anbxj.Crypto_SealedPair
+     [java] Debug [ROLE_I-PROTOCOL] - INV check OK - anbxj.Crypto_SealedPair.toString - Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@53b32d7, sealedMessage=javax.crypto.SealedObject@5442a311, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - INV check OK - anbxj.Crypto_SealedPair.hashCode - 1767437196
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_2
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_3
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-LANGUAGE] - Send
+     [java] Debug [ROLE_I-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_I-NETWORK] - Sending -> Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@53b32d7, sealedMessage=javax.crypto.SealedObject@5442a311, cipherScheme='AES'}
+     [java] Debug [ROLE_I-NETWORK] - Sent -> Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@53b32d7, sealedMessage=javax.crypto.SealedObject@5442a311, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_3
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_4
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-LANGUAGE] - Receive
+     [java] Debug [ROLE_I-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_I-NETWORK] - Received <- Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@204f30ec, sealedMessage=javax.crypto.SealedObject@e25b2fe, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - CHECK # 4.1
+     [java] Debug [ROLE_I-PROTOCOL] - INV check PERFORMED on anbxj.Crypto_SealedPair
+     [java] Debug [ROLE_I-PROTOCOL] - INV check OK - anbxj.Crypto_SealedPair.toString - Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@204f30ec, sealedMessage=javax.crypto.SealedObject@e25b2fe, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - INV check OK - anbxj.Crypto_SealedPair.hashCode - 1789380612
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_4
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_5
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-LANGUAGE] - Send
+     [java] Debug [ROLE_I-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_I-NETWORK] - Sending -> Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@204f30ec, sealedMessage=javax.crypto.SealedObject@e25b2fe, cipherScheme='AES'}
+     [java] Debug [ROLE_I-NETWORK] - Sent -> Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@204f30ec, sealedMessage=javax.crypto.SealedObject@e25b2fe, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_5
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_6
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-LANGUAGE] - Receive
+     [java] Debug [ROLE_I-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_I-NETWORK] - Received <- Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@464bee09, sealedMessage=javax.crypto.SealedObject@f6c48ac, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - CHECK # 6.1
+     [java] Debug [ROLE_I-PROTOCOL] - INV check PERFORMED on anbxj.Crypto_SealedPair
+     [java] Debug [ROLE_I-PROTOCOL] - INV check OK - anbxj.Crypto_SealedPair.toString - Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@464bee09, sealedMessage=javax.crypto.SealedObject@f6c48ac, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - INV check OK - anbxj.Crypto_SealedPair.hashCode - 92881973
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_6
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_7
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-LANGUAGE] - Send
+     [java] Debug [ROLE_I-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_I-NETWORK] - Sending -> Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@464bee09, sealedMessage=javax.crypto.SealedObject@f6c48ac, cipherScheme='AES'}
+     [java] Debug [ROLE_I-NETWORK] - Sent -> Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@464bee09, sealedMessage=javax.crypto.SealedObject@f6c48ac, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_7
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_8
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-LANGUAGE] - Receive
+     [java] Debug [ROLE_I-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_I-NETWORK] - Received <- Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@31ef45e3, sealedMessage=javax.crypto.SealedObject@598067a5, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - CHECK # 8.1
+     [java] Debug [ROLE_I-PROTOCOL] - INV check PERFORMED on anbxj.Crypto_SealedPair
+     [java] Debug [ROLE_I-PROTOCOL] - INV check OK - anbxj.Crypto_SealedPair.toString - Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@31ef45e3, sealedMessage=javax.crypto.SealedObject@598067a5, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - INV check OK - anbxj.Crypto_SealedPair.hashCode - -664467820
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_8
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_9
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-LANGUAGE] - Send
+     [java] Debug [ROLE_I-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_I-NETWORK] - Sending -> Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@31ef45e3, sealedMessage=javax.crypto.SealedObject@598067a5, cipherScheme='AES'}
+     [java] Debug [ROLE_I-NETWORK] - Sent -> Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@31ef45e3, sealedMessage=javax.crypto.SealedObject@598067a5, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_9
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_10
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-LANGUAGE] - Receive
+     [java] Debug [ROLE_I-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_I-NETWORK] - Received <- Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@4f7d0008, sealedMessage=javax.crypto.SealedObject@271053e1, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - CHECK # 10.1
+     [java] Debug [ROLE_I-PROTOCOL] - INV check PERFORMED on anbxj.Crypto_SealedPair
+     [java] Debug [ROLE_I-PROTOCOL] - INV check OK - anbxj.Crypto_SealedPair.toString - Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@4f7d0008, sealedMessage=javax.crypto.SealedObject@271053e1, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - INV check OK - anbxj.Crypto_SealedPair.hashCode - 975076683
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_10
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_11
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-PROTOCOL] - >>> NO ATTACK <<<
+     [java] Debug [ROLE_I-LANGUAGE] - Send
+     [java] Debug [ROLE_I-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_I-NETWORK] - Sending -> Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@4f7d0008, sealedMessage=javax.crypto.SealedObject@271053e1, cipherScheme='AES'}
+     [java] Debug [ROLE_I-NETWORK] - Sent -> Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@4f7d0008, sealedMessage=javax.crypto.SealedObject@271053e1, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_11
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-PROTOCOL] - Session completed: 4/5
+     [java] Debug [ROLE_I-PROTOCOL] - Session started: 5/5
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_0
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-LANGUAGE] - Receive
+     [java] Debug [ROLE_I-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_I-NETWORK] - Received <- Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@59ec2012, sealedMessage=javax.crypto.SealedObject@4cf777e8, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - CHECK # 0.1
+     [java] Debug [ROLE_I-PROTOCOL] - INV check PERFORMED on anbxj.Crypto_SealedPair
+     [java] Debug [ROLE_I-PROTOCOL] - INV check OK - anbxj.Crypto_SealedPair.toString - Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@59ec2012, sealedMessage=javax.crypto.SealedObject@4cf777e8, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - INV check OK - anbxj.Crypto_SealedPair.hashCode - -1552252280
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_0
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_1
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-LANGUAGE] - Send
+     [java] Debug [ROLE_I-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_I-NETWORK] - Sending -> Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@59ec2012, sealedMessage=javax.crypto.SealedObject@4cf777e8, cipherScheme='AES'}
+     [java] Debug [ROLE_I-NETWORK] - Sent -> Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@59ec2012, sealedMessage=javax.crypto.SealedObject@4cf777e8, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_1
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_2
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-LANGUAGE] - Receive
+     [java] Debug [ROLE_I-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_I-NETWORK] - Received <- Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@1ce92674, sealedMessage=javax.crypto.SealedObject@5700d6b1, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - CHECK # 2.1
+     [java] Debug [ROLE_I-PROTOCOL] - INV check PERFORMED on anbxj.Crypto_SealedPair
+     [java] Debug [ROLE_I-PROTOCOL] - INV check OK - anbxj.Crypto_SealedPair.toString - Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@1ce92674, sealedMessage=javax.crypto.SealedObject@5700d6b1, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - INV check OK - anbxj.Crypto_SealedPair.hashCode - 1244112687
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_2
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_3
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-LANGUAGE] - Send
+     [java] Debug [ROLE_I-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_I-NETWORK] - Sending -> Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@1ce92674, sealedMessage=javax.crypto.SealedObject@5700d6b1, cipherScheme='AES'}
+     [java] Debug [ROLE_I-NETWORK] - Sent -> Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@1ce92674, sealedMessage=javax.crypto.SealedObject@5700d6b1, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_3
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_4
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-LANGUAGE] - Receive
+     [java] Debug [ROLE_I-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_I-NETWORK] - Received <- Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@31a5c39e, sealedMessage=javax.crypto.SealedObject@3f49dace, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - CHECK # 4.1
+     [java] Debug [ROLE_I-PROTOCOL] - INV check PERFORMED on anbxj.Crypto_SealedPair
+     [java] Debug [ROLE_I-PROTOCOL] - INV check OK - anbxj.Crypto_SealedPair.toString - Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@31a5c39e, sealedMessage=javax.crypto.SealedObject@3f49dace, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - INV check OK - anbxj.Crypto_SealedPair.hashCode - -1253592222
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_4
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_5
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-LANGUAGE] - Send
+     [java] Debug [ROLE_I-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_I-NETWORK] - Sending -> Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@31a5c39e, sealedMessage=javax.crypto.SealedObject@3f49dace, cipherScheme='AES'}
+     [java] Debug [ROLE_I-NETWORK] - Sent -> Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@31a5c39e, sealedMessage=javax.crypto.SealedObject@3f49dace, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_5
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_6
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-LANGUAGE] - Receive
+     [java] Debug [ROLE_I-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_I-NETWORK] - Received <- Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@72d818d1, sealedMessage=javax.crypto.SealedObject@6e06451e, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - CHECK # 6.1
+     [java] Debug [ROLE_I-PROTOCOL] - INV check PERFORMED on anbxj.Crypto_SealedPair
+     [java] Debug [ROLE_I-PROTOCOL] - INV check OK - anbxj.Crypto_SealedPair.toString - Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@72d818d1, sealedMessage=javax.crypto.SealedObject@6e06451e, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - INV check OK - anbxj.Crypto_SealedPair.hashCode - -920883489
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_6
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_7
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-LANGUAGE] - Send
+     [java] Debug [ROLE_I-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_I-NETWORK] - Sending -> Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@72d818d1, sealedMessage=javax.crypto.SealedObject@6e06451e, cipherScheme='AES'}
+     [java] Debug [ROLE_I-NETWORK] - Sent -> Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@72d818d1, sealedMessage=javax.crypto.SealedObject@6e06451e, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_7
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_8
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-LANGUAGE] - Receive
+     [java] Debug [ROLE_I-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_I-NETWORK] - Received <- Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@13805618, sealedMessage=javax.crypto.SealedObject@56ef9176, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - CHECK # 8.1
+     [java] Debug [ROLE_I-PROTOCOL] - INV check PERFORMED on anbxj.Crypto_SealedPair
+     [java] Debug [ROLE_I-PROTOCOL] - INV check OK - anbxj.Crypto_SealedPair.toString - Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@13805618, sealedMessage=javax.crypto.SealedObject@56ef9176, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - INV check OK - anbxj.Crypto_SealedPair.hashCode - 644163280
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_8
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_9
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-LANGUAGE] - Send
+     [java] Debug [ROLE_I-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_I-NETWORK] - Sending -> Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@13805618, sealedMessage=javax.crypto.SealedObject@56ef9176, cipherScheme='AES'}
+     [java] Debug [ROLE_I-NETWORK] - Sent -> Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@13805618, sealedMessage=javax.crypto.SealedObject@56ef9176, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_9
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_10
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-LANGUAGE] - Receive
+     [java] Debug [ROLE_I-NETWORK] - ---------- RECEIVE -------------
+     [java] Debug [ROLE_I-NETWORK] - Received <- Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@5702b3b1, sealedMessage=javax.crypto.SealedObject@69ea3742, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - CHECK # 10.1
+     [java] Debug [ROLE_I-PROTOCOL] - INV check PERFORMED on anbxj.Crypto_SealedPair
+     [java] Debug [ROLE_I-PROTOCOL] - INV check OK - anbxj.Crypto_SealedPair.toString - Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@5702b3b1, sealedMessage=javax.crypto.SealedObject@69ea3742, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - INV check OK - anbxj.Crypto_SealedPair.hashCode - 1713971747
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_10
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_11
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-PROTOCOL] - >>> NO ATTACK <<<
+     [java] Debug [ROLE_I-LANGUAGE] - Send
+     [java] Debug [ROLE_I-NETWORK] - ---------- SEND -----------
+     [java] Debug [ROLE_I-NETWORK] - Sending -> Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@5702b3b1, sealedMessage=javax.crypto.SealedObject@69ea3742, cipherScheme='AES'}
+     [java] Debug [ROLE_I-NETWORK] - Sent -> Crypto_SealedPair{sealedKey=javax.crypto.SealedObject@5702b3b1, sealedMessage=javax.crypto.SealedObject@69ea3742, cipherScheme='AES'}
+     [java] Debug [ROLE_I-PROTOCOL] - SSO_replay - ROLE_I - STEP_11
+     [java] Debug [ROLE_I-PROTOCOL] - sso_replay.SSO_replay_ROLE_I@2d3fcdbd
+     [java] Debug [ROLE_I-PROTOCOL] - Session completed: 5/5
+     [java] Debug [ROLE_I-NETWORK] - Connection closed
+     [java] Debug [ROLE_I-SESSION] - Session closed
+     [java] Debug [ROLE_I-NETWORK] - Connection closed
+     [java] Debug [ROLE_I-SESSION] - Session closed
+     [java] Debug [ROLE_I-NETWORK] - Connection closed
+     [java] Debug [ROLE_I-SESSION] - Session closed
+     [java] SSO_replay [ROLE_I] - Execution time was 2601,683 ms.
+
+BUILD SUCCESSFUL
+Total time: 3 seconds
