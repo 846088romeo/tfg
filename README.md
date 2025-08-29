@@ -80,13 +80,13 @@ Esto compilará el proyecto con Cabal y moverá el ejecutable resultante a:
 Ir al directorio del compilador:
 
 ```powershell
-    cd anbx_new/AnBx2
+cd anbx_new/AnBx2
 ```
 
 Compilar con Cabal:
 
 ```powershell
-    cabal build
+cabal build
 ```
 
 Localizar el binario generado (ejemplo para GHC 8.6.5 en Windows, la ruta puede variar):
