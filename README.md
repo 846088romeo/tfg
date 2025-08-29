@@ -31,3 +31,63 @@ La contribución principal consiste en la extensión del compilador **AnBxTools*
 
 ### 1. Compilador extendido (`anbx_new`)
 
+El directorio `anbx_new/` contiene la implementación del compilador extendido, dividido en varios submódulos:
+
+- **`AnBx2/`** → Código fuente en **Haskell** del compilador `anbxc` extendido.  
+  - `src/` → implementación del compilador.  
+  - `STemplates/` → plantillas Java usadas para la generación de código.  
+  - `bin/` → ejecutables (`anbxc_new.exe`, versión extendida; `anbxc_ant.exe`, versión previa).  
+  - `AnBx3.cabal` → configuración de **Cabal** para compilar el proyecto.  
+  - `build_anbxc.ps1` → script en PowerShell que automatiza la compilación y mueve el binario final a `bin/anbxc_new.exe`.
+
+- **`AnBxJ/`** → Biblioteca Java de soporte para los protocolos generados.  
+  - `src/` y `doc/` → código y documentación de la librería.  
+  - `AnBxJ.jar` → librería compilada lista para usarse.  
+  - `bcprov-jdk18on-1.80.jar` → dependencia de BouncyCastle para primitivas criptográficas.
+
+- **`casestudies/`** → protocolos de prueba en formato `.anbx` y `.anb`.  
+  Se compilan con `anbxc_new` y sus correspondientes clases Java se generan en `genAnBx/`.
+
+- **`genAnBx/`** → código **Java generado automáticamente** para los casos de prueba.  
+
+- **`bin/`** → clases compiladas (`.class`) de los protocolos.  
+
+---
+
+#### 🔨 Compilación de `anbxc_new`
+
+Existen dos formas de compilar el compilador extendido:  
+
+---
+
+##### 🔹 Windows
+
+En Windows basta con ejecutar el script PowerShell incluido, que automatiza todo el proceso:
+
+```powershell
+cd anbx_new/AnBx2
+./build_anbxc.ps1
+
+Esto compilará el proyecto con Cabal y moverá el ejecutable resultante a:
+
+    anbx_new/AnBx2/bin/anbxc_new.exe
+
+---
+
+##### 🔹 Compilación general (Linux/Mac/otros entornos)
+
+Ir al directorio del compilador:
+
+    cd anbx_new/AnBx2
+
+Compilar con Cabal:
+
+    cabal build
+
+Localizar el binario generado (ejemplo para GHC 8.6.5 en Windows, la ruta puede variar):
+
+    dist-newstyle/build/x86_64-windows/ghc-8.6.5/anbxc-2025.1/x/anbxc/build/anbxc/anbxc.exe
+
+Copiarlo manualmente a `bin/` y renombrarlo como:
+
+    anbx_new/AnBx2/bin/anbxc_new.exe
